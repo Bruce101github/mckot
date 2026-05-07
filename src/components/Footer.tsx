@@ -48,6 +48,21 @@ export function Footer() {
                 Contact
               </Link>
             </li>
+            <li>
+              <Link href="/privacy" className="hover:text-brand-accent">
+                Privacy Policy
+              </Link>
+            </li>
+            <li>
+              <Link href="/terms" className="hover:text-brand-accent">
+                Terms of Service
+              </Link>
+            </li>
+            <li>
+              <Link href="/eula" className="hover:text-brand-accent">
+                EULA
+              </Link>
+            </li>
           </ul>
         </div>
         <div>
