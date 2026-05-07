@@ -1,0 +1,48 @@
+import type { Config } from "tailwindcss";
+
+const config: Config = {
+  content: [
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        brand: {
+          DEFAULT: "#0B3B2D",
+          foreground: "#F8FAF7",
+          muted: "#1a5243",
+          accent: "#A4D233",
+          "accent-hover": "#8FB82B",
+          surface: "#0f2922",
+          border: "#1f4036",
+        },
+      },
+      fontFamily: {
+        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+      },
+      backgroundImage: {
+        "hero-gradient":
+          "radial-gradient(ellipse 80% 60% at 70% 20%, rgba(164,210,51,0.14), transparent 55%), radial-gradient(ellipse 60% 50% at 10% 80%, rgba(11,59,45,0.9), transparent 50%)",
+        "card-shine":
+          "linear-gradient(135deg, rgba(164,210,51,0.08) 0%, transparent 45%)",
+      },
+      boxShadow: {
+        glow: "0 0 40px -10px rgba(164, 210, 51, 0.35)",
+      },
+      animation: {
+        float: "float 6s ease-in-out infinite",
+      },
+      keyframes: {
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-8px)" },
+        },
+      },
+    },
+  },
+  plugins: [],
+};
+
+export default config;

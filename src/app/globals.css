@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand: #0b3b2d;
+  --brand-accent: #a4d233;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-brand text-brand-foreground antialiased;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Focus visible for a11y */
+:focus-visible {
+  @apply outline-2 outline-offset-2 outline-brand-accent;
+}
