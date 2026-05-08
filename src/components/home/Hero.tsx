@@ -1,57 +1,101 @@
 import Image from "next/image";
-import { ArrowRight, Bike } from "lucide-react";
+import { ArrowRight, CheckCircle2, Zap } from "lucide-react";
 import { Button } from "@/components/Button";
 import { FadeIn } from "@/components/FadeIn";
 
+const trustPoints = [
+  "Same-day pickup and delivery across Greater Accra",
+  "Pay per delivery. No subscriptions, no minimums.",
+  "Real-time tracking link to share with every customer",
+];
+
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-hero-gradient pb-16 pt-12 md:pb-24 md:pt-20">
+    <section
+      id="hero"
+      className="relative overflow-hidden bg-hero-gradient pb-16 pt-10 md:pb-24 md:pt-16"
+    >
       <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16">
         <FadeIn>
-          <p className="text-sm font-semibold uppercase tracking-widest text-brand-accent">
-            Accra first. Africa next.
-          </p>
-          <h1 className="mt-4 text-balance text-4xl font-bold tracking-tight text-brand-foreground md:text-5xl lg:text-6xl">
-            Logistics that scales with your business
+          <div className="inline-flex items-center gap-2 rounded-full border border-brand-accent/40 bg-brand-accent/10 px-4 py-1.5">
+            <Zap className="h-3.5 w-3.5 text-brand-accent" aria-hidden />
+            <span className="text-sm font-semibold text-brand-accent">
+              Pre-launch special pricing
+            </span>
+          </div>
+
+          <h1 className="mt-5 text-balance text-4xl font-bold tracking-tight text-brand-foreground md:text-5xl lg:text-[3.35rem] lg:leading-[1.1]">
+            Stop Losing Sales Because of Delivery Problems
           </h1>
-          <p className="mt-6 max-w-xl text-lg text-brand-foreground/75 md:text-xl">
-            Starting with last-mile delivery in Accra. Building the commerce platform for Africa&apos;s
-            online sellers.
+
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-brand-foreground/75">
+            Mckot handles last-mile delivery for Instagram, TikTok, Facebook, and WhatsApp
+            sellers in Accra. Your customers get their orders today. You get back to selling.
           </p>
+
+          <ul className="mt-7 space-y-3" aria-label="Key benefits">
+            {trustPoints.map((point) => (
+              <li
+                key={point}
+                className="flex items-start gap-3 text-sm text-brand-foreground/80"
+              >
+                <CheckCircle2
+                  className="mt-0.5 h-5 w-5 shrink-0 text-brand-accent"
+                  aria-hidden
+                />
+                {point}
+              </li>
+            ))}
+          </ul>
+
           <div className="mt-10 flex flex-wrap gap-4">
-            <Button href="/contact#signup" variant="primary" icon={ArrowRight}>
-              Get Started
+            <Button href="#signup" variant="primary" icon={ArrowRight}>
+              Start Delivering in 24 Hours
             </Button>
-            <Button href="/services#how-pricing" variant="secondary">
-              How It Works
+            <Button href="#how-it-works" variant="secondary">
+              See How It Works
             </Button>
           </div>
-          <p className="mt-8 text-sm text-brand-foreground/50">
-            Selling on Instagram, TikTok, WhatsApp, or Facebook? We built Mckot for you.
+
+          <p className="mt-6 text-xs text-brand-foreground/45">
+            Already serving: skincare vendors, streetwear sellers, home bakers, phone accessory
+            shops, and more across Accra.
           </p>
         </FadeIn>
+
         <FadeIn delay={0.12} className="relative mx-auto w-full max-w-md lg:max-w-none">
           <div className="animate-float relative aspect-[4/5] overflow-hidden rounded-3xl border border-brand-border shadow-glow md:aspect-square">
             <Image
               src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=900&q=80"
-              alt="Motorcycle courier navigating city streets for deliveries"
+              alt="Mckot rider on motorcycle ready for delivery in Accra"
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 50vw"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-brand via-transparent to-transparent" />
-            <div className="absolute bottom-6 left-6 right-6 flex items-center gap-3 rounded-2xl border border-white/10 bg-brand/80 p-4 backdrop-blur-md">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-accent/20">
-                <Bike className="h-7 w-7 text-brand-accent" aria-hidden />
-              </div>
-              <div>
-                <p className="text-sm font-semibold text-brand-foreground">Live routing</p>
-                <p className="text-xs text-brand-foreground/60">
-                  Dispatch tuned for Accra traffic realities
-                </p>
+            <div className="absolute inset-0 bg-gradient-to-t from-brand via-brand/20 to-transparent" />
+
+            <div className="absolute bottom-5 left-4 right-4 rounded-2xl border border-white/10 bg-brand/85 p-4 backdrop-blur-md">
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-accent/20 text-lg">
+                  📦
+                </div>
+                <div className="min-w-0">
+                  <p className="truncate text-sm font-semibold text-brand-foreground">
+                    Order delivered
+                  </p>
+                  <p className="text-xs text-brand-foreground/60">East Legon, 2h 14m ago</p>
+                </div>
+                <span className="ml-auto shrink-0 rounded-full bg-brand-accent/20 px-2.5 py-0.5 text-xs font-semibold text-brand-accent">
+                  Done
+                </span>
               </div>
             </div>
+          </div>
+
+          <div className="absolute -right-3 top-10 hidden rounded-2xl border border-brand-border bg-brand-surface/95 px-4 py-3 shadow-glow/40 lg:block">
+            <p className="text-2xl font-bold text-brand-accent">40+</p>
+            <p className="text-xs text-brand-foreground/65">Vendors active</p>
           </div>
         </FadeIn>
       </div>

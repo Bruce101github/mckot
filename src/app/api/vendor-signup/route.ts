@@ -5,8 +5,8 @@ export type VendorSignupPayload = {
   businessName?: string;
   phone?: string;
   socialHandle?: string;
-  monthlyDeliveries?: string;
-  serviceZone?: string;
+  dailySales?: string;
+  deliveryZones?: string[];
 };
 
 export async function POST(req: Request) {
@@ -17,9 +17,16 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, error: "Invalid JSON" }, { status: 400 });
   }
 
-  const required = ["contactName", "businessName", "phone", "monthlyDeliveries", "serviceZone"];
+  const required: (keyof VendorSignupPayload)[] = [
+    "contactName",
+    "businessName",
+    "phone",
+    "dailySales",
+    "deliveryZones",
+  ];
   for (const key of required) {
-    if (!payload[key as keyof VendorSignupPayload]) {
+    const val = payload[key];
+    if (!val || (Array.isArray(val) && val.length === 0)) {
       return NextResponse.json({ ok: false, error: `Missing ${key}` }, { status: 400 });
     }
   }
