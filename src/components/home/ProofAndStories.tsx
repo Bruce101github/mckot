@@ -16,7 +16,7 @@ export function ProofAndStories() {
     <Section id="testimonials" className="bg-brand-muted/10">
       <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
         <FadeIn>
-          <p className="text-sm font-semibold uppercase tracking-widest text-brand-accent">
+          <p className="text-sm font-semibold uppercase tracking-widest text-brand-dark/60">
             Vendor stories
           </p>
           <h2 className="mt-3 text-3xl font-bold text-brand-foreground md:text-4xl">

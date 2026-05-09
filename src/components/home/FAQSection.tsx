@@ -32,8 +32,8 @@ const faqs = [
     a: "Every delivery includes proof of delivery. If something goes wrong, we have a structured claims process and most issues are resolved within 24 hours. We take accountability seriously.",
   },
   {
-    q: "Do I need to download an app?",
-    a: "No app required to get started. Booking happens entirely over WhatsApp. A lightweight vendor dashboard is available for tracking and invoices.",
+    q: "How do I book a delivery?",
+    a: "Download the free Mckot app on Android or iOS to book pickups directly. You can also reach us on WhatsApp to place orders. The app gives you real-time tracking and a full order history.",
   },
 ];
 
@@ -77,7 +77,7 @@ export function FAQSection() {
     <Section id="faq" className="bg-brand-muted/10">
       <div className="mx-auto max-w-3xl">
         <FadeIn>
-          <p className="text-sm font-semibold uppercase tracking-widest text-brand-accent">
+          <p className="text-sm font-semibold uppercase tracking-widest text-brand-dark/60">
             FAQ
           </p>
           <h2 className="mt-3 text-balance text-3xl font-bold text-brand-foreground md:text-4xl">

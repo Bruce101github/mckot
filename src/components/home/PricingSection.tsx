@@ -13,7 +13,7 @@ const tiers = [
       "Same-day delivery",
       "Proof of delivery",
       "Customer tracking link",
-      "WhatsApp booking",
+      "App booking",
     ],
     zones: "East Legon, Osu, Spintex, and other single-zone runs",
   },
@@ -49,7 +49,7 @@ export function PricingSection() {
   return (
     <Section id="pricing" className="bg-brand-muted/10">
       <FadeIn>
-        <p className="text-sm font-semibold uppercase tracking-widest text-brand-accent">
+        <p className="text-sm font-semibold uppercase tracking-widest text-brand-dark/60">
           Pricing
         </p>
         <h2 className="mt-3 text-balance text-3xl font-bold text-brand-foreground md:text-4xl">

@@ -22,7 +22,7 @@ export function WhyMckot() {
   return (
     <Section id="why-mckot" className="bg-brand-muted/10">
       <FadeIn>
-        <p className="text-sm font-semibold uppercase tracking-widest text-brand-accent">
+        <p className="text-sm font-semibold uppercase tracking-widest text-brand-dark/60">
           The problem
         </p>
         <h2 className="mt-3 text-balance text-3xl font-bold text-brand-foreground md:text-4xl">

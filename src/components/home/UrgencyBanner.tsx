@@ -14,7 +14,7 @@ export function UrgencyBanner() {
         Pre-launch: First 40 vendors lock in early pricing before public launch.{" "}
         <a
           href="#signup"
-          className="font-semibold text-brand-accent underline underline-offset-2 hover:no-underline"
+          className="font-semibold text-brand-dark underline underline-offset-2 hover:no-underline"
         >
           Claim your spot
         </a>

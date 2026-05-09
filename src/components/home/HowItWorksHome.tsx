@@ -1,28 +1,28 @@
-import { MessageCircle, Package, Bike } from "lucide-react";
+import { Smartphone, Package, Bike } from "lucide-react";
 import { Section } from "@/components/Section";
 import { FadeIn } from "@/components/FadeIn";
 
 const steps = [
   {
     step: "01",
-    icon: MessageCircle,
-    title: "Message Us on WhatsApp",
-    body: "Send your order details: pickup address, customer address, and parcel description. No apps to download. No accounts to create.",
-    detail: "Usually responds within 15 minutes",
+    icon: Smartphone,
+    title: "Download the App",
+    body: "Get the Mckot app free on the App Store or Google Play. Create your vendor account in 2 minutes — no paperwork, no waiting.",
+    detail: "Free to download",
   },
   {
     step: "02",
-    icon: Bike,
-    title: "We Pick Up From You",
-    body: "A rider comes to your location within hours. We handle the handoff carefully so your packaging and branding stays intact.",
-    detail: "Same-day pickup, every day",
+    icon: Package,
+    title: "Book Your Pickup",
+    body: "Open the app and enter your pickup address, customer address, and parcel details. We confirm your pickup instantly.",
+    detail: "Pickup confirmed in minutes",
   },
   {
     step: "03",
-    icon: Package,
-    title: "Customer Gets It Today",
-    body: "Your customer receives a tracking link and their order the same day. You get delivery confirmation. No more chasing updates.",
-    detail: "Tracking link sent to your customer",
+    icon: Bike,
+    title: "We Deliver It Today",
+    body: "Our rider collects from you and delivers to your customer the same day. They get a live tracking link. You get delivery confirmation.",
+    detail: "Same-day to your customer",
   },
 ];
 
@@ -30,15 +30,15 @@ export function HowItWorksHome() {
   return (
     <Section id="how-it-works">
       <FadeIn>
-        <p className="text-sm font-semibold uppercase tracking-widest text-brand-accent">
+        <p className="text-sm font-semibold uppercase tracking-widest text-brand-dark/60">
           How it works
         </p>
         <h2 className="mt-3 text-balance text-3xl font-bold text-brand-foreground md:text-4xl">
           Three steps. Delivered today.
         </h2>
         <p className="mt-4 max-w-2xl text-brand-foreground/70">
-          No complicated onboarding. No enterprise software. Just WhatsApp, your orders, and
-          riders who know Accra.
+          Download the app, book your pickup, and we take care of the rest. No complicated
+          onboarding — just fast deliveries across Accra.
         </p>
       </FadeIn>
 

@@ -16,7 +16,7 @@ export function VendorSignupSection() {
       <div className="mx-auto max-w-4xl">
         <FadeIn>
           <div className="mb-10 text-center">
-            <p className="text-sm font-semibold uppercase tracking-widest text-brand-accent">
+            <p className="text-sm font-semibold uppercase tracking-widest text-brand-dark/60">
               Get started
             </p>
             <h2 className="mt-3 text-balance text-3xl font-bold text-brand-foreground md:text-4xl">

@@ -12,6 +12,14 @@ export const siteConfig = {
     instagram: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "https://instagram.com",
     tiktok: process.env.NEXT_PUBLIC_TIKTOK_URL || "https://tiktok.com",
   },
+  app: {
+    playStore:
+      process.env.NEXT_PUBLIC_PLAY_STORE_URL ||
+      "https://play.google.com/store/apps/details?id=com.mckot.app",
+    appStore:
+      process.env.NEXT_PUBLIC_APP_STORE_URL ||
+      "https://apps.apple.com/app/id6742553503",
+  },
   vendorStatsPlaceholder: "200+",
   gaMeasurementId: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "",
 };

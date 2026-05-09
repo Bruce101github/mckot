@@ -10,13 +10,18 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          DEFAULT: "#0B3B2D",
-          foreground: "#F8FAF7",
-          muted: "#1a5243",
+          DEFAULT: "#FFFFFF",
+          foreground: "#0C2F1D",
+          muted: "#EDF5EC",
           accent: "#A4D233",
           "accent-hover": "#8FB82B",
-          surface: "#0f2922",
-          border: "#1f4036",
+          surface: "#F4FAF3",
+          border: "#CDEAC6",
+          dark: "#0B3B2D",
+          "dark-muted": "#1a5243",
+          "dark-surface": "#0f2922",
+          "dark-border": "#1f4036",
+          "dark-foreground": "#F0F7EE",
         },
       },
       fontFamily: {
@@ -30,6 +35,7 @@ const config: Config = {
       },
       boxShadow: {
         glow: "0 0 40px -10px rgba(164, 210, 51, 0.35)",
+        soft: "0 2px 20px -4px rgba(12, 47, 29, 0.08)",
       },
       animation: {
         float: "float 6s ease-in-out infinite",

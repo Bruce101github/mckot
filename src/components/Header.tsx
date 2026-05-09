@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
@@ -21,25 +22,27 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-brand-border/80 bg-brand/90 backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
-        <Link
-          href="/"
-          className="text-xl font-bold tracking-tight text-brand-foreground"
-          aria-label="Mckot home"
-        >
-          <span className="text-brand-accent">{siteConfig.name.slice(0, 1)}</span>
-          {siteConfig.name.slice(1)}
+    <header className="sticky top-0 z-50 border-b border-brand-border bg-brand shadow-soft">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
+        <Link href="/" aria-label="Mckot home" className="flex items-center">
+          <Image
+            src="/logo-light.svg"
+            alt="Mckot"
+            width={110}
+            height={31}
+            priority
+            className="h-8 w-auto"
+          />
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-7 md:flex" aria-label="Primary">
           {nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               className={cn(
-                "text-sm font-medium text-brand-foreground/75 transition hover:text-brand-accent",
-                pathname === item.href && "text-brand-accent",
+                "text-sm font-medium text-brand-foreground/65 transition hover:text-brand-foreground",
+                pathname === item.href && "text-brand-foreground",
               )}
             >
               {item.label}
@@ -49,7 +52,7 @@ export function Header() {
             href={siteConfig.social.whatsapp}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-xl bg-brand-accent px-4 py-2 text-sm font-semibold text-brand hover:bg-brand-accent-hover"
+            className="rounded-xl bg-brand-accent px-4 py-2 text-sm font-semibold text-brand-dark hover:bg-brand-accent-hover transition-colors"
           >
             WhatsApp
           </Link>
@@ -79,7 +82,7 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="rounded-lg px-3 py-3 text-base font-medium text-brand-foreground/90 hover:bg-brand-muted/40"
+              className="rounded-lg px-3 py-3 text-base font-medium text-brand-foreground/80 hover:bg-brand-muted/60"
               onClick={() => setOpen(false)}
             >
               {item.label}
@@ -89,7 +92,7 @@ export function Header() {
             href={siteConfig.social.whatsapp}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-2 rounded-xl bg-brand-accent px-4 py-3 text-center font-semibold text-brand"
+            className="mt-2 rounded-xl bg-brand-accent px-4 py-3 text-center font-semibold text-brand-dark"
             onClick={() => setOpen(false)}
           >
             Chat on WhatsApp
