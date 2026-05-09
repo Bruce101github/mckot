@@ -5,6 +5,7 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { MobileCtaBar } from "@/components/MobileCtaBar";
+import { UrgencyBanner } from "@/components/home/UrgencyBanner";
 import { siteConfig } from "@/lib/site";
 
 const inter = Inter({
@@ -97,6 +98,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </Script>
           </>
         ) : null}
+        <UrgencyBanner />
         <Header />
         <main id="main-content" className="pb-24 md:pb-0">
           {children}

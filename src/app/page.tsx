@@ -1,4 +1,3 @@
-import { UrgencyBanner } from "@/components/home/UrgencyBanner";
 import { Hero } from "@/components/home/Hero";
 import { SocialProofStrip } from "@/components/home/SocialProofStrip";
 import { WhyMckot } from "@/components/home/WhyMckot";
@@ -16,7 +15,6 @@ import { ExitIntentPopup } from "@/components/ExitIntentPopup";
 export default function HomePage() {
   return (
     <>
-      <UrgencyBanner />
       <Hero />
       <SocialProofStrip />
       <WhyMckot />
