@@ -11,7 +11,7 @@ export function FinalCta() {
           <p className="text-sm font-semibold uppercase tracking-widest text-brand-accent">
             Limited spots
           </p>
-          <h2 className="mt-4 text-balance text-3xl font-bold text-brand-dark-foreground md:text-4xl">
+          <h2 className="mt-4 text-balance text-3xl font-extrabold tracking-tight text-brand-dark-foreground md:text-4xl lg:text-[2.6rem]">
             Your next sale deserves reliable delivery
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-brand-dark-foreground/70">

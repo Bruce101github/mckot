@@ -52,7 +52,7 @@ export function PricingSection() {
         <p className="text-sm font-semibold uppercase tracking-widest text-brand-dark/60">
           Pricing
         </p>
-        <h2 className="mt-3 text-balance text-3xl font-bold text-brand-foreground md:text-4xl">
+        <h2 className="mt-4 text-balance text-3xl font-extrabold tracking-tight text-brand-foreground md:text-4xl lg:text-[2.6rem]">
           Clear rates. No hidden fees.
         </h2>
         <p className="mt-4 max-w-2xl text-brand-foreground/70">
