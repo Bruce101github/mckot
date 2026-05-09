@@ -15,7 +15,7 @@ export function Hero() {
   }
 
   return (
-    <section className="bg-brand-dark py-20 md:py-28">
+    <section className="py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="grid items-center gap-16 lg:grid-cols-2">
           <FadeIn>
@@ -25,18 +25,18 @@ export function Hero() {
                   <Star key={i} className="h-3 w-3 fill-brand-accent text-brand-accent" />
                 ))}
               </div>
-              <span className="text-xs font-semibold text-brand-dark-foreground/70">
+              <span className="text-xs font-semibold text-brand-foreground/70">
                 Trusted by 40+ vendors in Accra
               </span>
             </div>
 
-            <h1 className="mt-5 text-[2.75rem] font-extrabold leading-[1.08] tracking-tight text-brand-dark-foreground md:text-5xl lg:text-[3.5rem]">
+            <h1 className="mt-5 text-[2.75rem] font-extrabold leading-[1.08] tracking-tight text-brand-foreground md:text-5xl lg:text-[3.5rem]">
               Deliver for your
               <br />
               customers. Today.
             </h1>
 
-            <p className="mt-5 max-w-md text-lg leading-relaxed text-brand-dark-foreground/65">
+            <p className="mt-5 max-w-md text-lg leading-relaxed text-brand-foreground/65">
               Last-mile delivery for social commerce vendors in Accra. Book from
               the app — we handle the rest.
             </p>
@@ -46,7 +46,7 @@ export function Hero() {
                 ref={emailRef}
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-brand-dark-foreground outline-none placeholder:text-brand-dark-foreground/40 transition focus:border-brand-accent focus:bg-white/15"
+                className="flex-1 rounded-xl border border-brand-border bg-brand-surface px-4 py-3 text-sm text-brand-foreground outline-none placeholder:text-brand-foreground/40 transition focus:border-brand-accent focus:bg-white"
                 required
               />
               <button
@@ -58,7 +58,7 @@ export function Hero() {
               </button>
             </form>
 
-            <p className="mt-3 text-xs text-brand-dark-foreground/40">
+            <p className="mt-3 text-xs text-brand-foreground/40">
               Free to start. No subscription. Cancel anytime.
             </p>
 
@@ -97,7 +97,7 @@ export function Hero() {
           </FadeIn>
 
           <FadeIn delay={0.1} className="relative mx-auto w-full max-w-sm lg:max-w-none">
-            <div className="animate-float relative mx-auto max-w-xs overflow-hidden rounded-[2.5rem] border-4 border-white/10 shadow-glow" style={{ aspectRatio: "9/16" }}>
+            <div className="animate-float relative mx-auto max-w-xs overflow-hidden rounded-[2.5rem] border border-brand-border shadow-soft" style={{ aspectRatio: "9/16" }}>
               <Image
                 src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=600&q=80"
                 alt="Mckot rider ready for delivery in Accra"
@@ -128,13 +128,13 @@ export function Hero() {
               </div>
             </div>
 
-            <div className="absolute -left-4 top-10 hidden rounded-xl border border-white/10 bg-brand-dark-surface/95 px-4 py-3 shadow-glow/40 lg:block">
+            <div className="absolute -left-4 top-10 hidden rounded-xl border border-brand-border bg-white px-4 py-3 shadow-soft lg:block">
               <p className="text-xl font-bold text-brand-accent">40+</p>
-              <p className="text-xs text-brand-dark-foreground/55">Active vendors</p>
+              <p className="text-xs text-brand-foreground/55">Active vendors</p>
             </div>
-            <div className="absolute -right-4 bottom-28 hidden rounded-xl border border-white/10 bg-brand-dark-surface/95 px-4 py-3 shadow-glow/40 lg:block">
+            <div className="absolute -right-4 bottom-28 hidden rounded-xl border border-brand-border bg-white px-4 py-3 shadow-soft lg:block">
               <p className="text-xl font-bold text-brand-accent">Same day</p>
-              <p className="text-xs text-brand-dark-foreground/55">Delivery</p>
+              <p className="text-xs text-brand-foreground/55">Delivery</p>
             </div>
           </FadeIn>
         </div>
