@@ -12,10 +12,12 @@ const features = [
       "Live rider tracking",
       "Full order history",
     ],
-    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80",
-    imageAlt: "Person booking a delivery on mobile phone",
+    image: "/photo-loading.png",
+    imageAlt: "Mckot courier loading parcels for delivery",
     imageRight: true,
     bg: "",
+    linesRotate: "-rotate-12",
+    linesPos: "bottom-0 left-0",
   },
   {
     eyebrow: "Rider network",
@@ -26,24 +28,28 @@ const features = [
       "Careful parcel handling",
       "Proof of delivery on every run",
     ],
-    image: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=800&q=80",
-    imageAlt: "Courier rider on motorcycle in city",
+    image: "/photo-rider.png",
+    imageAlt: "Mckot rider on motorcycle speeding through Accra",
     imageRight: false,
     bg: "bg-brand-surface/50",
+    linesRotate: "rotate-90",
+    linesPos: "top-0 right-0",
   },
   {
     eyebrow: "Transparency",
     headline: "Your customers always know where their order is",
-    body: "Every delivery comes with a real-time tracking link we send directly to your customer. No more 'where is my order?' messages eating into your selling time.",
+    body: "Every delivery comes with a real-time tracking link sent directly to your customer. No more 'where is my order?' messages eating into your selling time.",
     bullets: [
       "Shareable tracking link per delivery",
       "SMS and WhatsApp status updates",
       "Delivery confirmation with timestamp",
     ],
-    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80",
-    imageAlt: "Real-time delivery tracking interface",
+    image: "/photo-signing.png",
+    imageAlt: "Mckot courier confirming delivery at the van",
     imageRight: true,
     bg: "",
+    linesRotate: "rotate-180",
+    linesPos: "bottom-0 right-0",
   },
 ];
 
@@ -51,7 +57,17 @@ export function WhyMckot() {
   return (
     <>
       {features.map((f) => (
-        <section key={f.eyebrow} className={`py-20 md:py-28 ${f.bg}`}>
+        <section key={f.eyebrow} className={`relative overflow-hidden py-20 md:py-28 ${f.bg}`}>
+          {/* Abstract line decoration — rotated differently per section */}
+          <Image
+            src="/abstract-lines.png"
+            alt=""
+            aria-hidden
+            width={280}
+            height={500}
+            className={`pointer-events-none absolute ${f.linesPos} w-48 ${f.linesRotate} opacity-[0.05] select-none mix-blend-multiply lg:w-64`}
+          />
+
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <div
               className={`grid items-center gap-12 lg:grid-cols-2 lg:gap-20 ${

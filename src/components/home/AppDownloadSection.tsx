@@ -6,7 +6,15 @@ import { siteConfig } from "@/lib/site";
 
 export function AppDownloadSection() {
   return (
-    <Section id="download" className="bg-brand-dark">
+    <Section id="download" className="relative overflow-hidden bg-brand-dark">
+      <Image
+        src="/abstract-lines.png"
+        alt=""
+        aria-hidden
+        width={300}
+        height={540}
+        className="pointer-events-none absolute -right-10 -top-10 w-52 rotate-[135deg] opacity-10 select-none mix-blend-screen"
+      />
       <FadeIn>
         <div className="flex flex-col items-center text-center">
           <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-brand-accent/30 bg-brand-accent/15">

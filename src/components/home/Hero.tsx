@@ -15,7 +15,17 @@ export function Hero() {
   }
 
   return (
-    <section className="py-20 md:py-28">
+    <section className="relative overflow-hidden py-20 md:py-28">
+      {/* Abstract lines — top-right, very subtle */}
+      <Image
+        src="/abstract-lines.png"
+        alt=""
+        aria-hidden
+        width={340}
+        height={600}
+        className="pointer-events-none absolute -right-16 -top-20 w-64 rotate-12 opacity-[0.06] select-none mix-blend-multiply lg:w-80"
+      />
+
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="grid items-center gap-16 lg:grid-cols-2">
           <FadeIn>
@@ -70,13 +80,7 @@ export function Hero() {
                 className="transition-opacity hover:opacity-75"
                 aria-label="Download on Google Play"
               >
-                <Image
-                  src="/badge-playstore.png"
-                  alt="Get it on Google Play"
-                  width={135}
-                  height={40}
-                  className="h-9 w-auto"
-                />
+                <Image src="/badge-playstore.png" alt="Get it on Google Play" width={135} height={40} className="h-9 w-auto" />
               </a>
               <a
                 href={siteConfig.app.appStore}
@@ -85,13 +89,7 @@ export function Hero() {
                 className="transition-opacity hover:opacity-75"
                 aria-label="Download on the App Store"
               >
-                <Image
-                  src="/badge-appstore.png"
-                  alt="Download on the App Store"
-                  width={120}
-                  height={40}
-                  className="h-9 w-auto"
-                />
+                <Image src="/badge-appstore.png" alt="Download on the App Store" width={120} height={40} className="h-9 w-auto" />
               </a>
             </div>
           </FadeIn>
@@ -99,8 +97,8 @@ export function Hero() {
           <FadeIn delay={0.1} className="relative mx-auto w-full max-w-sm lg:max-w-none">
             <div className="animate-float relative mx-auto max-w-xs overflow-hidden rounded-[2.5rem] border border-brand-border shadow-soft" style={{ aspectRatio: "9/16" }}>
               <Image
-                src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=600&q=80"
-                alt="Mckot rider ready for delivery in Accra"
+                src="/photo-rider.png"
+                alt="Mckot rider on motorcycle delivering across Accra"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 80vw, 40vw"

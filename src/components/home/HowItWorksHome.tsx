@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Smartphone, Package, Bike } from "lucide-react";
 import { Section } from "@/components/Section";
 import { FadeIn } from "@/components/FadeIn";
@@ -28,7 +29,16 @@ const steps = [
 
 export function HowItWorksHome() {
   return (
-    <Section id="how-it-works" className="bg-brand-dark">
+    <Section id="how-it-works" className="relative overflow-hidden bg-brand-dark">
+      {/* Abstract lines — on dark, use screen blend */}
+      <Image
+        src="/abstract-lines.png"
+        alt=""
+        aria-hidden
+        width={300}
+        height={540}
+        className="pointer-events-none absolute -bottom-16 -left-12 w-56 -rotate-45 opacity-10 select-none mix-blend-screen"
+      />
       <FadeIn>
         <div className="text-center">
           <p className="text-sm font-semibold uppercase tracking-widest text-brand-accent">
