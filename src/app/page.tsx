@@ -2,6 +2,7 @@ import { Hero } from "@/components/home/Hero";
 import { SocialProofStrip } from "@/components/home/SocialProofStrip";
 import { WhyMckot } from "@/components/home/WhyMckot";
 import { HowItWorksHome } from "@/components/home/HowItWorksHome";
+import { AppScreensSection } from "@/components/home/AppScreensSection";
 import { AppDownloadSection } from "@/components/home/AppDownloadSection";
 import { PricingSection } from "@/components/home/PricingSection";
 import { CoverageGraphic } from "@/components/home/CoverageGraphic";
@@ -19,6 +20,7 @@ export default function HomePage() {
       <SocialProofStrip />
       <WhyMckot />
       <HowItWorksHome />
+      <AppScreensSection />
       <AppDownloadSection />
       <PricingSection />
       <CoverageGraphic />
