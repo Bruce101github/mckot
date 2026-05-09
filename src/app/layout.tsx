@@ -42,6 +42,10 @@ export const metadata: Metadata = {
     title: siteConfig.tagline,
     description: siteConfig.description,
   },
+  icons: {
+    icon: "/favicon.svg",
+    apple: "/favicon.png",
+  },
   robots: {
     index: true,
     follow: true,
