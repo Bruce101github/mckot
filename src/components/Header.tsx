@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -20,9 +20,24 @@ const nav = [
 export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-brand-border bg-brand shadow-soft">
+    <header
+      className={cn(
+        "sticky top-0 z-50 transition-all duration-300",
+        scrolled
+          ? "border-b border-brand-border bg-white/95 shadow-soft backdrop-blur-sm"
+          : "border-b border-transparent bg-transparent",
+      )}
+    >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
         <Link href="/" aria-label="Mckot home" className="flex items-center">
           <Image
@@ -52,7 +67,7 @@ export function Header() {
             href={siteConfig.social.whatsapp}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-xl bg-brand-accent px-4 py-2 text-sm font-semibold text-brand-dark hover:bg-brand-accent-hover transition-colors"
+            className="rounded-xl bg-brand-accent px-4 py-2 text-sm font-semibold text-brand-dark transition-colors hover:bg-brand-accent-hover"
           >
             WhatsApp
           </Link>
@@ -73,7 +88,7 @@ export function Header() {
       <div
         id="mobile-nav"
         className={cn(
-          "border-t border-brand-border bg-brand md:hidden",
+          "border-t border-brand-border bg-white md:hidden",
           open ? "block" : "hidden",
         )}
       >
