@@ -9,6 +9,9 @@ export const siteConfig = {
     whatsapp:
       process.env.NEXT_PUBLIC_WHATSAPP_URL ||
       "https://wa.me/233503305586?text=Hi%20Mckot%2C%20I%27d%20like%20to%20start%20delivering.",
+    whatsappChannel:
+      process.env.NEXT_PUBLIC_WHATSAPP_CHANNEL_URL ||
+      "https://whatsapp.com/channel/0029VaXjCfzJkK7Hxqekhh26",
     instagram: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "https://instagram.com",
     tiktok: process.env.NEXT_PUBLIC_TIKTOK_URL || "https://tiktok.com",
   },

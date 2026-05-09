@@ -89,6 +89,16 @@ export function Footer() {
             </li>
             <li>
               <a
+                href={siteConfig.social.whatsappChannel}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition hover:text-brand-accent"
+              >
+                WhatsApp Channel
+              </a>
+            </li>
+            <li>
+              <a
                 href={siteConfig.social.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
