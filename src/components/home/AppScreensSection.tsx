@@ -36,26 +36,19 @@ function PhoneMockup({
   return (
     <div className={`relative w-[185px] shrink-0 sm:w-[210px] ${offset ? "mt-10" : ""}`}>
       {/* Outer frame */}
-      <div className="relative overflow-hidden rounded-[3rem] border-[7px] border-neutral-800 bg-neutral-900 shadow-[0_32px_64px_-12px_rgba(0,0,0,0.6)]">
+      <div className="relative overflow-hidden rounded-[3rem] border-[7px] border-neutral-800 shadow-[0_32px_64px_-12px_rgba(0,0,0,0.6)]">
         {/* Dynamic island */}
         <div className="absolute left-1/2 top-3 z-10 h-[13px] w-[76px] -translate-x-1/2 rounded-full bg-neutral-900" />
 
-        {/* Screen */}
-        <div className="overflow-hidden rounded-[2.45rem]">
-          <Image
-            src={src}
-            alt={alt}
-            width={390}
-            height={844}
-            className="block w-full"
-            sizes="210px"
-          />
-        </div>
-
-        {/* Home indicator */}
-        <div className="flex h-7 items-center justify-center bg-neutral-900">
-          <div className="h-[5px] w-20 rounded-full bg-white/20" />
-        </div>
+        {/* Screen — fills frame completely, screenshot includes its own home indicator */}
+        <Image
+          src={src}
+          alt={alt}
+          width={390}
+          height={844}
+          className="block w-full"
+          sizes="210px"
+        />
       </div>
 
       {/* Reflection / glow under phone */}
