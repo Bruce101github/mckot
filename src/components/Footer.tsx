@@ -107,6 +107,26 @@ export function Footer() {
                 Instagram
               </a>
             </li>
+            <li>
+              <a
+                href={siteConfig.social.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition hover:text-brand-accent"
+              >
+                Facebook
+              </a>
+            </li>
+            <li>
+              <a
+                href={siteConfig.social.tiktok}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition hover:text-brand-accent"
+              >
+                TikTok
+              </a>
+            </li>
           </ul>
           <div className="mt-6 flex flex-col gap-2">
             <a

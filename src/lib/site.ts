@@ -12,8 +12,9 @@ export const siteConfig = {
     whatsappChannel:
       process.env.NEXT_PUBLIC_WHATSAPP_CHANNEL_URL ||
       "https://whatsapp.com/channel/0029VaXjCfzJkK7Hxqekhh26",
-    instagram: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "https://instagram.com",
-    tiktok: process.env.NEXT_PUBLIC_TIKTOK_URL || "https://tiktok.com",
+    instagram: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "https://www.instagram.com/mckot.com.gh?igsh=NDg3M295dmhjZWJ6",
+    facebook: process.env.NEXT_PUBLIC_FACEBOOK_URL || "https://www.facebook.com/share/1E21vqQx25/?mibextid=wwXIfr",
+    tiktok: process.env.NEXT_PUBLIC_TIKTOK_URL || "https://www.tiktok.com/@mckot.com?_r=1&_t=ZS-96DZVvIX4aK",
   },
   app: {
     playStore:
