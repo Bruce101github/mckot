@@ -1,4 +1,4 @@
-import { CheckCircle2, BadgePercent } from "lucide-react";
+import { CheckCircle2, BadgePercent, Zap } from "lucide-react";
 import { Section } from "@/components/Section";
 import { FadeIn } from "@/components/FadeIn";
 import { Button } from "@/components/Button";
@@ -8,6 +8,9 @@ const tiers = [
     name: "Local",
     description: "Pickup and delivery within the same zone",
     price: "GHS 35",
+    bulkPrice: "GHS 450",
+    bulkPerOrder: "GHS 30/order",
+    bulkSaving: "Save GHS 75",
     highlight: false,
     features: [
       "Same-day delivery",
@@ -21,6 +24,9 @@ const tiers = [
     name: "Cross-Zone",
     description: "Delivery across adjacent Greater Accra zones",
     price: "GHS 50",
+    bulkPrice: "GHS 675",
+    bulkPerOrder: "GHS 45/order",
+    bulkSaving: "Save GHS 75",
     highlight: true,
     features: [
       "Everything in Local",
@@ -34,6 +40,9 @@ const tiers = [
     name: "Tema Corridor",
     description: "Tema Communities and Spintex to central Accra",
     price: "GHS 60",
+    bulkPrice: "GHS 825",
+    bulkPerOrder: "GHS 55/order",
+    bulkSaving: "Save GHS 75",
     highlight: false,
     features: [
       "Everything in Cross-Zone",
@@ -93,6 +102,19 @@ export function PricingSection() {
                 </p>
               </div>
 
+              {/* Bulk discount callout */}
+              <div className="mt-4 flex items-start gap-2.5 rounded-xl border border-brand-accent/25 bg-brand-accent/8 px-3.5 py-3">
+                <Zap className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent" aria-hidden />
+                <div>
+                  <p className="text-sm font-semibold text-brand-foreground">
+                    {tier.bulkPrice} for 15 orders
+                  </p>
+                  <p className="text-xs text-brand-foreground/55">
+                    {tier.bulkPerOrder} · {tier.bulkSaving}
+                  </p>
+                </div>
+              </div>
+
               <ul className="mt-6 flex-1 space-y-3">
                 {tier.features.map((f) => (
                   <li key={f} className="flex items-start gap-2.5 text-sm text-brand-foreground/75">
@@ -123,9 +145,9 @@ export function PricingSection() {
 
       <FadeIn delay={0.2}>
         <p className="mt-10 text-center text-sm text-brand-foreground/50">
-          Final rates confirmed at onboarding. Batch pickup discounts available for 5+ daily
-          orders.{" "}
-          <a href="#faq" className="text-brand-accent underline underline-offset-2">
+          Bulk packs are 15 orders billed together. Mix zones on a single pack at the highest
+          applicable rate.{" "}
+          <a href="#faq" className="text-brand-dark underline underline-offset-2 hover:no-underline">
             See FAQ
           </a>{" "}
           for details.
