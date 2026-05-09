@@ -41,7 +41,7 @@ function PhoneMockup({
         <div className="absolute left-1/2 top-3 z-10 h-[13px] w-[76px] -translate-x-1/2 rounded-full bg-neutral-900" />
 
         {/* Inner padding zooms the screenshot out within the frame */}
-        <div className="p-[4px]">
+        <div className="p-0">
           <div className="overflow-hidden rounded-[2.4rem]">
             <Image
               src={src}
