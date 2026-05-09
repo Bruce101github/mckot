@@ -34,7 +34,7 @@ function PhoneMockup({
   offset?: boolean;
 }) {
   return (
-    <div className={`relative w-[185px] shrink-0 sm:w-[210px] ${offset ? "mt-10" : ""}`}>
+    <div className={`relative w-[176px] shrink-0 sm:w-[200px] ${offset ? "mt-10" : ""}`}>
       {/* Outer frame */}
       <div className="relative overflow-hidden rounded-[3rem] border-[7px] border-neutral-800 shadow-[0_32px_64px_-12px_rgba(0,0,0,0.6)]">
         {/* Dynamic island */}
