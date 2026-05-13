@@ -9,12 +9,12 @@ import { siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 const nav = [
-  { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
   { href: "/vendors", label: "For Vendors" },
   { href: "/coverage", label: "Coverage" },
+  { href: "/pricing", label: "Pricing" },
+  { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
 ];
 
 export function Header() {
@@ -50,7 +50,7 @@ export function Header() {
           />
         </Link>
 
-        <nav className="hidden items-center gap-7 md:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-6 md:flex" aria-label="Primary">
           {nav.map((item) => (
             <Link
               key={item.href}
@@ -69,7 +69,7 @@ export function Header() {
             rel="noopener noreferrer"
             className="rounded-xl bg-brand-accent px-4 py-2 text-sm font-semibold text-brand-dark transition-colors hover:bg-brand-accent-hover"
           >
-            WhatsApp
+            Get started free
           </Link>
         </nav>
 
@@ -110,7 +110,7 @@ export function Header() {
             className="mt-2 rounded-xl bg-brand-accent px-4 py-3 text-center font-semibold text-brand-dark"
             onClick={() => setOpen(false)}
           >
-            Chat on WhatsApp
+            Get 3 free deliveries
           </Link>
         </nav>
       </div>

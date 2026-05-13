@@ -1,7 +1,7 @@
 import { FadeIn } from "@/components/FadeIn";
 
 const stats = [
-  { value: "40+", label: "Active vendors" },
+  { value: "50+", label: "Active vendors" },
   { value: "Same-day", label: "Delivery promise" },
   { value: "7", label: "Coverage zones" },
   { value: "GHS 0", label: "Subscription fee" },

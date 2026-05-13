@@ -29,6 +29,11 @@ export function Footer() {
               </Link>
             </li>
             <li>
+              <Link href="/pricing" className="transition hover:text-brand-accent">
+                Pricing
+              </Link>
+            </li>
+            <li>
               <Link href="/vendors" className="transition hover:text-brand-accent">
                 For Vendors
               </Link>
@@ -36,6 +41,11 @@ export function Footer() {
             <li>
               <Link href="/coverage" className="transition hover:text-brand-accent">
                 Coverage
+              </Link>
+            </li>
+            <li>
+              <Link href="/blog" className="transition hover:text-brand-accent">
+                Blog
               </Link>
             </li>
           </ul>

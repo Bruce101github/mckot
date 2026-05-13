@@ -5,9 +5,9 @@ import { siteConfig } from "@/lib/site";
 import { MessageCircle } from "lucide-react";
 
 const perks = [
-  "20% off all deliveries for first 3 months",
-  "Dedicated onboarding via WhatsApp",
-  "Priority dispatch for early vendors",
+  "3 free deliveries in your first 30 days",
+  "Dedicated onboarding over WhatsApp",
+  "Cash-on-delivery handled for you",
 ];
 
 export function VendorSignupSection() {
@@ -23,8 +23,8 @@ export function VendorSignupSection() {
               Your customers are waiting. Let&apos;s fix the last mile.
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-brand-foreground/70">
-              Fill in your details and our team reaches out on WhatsApp within one business day
-              to get you delivering.
+              Fill in your details and our team reaches out on WhatsApp within one business
+              day to get you delivering.
             </p>
 
             <div className="mt-6 flex flex-wrap justify-center gap-4">

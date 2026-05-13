@@ -1,22 +1,12 @@
-"use client";
-
-import { useRef } from "react";
 import Image from "next/image";
-import { ArrowRight, Star } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { FadeIn } from "@/components/FadeIn";
 import { siteConfig } from "@/lib/site";
 
 export function Hero() {
-  const emailRef = useRef<HTMLInputElement>(null);
-
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    document.getElementById("signup")?.scrollIntoView({ behavior: "smooth" });
-  }
-
   return (
     <section className="relative overflow-hidden py-20 md:py-28">
-      {/* Abstract lines — top-right, very subtle */}
       <Image
         src="/abstract-lines.png"
         alt=""
@@ -30,46 +20,43 @@ export function Hero() {
         <div className="grid items-center gap-16 lg:grid-cols-2">
           <FadeIn>
             <div className="inline-flex items-center gap-2 rounded-full bg-brand-accent/15 px-3.5 py-1.5">
-              <div className="flex">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="h-3 w-3 fill-brand-accent text-brand-accent" />
-                ))}
-              </div>
+              <span className="h-2 w-2 rounded-full bg-brand-accent animate-pulse" aria-hidden />
               <span className="text-xs font-semibold text-brand-foreground/70">
-                Trusted by 40+ vendors in Accra
+                Now onboarding founding vendors in Accra
               </span>
             </div>
 
             <h1 className="mt-5 text-[2.75rem] font-extrabold leading-[1.08] tracking-tight text-brand-foreground md:text-5xl lg:text-[3.5rem]">
-              Deliver for your
+              Same-day delivery
               <br />
-              customers. Today.
+              for Accra vendors.
             </h1>
 
             <p className="mt-5 max-w-md text-lg leading-relaxed text-brand-foreground/65">
-              Last-mile delivery for social commerce vendors in Accra. Book from
-              the app — we handle the rest.
+              Book a pickup from the app. We collect, deliver, and handle cash-on-delivery.
+              Your customer gets a live tracking link. You get paid.
             </p>
 
-            <form onSubmit={handleSubmit} className="mt-8 flex max-w-md flex-col gap-3 sm:flex-row">
-              <input
-                ref={emailRef}
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 rounded-xl border border-brand-border bg-brand-surface px-4 py-3 text-sm text-brand-foreground outline-none placeholder:text-brand-foreground/40 transition focus:border-brand-accent focus:bg-white"
-                required
-              />
-              <button
-                type="submit"
-                className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-brand-accent px-5 py-3 text-sm font-semibold text-brand-dark transition-colors hover:bg-brand-accent-hover"
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                href="#signup"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-brand-accent px-6 py-3.5 text-sm font-semibold text-brand-dark transition-colors hover:bg-brand-accent-hover"
               >
-                Start free
-                <ArrowRight className="h-4 w-4" />
-              </button>
-            </form>
+                Get 3 free deliveries
+                <ArrowRight className="h-4 w-4" aria-hidden />
+              </Link>
+              <Link
+                href={siteConfig.social.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-xl border border-brand-border bg-brand-surface px-6 py-3.5 text-sm font-semibold text-brand-foreground transition-colors hover:border-brand-accent/40"
+              >
+                Chat on WhatsApp
+              </Link>
+            </div>
 
-            <p className="mt-3 text-xs text-brand-foreground/40">
-              Free to start. No subscription. Cancel anytime.
+            <p className="mt-4 text-xs text-brand-foreground/40">
+              First 3 deliveries free in your first 30 days. No subscription. No commitment.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -78,7 +65,7 @@ export function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="transition-opacity hover:opacity-75"
-                aria-label="Download on Google Play"
+                aria-label="Download Mckot on Google Play"
               >
                 <Image src="/badge-playstore.png" alt="Get it on Google Play" width={135} height={40} className="h-9 w-auto" />
               </a>
@@ -87,7 +74,7 @@ export function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="transition-opacity hover:opacity-75"
-                aria-label="Download on the App Store"
+                aria-label="Download Mckot on the App Store"
               >
                 <Image src="/badge-appstore.png" alt="Download on the App Store" width={120} height={40} className="h-9 w-auto" />
               </a>
@@ -98,7 +85,7 @@ export function Hero() {
             <div className="animate-float relative mx-auto max-w-xs overflow-hidden rounded-[2.5rem] border border-brand-border shadow-soft" style={{ aspectRatio: "9/16" }}>
               <Image
                 src="/photo-rider.png"
-                alt="Mckot rider on motorcycle delivering across Accra"
+                alt="Mckot rider on motorcycle delivering across Accra, Ghana"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 80vw, 40vw"
@@ -116,7 +103,7 @@ export function Hero() {
                       Order on the way
                     </p>
                     <p className="text-xs text-brand-dark-foreground/55">
-                      Rider 3 mins away · East Legon
+                      Rider 3 mins away &middot; East Legon
                     </p>
                   </div>
                   <span className="ml-auto shrink-0 rounded-full bg-brand-accent px-2.5 py-0.5 text-xs font-bold text-brand-dark">
@@ -127,12 +114,12 @@ export function Hero() {
             </div>
 
             <div className="absolute -left-4 top-10 hidden rounded-xl border border-brand-border bg-white px-4 py-3 shadow-soft lg:block">
-              <p className="text-xl font-bold text-brand-accent">40+</p>
-              <p className="text-xs text-brand-foreground/55">Active vendors</p>
+              <p className="text-xl font-bold text-brand-accent">Same day</p>
+              <p className="text-xs text-brand-foreground/55">Pickup and delivery</p>
             </div>
             <div className="absolute -right-4 bottom-28 hidden rounded-xl border border-brand-border bg-white px-4 py-3 shadow-soft lg:block">
-              <p className="text-xl font-bold text-brand-accent">Same day</p>
-              <p className="text-xs text-brand-foreground/55">Delivery</p>
+              <p className="text-xl font-bold text-brand-accent">COD</p>
+              <p className="text-xs text-brand-foreground/55">We collect for you</p>
             </div>
           </FadeIn>
         </div>

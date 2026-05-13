@@ -9,18 +9,18 @@ export function FinalCta() {
       <FadeIn>
         <div className="rounded-3xl bg-brand-dark p-10 text-center md:p-16">
           <p className="text-sm font-semibold uppercase tracking-widest text-brand-accent">
-            Limited spots
+            Founding vendor spots
           </p>
           <h2 className="mt-4 text-balance text-3xl font-extrabold tracking-tight text-brand-dark-foreground md:text-4xl lg:text-[2.6rem]">
             Your next sale deserves reliable delivery
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-brand-dark-foreground/70">
-            Spots for early vendors are limited. Join now to lock in pre-launch rates and get
-            a dedicated onboarding call.
+            Join as a founding vendor and get your first 3 deliveries free. No subscription,
+            no lock-in. Our team sets you up over WhatsApp in one business day.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Button href="#signup" variant="primary">
-              Start Delivering in 24 Hours
+              Get 3 free deliveries
             </Button>
             <Button
               href={siteConfig.social.whatsapp}
@@ -32,7 +32,7 @@ export function FinalCta() {
             </Button>
           </div>
           <p className="mt-8 text-xs text-brand-dark-foreground/40">
-            No subscription. Cancel anytime. Our team confirms setup over WhatsApp.
+            No subscription. Cancel anytime. Setup confirmed over WhatsApp.
           </p>
         </div>
       </FadeIn>

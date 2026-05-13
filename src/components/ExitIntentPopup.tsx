@@ -50,7 +50,7 @@ export function ExitIntentPopup() {
             key="popup"
             role="dialog"
             aria-modal="true"
-            aria-label="Special offer"
+            aria-label="Launch offer"
             initial={{ opacity: 0, scale: 0.92, y: 24 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.92, y: 24 }}
@@ -67,28 +67,28 @@ export function ExitIntentPopup() {
             </button>
 
             <div className="text-center">
-              <p className="text-4xl">🎁</p>
+              <p className="text-4xl">🚀</p>
               <p className="mt-3 text-xs font-bold uppercase tracking-widest text-brand-accent">
-                Wait. Special offer
+                Pre-launch offer
               </p>
               <h2 className="mt-2 text-2xl font-bold text-brand-foreground">
-                50% off your first 10 deliveries
+                3 free deliveries. First 30 days.
               </h2>
               <p className="mt-3 text-sm text-brand-foreground/65">
-                Sign up today and we apply the discount automatically. No code needed. Only
-                for vendors who join this week.
+                Join as a founding vendor and we cover your first 3 deliveries. No catch,
+                no code. Message us on WhatsApp to get started.
               </p>
 
               <div className="mt-8 flex flex-col gap-3">
-                <Button href="#signup" variant="primary" icon={ArrowRight} className="w-full justify-center" >
-                  Claim 50% off now
+                <Button href="#signup" variant="primary" icon={ArrowRight} className="w-full justify-center">
+                  Claim 3 free deliveries
                 </Button>
                 <button
                   type="button"
                   onClick={dismiss}
                   className="text-sm text-brand-foreground/40 hover:text-brand-foreground"
                 >
-                  No thanks, I will pay full price
+                  No thanks, I will pay from the start
                 </button>
               </div>
             </div>

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Loader2 } from "lucide-react";
 import { Button } from "@/components/Button";
 import { coverageZones } from "@/lib/site";
+import { trackVendorSignupSubmit } from "@/lib/analytics";
 
 const activeZones = coverageZones.filter((z) => z.inCoverage);
 
@@ -42,6 +43,7 @@ export function VendorSignupForm({ id }: { id?: string }) {
       const data = (await res.json()) as { ok?: boolean; error?: string };
       if (!res.ok || !data.ok) throw new Error(data.error || "Something went wrong");
       setStatus("ok");
+      trackVendorSignupSubmit();
       setMessage(
         "You are in. Our team will reach out on WhatsApp within one business day to get you started.",
       );
