@@ -6,7 +6,7 @@ const features = [
   {
     eyebrow: "Mobile first",
     headline: "Book a pickup in seconds",
-    body: "Open the Mckot app, enter your pickup and drop-off addresses, add parcel details. Your rider is confirmed instantly — no calls, no waiting on hold.",
+    body: "Open the Mckot app, enter your pickup and drop-off addresses, add parcel details. Your rider is confirmed instantly. No calls, no waiting on hold.",
     bullets: [
       "Instant pickup confirmation",
       "Live rider tracking",
@@ -58,7 +58,7 @@ export function WhyMckot() {
     <>
       {features.map((f) => (
         <section key={f.eyebrow} className={`relative overflow-hidden py-20 md:py-28 ${f.bg}`}>
-          {/* Abstract line decoration — rotated differently per section */}
+          {/* Abstract line decoration, rotated differently per section */}
           <Image
             src="/abstract-lines.png"
             alt=""

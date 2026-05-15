@@ -15,7 +15,7 @@ export type VendorSignupConfirmationProps = {
   whatsappUrl?: string;
 };
 
-const SUBJECT = "Welcome to Mckot — let's get your first delivery booked";
+const SUBJECT = "Welcome to Mckot. Let's get your first delivery booked";
 const PREVIEW =
   "Your 3 free deliveries are ready. Here's how to book your first one over WhatsApp.";
 
@@ -42,7 +42,7 @@ export function VendorSignupConfirmationEmail({
 
       <EmailText>
         We got your signup for <strong style={{ color: emailBrand.colors.foreground }}>{businessName}</strong>.
-        I&rsquo;m Bruce, the founder &mdash; I look at every new vendor that comes in, so I wanted to write
+        I&rsquo;m Bruce, the founder. I look at every new vendor that comes in, so I wanted to write
         you personally.
       </EmailText>
 
@@ -82,7 +82,7 @@ export function VendorSignupConfirmationEmail({
       <Section style={{ margin: "8px 0 16px" }}>
         <EmailText style={{ margin: "0 0 10px" }}>
           <strong>1.</strong> Tap the green button below. It opens WhatsApp with a short message
-          already typed &mdash; just send it.
+          already typed. Just send it.
         </EmailText>
         <EmailText style={{ margin: "0 0 10px" }}>
           <strong>2.</strong> Our ops team replies within one business day to confirm your pickup
@@ -106,12 +106,12 @@ export function VendorSignupConfirmationEmail({
       <EmailDivider spacing={28} />
 
       <EmailText style={{ margin: 0 }}>
-        If WhatsApp isn&rsquo;t your thing, just reply to this email &mdash; it comes straight to
+        If WhatsApp isn&rsquo;t your thing, just reply to this email. It comes straight to
         our team. Welcome aboard. We&rsquo;re glad you&rsquo;re here.
       </EmailText>
 
       <EmailText style={{ margin: "20px 0 0" }} bold>
-        &mdash; {emailBrand.founder.name}
+        {emailBrand.founder.name}
       </EmailText>
       <EmailText muted small style={{ margin: "2px 0 0" }}>
         {emailBrand.founder.role}

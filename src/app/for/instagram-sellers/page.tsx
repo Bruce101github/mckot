@@ -23,7 +23,7 @@ const problems = [
   },
   {
     problem: "Your rider bails last minute and the order is still at your house",
-    solution: "Book on WhatsApp, we dispatch within the hour — no rider drama",
+    solution: "Book on WhatsApp, we dispatch within the hour. No rider drama",
   },
   {
     problem: "You can only reach buyers in your area",
@@ -32,8 +32,8 @@ const problems = [
 ];
 
 const steps = [
-  { step: "1", title: "Customer places an order on Instagram", body: "DM, link in bio, story swipe-up — however you sell. Confirm the order and get their delivery address." },
-  { step: "2", title: "Send us the details on WhatsApp", body: "Name, address, item, and price. We log it and assign a rider. No app form, no spreadsheet — just a WhatsApp message." },
+  { step: "1", title: "Customer places an order on Instagram", body: "DM, link in bio, story swipe-up. However you sell, confirm the order and get their delivery address." },
+  { step: "2", title: "Send us the details on WhatsApp", body: "Name, address, item, and price. We log it and assign a rider. No app form, no spreadsheet. Just a WhatsApp message." },
   { step: "3", title: "We pick up from you and deliver same day", body: "Rider collects from your location. If it is COD, they collect the cash at the door and hand over the package." },
   { step: "4", title: "Proof delivered. Cash settled.", body: "You get a delivery confirmation you can screenshot and post. COD payments reconcile to your Mobile Money same day." },
 ];
@@ -64,7 +64,7 @@ export default function InstagramSellersPage() {
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-brand-foreground/70">
             You built the audience. We handle the last mile. Same-day pickup, cash-on-delivery
-            collection, and proof of delivery — so you can keep posting instead of chasing orders.
+            collection, and proof of delivery, so you can keep posting instead of chasing orders.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link href={siteConfig.social.whatsapp} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl bg-brand-accent px-6 py-3.5 text-sm font-semibold text-brand-dark transition-colors hover:bg-brand-accent-hover">

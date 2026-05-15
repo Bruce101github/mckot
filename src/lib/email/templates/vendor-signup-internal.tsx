@@ -44,7 +44,7 @@ export function VendorSignupInternalEmail({
       <EmailHeading level={3}>New vendor signup</EmailHeading>
       <EmailHeading level={1}>{businessName}</EmailHeading>
       <EmailText muted small style={{ margin: "0 0 24px" }}>
-        Submitted {submittedAt}. Reply via WhatsApp first &mdash; phone number below.
+        Submitted {submittedAt}. Reply via WhatsApp first. Phone number below.
       </EmailText>
 
       <Section
@@ -58,11 +58,11 @@ export function VendorSignupInternalEmail({
         <EmailInfoRow label="Contact" value={contactName} />
         <EmailInfoRow label="Business" value={businessName} />
         <EmailInfoRow label="WhatsApp" value={phone} />
-        <EmailInfoRow label="Social" value={socialHandle || "—"} />
+        <EmailInfoRow label="Social" value={socialHandle || "-"} />
         <EmailInfoRow label="Daily sales" value={dailySalesLabel[dailySales] ?? dailySales} />
         <EmailInfoRow
           label="Zones"
-          value={deliveryZones.length ? deliveryZones.join(", ") : "—"}
+          value={deliveryZones.length ? deliveryZones.join(", ") : "-"}
         />
       </Section>
 

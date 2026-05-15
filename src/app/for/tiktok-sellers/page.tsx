@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 const painPoints = [
   {
     label: "Viral spike, no logistics",
-    body: "A video blows up and 30 orders land at once. We absorb the surge — just send us the list and we dispatch riders.",
+    body: "A video blows up and 30 orders land at once. We absorb the surge. Just send us the list and we dispatch riders.",
   },
   {
     label: "COD buyers expect cash payment",
@@ -95,7 +95,7 @@ export default function TiktokSellersPage() {
           <p className="mt-2 text-brand-foreground/65">Posting is the job. Delivery is ours.</p>
           <div className="mt-8 space-y-6">
             {[
-              { step: "1", title: "Order comes in via TikTok", body: "DM, comment, link in bio — however your buyers reach you. Confirm the order and get a delivery address." },
+              { step: "1", title: "Order comes in via TikTok", body: "DM, comment, link in bio. However your buyers reach you, confirm the order and get a delivery address." },
               { step: "2", title: "Drop us the order on WhatsApp", body: "Name, address, item description, and whether it is COD. That is all we need. We handle the rest." },
               { step: "3", title: "Rider picks up and delivers same day", body: "We collect from your location and deliver to the customer. COD riders collect cash at the door." },
               { step: "4", title: "Proof sent. Cash to your MoMo.", body: "You get a delivery confirmation to share in your comments. COD reconciles to your Mobile Money same evening." },

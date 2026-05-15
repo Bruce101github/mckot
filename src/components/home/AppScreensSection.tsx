@@ -5,7 +5,7 @@ const screens = [
   {
     src: "/app-screens/home.png",
     caption: "Book any delivery",
-    sub: "Send items, pickup, intercity and more — all from one screen.",
+    sub: "Send items, pickup, intercity and more, all from one screen.",
   },
   {
     src: "/app-screens/map.png",
@@ -84,7 +84,7 @@ export function AppScreensSection() {
               See it in action
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-lg text-brand-dark-foreground/60">
-              From booking to doorstep — the entire delivery flow in your pocket.
+              From booking to doorstep. The entire delivery flow in your pocket.
             </p>
           </div>
         </FadeIn>

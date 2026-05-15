@@ -21,7 +21,7 @@ export function getEmailEnv(): EmailEnv {
   if (missing.length) {
     const msg = `Missing required Resend env vars: ${missing.join(", ")}`;
     if (process.env.NODE_ENV === "production") throw new Error(msg);
-    console.warn(`[email] ${msg} — sends will fail until set.`);
+    console.warn(`[email] ${msg}. Sends will fail until set.`);
   }
 
   cached = {

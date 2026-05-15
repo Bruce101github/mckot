@@ -19,7 +19,7 @@ const tiers = [
     description: "Pickup and delivery within the same Accra zone",
     price: "GHS 35",
     bulkLabel: "GHS 450 for 15 orders",
-    bulkSub: "GHS 30 per order — save GHS 75",
+    bulkSub: "GHS 30 per order, save GHS 75",
     highlight: false,
     features: [
       "Same-day delivery",
@@ -35,7 +35,7 @@ const tiers = [
     description: "Delivery across adjacent Greater Accra zones",
     price: "GHS 50",
     bulkLabel: "GHS 675 for 15 orders",
-    bulkSub: "GHS 45 per order — save GHS 75",
+    bulkSub: "GHS 45 per order, save GHS 75",
     highlight: true,
     features: [
       "Everything in Local",
@@ -51,7 +51,7 @@ const tiers = [
     description: "Tema Communities and Spintex to central Accra",
     price: "GHS 60",
     bulkLabel: "GHS 825 for 15 orders",
-    bulkSub: "GHS 55 per order — save GHS 75",
+    bulkSub: "GHS 55 per order, save GHS 75",
     highlight: false,
     features: [
       "Everything in Cross-Zone",

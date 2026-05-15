@@ -8,7 +8,7 @@ const steps = [
     step: "01",
     icon: Smartphone,
     title: "Download the App",
-    body: "Get the Mckot app free on the App Store or Google Play. Create your vendor account in 2 minutes — no paperwork, no waiting.",
+    body: "Get the Mckot app free on the App Store or Google Play. Create your vendor account in 2 minutes. No paperwork, no waiting.",
     detail: "Free to download",
   },
   {
@@ -30,7 +30,7 @@ const steps = [
 export function HowItWorksHome() {
   return (
     <Section id="how-it-works" className="relative overflow-hidden bg-brand-dark">
-      {/* Abstract lines — on dark, use screen blend */}
+      {/* Abstract lines, on dark use screen blend */}
       <Image
         src="/abstract-lines.png"
         alt=""

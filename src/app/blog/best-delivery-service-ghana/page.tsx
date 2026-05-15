@@ -73,7 +73,7 @@ export default function Article() {
         name: "How much does delivery cost in Ghana for online sellers?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Within-zone same-day delivery in Accra starts from GHS 35 with Mckot. Cross-zone runs (e.g. Osu to Spintex) are GHS 50, and Tema corridor deliveries are GHS 60. Competitor pricing varies — check each service's current rates directly.",
+          text: "Within-zone same-day delivery in Accra starts from GHS 35 with Mckot. Cross-zone runs (e.g. Osu to Spintex) are GHS 50, and Tema corridor deliveries are GHS 60. Competitor pricing varies. Check each service's current rates directly.",
         },
       },
     ],

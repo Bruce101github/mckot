@@ -29,7 +29,7 @@ export function AppDownloadSection() {
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-brand-dark-foreground/70">
             The Mckot app is the fastest way to send parcels across Accra. Track every delivery
-            in real time, manage your orders, and grow your business — from your pocket.
+            in real time, manage your orders, and grow your business, all from your pocket.
           </p>
         </div>
 

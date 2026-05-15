@@ -7,8 +7,8 @@ export const dynamic = "force-dynamic";
 const templates = Object.keys(emailRegistry) as EmailTemplateName[];
 
 const titles: Record<EmailTemplateName, string> = {
-  "vendor-signup-confirmation": "Vendor signup — confirmation (to vendor)",
-  "vendor-signup-internal": "Vendor signup — internal notification (to ops)",
+  "vendor-signup-confirmation": "Vendor signup: confirmation (to vendor)",
+  "vendor-signup-internal": "Vendor signup: internal notification (to ops)",
 };
 
 export default function EmailPreviewIndex() {

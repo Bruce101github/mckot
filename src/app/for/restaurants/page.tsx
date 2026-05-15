@@ -31,7 +31,7 @@ const advantages = [
   {
     icon: MapPin,
     title: "All major Accra zones",
-    body: "East Legon, Spintex, Osu, Dansoman, Madina, Tema, Accra Central and surrounding areas — covered every day.",
+    body: "East Legon, Spintex, Osu, Dansoman, Madina, Tema, Accra Central and surrounding areas. Covered every day.",
   },
 ];
 
