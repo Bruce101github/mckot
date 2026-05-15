@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { FadeIn } from "@/components/FadeIn";
-import { GooglePlayIcon } from "@/components/GooglePlayIcon";
 import { siteConfig } from "@/lib/site";
 
 export function Hero() {
@@ -65,14 +64,10 @@ export function Hero() {
                 href={siteConfig.app.playStore}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-9 items-center gap-2 rounded-md bg-brand-dark px-3 text-white transition-opacity hover:opacity-85"
+                className="transition-opacity hover:opacity-75"
                 aria-label="Download Mckot on Google Play"
               >
-                <GooglePlayIcon size={18} />
-                <span className="flex flex-col leading-none">
-                  <span className="text-[8px] uppercase tracking-wider text-white/75">Get it on</span>
-                  <span className="-mt-0.5 text-[13px] font-semibold tracking-tight">Google Play</span>
-                </span>
+                <Image src="/badge-playstore.png" alt="Get it on Google Play" width={135} height={40} className="h-9 w-auto" />
               </a>
               <a
                 href={siteConfig.app.appStore}

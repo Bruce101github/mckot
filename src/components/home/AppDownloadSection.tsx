@@ -2,7 +2,6 @@ import Image from "next/image";
 import { Smartphone } from "lucide-react";
 import { Section } from "@/components/Section";
 import { FadeIn } from "@/components/FadeIn";
-import { GooglePlayIcon } from "@/components/GooglePlayIcon";
 import { siteConfig } from "@/lib/site";
 
 export function AppDownloadSection() {
@@ -42,9 +41,13 @@ export function AppDownloadSection() {
             className="group flex w-full max-w-xs items-center gap-4 rounded-2xl border border-white/10 bg-white/5 px-6 py-4 transition-all hover:border-brand-accent/40 hover:bg-white/10 sm:w-auto"
             aria-label="Download Mckot on Google Play"
           >
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-white/15 bg-white/5">
-              <GooglePlayIcon size={22} />
-            </div>
+            <Image
+              src="/badge-playstore.png"
+              alt="Google Play"
+              width={40}
+              height={40}
+              className="h-10 w-10 shrink-0 rounded-lg object-contain"
+            />
             <div className="text-left">
               <p className="text-xs text-brand-dark-foreground/55">Available on</p>
               <p className="text-base font-semibold text-brand-dark-foreground">Google Play</p>
