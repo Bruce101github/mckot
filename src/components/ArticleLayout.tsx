@@ -25,7 +25,7 @@ const WA_ARTICLE_URL = `https://wa.me/233503305586?text=${encodeURIComponent("Hi
 
 export function ArticleLayout({ slug, title, excerpt, category, readTime, date, children }: ArticleLayoutProps) {
   return (
-    <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 md:py-16">
+    <div className="mx-auto max-w-2xl px-5 py-14 sm:px-6 md:py-20">
       <BlogScrollTracker slug={slug} />
 
       <Link
@@ -36,50 +36,69 @@ export function ArticleLayout({ slug, title, excerpt, category, readTime, date, 
         All articles
       </Link>
 
-      <div className="mt-8">
-        <span className="text-xs font-semibold uppercase tracking-wider text-brand-accent">
+      <header className="mt-10">
+        <span className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-accent">
           {category}
         </span>
-        <h1 className="mt-3 text-3xl font-extrabold leading-tight tracking-tight text-brand-foreground md:text-4xl">
+        <h1 className="mt-4 text-[2.1rem] font-extrabold leading-[1.15] tracking-tight text-brand-foreground sm:text-4xl md:text-[2.75rem]">
           {title}
         </h1>
-        <p className="mt-5 text-lg leading-relaxed text-brand-foreground/65">{excerpt}</p>
+        <p className="mt-6 text-lg leading-[1.7] text-brand-foreground/65 md:text-xl">
+          {excerpt}
+        </p>
 
-        <div className="mt-6 flex flex-wrap items-center gap-4 text-xs text-brand-foreground/40">
+        <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-brand-foreground/45">
           <span className="flex items-center gap-1.5">
             <Calendar className="h-3.5 w-3.5" aria-hidden />
             {formatDate(date)}
           </span>
+          <span className="h-1 w-1 rounded-full bg-brand-foreground/20" aria-hidden />
           <span className="flex items-center gap-1.5">
             <Clock className="h-3.5 w-3.5" aria-hidden />
             {readTime}
           </span>
         </div>
-      </div>
-
-      <hr className="my-10 border-brand-border" />
-
-      <div className="prose prose-sm max-w-none prose-headings:font-bold prose-headings:text-brand-foreground prose-p:text-brand-foreground/75 prose-p:leading-relaxed prose-li:text-brand-foreground/75 prose-strong:text-brand-foreground prose-a:text-brand-accent prose-a:no-underline hover:prose-a:underline prose-h2:mt-10 prose-h2:text-2xl prose-h3:mt-8 prose-h3:text-xl prose-ul:space-y-2 prose-ol:space-y-2">
-        {children}
-      </div>
+      </header>
 
       <hr className="my-12 border-brand-border" />
 
-      <div className="rounded-2xl border border-brand-accent/30 bg-brand-accent/5 p-8 text-center">
-        <p className="text-sm font-semibold uppercase tracking-widest text-brand-accent">
+      <article
+        className="
+          prose prose-lg max-w-none
+          prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-brand-foreground
+          prose-h2:mt-14 prose-h2:mb-5 prose-h2:text-[1.6rem] prose-h2:leading-snug
+          prose-h3:mt-10 prose-h3:mb-3 prose-h3:text-[1.25rem] prose-h3:leading-snug
+          prose-p:my-6 prose-p:leading-[1.8] prose-p:text-brand-foreground/80
+          prose-strong:font-semibold prose-strong:text-brand-foreground
+          prose-a:font-medium prose-a:text-brand-accent prose-a:no-underline prose-a:underline-offset-4 hover:prose-a:underline
+          prose-ul:my-6 prose-ol:my-6 prose-ul:pl-6 prose-ol:pl-6
+          prose-li:my-2.5 prose-li:leading-[1.75] prose-li:text-brand-foreground/80
+          prose-li:marker:text-brand-accent
+          prose-blockquote:my-8 prose-blockquote:border-l-4 prose-blockquote:border-brand-accent prose-blockquote:bg-brand-surface/60 prose-blockquote:py-2 prose-blockquote:px-5 prose-blockquote:not-italic prose-blockquote:text-brand-foreground/80
+          prose-img:rounded-2xl prose-img:my-10
+          prose-hr:my-12 prose-hr:border-brand-border
+        "
+      >
+        {children}
+      </article>
+
+      <hr className="my-14 border-brand-border" />
+
+      <div className="rounded-2xl border border-brand-accent/30 bg-brand-accent/5 p-8 text-center md:p-10">
+        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand-accent">
           Ready to start?
         </p>
-        <p className="mt-3 text-xl font-bold text-brand-foreground">
+        <p className="mt-4 text-xl font-bold text-brand-foreground md:text-2xl">
           {siteConfig.offer.headline}
         </p>
-        <p className="mx-auto mt-3 max-w-sm text-sm text-brand-foreground/65">
+        <p className="mx-auto mt-4 max-w-sm text-sm leading-relaxed text-brand-foreground/65">
           Join as a founding Mckot vendor. We set you up over WhatsApp in one business day.
         </p>
         <a
           href={WA_ARTICLE_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-6 inline-flex items-center justify-center rounded-xl bg-brand-accent px-6 py-3 text-sm font-semibold text-brand-dark transition-colors hover:bg-brand-accent-hover"
+          className="mt-7 inline-flex items-center justify-center rounded-xl bg-brand-accent px-6 py-3 text-sm font-semibold text-brand-dark transition-colors hover:bg-brand-accent-hover"
         >
           Claim 3 free deliveries on WhatsApp
         </a>
