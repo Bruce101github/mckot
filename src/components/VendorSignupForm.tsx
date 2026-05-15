@@ -123,6 +123,23 @@ export function VendorSignupForm({ id }: { id?: string }) {
 
       <div>
         <label
+          htmlFor="vs-email"
+          className="block text-sm font-medium text-brand-foreground/80"
+        >
+          Email <span className="text-brand-accent">*</span>
+        </label>
+        <input
+          id="vs-email"
+          name="email"
+          required
+          type="email"
+          className="mt-2 w-full rounded-xl border border-brand-border bg-brand px-4 py-3 text-sm text-brand-foreground outline-none focus:ring-2 focus:ring-brand-accent/40"
+          placeholder="you@yourbrand.com"
+        />
+      </div>
+
+      <div className="md:col-span-2">
+        <label
           htmlFor="vs-handle"
           className="block text-sm font-medium text-brand-foreground/80"
         >
