@@ -11,9 +11,9 @@ import { cn } from "@/lib/utils";
 const nav = [
   { href: "/services", label: "Services" },
   { href: "/vendors", label: "For Vendors" },
+  { href: "/become-a-fleet-partner", label: "For Fleets" },
   { href: "/coverage", label: "Coverage" },
   { href: "/pricing", label: "Pricing" },
-  { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
 ];
 

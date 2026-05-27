@@ -34,6 +34,14 @@ export function Footer() {
               </Link>
             </li>
             <li>
+              <Link
+                href="/become-a-fleet-partner"
+                className="transition hover:text-brand-accent"
+              >
+                For Fleet Partners
+              </Link>
+            </li>
+            <li>
               <Link href="/coverage" className="transition hover:text-brand-accent">
                 Coverage
               </Link>
