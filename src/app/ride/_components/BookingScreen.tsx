@@ -132,7 +132,7 @@ export function BookingScreen() {
       setEstimating(true);
       setEstimateError(null);
       setStep("choosing");
-      const res = await estimateRoute([p, d], "ride");
+      const res = await estimateRoute([p, d], "delivery");
       setEstimating(false);
       if (res.success && typeof res.info !== "string") {
         const est = res.info;

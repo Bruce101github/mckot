@@ -80,7 +80,7 @@ export async function searchPlaces(keyword: string, coordinates: Coords): Promis
 
 export async function estimateRoute(
   route: Coords[],
-  service: ServiceType = "ride",
+  service: ServiceType = "delivery",
 ): Promise<{ success: boolean; info: RouteEstimate | string }> {
   const res = await apiPost<RouteEstimate | string>("requester", {
     type: "estimate_route",
