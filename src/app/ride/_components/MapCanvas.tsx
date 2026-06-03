@@ -12,6 +12,10 @@ type Props = {
   dropoff: Coords | null;
   // Encoded polyline segments from estimate_route (one per step).
   polyline?: string[] | null;
+  // Live driver position pushed over the Centrifugo trip channel (Phase 3).
+  driver?: Coords | null;
+  // Heading in degrees, used to point the driver marker.
+  driverBearing?: number;
 };
 
 function pinIcon(maps: typeof google.maps, color: string): google.maps.Symbol {
@@ -25,12 +29,13 @@ function pinIcon(maps: typeof google.maps, color: string): google.maps.Symbol {
   };
 }
 
-export function MapCanvas({ pickup, dropoff, polyline }: Props) {
+export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: Props) {
   const state = useGoogleMaps();
   const divRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<google.maps.Map | null>(null);
   const pickupMarker = useRef<google.maps.Marker | null>(null);
   const dropoffMarker = useRef<google.maps.Marker | null>(null);
+  const driverMarker = useRef<google.maps.Marker | null>(null);
   const routeLine = useRef<google.maps.Polyline | null>(null);
 
   // Init the map once Maps is ready.
@@ -105,8 +110,12 @@ export function MapCanvas({ pickup, dropoff, polyline }: Props) {
       }
     }
 
-    // Fit the view to whatever we have.
-    if (pickup && dropoff) {
+    // Fit the view to whatever we have. Skip while a driver is live — the
+    // driver effect owns the viewport then, so the map doesn't fight the
+    // user's pan as location pushes arrive.
+    if (driver) {
+      // leave viewport to the driver effect
+    } else if (pickup && dropoff) {
       const bounds = new maps.LatLngBounds();
       bounds.extend({ lat: pickup[0], lng: pickup[1] });
       bounds.extend({ lat: dropoff[0], lng: dropoff[1] });
@@ -118,7 +127,51 @@ export function MapCanvas({ pickup, dropoff, polyline }: Props) {
       map.setCenter({ lat: pickup[0], lng: pickup[1] });
       map.setZoom(15);
     }
-  }, [state, pickup, dropoff, polyline]);
+  }, [state, pickup, dropoff, polyline, driver]);
+
+  // Live driver marker — updates on every location push without touching the
+  // route/markers effect. Keeps the driver and the relevant endpoint in view.
+  useEffect(() => {
+    if (state.status !== "ready" || !mapRef.current) return;
+    const maps = state.maps;
+    const map = mapRef.current;
+
+    if (!driver) {
+      if (driverMarker.current) {
+        driverMarker.current.setMap(null);
+        driverMarker.current = null;
+      }
+      return;
+    }
+
+    const pos = { lat: driver[0], lng: driver[1] };
+    const icon: google.maps.Symbol = {
+      path: maps.SymbolPath.FORWARD_CLOSED_ARROW,
+      fillColor: "#0B3B2D",
+      fillOpacity: 1,
+      strokeColor: "#ffffff",
+      strokeWeight: 2,
+      scale: 5,
+      rotation: driverBearing ?? 0,
+    };
+    if (!driverMarker.current) {
+      driverMarker.current = new maps.Marker({ map, icon, zIndex: 999 });
+    } else {
+      driverMarker.current.setIcon(icon);
+    }
+    driverMarker.current.setPosition(pos);
+
+    // Keep the driver and the active endpoint (dropoff, else pickup) framed.
+    const target = dropoff ?? pickup;
+    if (target) {
+      const bounds = new maps.LatLngBounds();
+      bounds.extend(pos);
+      bounds.extend({ lat: target[0], lng: target[1] });
+      map.fitBounds(bounds, { top: 80, bottom: 320, left: 60, right: 60 });
+    } else {
+      map.setCenter(pos);
+    }
+  }, [state, driver, driverBearing, pickup, dropoff]);
 
   return (
     <div className="absolute inset-0">

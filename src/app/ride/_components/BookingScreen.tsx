@@ -15,6 +15,7 @@ import {
   type PlaceResult,
   type RouteEstimate,
 } from "@/lib/api/booking";
+import { useTripChannel } from "@/lib/realtime/useTripChannel";
 import { MapCanvas } from "./MapCanvas";
 import { LocationSearch } from "./LocationSearch";
 import { RideOptions } from "./RideOptions";
@@ -101,6 +102,30 @@ export function BookingScreen() {
     }, 5000);
     return stop;
   }, [step]);
+
+  // Live trip channel (Centrifugo) — only while a trip is active and has a
+  // channel. Gives a moving driver marker and instant status transitions,
+  // with the 5s poll above as a fallback / source of driver-profile details.
+  const liveChannel = step === "active" ? active?.channel ?? null : null;
+  const { driver, liveStatus } = useTripChannel(liveChannel, user?.websocket_token);
+
+  useEffect(() => {
+    if (!liveStatus) return;
+    setActive((prev) =>
+      prev && prev.status !== "completed" && prev.status !== "cancelled"
+        ? { ...prev, status: liveStatus }
+        : prev,
+    );
+    // Non-terminal transitions (accepted / in progress) carry no driver
+    // profile in the event — refresh once to fill name/phone/photo now
+    // instead of waiting for the next poll tick.
+    if (liveStatus !== "completed" && liveStatus !== "cancelled") {
+      (async () => {
+        const r = await checkRequest();
+        if (r) setActive(r);
+      })();
+    }
+  }, [liveStatus]);
 
   const runEstimate = useCallback(
     async (p: Coords, d: Coords) => {
@@ -206,7 +231,13 @@ export function BookingScreen() {
 
   return (
     <div className="relative h-screen w-full overflow-hidden bg-brand-surface">
-      <MapCanvas pickup={mapPickup} dropoff={mapDropoff} polyline={mapPolyline} />
+      <MapCanvas
+        pickup={mapPickup}
+        dropoff={mapDropoff}
+        polyline={mapPolyline}
+        driver={step === "active" ? driver?.coords ?? null : null}
+        driverBearing={driver?.bearing}
+      />
 
       {/* Top bar */}
       <div className="pointer-events-none absolute inset-x-0 top-0 z-10 flex items-center justify-between p-4">
