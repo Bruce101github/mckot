@@ -193,14 +193,14 @@ function StatusCard({ info }: { info: NonNullable<StatusResult["info"]> & object
         )}
         {info.approved_rider_share_pct && (
           <div className="rounded-xl border border-brand-accent/30 bg-brand-accent/10 p-4 text-sm text-brand-foreground">
-            <p className="font-semibold">You're approved 🎉</p>
+            <p className="font-semibold">You&rsquo;re approved 🎉</p>
             <p className="mt-1">
               Negotiated split: <strong>{info.approved_rider_share_pct}%</strong> to
               the rider, <strong>{info.approved_fleet_share_pct}%</strong> to
-              your fleet, after Mckot's platform commission.
+              your fleet, after Mckot&rsquo;s platform commission.
             </p>
             <p className="mt-2 text-xs text-brand-foreground/65">
-              We'll send your dashboard login details by email shortly.
+              We&rsquo;ll send your dashboard login details by email shortly.
             </p>
           </div>
         )}

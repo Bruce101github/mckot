@@ -46,7 +46,7 @@ export function EarningsExample() {
         </h2>
         <p className="mt-4 text-balance text-brand-foreground/65 md:text-lg">
           Drag the sliders to model a typical week. Final split is
-          negotiated with our partnerships team when you're approved.
+          negotiated with our partnerships team when you&rsquo;re approved.
         </p>
       </div>
 

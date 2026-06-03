@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import { CheckCircle2, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
 
 type Step = 0 | 1 | 2 | 3;
@@ -232,7 +233,7 @@ function SuccessPanel({ result }: { result: ApplyResponse }) {
             {info.application_code}
           </p>
           <p className="mt-1 text-xs text-brand-foreground/55">
-            Save this — you'll need it to check status.
+            Save this — you&rsquo;ll need it to check status.
           </p>
         </div>
       )}
@@ -244,12 +245,12 @@ function SuccessPanel({ result }: { result: ApplyResponse }) {
         >
           Check status
         </a>
-        <a
+        <Link
           href="/"
           className="inline-flex items-center justify-center rounded-xl bg-brand-dark px-5 py-3 text-sm font-semibold text-brand-dark-foreground transition hover:bg-brand-dark-muted"
         >
           Back to home
-        </a>
+        </Link>
       </div>
     </div>
   );
