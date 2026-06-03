@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@googlemaps/js-api-loader": "^1.16.10",
     "@react-email/components": "^1.0.12",
     "@react-email/render": "^2.0.8",
     "framer-motion": "^11.18.0",
@@ -20,6 +21,7 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.19",
+    "@types/google.maps": "^3.65.0",
     "@types/node": "^22.10.5",
     "@types/react": "^19.0.6",
     "@types/react-dom": "^19.0.2",

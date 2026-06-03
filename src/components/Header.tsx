@@ -64,6 +64,12 @@ export function Header() {
             </Link>
           ))}
           <Link
+            href="/ride"
+            className="rounded-xl border border-brand-dark px-4 py-2 text-sm font-semibold text-brand-dark transition-colors hover:bg-brand-dark hover:text-white"
+          >
+            Book a ride
+          </Link>
+          <Link
             href={siteConfig.social.whatsapp}
             target="_blank"
             rel="noopener noreferrer"
@@ -103,6 +109,13 @@ export function Header() {
               {item.label}
             </Link>
           ))}
+          <Link
+            href="/ride"
+            className="mt-2 rounded-xl border border-brand-dark px-4 py-3 text-center font-semibold text-brand-dark"
+            onClick={() => setOpen(false)}
+          >
+            Book a ride
+          </Link>
           <Link
             href={siteConfig.social.whatsapp}
             target="_blank"
