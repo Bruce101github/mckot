@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { LocateFixed } from "lucide-react";
 import { useAuth } from "@/lib/auth/AuthProvider";
@@ -20,6 +19,7 @@ import { MapCanvas } from "./MapCanvas";
 import { LocationSearch } from "./LocationSearch";
 import { RideOptions } from "./RideOptions";
 import { ActiveTripCard } from "./ActiveTripCard";
+import { RideNav } from "./RideNav";
 
 const ACCRA: Coords = [5.6037, -0.187];
 
@@ -27,7 +27,7 @@ type Place = { coords: Coords; label: string };
 type Step = "locations" | "choosing" | "active";
 
 export function BookingScreen() {
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
   const currencySymbol = user?.currency_symbol ?? "₵";
   const balance = Number(user?.balance ?? 0);
 
@@ -230,33 +230,20 @@ export function BookingScreen() {
   const searchBias: Coords = pickup?.coords ?? ACCRA;
 
   return (
-    <div className="relative h-screen w-full overflow-hidden bg-brand-surface">
-      <MapCanvas
-        pickup={mapPickup}
-        dropoff={mapDropoff}
-        polyline={mapPolyline}
-        driver={step === "active" ? driver?.coords ?? null : null}
-        driverBearing={driver?.bearing}
-      />
+    <div className="flex h-screen w-full flex-col overflow-hidden bg-brand-surface">
+      <RideNav />
 
-      {/* Top bar */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 flex items-center justify-between p-4">
-        <Link
-          href="/"
-          className="pointer-events-auto rounded-full bg-white/95 px-4 py-2 text-base font-semibold text-brand-foreground shadow-soft backdrop-blur"
-        >
-          Mckot
-        </Link>
-        <button
-          onClick={() => logout()}
-          className="pointer-events-auto rounded-full bg-white/95 px-4 py-2 text-sm font-medium text-brand-foreground/70 shadow-soft backdrop-blur hover:text-brand-foreground"
-        >
-          Sign out
-        </button>
-      </div>
+      <div className="relative flex-1">
+        <MapCanvas
+          pickup={mapPickup}
+          dropoff={mapDropoff}
+          polyline={mapPolyline}
+          driver={step === "active" ? driver?.coords ?? null : null}
+          driverBearing={driver?.bearing}
+        />
 
-      {/* Booking panel — bottom sheet on mobile, left dock on desktop */}
-      <div className="absolute inset-x-0 bottom-0 z-10 md:inset-x-auto md:bottom-auto md:left-4 md:top-20 md:w-[384px]">
+        {/* Booking panel — bottom sheet on mobile, left dock on desktop */}
+        <div className="absolute inset-x-0 bottom-0 z-10 md:inset-x-auto md:bottom-auto md:left-4 md:top-4 md:w-[384px]">
         <div className="rounded-t-2xl border border-brand-border bg-white p-5 shadow-soft md:rounded-2xl">
           {step !== "active" && (
             <>
@@ -327,6 +314,7 @@ export function BookingScreen() {
               cancelling={cancelling}
             />
           )}
+        </div>
         </div>
       </div>
     </div>
