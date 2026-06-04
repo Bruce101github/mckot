@@ -224,7 +224,7 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
     const map = mapRef.current;
     const spherical = maps.geometry.spherical;
 
-    const COUNT = 5;
+    const COUNT = 4;
     const SWAP_MS = 3200; // how often a vehicle is cycled to a new road
     const POOL_SIZE = 8; // road paths kept on hand for vehicles to travel
     const REGEN_M = 1500; // regenerate the pool if the map pans this far
