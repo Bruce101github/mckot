@@ -15,33 +15,33 @@ export function RideNav() {
   const pathname = usePathname();
 
   return (
-    <header className="z-30 flex h-16 shrink-0 items-center justify-between border-b border-brand-border bg-white px-4 md:px-6">
-      <div className="flex items-center gap-6">
-        <Link href="/ride" aria-label="Mckot" className="flex items-center">
-          <Image src="/logo-light.svg" alt="Mckot" width={104} height={30} className="h-7 w-auto" priority />
-        </Link>
-        <nav className="flex items-center gap-1">
-          {TABS.map((tab) => {
-            const active = tab.href === "/ride" ? pathname === "/ride" : pathname.startsWith(tab.href);
-            return (
-              <Link
-                key={tab.href}
-                href={tab.href}
-                className={cn(
-                  "rounded-full px-3 py-1.5 text-sm font-medium transition",
-                  active
-                    ? "bg-brand-foreground text-white"
-                    : "text-brand-foreground/70 hover:bg-brand-muted/60",
-                )}
-              >
-                {tab.label}
-              </Link>
-            );
-          })}
-        </nav>
-      </div>
+    <header className="sticky top-0 z-40 shrink-0 border-b border-brand-border bg-white/95 shadow-soft backdrop-blur-sm">
+      <div className="flex items-center justify-between px-4 py-3 md:px-6">
+        <div className="flex items-center gap-8">
+          <Link href="/ride" aria-label="Mckot home" className="flex items-center">
+            <Image src="/logo-light.svg" alt="Mckot" width={110} height={31} className="h-8 w-auto" priority />
+          </Link>
+          <nav className="flex items-center gap-6" aria-label="Primary">
+            {TABS.map((tab) => {
+              const active = tab.href === "/ride" ? pathname === "/ride" : pathname.startsWith(tab.href);
+              return (
+                <Link
+                  key={tab.href}
+                  href={tab.href}
+                  className={cn(
+                    "text-sm font-medium text-brand-foreground/65 transition hover:text-brand-foreground",
+                    active && "text-brand-foreground",
+                  )}
+                >
+                  {tab.label}
+                </Link>
+              );
+            })}
+          </nav>
+        </div>
 
-      <ProfileMenu />
+        <ProfileMenu />
+      </div>
     </header>
   );
 }

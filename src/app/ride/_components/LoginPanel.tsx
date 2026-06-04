@@ -75,7 +75,7 @@ export function LoginPanel() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-brand-surface px-4 py-10">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-white px-4 py-10">
       <div className="w-full max-w-sm">
         <Link href="/" className="mb-8 flex justify-center" aria-label="Mckot home">
           <Image src="/logo-light.svg" alt="Mckot" width={120} height={34} className="h-9 w-auto" priority />

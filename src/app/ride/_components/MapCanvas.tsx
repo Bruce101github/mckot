@@ -190,12 +190,12 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
     <div className="absolute inset-0">
       <div ref={divRef} className="h-full w-full" />
       {state.status === "loading" && (
-        <div className="absolute inset-0 flex items-center justify-center bg-brand-surface">
+        <div className="absolute inset-0 flex items-center justify-center bg-white">
           <div className="h-8 w-8 animate-spin rounded-full border-2 border-brand-border border-t-brand-dark" />
         </div>
       )}
       {state.status === "error" && (
-        <div className="absolute inset-0 flex items-center justify-center bg-brand-surface px-6 text-center">
+        <div className="absolute inset-0 flex items-center justify-center bg-white px-6 text-center">
           <p className="max-w-xs text-sm text-brand-foreground/60">
             The map couldn&apos;t load. You can still set your pickup and destination to book.
           </p>
