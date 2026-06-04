@@ -12,9 +12,10 @@ function getLoader(): Promise<typeof google> {
   const loader = new Loader({
     apiKey,
     version: "weekly",
-    // geometry → polyline decoding. We use the backend for place search,
-    // so Places isn't loaded here.
-    libraries: ["geometry"],
+    // geometry → polyline decoding + spherical math for ambient traffic.
+    // routes → DirectionsService, used to make decorative vehicles follow
+    // real roads. We use the backend for place search, so Places isn't loaded.
+    libraries: ["geometry", "routes"],
   });
   loaderPromise = loader.load();
   return loaderPromise;

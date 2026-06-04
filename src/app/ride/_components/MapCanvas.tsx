@@ -212,17 +212,22 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
   }, [state, driver, driverBearing, pickup, dropoff]);
 
   // Ambient "nearby vehicles" — purely decorative, like Uber's home map. No
-  // real driver data: a steady set of cars and motorbikes drift gently within
-  // the visible map. Every few seconds one fades out and reappears on another
-  // road, so the mix keeps changing without the count flickering. Hidden
-  // during an active trip so they don't compete with the real driver marker.
+  // real driver data: a steady set of cars and motorbikes follow real roads
+  // by travelling along Directions routes computed within the visible map.
+  // Every few seconds one fades out and reappears on another road, so the mix
+  // keeps changing without the count flickering. Hidden during an active trip
+  // so they don't compete with the real driver marker. If the Directions API
+  // isn't available on the key, vehicles fall back to a gentle free drift.
   useEffect(() => {
     if (state.status !== "ready" || !mapRef.current || driver) return;
     const maps = state.maps;
     const map = mapRef.current;
+    const spherical = maps.geometry.spherical;
 
     const COUNT = 5;
     const SWAP_MS = 3200; // how often a vehicle is cycled to a new road
+    const POOL_SIZE = 6; // road paths kept on hand for vehicles to travel
+    const REGEN_M = 1500; // regenerate the pool if the map pans this far
     type Kind = "car" | "bike";
 
     const buildIcon = (kind: Kind, heading: number): google.maps.Icon => {
@@ -245,9 +250,12 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
       };
     };
 
-    // A random point inside the current viewport (inset from the edges so
-    // vehicles sit on visible roads). Falls back to a spread around centre
-    // before the map reports its bounds.
+    const rndKind = (): Kind => (Math.random() < 0.4 ? "bike" : "car");
+    // metres travelled per ~16ms frame; bikes a touch quicker
+    const speedFor = (kind: Kind) =>
+      kind === "bike" ? 0.7 + Math.random() * 0.5 : 0.45 + Math.random() * 0.4;
+
+    // A random point inside the current viewport (inset from the edges).
     const randomInView = () => {
       const b = map.getBounds();
       if (b) {
@@ -255,22 +263,66 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
         const sw = b.getSouthWest();
         const latPad = (ne.lat() - sw.lat()) * 0.12;
         const lngPad = (ne.lng() - sw.lng()) * 0.12;
-        return {
-          lat: sw.lat() + latPad + Math.random() * (ne.lat() - sw.lat() - 2 * latPad),
-          lng: sw.lng() + lngPad + Math.random() * (ne.lng() - sw.lng() - 2 * lngPad),
-        };
+        return new maps.LatLng(
+          sw.lat() + latPad + Math.random() * (ne.lat() - sw.lat() - 2 * latPad),
+          sw.lng() + lngPad + Math.random() * (ne.lng() - sw.lng() - 2 * lngPad),
+        );
       }
       const c = map.getCenter();
       const cLat = c ? c.lat() : DEFAULT_CENTER[0];
       const cLng = c ? c.lng() : DEFAULT_CENTER[1];
-      return { lat: cLat + (Math.random() - 0.5) * 0.02, lng: cLng + (Math.random() - 0.5) * 0.02 };
+      return new maps.LatLng(cLat + (Math.random() - 0.5) * 0.02, cLng + (Math.random() - 0.5) * 0.02);
     };
+
+    // ── Road-path pool ────────────────────────────────────────────────
+    const ds = new maps.DirectionsService();
+    let pool: google.maps.LatLng[][] = [];
+    let poolCenter: google.maps.LatLng | null = null;
+    let directionsAvailable = true; // flips false if the API is denied
+    let directionsTried = false; // true once the first batch resolves
+    let generating = false;
+
+    const genPool = () => {
+      if (generating || !map.getBounds()) return;
+      generating = true;
+      const next: google.maps.LatLng[][] = [];
+      let pending = POOL_SIZE;
+      for (let i = 0; i < POOL_SIZE; i++) {
+        ds.route(
+          { origin: randomInView(), destination: randomInView(), travelMode: maps.TravelMode.DRIVING },
+          (res, status) => {
+            pending -= 1;
+            if (status === maps.DirectionsStatus.OK) {
+              const path = res?.routes?.[0]?.overview_path;
+              if (path && path.length > 1) next.push(path);
+            } else if (status !== maps.DirectionsStatus.ZERO_RESULTS) {
+              directionsAvailable = false; // denied / over-limit → fall back
+            }
+            if (pending === 0) {
+              generating = false;
+              directionsTried = true;
+              if (next.length) {
+                pool = next;
+                poolCenter = map.getCenter() ?? null;
+              }
+            }
+          },
+        );
+      }
+    };
+
+    // Pick a pool path; return its index, or -1 if the pool is empty.
+    const pickPath = () => (pool.length ? Math.floor(Math.random() * pool.length) : -1);
 
     type Vehicle = {
       marker: google.maps.Marker;
       kind: Kind;
-      lat: number;
-      lng: number;
+      // road-follow state
+      pathIndex: number;
+      seg: number; // current vertex index along the path
+      t: number; // 0..1 progress within the current segment
+      // drift fallback state
+      pos: google.maps.LatLng;
       heading: number;
       speed: number;
       iconHeading: number;
@@ -280,12 +332,12 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
     };
 
     const make = (): Vehicle => {
-      const kind: Kind = Math.random() < 0.4 ? "bike" : "car";
-      const p = randomInView();
+      const kind = rndKind();
       const heading = Math.random() * 360;
+      const pos = randomInView();
       const marker = new maps.Marker({
         map,
-        position: p,
+        position: pos,
         icon: buildIcon(kind, heading),
         clickable: false,
         optimized: false,
@@ -295,18 +347,63 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
       return {
         marker,
         kind,
-        lat: p.lat,
-        lng: p.lng,
+        pathIndex: -1,
+        seg: 0,
+        t: 0,
+        pos,
         heading,
         iconHeading: heading,
-        speed: kind === "bike" ? 0.000007 + Math.random() * 0.000006 : 0.000004 + Math.random() * 0.000005,
+        speed: speedFor(kind),
         opacity: 0,
-        target: 1,
+        target: 0,
         cycling: false,
       };
     };
 
+    // Place a vehicle at the start of a fresh pool path with a new look.
+    const assignPath = (v: Vehicle, idx: number) => {
+      v.pathIndex = idx;
+      v.seg = 0;
+      v.t = 0;
+      v.kind = rndKind();
+      v.speed = speedFor(v.kind);
+      const path = pool[idx];
+      v.pos = path[0];
+      v.heading = spherical.computeHeading(path[0], path[1]);
+      v.iconHeading = v.heading;
+      v.marker.setIcon(buildIcon(v.kind, v.heading));
+    };
+
+    // Advance a vehicle `dist` metres along its assigned road path.
+    const advanceAlong = (v: Vehicle, dist: number) => {
+      const path = pool[v.pathIndex];
+      if (!path) return;
+      let rem = dist;
+      while (rem > 0 && v.seg < path.length - 1) {
+        const a = path[v.seg];
+        const b = path[v.seg + 1];
+        const segLen = spherical.computeDistanceBetween(a, b) || 0.0001;
+        const remOnSeg = (1 - v.t) * segLen;
+        if (rem < remOnSeg) {
+          v.t += rem / segLen;
+          rem = 0;
+        } else {
+          rem -= remOnSeg;
+          v.seg += 1;
+          v.t = 0;
+        }
+      }
+    };
+
     const fleet: Vehicle[] = Array.from({ length: COUNT }, make);
+
+    genPool();
+    const idleListener = maps.event.addListener(map, "idle", () => {
+      if (!directionsAvailable) return;
+      const c = map.getCenter();
+      if (!c) return;
+      if (!poolCenter || spherical.computeDistanceBetween(c, poolCenter) > REGEN_M) genPool();
+    });
 
     let raf = 0;
     let last = performance.now();
@@ -315,12 +412,13 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
       const dt = Math.min(now - last, 64);
       last = now;
       const steps = dt / 16; // normalise to ~60fps
+      const roadMode = directionsAvailable && pool.length > 0;
 
       // Periodically retire one vehicle so the visible mix keeps refreshing.
       swapAccum += dt;
       if (swapAccum >= SWAP_MS) {
         swapAccum = 0;
-        const live = fleet.filter((v) => !v.cycling);
+        const live = fleet.filter((v) => !v.cycling && v.opacity > 0.5);
         const pick = live[Math.floor(Math.random() * live.length)];
         if (pick) {
           pick.cycling = true;
@@ -329,28 +427,62 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
       }
 
       for (const v of fleet) {
-        v.heading += (Math.random() - 0.5) * 1.4 * steps;
-        const rad = (v.heading * Math.PI) / 180;
-        v.lat += Math.cos(rad) * v.speed * steps;
-        v.lng += Math.sin(rad) * v.speed * steps;
+        if (roadMode) {
+          if (v.pathIndex < 0 || v.pathIndex >= pool.length) {
+            // Needs a path (first frame, or pool was regenerated).
+            const idx = pickPath();
+            if (idx >= 0) {
+              assignPath(v, idx);
+              v.target = v.cycling ? 0 : 1;
+            }
+          } else if (!v.cycling) {
+            advanceAlong(v, v.speed * steps);
+            const path = pool[v.pathIndex];
+            if (v.seg >= path.length - 1) {
+              // Reached the end of the road → fade out and re-route.
+              v.cycling = true;
+              v.target = 0;
+            } else {
+              const a = path[v.seg];
+              const b = path[v.seg + 1];
+              v.pos = spherical.interpolate(a, b, Math.min(1, v.t));
+              v.heading = spherical.computeHeading(a, b);
+            }
+            v.target = v.cycling ? 0 : 1;
+          }
+        } else {
+          // Free-drift fallback (Directions unavailable).
+          v.target = directionsTried && !v.cycling ? 1 : v.target;
+          if (!v.cycling) {
+            v.heading += (Math.random() - 0.5) * 1.4 * steps;
+            v.pos = spherical.computeOffset(v.pos, v.speed * steps, v.heading);
+          }
+        }
 
         v.opacity += (v.target - v.opacity) * Math.min(1, 0.14 * steps);
 
-        // Fully faded out and flagged for cycling → respawn on another road.
+        // Fully faded out and flagged for cycling → reappear elsewhere.
         if (v.cycling && v.opacity < 0.04) {
-          const p = randomInView();
-          v.kind = Math.random() < 0.4 ? "bike" : "car";
-          v.lat = p.lat;
-          v.lng = p.lng;
-          v.heading = Math.random() * 360;
-          v.iconHeading = v.heading;
-          v.speed = v.kind === "bike" ? 0.000007 + Math.random() * 0.000006 : 0.000004 + Math.random() * 0.000005;
-          v.marker.setIcon(buildIcon(v.kind, v.heading));
-          v.cycling = false;
-          v.target = 1;
+          if (roadMode) {
+            const idx = pickPath();
+            if (idx >= 0) {
+              assignPath(v, idx);
+              v.cycling = false;
+              v.target = 1;
+            }
+          } else {
+            v.kind = rndKind();
+            v.pos = randomInView();
+            v.heading = Math.random() * 360;
+            v.iconHeading = v.heading;
+            v.speed = speedFor(v.kind);
+            v.marker.setIcon(buildIcon(v.kind, v.heading));
+            v.cycling = false;
+            v.target = 1;
+          }
         }
 
-        v.marker.setPosition({ lat: v.lat, lng: v.lng });
+        v.marker.setPosition(v.pos);
         v.marker.setOpacity(Math.max(0, Math.min(1, v.opacity)));
         if (Math.abs(v.heading - v.iconHeading) > 4) {
           v.iconHeading = v.heading;
@@ -363,6 +495,7 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
 
     return () => {
       cancelAnimationFrame(raf);
+      maps.event.removeListener(idleListener);
       fleet.forEach((v) => v.marker.setMap(null));
     };
   }, [state, driver]);
