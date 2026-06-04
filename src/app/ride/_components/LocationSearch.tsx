@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Loader2, MapPin, X } from "lucide-react";
+import { Loader2, LocateFixed, MapPin, X } from "lucide-react";
 import { searchPlaces, type Coords, type PlaceResult } from "@/lib/api/booking";
 
 type Props = {
@@ -11,6 +11,7 @@ type Props = {
   selectedLabel?: string | null;
   onSelect: (place: PlaceResult) => void;
   onClear?: () => void;
+  onUseCurrentLocation?: () => void;
   autoFocus?: boolean;
 };
 
@@ -21,6 +22,7 @@ export function LocationSearch({
   selectedLabel,
   onSelect,
   onClear,
+  onUseCurrentLocation,
   autoFocus,
 }: Props) {
   const [query, setQuery] = useState("");
@@ -60,6 +62,9 @@ export function LocationSearch({
   }, [query, bias]);
 
   const display = query !== "" ? query : (selectedLabel ?? "");
+  // Show the panel whenever the field is focused — like Uber, an empty click
+  // surfaces the quick actions (use current location) before any typing.
+  const showPanel = open && (onUseCurrentLocation != null || results.length > 0);
 
   return (
     <div ref={boxRef} className="relative">
@@ -77,7 +82,7 @@ export function LocationSearch({
             setQuery(e.target.value);
             if (e.target.value === "") onClear?.();
           }}
-          onFocus={() => results.length > 0 && setOpen(true)}
+          onFocus={() => setOpen(true)}
           placeholder={placeholder}
           className="w-full bg-transparent text-sm text-brand-foreground outline-none focus-visible:!outline-none placeholder:text-brand-foreground/40"
         />
@@ -99,32 +104,58 @@ export function LocationSearch({
         ) : null}
       </div>
 
-      {open && results.length > 0 && (
-        <ul className="absolute z-20 mt-1 max-h-72 w-full overflow-auto rounded-xl border border-brand-border bg-white py-1 shadow-soft">
-          {results.map((p, i) => (
-            <li key={`${p.address}-${i}`}>
-              <button
-                type="button"
-                onClick={() => {
-                  onSelect(p);
-                  setQuery(p.address);
-                  setOpen(false);
-                }}
-                className="flex w-full items-start gap-3 px-3 py-2.5 text-left hover:bg-brand-muted/50"
-              >
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-foreground/40" />
-                <span className="min-w-0">
-                  <span className="block truncate text-sm font-medium text-brand-foreground">
-                    {p.address}
-                  </span>
-                  <span className="block truncate text-xs text-brand-foreground/50">
-                    {p.location}
-                  </span>
-                </span>
-              </button>
-            </li>
-          ))}
-        </ul>
+      {showPanel && (
+        <div className="absolute z-20 mt-1 max-h-72 w-full overflow-auto rounded-xl border border-brand-border bg-white py-1 shadow-soft">
+          {onUseCurrentLocation && (
+            <button
+              type="button"
+              onClick={() => {
+                onUseCurrentLocation();
+                setQuery("");
+                setResults([]);
+                setOpen(false);
+              }}
+              className="flex w-full items-center gap-3 px-3 py-2.5 text-left hover:bg-brand-muted/50"
+            >
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-muted">
+                <LocateFixed className="h-4 w-4 text-brand-dark" />
+              </span>
+              <span className="text-sm font-medium text-brand-foreground">Use current location</span>
+            </button>
+          )}
+
+          {onUseCurrentLocation && results.length > 0 && (
+            <div className="my-1 border-t border-brand-border" />
+          )}
+
+          {results.length > 0 && (
+            <ul>
+              {results.map((p, i) => (
+                <li key={`${p.address}-${i}`}>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      onSelect(p);
+                      setQuery(p.address);
+                      setOpen(false);
+                    }}
+                    className="flex w-full items-start gap-3 px-3 py-2.5 text-left hover:bg-brand-muted/50"
+                  >
+                    <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-foreground/40" />
+                    <span className="min-w-0">
+                      <span className="block truncate text-sm font-medium text-brand-foreground">
+                        {p.address}
+                      </span>
+                      <span className="block truncate text-xs text-brand-foreground/50">
+                        {p.location}
+                      </span>
+                    </span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       )}
     </div>
   );

@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Clock, LocateFixed, ChevronDown } from "lucide-react";
+import { Clock, ChevronDown } from "lucide-react";
 import { useAuth } from "@/lib/auth/AuthProvider";
 import {
   cancelRequest,
@@ -313,6 +313,7 @@ export function BookingScreen() {
                     selectedLabel={pickup?.label}
                     onSelect={onPickupSelect}
                     onClear={() => setPickup(null)}
+                    onUseCurrentLocation={useCurrentLocation}
                   />
                   <LocationSearch
                     placeholder="Where to?"
@@ -323,14 +324,6 @@ export function BookingScreen() {
                     onClear={() => setDropoff(null)}
                     autoFocus
                   />
-                  <button
-                    type="button"
-                    onClick={useCurrentLocation}
-                    className="flex items-center gap-2 px-1 pt-1 text-sm font-medium text-brand-dark hover:underline"
-                  >
-                    <LocateFixed className="h-4 w-4" />
-                    Use my current location for pickup
-                  </button>
                   {estimateError && <p className="text-sm text-red-600">{estimateError}</p>}
                   <button
                     type="button"
