@@ -211,6 +211,101 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
     }
   }, [state, driver, driverBearing, pickup, dropoff]);
 
+  // Ambient "nearby cars" — purely decorative drifting markers, like Uber's
+  // home map. No real driver data: they wander gently around the current map
+  // centre and respawn when they leave it. Hidden during an active trip so
+  // they don't compete with the real driver marker.
+  useEffect(() => {
+    if (state.status !== "ready" || !mapRef.current || driver) return;
+    const maps = state.maps;
+    const map = mapRef.current;
+    const start = map.getCenter();
+    if (!start) return;
+
+    const RADIUS = 0.014; // ~1.5km spread around the map centre
+    const COUNT = 6;
+
+    const buildIcon = (heading: number): google.maps.Icon => {
+      const svg =
+        `<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'>` +
+        `<g transform='rotate(${heading.toFixed(0)} 15 15)'>` +
+        `<rect x='10' y='4' width='10' height='21' rx='3.5' fill='#1f2937'/>` +
+        `<rect x='11.5' y='6.5' width='7' height='4.5' rx='1.5' fill='#9ca3af'/>` +
+        `<rect x='11.5' y='18' width='7' height='3.5' rx='1.5' fill='#4b5563'/>` +
+        `</g></svg>`;
+      return {
+        url: "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg),
+        anchor: new maps.Point(15, 15),
+        scaledSize: new maps.Size(30, 30),
+      };
+    };
+
+    type Car = {
+      marker: google.maps.Marker;
+      lat: number;
+      lng: number;
+      heading: number;
+      speed: number;
+      iconHeading: number;
+    };
+
+    const spawn = (cLat: number, cLng: number, spread: number) => {
+      const a = Math.random() * Math.PI * 2;
+      const r = Math.sqrt(Math.random()) * spread;
+      return { lat: cLat + Math.cos(a) * r, lng: cLng + Math.sin(a) * r };
+    };
+
+    const cars: Car[] = [];
+    for (let i = 0; i < COUNT; i++) {
+      const p = spawn(start.lat(), start.lng(), RADIUS);
+      const heading = Math.random() * 360;
+      const marker = new maps.Marker({
+        map,
+        position: p,
+        icon: buildIcon(heading),
+        clickable: false,
+        optimized: false,
+        zIndex: 1,
+      });
+      cars.push({ ...p, marker, heading, iconHeading: heading, speed: 0.000004 + Math.random() * 0.000005 });
+    }
+
+    let raf = 0;
+    let last = performance.now();
+    const tick = (now: number) => {
+      const steps = Math.min(now - last, 64) / 16; // normalise to ~60fps
+      last = now;
+      const c = map.getCenter();
+      const cLat = c ? c.lat() : start.lat();
+      const cLng = c ? c.lng() : start.lng();
+      for (const car of cars) {
+        car.heading += (Math.random() - 0.5) * 1.4 * steps;
+        const rad = (car.heading * Math.PI) / 180;
+        car.lat += Math.cos(rad) * car.speed * steps;
+        car.lng += Math.sin(rad) * car.speed * steps;
+        const dLat = car.lat - cLat;
+        const dLng = car.lng - cLng;
+        if (dLat * dLat + dLng * dLng > RADIUS * RADIUS) {
+          const p = spawn(cLat, cLng, RADIUS * 0.5);
+          car.lat = p.lat;
+          car.lng = p.lng;
+        }
+        car.marker.setPosition({ lat: car.lat, lng: car.lng });
+        if (Math.abs(car.heading - car.iconHeading) > 4) {
+          car.iconHeading = car.heading;
+          car.marker.setIcon(buildIcon(car.heading));
+        }
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      cars.forEach((car) => car.marker.setMap(null));
+    };
+  }, [state, driver]);
+
   return (
     <div className="absolute inset-0">
       <div ref={divRef} className="h-full w-full" />
