@@ -7,6 +7,33 @@ import type { Coords } from "@/lib/api/booking";
 // Accra city centre — default view before we have a pickup.
 const DEFAULT_CENTER: Coords = [5.6037, -0.187];
 
+// Light map theme — kept in sync with the Flutter app
+// (ridehailing-mobile/assets/map_style.json) so web and mobile look identical.
+const MAP_STYLE: google.maps.MapTypeStyle[] = [
+  { elementType: "geometry", stylers: [{ color: "#ffffff" }] },
+  { elementType: "labels.icon", stylers: [{ visibility: "off" }] },
+  { elementType: "labels.text.fill", stylers: [{ color: "#9a9a9a" }] },
+  { elementType: "labels.text.stroke", stylers: [{ visibility: "off" }] },
+  { featureType: "administrative", stylers: [{ visibility: "off" }] },
+  { featureType: "administrative.locality", elementType: "labels.text.fill", stylers: [{ color: "#7d7d7d" }, { visibility: "on" }] },
+  { featureType: "administrative.neighborhood", elementType: "labels.text.fill", stylers: [{ color: "#b0b0b0" }, { visibility: "on" }] },
+  { featureType: "landscape", elementType: "geometry", stylers: [{ color: "#fafafa" }] },
+  { featureType: "landscape.man_made", elementType: "geometry", stylers: [{ color: "#f3f3f3" }] },
+  { featureType: "poi", stylers: [{ visibility: "off" }] },
+  { featureType: "poi.park", elementType: "geometry", stylers: [{ color: "#eef3ec" }] },
+  { featureType: "road", elementType: "geometry.fill", stylers: [{ color: "#ffffff" }] },
+  { featureType: "road", elementType: "geometry.stroke", stylers: [{ visibility: "off" }] },
+  { featureType: "road", elementType: "labels", stylers: [{ visibility: "off" }] },
+  { featureType: "road.local", elementType: "geometry", stylers: [{ color: "#fafafa" }] },
+  { featureType: "road.arterial", elementType: "geometry", stylers: [{ color: "#ededed" }] },
+  { featureType: "road.highway", elementType: "geometry", stylers: [{ color: "#e3e3e3" }] },
+  { featureType: "road.highway", elementType: "geometry.stroke", stylers: [{ color: "#d8d8d8" }] },
+  { featureType: "road.highway", elementType: "labels.text.fill", stylers: [{ color: "#9a9a9a" }, { visibility: "on" }] },
+  { featureType: "transit", stylers: [{ visibility: "off" }] },
+  { featureType: "water", elementType: "geometry", stylers: [{ color: "#e8eef2" }] },
+  { featureType: "water", elementType: "labels.text.fill", stylers: [{ color: "#a8b3bc" }] },
+];
+
 type Props = {
   pickup: Coords | null;
   dropoff: Coords | null;
@@ -49,10 +76,8 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
       disableDefaultUI: true,
       clickableIcons: false,
       gestureHandling: "greedy",
-      styles: [
-        { featureType: "poi", elementType: "labels", stylers: [{ visibility: "off" }] },
-        { featureType: "transit", elementType: "labels", stylers: [{ visibility: "off" }] },
-      ],
+      // Mirrors the Flutter app's light map theme (ridehailing-mobile/assets/map_style.json).
+      styles: MAP_STYLE,
     });
     mapRef.current = map;
 
@@ -116,9 +141,9 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
         routeLine.current = new maps.Polyline({
           map,
           path,
-          strokeColor: "#0B3B2D",
-          strokeOpacity: 0.9,
-          strokeWeight: 4,
+          strokeColor: "#A4D233",
+          strokeOpacity: 1,
+          strokeWeight: 6,
         });
       }
     }
