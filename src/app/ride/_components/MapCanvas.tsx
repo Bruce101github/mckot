@@ -226,7 +226,7 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
 
     const COUNT = 5;
     const SWAP_MS = 3200; // how often a vehicle is cycled to a new road
-    const POOL_SIZE = 6; // road paths kept on hand for vehicles to travel
+    const POOL_SIZE = 8; // road paths kept on hand for vehicles to travel
     const REGEN_M = 1500; // regenerate the pool if the map pans this far
     type Kind = "car" | "bike";
 
@@ -289,9 +289,10 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
     };
 
     const rndKind = (): Kind => (Math.random() < 0.4 ? "bike" : "car");
-    // metres travelled per ~16ms frame; bikes a touch quicker
+    // metres travelled per ~16ms frame; bikes a touch quicker. Kept gentle so
+    // the traffic reads as calm ambient motion, not a race.
     const speedFor = (kind: Kind) =>
-      kind === "bike" ? 0.7 + Math.random() * 0.5 : 0.45 + Math.random() * 0.4;
+      kind === "bike" ? 0.42 + Math.random() * 0.26 : 0.3 + Math.random() * 0.2;
 
     // A random point inside the current viewport (inset from the edges).
     const randomInView = () => {
@@ -349,8 +350,39 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
       }
     };
 
-    // Pick a pool path; return its index, or -1 if the pool is empty.
-    const pickPath = () => (pool.length ? Math.floor(Math.random() * pool.length) : -1);
+    const LOOKAHEAD_M = 28; // sample the bearing this far ahead to avoid jitter
+    // Shortest signed angle (deg) from b to a, in (-180, 180].
+    const angleDiff = (a: number, b: number) => ((a - b + 540) % 360) - 180;
+
+    // Total length of a pool path in metres.
+    const pathLen = (path: google.maps.LatLng[]) => {
+      let d = 0;
+      for (let i = 0; i < path.length - 1; i++) d += spherical.computeDistanceBetween(path[i], path[i + 1]);
+      return d;
+    };
+
+    // Walk `dist` metres along a path from (seg,t); pure, returns the new
+    // cursor, its position, and whether the path end was reached.
+    const walk = (path: google.maps.LatLng[], seg: number, t: number, dist: number) => {
+      let s = seg;
+      let tt = t;
+      let rem = dist;
+      while (rem > 0 && s < path.length - 1) {
+        const segLen = spherical.computeDistanceBetween(path[s], path[s + 1]) || 0.0001;
+        const remOnSeg = (1 - tt) * segLen;
+        if (rem < remOnSeg) {
+          tt += rem / segLen;
+          rem = 0;
+        } else {
+          rem -= remOnSeg;
+          s += 1;
+          tt = 0;
+        }
+      }
+      const a = path[Math.min(s, path.length - 2)];
+      const b = path[Math.min(s + 1, path.length - 1)];
+      return { seg: s, t: tt, pos: spherical.interpolate(a, b, Math.min(1, tt)), atEnd: s >= path.length - 1 };
+    };
 
     type Vehicle = {
       marker: google.maps.Marker;
@@ -359,9 +391,9 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
       pathIndex: number;
       seg: number; // current vertex index along the path
       t: number; // 0..1 progress within the current segment
-      // drift fallback state
       pos: google.maps.LatLng;
-      heading: number;
+      heading: number; // travel bearing (target)
+      dispHeading: number; // smoothed bearing actually drawn
       speed: number;
       iconHeading: number;
       opacity: number;
@@ -372,10 +404,10 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
 
     // Apply the current kind/heading art to a marker once the PNGs are loaded.
     const applyIcon = (v: Vehicle) => {
-      const icon = buildIcon(v.kind, v.heading);
+      const icon = buildIcon(v.kind, v.dispHeading);
       if (icon) {
         v.marker.setIcon(icon);
-        v.iconHeading = v.heading;
+        v.iconHeading = v.dispHeading;
         v.hasIcon = true;
       }
     };
@@ -400,6 +432,7 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
         t: 0,
         pos,
         heading,
+        dispHeading: heading,
         iconHeading: heading,
         speed: speedFor(kind),
         opacity: 0,
@@ -409,38 +442,66 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
       };
     };
 
-    // Place a vehicle at the start of a fresh pool path with a new look.
-    const assignPath = (v: Vehicle, idx: number) => {
-      v.pathIndex = idx;
-      v.seg = 0;
-      v.t = 0;
-      v.kind = rndKind();
-      v.speed = speedFor(v.kind);
-      const path = pool[idx];
-      v.pos = path[0];
-      v.heading = spherical.computeHeading(path[0], path[1]);
-      applyIcon(v);
+    // Minimum gap between vehicles (metres) so the markers keep clear air at
+    // the current zoom — roughly three marker-widths of separation.
+    const minGapM = () => {
+      const b = map.getBounds();
+      const px = divRef.current?.clientWidth ?? 400;
+      if (!b) return 250;
+      const widthM = spherical.computeDistanceBetween(
+        new maps.LatLng(b.getSouthWest().lat(), b.getSouthWest().lng()),
+        new maps.LatLng(b.getSouthWest().lat(), b.getNorthEast().lng()),
+      );
+      return Math.min(widthM * 0.4, Math.max(140, (widthM / px) * 120));
     };
 
-    // Advance a vehicle `dist` metres along its assigned road path.
-    const advanceAlong = (v: Vehicle, dist: number) => {
-      const path = pool[v.pathIndex];
-      if (!path) return;
-      let rem = dist;
-      while (rem > 0 && v.seg < path.length - 1) {
-        const a = path[v.seg];
-        const b = path[v.seg + 1];
-        const segLen = spherical.computeDistanceBetween(a, b) || 0.0001;
-        const remOnSeg = (1 - v.t) * segLen;
-        if (rem < remOnSeg) {
-          v.t += rem / segLen;
-          rem = 0;
-        } else {
-          rem -= remOnSeg;
-          v.seg += 1;
-          v.t = 0;
+    // True if `pos` would crowd another committed vehicle.
+    const tooClose = (pos: google.maps.LatLng, self: Vehicle, gap: number) =>
+      fleet.some(
+        (o) => o !== self && !o.cycling && o.pathIndex >= 0 && spherical.computeDistanceBetween(pos, o.pos) < gap,
+      );
+
+    // Pool path currently carrying the fewest vehicles (random tie-break) so we
+    // don't stack several cars onto one road.
+    const leastBusyPath = () => {
+      const counts = pool.map(() => 0);
+      for (const o of fleet) if (o.pathIndex >= 0 && o.pathIndex < counts.length) counts[o.pathIndex] += 1;
+      const order = pool.map((_, i) => i).sort(() => Math.random() - 0.5);
+      let best = order[0];
+      for (const i of order) if (counts[i] < counts[best]) best = i;
+      return best;
+    };
+
+    // Drop a vehicle onto a quiet road at a random offset, far enough from the
+    // others that they don't pile up or run into each other.
+    const placeFresh = (v: Vehicle): boolean => {
+      if (!pool.length) return false;
+      const gap = minGapM();
+      let fallback: { idx: number; w: ReturnType<typeof walk> } | null = null;
+      let chosen: { idx: number; w: ReturnType<typeof walk> } | null = null;
+      for (let attempt = 0; attempt < 10; attempt++) {
+        const idx = leastBusyPath();
+        const path = pool[idx];
+        const w = walk(path, 0, 0, Math.random() * pathLen(path));
+        if (!fallback) fallback = { idx, w };
+        if (!tooClose(w.pos, v, gap)) {
+          chosen = { idx, w };
+          break;
         }
       }
+      const pick = chosen ?? fallback;
+      if (!pick) return false;
+      v.pathIndex = pick.idx;
+      v.seg = pick.w.seg;
+      v.t = pick.w.t;
+      v.pos = pick.w.pos;
+      v.kind = rndKind();
+      v.speed = speedFor(v.kind);
+      const look = walk(pool[pick.idx], v.seg, v.t, LOOKAHEAD_M);
+      if (spherical.computeDistanceBetween(v.pos, look.pos) > 1) v.heading = spherical.computeHeading(v.pos, look.pos);
+      v.dispHeading = v.heading;
+      applyIcon(v);
+      return true;
     };
 
     const fleet: Vehicle[] = Array.from({ length: COUNT }, make);
@@ -481,43 +542,42 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
         } else if (roadMode) {
           if (v.pathIndex < 0 || v.pathIndex >= pool.length) {
             // Needs a path (first frame, or pool was regenerated).
-            const idx = pickPath();
-            if (idx >= 0) {
-              assignPath(v, idx);
-              v.target = v.cycling ? 0 : 1;
-            }
+            if (placeFresh(v)) v.target = v.cycling ? 0 : 1;
           } else if (!v.cycling) {
-            advanceAlong(v, v.speed * steps);
-            const path = pool[v.pathIndex];
-            if (v.seg >= path.length - 1) {
+            const adv = walk(pool[v.pathIndex], v.seg, v.t, v.speed * steps);
+            v.seg = adv.seg;
+            v.t = adv.t;
+            v.pos = adv.pos;
+            if (adv.atEnd) {
               // Reached the end of the road → fade out and re-route.
               v.cycling = true;
               v.target = 0;
             } else {
-              const a = path[v.seg];
-              const b = path[v.seg + 1];
-              v.pos = spherical.interpolate(a, b, Math.min(1, v.t));
-              v.heading = spherical.computeHeading(a, b);
+              const look = walk(pool[v.pathIndex], v.seg, v.t, LOOKAHEAD_M);
+              if (spherical.computeDistanceBetween(v.pos, look.pos) > 1) {
+                v.heading = spherical.computeHeading(v.pos, look.pos);
+              }
+              v.target = 1;
             }
-            v.target = v.cycling ? 0 : 1;
           }
         } else {
           // Free-drift fallback (Directions unavailable).
           v.target = directionsTried && !v.cycling ? 1 : v.target;
           if (!v.cycling) {
-            v.heading += (Math.random() - 0.5) * 1.4 * steps;
+            v.heading += (Math.random() - 0.5) * 0.8 * steps;
             v.pos = spherical.computeOffset(v.pos, v.speed * steps, v.heading);
           }
         }
 
+        // Ease the drawn bearing toward the travel bearing so turns are smooth
+        // rather than snapping at every road bend.
+        v.dispHeading += angleDiff(v.heading, v.dispHeading) * Math.min(1, 0.12 * steps);
         v.opacity += (v.target - v.opacity) * Math.min(1, 0.14 * steps);
 
-        // Fully faded out and flagged for cycling → reappear elsewhere.
+        // Fully faded out and flagged for cycling → reappear, well spaced.
         if (v.cycling && v.opacity < 0.04) {
           if (roadMode) {
-            const idx = pickPath();
-            if (idx >= 0) {
-              assignPath(v, idx);
+            if (placeFresh(v)) {
               v.cycling = false;
               v.target = 1;
             }
@@ -525,6 +585,7 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
             v.kind = rndKind();
             v.pos = randomInView();
             v.heading = Math.random() * 360;
+            v.dispHeading = v.heading;
             v.speed = speedFor(v.kind);
             applyIcon(v);
             v.cycling = false;
@@ -534,7 +595,7 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
 
         v.marker.setPosition(v.pos);
         v.marker.setOpacity(Math.max(0, Math.min(1, v.opacity)));
-        if (assetsReady && (!v.hasIcon || Math.abs(v.heading - v.iconHeading) > 4)) {
+        if (assetsReady && (!v.hasIcon || Math.abs(angleDiff(v.dispHeading, v.iconHeading)) > 8)) {
           applyIcon(v);
         }
       }
