@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { LocateFixed } from "lucide-react";
+import { Clock, LocateFixed, ChevronDown } from "lucide-react";
 import { useAuth } from "@/lib/auth/AuthProvider";
 import {
   cancelRequest,
@@ -47,6 +47,12 @@ export function BookingScreen() {
   const [active, setActive] = useState<ActiveRequest | null>(null);
   const [cancelling, setCancelling] = useState(false);
   const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  // Uber-style schedule selector. null = "Leave now"; otherwise a future
+  // pickup time the rider picked. The request payload doesn't carry this yet,
+  // so it's a front-end control until the backend adds a scheduled-time field.
+  const [scheduleAt, setScheduleAt] = useState<string | null>(null);
+  const [scheduleOpen, setScheduleOpen] = useState(false);
 
   // On mount: resume any in-flight trip, else seed pickup from geolocation.
   useEffect(() => {
@@ -149,31 +155,29 @@ export function BookingScreen() {
   );
 
   const onPickupSelect = (place: PlaceResult) => {
-    const next: Place = { coords: place.coordinates, label: place.address };
-    setPickup(next);
-    if (dropoff) runEstimate(next.coords, dropoff.coords);
+    setPickup({ coords: place.coordinates, label: place.address });
   };
 
   const onDropoffSelect = (place: PlaceResult) => {
-    const next: Place = { coords: place.coordinates, label: place.address };
-    setDropoff(next);
-    if (pickup) runEstimate(pickup.coords, next.coords);
+    setDropoff({ coords: place.coordinates, label: place.address });
   };
 
   const useCurrentLocation = () => {
     if (!navigator.geolocation) return;
     navigator.geolocation.getCurrentPosition(
       (pos) => {
-        const next: Place = {
+        setPickup({
           coords: [pos.coords.latitude, pos.coords.longitude],
           label: "Current location",
-        };
-        setPickup(next);
-        if (dropoff) runEstimate(next.coords, dropoff.coords);
+        });
       },
       () => {},
       { enableHighAccuracy: true, timeout: 8000 },
     );
+  };
+
+  const onSearch = () => {
+    if (pickup && dropoff) runEstimate(pickup.coords, dropoff.coords);
   };
 
   const onRequest = async () => {
@@ -229,6 +233,20 @@ export function BookingScreen() {
 
   const searchBias: Coords = pickup?.coords ?? ACCRA;
 
+  const scheduleLabel = scheduleAt
+    ? new Date(scheduleAt).toLocaleString(undefined, {
+        month: "short",
+        day: "numeric",
+        hour: "numeric",
+        minute: "2-digit",
+      })
+    : "Leave now";
+  // Local "now" in the datetime-local format, used as the picker's minimum.
+  const minSchedule = (() => {
+    const d = new Date(Date.now() - new Date().getTimezoneOffset() * 60000);
+    return d.toISOString().slice(0, 16);
+  })();
+
   return (
     <div className="flex h-screen w-full flex-col overflow-hidden bg-white">
       <RideNav />
@@ -245,6 +263,49 @@ export function BookingScreen() {
 
               {step === "locations" && (
                 <div className="space-y-2">
+                  <div className="relative mb-1">
+                    <button
+                      type="button"
+                      onClick={() => setScheduleOpen((o) => !o)}
+                      className="flex items-center gap-2 rounded-full bg-[#EEEEEE] px-3.5 py-2 text-sm font-medium text-brand-foreground transition-colors hover:bg-[#E4E4E4]"
+                    >
+                      <Clock className="h-4 w-4" />
+                      {scheduleLabel}
+                      <ChevronDown className="h-4 w-4 text-brand-foreground/50" />
+                    </button>
+                    {scheduleOpen && (
+                      <div className="absolute left-0 top-full z-30 mt-2 w-72 rounded-2xl border border-brand-border bg-white p-3 shadow-soft">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setScheduleAt(null);
+                            setScheduleOpen(false);
+                          }}
+                          className="flex w-full items-center gap-2 rounded-xl px-2 py-2 text-left text-sm font-medium text-brand-foreground hover:bg-brand-muted/60"
+                        >
+                          <Clock className="h-4 w-4 text-brand-foreground/60" />
+                          Leave now
+                        </button>
+                        <label className="mt-1 block px-2 pt-2 text-xs font-medium text-brand-foreground/60">
+                          Schedule for later
+                          <input
+                            type="datetime-local"
+                            min={minSchedule}
+                            value={scheduleAt ?? ""}
+                            onChange={(e) => setScheduleAt(e.target.value || null)}
+                            className="mt-1 w-full rounded-xl bg-[#EEEEEE] px-3 py-2.5 text-sm text-brand-foreground outline-none focus-visible:!outline-none"
+                          />
+                        </label>
+                        <button
+                          type="button"
+                          onClick={() => setScheduleOpen(false)}
+                          className="mt-3 w-full rounded-xl bg-brand-dark py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-foreground"
+                        >
+                          Done
+                        </button>
+                      </div>
+                    )}
+                  </div>
                   <LocationSearch
                     placeholder="Pickup location"
                     dotColor="#0B3B2D"
@@ -271,6 +332,14 @@ export function BookingScreen() {
                     Use my current location for pickup
                   </button>
                   {estimateError && <p className="text-sm text-red-600">{estimateError}</p>}
+                  <button
+                    type="button"
+                    onClick={onSearch}
+                    disabled={!pickup || !dropoff}
+                    className="mt-2 w-full rounded-xl bg-brand-dark py-3 font-semibold text-white transition-colors hover:bg-brand-foreground disabled:cursor-not-allowed disabled:opacity-40"
+                  >
+                    Search
+                  </button>
                 </div>
               )}
 
