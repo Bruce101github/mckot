@@ -63,7 +63,7 @@ export function LocationSearch({
 
   return (
     <div ref={boxRef} className="relative">
-      <div className="flex items-center gap-3 rounded-xl bg-[#EEEEEE] px-3.5 py-3 transition-colors focus-within:bg-[#E4E4E4]">
+      <div className="flex items-center gap-3 rounded-xl border border-transparent bg-[#EEEEEE] px-3.5 py-3 transition-colors focus-within:border-brand-dark focus-within:bg-white">
         <span className="h-2.5 w-2.5 shrink-0 rounded-full" style={{ backgroundColor: dotColor }} />
         <input
           autoFocus={autoFocus}
