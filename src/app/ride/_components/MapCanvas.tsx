@@ -231,15 +231,17 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
     type Kind = "car" | "bike";
 
     // The same top-down car/motorbike art the Flutter app uses as map markers
-    // (ridehailing-mobile/assets/images/{car,bike}_marker.png). Each points
-    // north; we embed it in an SVG and rotate to face the road. Natural sizes
-    // are baked in so we can keep the aspect ratio.
-    const ART: Record<Kind, { src: string; w: number; h: number }> = {
-      car: { src: "/vehicles/car.png", w: 137, h: 192 },
-      bike: { src: "/vehicles/bike.png", w: 148, h: 99 },
+    // (ridehailing-mobile/assets/images/{car,bike}_marker.png). We embed each in
+    // an SVG and rotate it to face the road. The car art is portrait and points
+    // north; the bike art is landscape and points east, so each kind carries a
+    // base rotation offset that aligns its "front" to heading 0 before we add
+    // the travel bearing.
+    const ART: Record<Kind, { src: string; w: number; h: number; offset: number }> = {
+      car: { src: "/vehicles/car.png", w: 137, h: 192, offset: 0 },
+      bike: { src: "/vehicles/bike.png", w: 148, h: 99, offset: -90 },
     };
-    const BOX = 44; // square marker canvas
-    const HEIGHT = 34; // rendered height of the longer art dimension
+    const BOX = 48; // square marker canvas (roomy enough for the rotated diagonal)
+    const LEN = 36; // rendered length of the longest art dimension
     let dataUrls: Partial<Record<Kind, string>> = {};
     let assetsReady = false;
 
@@ -271,14 +273,16 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
       const cached = iconCache.get(key);
       if (cached) return cached;
       const art = ART[kind];
-      const h = HEIGHT;
-      const w = (h * art.w) / art.h;
+      const scale = LEN / Math.max(art.w, art.h);
+      const w = art.w * scale;
+      const h = art.h * scale;
       const x = (BOX - w) / 2;
       const y = (BOX - h) / 2;
+      const angle = bucket + art.offset;
       const svg =
         `<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='${BOX}' height='${BOX}' viewBox='0 0 ${BOX} ${BOX}'>` +
-        `<image href='${data}' x='${x.toFixed(2)}' y='${y.toFixed(2)}' width='${w.toFixed(2)}' height='${h}' ` +
-        `transform='rotate(${bucket} ${BOX / 2} ${BOX / 2})'/></svg>`;
+        `<image href='${data}' x='${x.toFixed(2)}' y='${y.toFixed(2)}' width='${w.toFixed(2)}' height='${h.toFixed(2)}' ` +
+        `transform='rotate(${angle} ${BOX / 2} ${BOX / 2})'/></svg>`;
       const icon: google.maps.Icon = {
         url: "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg),
         anchor: new maps.Point(BOX / 2, BOX / 2),
