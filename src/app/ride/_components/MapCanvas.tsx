@@ -211,28 +211,33 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
     }
   }, [state, driver, driverBearing, pickup, dropoff]);
 
-  // Ambient "nearby cars" — purely decorative drifting markers, like Uber's
-  // home map. No real driver data: they wander gently around the current map
-  // centre and respawn when they leave it. Hidden during an active trip so
-  // they don't compete with the real driver marker.
+  // Ambient "nearby vehicles" — purely decorative, like Uber's home map. No
+  // real driver data: a steady set of cars and motorbikes drift gently within
+  // the visible map. Every few seconds one fades out and reappears on another
+  // road, so the mix keeps changing without the count flickering. Hidden
+  // during an active trip so they don't compete with the real driver marker.
   useEffect(() => {
     if (state.status !== "ready" || !mapRef.current || driver) return;
     const maps = state.maps;
     const map = mapRef.current;
-    const start = map.getCenter();
-    if (!start) return;
 
-    const RADIUS = 0.014; // ~1.5km spread around the map centre
-    const COUNT = 6;
+    const COUNT = 5;
+    const SWAP_MS = 3200; // how often a vehicle is cycled to a new road
+    type Kind = "car" | "bike";
 
-    const buildIcon = (heading: number): google.maps.Icon => {
+    const buildIcon = (kind: Kind, heading: number): google.maps.Icon => {
+      const body =
+        kind === "car"
+          ? `<rect x='10' y='4' width='10' height='21' rx='3.5' fill='#1f2937'/>` +
+            `<rect x='11.5' y='6.5' width='7' height='4.5' rx='1.5' fill='#9ca3af'/>` +
+            `<rect x='11.5' y='18' width='7' height='3.5' rx='1.5' fill='#4b5563'/>`
+          : `<rect x='13' y='7' width='4' height='16' rx='2' fill='#1f2937'/>` +
+            `<rect x='10.5' y='9' width='9' height='2.4' rx='1.2' fill='#4b5563'/>` +
+            `<circle cx='15' cy='8' r='1.8' fill='#111827'/>` +
+            `<circle cx='15' cy='22' r='2' fill='#111827'/>`;
       const svg =
         `<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'>` +
-        `<g transform='rotate(${heading.toFixed(0)} 15 15)'>` +
-        `<rect x='10' y='4' width='10' height='21' rx='3.5' fill='#1f2937'/>` +
-        `<rect x='11.5' y='6.5' width='7' height='4.5' rx='1.5' fill='#9ca3af'/>` +
-        `<rect x='11.5' y='18' width='7' height='3.5' rx='1.5' fill='#4b5563'/>` +
-        `</g></svg>`;
+        `<g transform='rotate(${heading.toFixed(0)} 15 15)'>${body}</g></svg>`;
       return {
         url: "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg),
         anchor: new maps.Point(15, 15),
@@ -240,60 +245,116 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
       };
     };
 
-    type Car = {
+    // A random point inside the current viewport (inset from the edges so
+    // vehicles sit on visible roads). Falls back to a spread around centre
+    // before the map reports its bounds.
+    const randomInView = () => {
+      const b = map.getBounds();
+      if (b) {
+        const ne = b.getNorthEast();
+        const sw = b.getSouthWest();
+        const latPad = (ne.lat() - sw.lat()) * 0.12;
+        const lngPad = (ne.lng() - sw.lng()) * 0.12;
+        return {
+          lat: sw.lat() + latPad + Math.random() * (ne.lat() - sw.lat() - 2 * latPad),
+          lng: sw.lng() + lngPad + Math.random() * (ne.lng() - sw.lng() - 2 * lngPad),
+        };
+      }
+      const c = map.getCenter();
+      const cLat = c ? c.lat() : DEFAULT_CENTER[0];
+      const cLng = c ? c.lng() : DEFAULT_CENTER[1];
+      return { lat: cLat + (Math.random() - 0.5) * 0.02, lng: cLng + (Math.random() - 0.5) * 0.02 };
+    };
+
+    type Vehicle = {
       marker: google.maps.Marker;
+      kind: Kind;
       lat: number;
       lng: number;
       heading: number;
       speed: number;
       iconHeading: number;
+      opacity: number;
+      target: number; // target opacity; 0 while being cycled out
+      cycling: boolean;
     };
 
-    const spawn = (cLat: number, cLng: number, spread: number) => {
-      const a = Math.random() * Math.PI * 2;
-      const r = Math.sqrt(Math.random()) * spread;
-      return { lat: cLat + Math.cos(a) * r, lng: cLng + Math.sin(a) * r };
-    };
-
-    const cars: Car[] = [];
-    for (let i = 0; i < COUNT; i++) {
-      const p = spawn(start.lat(), start.lng(), RADIUS);
+    const make = (): Vehicle => {
+      const kind: Kind = Math.random() < 0.4 ? "bike" : "car";
+      const p = randomInView();
       const heading = Math.random() * 360;
       const marker = new maps.Marker({
         map,
         position: p,
-        icon: buildIcon(heading),
+        icon: buildIcon(kind, heading),
         clickable: false,
         optimized: false,
+        opacity: 0,
         zIndex: 1,
       });
-      cars.push({ ...p, marker, heading, iconHeading: heading, speed: 0.000004 + Math.random() * 0.000005 });
-    }
+      return {
+        marker,
+        kind,
+        lat: p.lat,
+        lng: p.lng,
+        heading,
+        iconHeading: heading,
+        speed: kind === "bike" ? 0.000007 + Math.random() * 0.000006 : 0.000004 + Math.random() * 0.000005,
+        opacity: 0,
+        target: 1,
+        cycling: false,
+      };
+    };
+
+    const fleet: Vehicle[] = Array.from({ length: COUNT }, make);
 
     let raf = 0;
     let last = performance.now();
+    let swapAccum = 0;
     const tick = (now: number) => {
-      const steps = Math.min(now - last, 64) / 16; // normalise to ~60fps
+      const dt = Math.min(now - last, 64);
       last = now;
-      const c = map.getCenter();
-      const cLat = c ? c.lat() : start.lat();
-      const cLng = c ? c.lng() : start.lng();
-      for (const car of cars) {
-        car.heading += (Math.random() - 0.5) * 1.4 * steps;
-        const rad = (car.heading * Math.PI) / 180;
-        car.lat += Math.cos(rad) * car.speed * steps;
-        car.lng += Math.sin(rad) * car.speed * steps;
-        const dLat = car.lat - cLat;
-        const dLng = car.lng - cLng;
-        if (dLat * dLat + dLng * dLng > RADIUS * RADIUS) {
-          const p = spawn(cLat, cLng, RADIUS * 0.5);
-          car.lat = p.lat;
-          car.lng = p.lng;
+      const steps = dt / 16; // normalise to ~60fps
+
+      // Periodically retire one vehicle so the visible mix keeps refreshing.
+      swapAccum += dt;
+      if (swapAccum >= SWAP_MS) {
+        swapAccum = 0;
+        const live = fleet.filter((v) => !v.cycling);
+        const pick = live[Math.floor(Math.random() * live.length)];
+        if (pick) {
+          pick.cycling = true;
+          pick.target = 0;
         }
-        car.marker.setPosition({ lat: car.lat, lng: car.lng });
-        if (Math.abs(car.heading - car.iconHeading) > 4) {
-          car.iconHeading = car.heading;
-          car.marker.setIcon(buildIcon(car.heading));
+      }
+
+      for (const v of fleet) {
+        v.heading += (Math.random() - 0.5) * 1.4 * steps;
+        const rad = (v.heading * Math.PI) / 180;
+        v.lat += Math.cos(rad) * v.speed * steps;
+        v.lng += Math.sin(rad) * v.speed * steps;
+
+        v.opacity += (v.target - v.opacity) * Math.min(1, 0.14 * steps);
+
+        // Fully faded out and flagged for cycling → respawn on another road.
+        if (v.cycling && v.opacity < 0.04) {
+          const p = randomInView();
+          v.kind = Math.random() < 0.4 ? "bike" : "car";
+          v.lat = p.lat;
+          v.lng = p.lng;
+          v.heading = Math.random() * 360;
+          v.iconHeading = v.heading;
+          v.speed = v.kind === "bike" ? 0.000007 + Math.random() * 0.000006 : 0.000004 + Math.random() * 0.000005;
+          v.marker.setIcon(buildIcon(v.kind, v.heading));
+          v.cycling = false;
+          v.target = 1;
+        }
+
+        v.marker.setPosition({ lat: v.lat, lng: v.lng });
+        v.marker.setOpacity(Math.max(0, Math.min(1, v.opacity)));
+        if (Math.abs(v.heading - v.iconHeading) > 4) {
+          v.iconHeading = v.heading;
+          v.marker.setIcon(buildIcon(v.kind, v.heading));
         }
       }
       raf = requestAnimationFrame(tick);
@@ -302,7 +363,7 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
 
     return () => {
       cancelAnimationFrame(raf);
-      cars.forEach((car) => car.marker.setMap(null));
+      fleet.forEach((v) => v.marker.setMap(null));
     };
   }, [state, driver]);
 
