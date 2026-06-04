@@ -238,7 +238,7 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
     // the travel bearing.
     const ART: Record<Kind, { src: string; w: number; h: number; offset: number }> = {
       car: { src: "/vehicles/car.png", w: 137, h: 192, offset: 0 },
-      bike: { src: "/vehicles/bike.png", w: 148, h: 99, offset: -90 },
+      bike: { src: "/vehicles/bike.png", w: 1118, h: 610, offset: -90 },
     };
     const BOX = 48; // square marker canvas (roomy enough for the rotated diagonal)
     const LEN = 36; // rendered length of the longest art dimension
