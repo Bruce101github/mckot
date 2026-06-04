@@ -233,18 +233,10 @@ export function BookingScreen() {
     <div className="flex h-screen w-full flex-col overflow-hidden bg-brand-surface">
       <RideNav />
 
-      <div className="relative flex-1">
-        <MapCanvas
-          pickup={mapPickup}
-          dropoff={mapDropoff}
-          polyline={mapPolyline}
-          driver={step === "active" ? driver?.coords ?? null : null}
-          driverBearing={driver?.bearing}
-        />
-
-        {/* Booking panel — bottom sheet on mobile, left dock on desktop */}
-        <div className="absolute inset-x-0 bottom-0 z-10 md:inset-x-auto md:bottom-auto md:left-4 md:top-4 md:w-[384px]">
-        <div className="rounded-t-2xl border border-brand-border bg-white p-5 shadow-soft md:rounded-2xl">
+      <div className="flex w-full flex-1 flex-col gap-4 overflow-hidden px-4 py-4 md:flex-row md:gap-6 md:px-6 md:py-6">
+        {/* Booking panel — stacked below the map on mobile, left column on desktop */}
+        <div className="order-2 w-full shrink-0 overflow-y-auto md:order-1 md:w-[380px]">
+        <div className="rounded-2xl border border-brand-border bg-white p-5 shadow-soft">
           {step !== "active" && (
             <>
               <h1 className="mb-3 text-lg font-semibold text-brand-foreground">
@@ -315,6 +307,17 @@ export function BookingScreen() {
             />
           )}
         </div>
+        </div>
+
+        {/* Map — contained rounded card, not a full-bleed background */}
+        <div className="relative order-1 min-h-[280px] flex-1 overflow-hidden rounded-2xl border border-brand-border shadow-soft md:order-2 md:min-h-0">
+          <MapCanvas
+            pickup={mapPickup}
+            dropoff={mapDropoff}
+            polyline={mapPolyline}
+            driver={step === "active" ? driver?.coords ?? null : null}
+            driverBearing={driver?.bearing}
+          />
         </div>
       </div>
     </div>

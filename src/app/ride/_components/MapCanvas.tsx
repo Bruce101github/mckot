@@ -42,7 +42,8 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
   useEffect(() => {
     if (state.status !== "ready" || !divRef.current || mapRef.current) return;
     const maps = state.maps;
-    mapRef.current = new maps.Map(divRef.current, {
+    const div = divRef.current;
+    const map = new maps.Map(div, {
       center: { lat: DEFAULT_CENTER[0], lng: DEFAULT_CENTER[1] },
       zoom: 13,
       disableDefaultUI: true,
@@ -53,6 +54,18 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
         { featureType: "transit", elementType: "labels", stylers: [{ visibility: "off" }] },
       ],
     });
+    mapRef.current = map;
+
+    // The map can initialize before the flex layout has given its container a
+    // real size, leaving it blank until something fires a resize. Observe the
+    // container and re-render the map (re-centering) whenever its size changes.
+    const ro = new ResizeObserver(() => {
+      const center = map.getCenter();
+      maps.event.trigger(map, "resize");
+      if (center) map.setCenter(center);
+    });
+    ro.observe(div);
+    return () => ro.disconnect();
   }, [state]);
 
   // Sync markers + route whenever inputs change.
@@ -122,7 +135,7 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
       if (routeLine.current) {
         routeLine.current.getPath().forEach((p) => bounds.extend(p));
       }
-      map.fitBounds(bounds, { top: 80, bottom: 320, left: 60, right: 60 });
+      map.fitBounds(bounds, { top: 60, bottom: 60, left: 60, right: 60 });
     } else if (pickup) {
       map.setCenter({ lat: pickup[0], lng: pickup[1] });
       map.setZoom(15);
@@ -167,7 +180,7 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
       const bounds = new maps.LatLngBounds();
       bounds.extend(pos);
       bounds.extend({ lat: target[0], lng: target[1] });
-      map.fitBounds(bounds, { top: 80, bottom: 320, left: 60, right: 60 });
+      map.fitBounds(bounds, { top: 60, bottom: 60, left: 60, right: 60 });
     } else {
       map.setCenter(pos);
     }
