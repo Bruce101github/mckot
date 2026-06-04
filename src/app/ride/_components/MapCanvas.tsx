@@ -292,7 +292,9 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
       return icon;
     };
 
-    const rndKind = (): Kind => (Math.random() < 0.4 ? "bike" : "car");
+    // Cars are temporarily disabled (we have few on the road right now); the
+    // ambient fleet is bikes only. Restore the random mix to bring cars back.
+    const rndKind = (): Kind => "bike";
     // metres travelled per ~16ms frame; bikes a touch quicker. Kept gentle so
     // the traffic reads as calm ambient motion, not a race.
     const speedFor = (kind: Kind) =>
