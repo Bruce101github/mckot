@@ -230,24 +230,62 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
     const REGEN_M = 1500; // regenerate the pool if the map pans this far
     type Kind = "car" | "bike";
 
-    const buildIcon = (kind: Kind, heading: number): google.maps.Icon => {
-      const body =
-        kind === "car"
-          ? `<rect x='10' y='4' width='10' height='21' rx='3.5' fill='#1f2937'/>` +
-            `<rect x='11.5' y='6.5' width='7' height='4.5' rx='1.5' fill='#9ca3af'/>` +
-            `<rect x='11.5' y='18' width='7' height='3.5' rx='1.5' fill='#4b5563'/>`
-          : `<rect x='13' y='7' width='4' height='16' rx='2' fill='#1f2937'/>` +
-            `<rect x='10.5' y='9' width='9' height='2.4' rx='1.2' fill='#4b5563'/>` +
-            `<circle cx='15' cy='8' r='1.8' fill='#111827'/>` +
-            `<circle cx='15' cy='22' r='2' fill='#111827'/>`;
+    // The same top-down car/motorbike art the Flutter app uses as map markers
+    // (ridehailing-mobile/assets/images/{car,bike}_marker.png). Each points
+    // north; we embed it in an SVG and rotate to face the road. Natural sizes
+    // are baked in so we can keep the aspect ratio.
+    const ART: Record<Kind, { src: string; w: number; h: number }> = {
+      car: { src: "/vehicles/car.png", w: 137, h: 192 },
+      bike: { src: "/vehicles/bike.png", w: 148, h: 99 },
+    };
+    const BOX = 44; // square marker canvas
+    const HEIGHT = 34; // rendered height of the longer art dimension
+    let dataUrls: Partial<Record<Kind, string>> = {};
+    let assetsReady = false;
+
+    const toDataUrl = (src: string) =>
+      fetch(src)
+        .then((r) => r.blob())
+        .then(
+          (b) =>
+            new Promise<string>((res, rej) => {
+              const fr = new FileReader();
+              fr.onload = () => res(fr.result as string);
+              fr.onerror = rej;
+              fr.readAsDataURL(b);
+            }),
+        );
+    Promise.all([toDataUrl(ART.car.src), toDataUrl(ART.bike.src)]).then(([car, bike]) => {
+      dataUrls = { car, bike };
+      assetsReady = true;
+    });
+
+    // Cache one icon per kind + heading bucket so we don't rebuild the (large,
+    // base64-embedded) SVG every frame.
+    const iconCache = new Map<string, google.maps.Icon>();
+    const buildIcon = (kind: Kind, heading: number): google.maps.Icon | null => {
+      const data = dataUrls[kind];
+      if (!data) return null;
+      const bucket = Math.round((((heading % 360) + 360) % 360) / 12) * 12;
+      const key = `${kind}:${bucket}`;
+      const cached = iconCache.get(key);
+      if (cached) return cached;
+      const art = ART[kind];
+      const h = HEIGHT;
+      const w = (h * art.w) / art.h;
+      const x = (BOX - w) / 2;
+      const y = (BOX - h) / 2;
       const svg =
-        `<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'>` +
-        `<g transform='rotate(${heading.toFixed(0)} 15 15)'>${body}</g></svg>`;
-      return {
+        `<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='${BOX}' height='${BOX}' viewBox='0 0 ${BOX} ${BOX}'>` +
+        `<image href='${data}' x='${x.toFixed(2)}' y='${y.toFixed(2)}' width='${w.toFixed(2)}' height='${h}' ` +
+        `transform='rotate(${bucket} ${BOX / 2} ${BOX / 2})'/></svg>`;
+      const icon: google.maps.Icon = {
         url: "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg),
-        anchor: new maps.Point(15, 15),
-        scaledSize: new maps.Size(30, 30),
+        anchor: new maps.Point(BOX / 2, BOX / 2),
+        scaledSize: new maps.Size(BOX, BOX),
       };
+      iconCache.set(key, icon);
+      return icon;
     };
 
     const rndKind = (): Kind => (Math.random() < 0.4 ? "bike" : "car");
@@ -329,6 +367,17 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
       opacity: number;
       target: number; // target opacity; 0 while being cycled out
       cycling: boolean;
+      hasIcon: boolean; // false until the art is loaded + first applied
+    };
+
+    // Apply the current kind/heading art to a marker once the PNGs are loaded.
+    const applyIcon = (v: Vehicle) => {
+      const icon = buildIcon(v.kind, v.heading);
+      if (icon) {
+        v.marker.setIcon(icon);
+        v.iconHeading = v.heading;
+        v.hasIcon = true;
+      }
     };
 
     const make = (): Vehicle => {
@@ -338,7 +387,6 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
       const marker = new maps.Marker({
         map,
         position: pos,
-        icon: buildIcon(kind, heading),
         clickable: false,
         optimized: false,
         opacity: 0,
@@ -357,6 +405,7 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
         opacity: 0,
         target: 0,
         cycling: false,
+        hasIcon: false,
       };
     };
 
@@ -370,8 +419,7 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
       const path = pool[idx];
       v.pos = path[0];
       v.heading = spherical.computeHeading(path[0], path[1]);
-      v.iconHeading = v.heading;
-      v.marker.setIcon(buildIcon(v.kind, v.heading));
+      applyIcon(v);
     };
 
     // Advance a vehicle `dist` metres along its assigned road path.
@@ -427,7 +475,10 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
       }
 
       for (const v of fleet) {
-        if (roadMode) {
+        if (!assetsReady) {
+          // Stay hidden until the car/bike art has loaded.
+          v.target = 0;
+        } else if (roadMode) {
           if (v.pathIndex < 0 || v.pathIndex >= pool.length) {
             // Needs a path (first frame, or pool was regenerated).
             const idx = pickPath();
@@ -474,9 +525,8 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
             v.kind = rndKind();
             v.pos = randomInView();
             v.heading = Math.random() * 360;
-            v.iconHeading = v.heading;
             v.speed = speedFor(v.kind);
-            v.marker.setIcon(buildIcon(v.kind, v.heading));
+            applyIcon(v);
             v.cycling = false;
             v.target = 1;
           }
@@ -484,9 +534,8 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
 
         v.marker.setPosition(v.pos);
         v.marker.setOpacity(Math.max(0, Math.min(1, v.opacity)));
-        if (Math.abs(v.heading - v.iconHeading) > 4) {
-          v.iconHeading = v.heading;
-          v.marker.setIcon(buildIcon(v.kind, v.heading));
+        if (assetsReady && (!v.hasIcon || Math.abs(v.heading - v.iconHeading) > 4)) {
+          applyIcon(v);
         }
       }
       raf = requestAnimationFrame(tick);
