@@ -166,7 +166,7 @@ export function LocationSearch({
             </button>
           )}
 
-          {hasQuickActions && (showRecents || results.length > 0) && (
+          {hasQuickActions && results.length > 0 && (
             <div className="my-1 border-t border-brand-border" />
           )}
 
