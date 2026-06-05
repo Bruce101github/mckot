@@ -80,19 +80,29 @@ export function BookingScreen() {
   }, []);
   const portalTarget = isMobile && searchActive ? panelHost : null;
 
-  // While the mobile takeover is open, freeze the page behind it so iOS Safari
-  // can't rubber-band the body (which toggles the address bar and makes the
-  // fixed header appear to jump). Restored when the takeover closes.
+  // The booking shell sizes itself to the dynamic viewport (h-[100dvh]) and
+  // scrolls its own inner regions. Lock the document while it's mounted so iOS
+  // Safari can't scroll the body — otherwise the outer min-h-screen (100vh,
+  // taller than the visible area when the address bar shows) lets the page
+  // creep up and drag the sticky nav under the status bar. Also kills body
+  // rubber-banding during the takeover. Restored on unmount.
   useEffect(() => {
-    if (!(isMobile && searchActive)) return;
-    const { overflow, overscrollBehavior } = document.body.style;
-    document.body.style.overflow = "hidden";
-    document.body.style.overscrollBehavior = "none";
-    return () => {
-      document.body.style.overflow = overflow;
-      document.body.style.overscrollBehavior = overscrollBehavior;
+    const html = document.documentElement;
+    const body = document.body;
+    const prev = {
+      htmlOverflow: html.style.overflow,
+      bodyOverflow: body.style.overflow,
+      bodyOverscroll: body.style.overscrollBehavior,
     };
-  }, [isMobile, searchActive]);
+    html.style.overflow = "hidden";
+    body.style.overflow = "hidden";
+    body.style.overscrollBehavior = "none";
+    return () => {
+      html.style.overflow = prev.htmlOverflow;
+      body.style.overflow = prev.bodyOverflow;
+      body.style.overscrollBehavior = prev.bodyOverscroll;
+    };
+  }, []);
 
   // On mount: resume any in-flight trip, else seed pickup from geolocation.
   useEffect(() => {
