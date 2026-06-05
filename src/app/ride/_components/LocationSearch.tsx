@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Loader2, LocateFixed, Map as MapIcon, MapPin, X } from "lucide-react";
+import { Clock, Loader2, LocateFixed, Map as MapIcon, MapPin, X } from "lucide-react";
 import { searchPlaces, type Coords, type PlaceResult } from "@/lib/api/booking";
+import { addRecentPlace, getRecentPlaces } from "@/lib/recentPlaces";
 
 type Props = {
   placeholder: string;
@@ -29,9 +30,22 @@ export function LocationSearch({
 }: Props) {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<PlaceResult[]>([]);
+  const [recents, setRecents] = useState<PlaceResult[]>([]);
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const boxRef = useRef<HTMLDivElement>(null);
+
+  // Load recent locations once mounted (localStorage isn't available on the server).
+  useEffect(() => {
+    setRecents(getRecentPlaces());
+  }, []);
+
+  const pick = (p: PlaceResult) => {
+    setRecents(addRecentPlace(p));
+    onSelect(p);
+    setQuery(p.address);
+    setOpen(false);
+  };
 
   // Close the dropdown when clicking outside.
   useEffect(() => {
@@ -65,10 +79,12 @@ export function LocationSearch({
 
   const display = query !== "" ? query : (selectedLabel ?? "");
   const hasQuickActions = onUseCurrentLocation != null || onSetOnMap != null;
+  // Recent locations show before any typing (no live results, empty query).
+  const showRecents = recents.length > 0 && results.length === 0 && query.trim().length < 2;
   // Show the panel whenever the field is focused — like Uber, an empty click
-  // surfaces the quick actions (use current location, set on map) before any
-  // typing.
-  const showPanel = open && (hasQuickActions || results.length > 0);
+  // surfaces the quick actions (use current location, set on map) and recent
+  // locations before any typing.
+  const showPanel = open && (hasQuickActions || showRecents || results.length > 0);
 
   return (
     <div ref={boxRef} className="relative">
@@ -86,7 +102,11 @@ export function LocationSearch({
             setQuery(e.target.value);
             if (e.target.value === "") onClear?.();
           }}
-          onFocus={() => setOpen(true)}
+          onFocus={() => {
+            // Re-read so a place chosen in the other field shows up here too.
+            setRecents(getRecentPlaces());
+            setOpen(true);
+          }}
           placeholder={placeholder}
           className="w-full bg-transparent text-sm text-brand-foreground outline-none focus-visible:!outline-none placeholder:text-brand-foreground/40"
         />
@@ -146,8 +166,32 @@ export function LocationSearch({
             </button>
           )}
 
-          {hasQuickActions && results.length > 0 && (
+          {hasQuickActions && (showRecents || results.length > 0) && (
             <div className="my-1 border-t border-brand-border" />
+          )}
+
+          {showRecents && (
+            <ul>
+              {recents.map((p, i) => (
+                <li key={`recent-${p.address}-${i}`}>
+                  <button
+                    type="button"
+                    onClick={() => pick(p)}
+                    className="flex w-full items-start gap-3 px-3 py-2.5 text-left hover:bg-brand-muted/50"
+                  >
+                    <Clock className="mt-0.5 h-4 w-4 shrink-0 text-brand-foreground/40" />
+                    <span className="min-w-0">
+                      <span className="block truncate text-sm font-medium text-brand-foreground">
+                        {p.address}
+                      </span>
+                      <span className="block truncate text-xs text-brand-foreground/50">
+                        {p.location}
+                      </span>
+                    </span>
+                  </button>
+                </li>
+              ))}
+            </ul>
           )}
 
           {results.length > 0 && (
@@ -156,11 +200,7 @@ export function LocationSearch({
                 <li key={`${p.address}-${i}`}>
                   <button
                     type="button"
-                    onClick={() => {
-                      onSelect(p);
-                      setQuery(p.address);
-                      setOpen(false);
-                    }}
+                    onClick={() => pick(p)}
                     className="flex w-full items-start gap-3 px-3 py-2.5 text-left hover:bg-brand-muted/50"
                   >
                     <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-foreground/40" />
