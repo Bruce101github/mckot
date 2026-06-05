@@ -207,6 +207,13 @@ export function BookingScreen() {
     runEstimate(pickup.coords, dropoff.coords);
   };
 
+  // Fade out the red validation borders a few seconds after they appear.
+  useEffect(() => {
+    if (!showErrors) return;
+    const t = setTimeout(() => setShowErrors(false), 3000);
+    return () => clearTimeout(t);
+  }, [showErrors]);
+
   // Quick-action cards bring the matching search field into view and focus it.
   const focusField = (placeholder: string) => {
     const el = document.querySelector<HTMLInputElement>(`input[placeholder="${placeholder}"]`);
