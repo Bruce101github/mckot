@@ -193,10 +193,6 @@ export function LocationSearch({
             </button>
           )}
 
-          {hasQuickActions && results.length > 0 && (
-            <div className="my-1 border-t border-brand-border" />
-          )}
-
           {showRecents && (
             <ul>
               {recents.map((p, i) => (
