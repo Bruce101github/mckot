@@ -168,9 +168,7 @@ export function LocationSearch({
               }}
               className="flex w-full items-center gap-3 px-3 py-2.5 text-left hover:bg-brand-muted/50"
             >
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-muted">
-                <LocateFixed className="h-4 w-4 text-brand-dark" />
-              </span>
+              <LocateFixed className="h-4 w-4 shrink-0 text-brand-foreground/40" />
               <span className="text-sm font-medium text-brand-foreground">Use current location</span>
             </button>
           )}
@@ -186,9 +184,7 @@ export function LocationSearch({
               }}
               className="flex w-full items-center gap-3 px-3 py-2.5 text-left hover:bg-brand-muted/50"
             >
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-muted">
-                <MapIcon className="h-4 w-4 text-brand-dark" />
-              </span>
+              <MapIcon className="h-4 w-4 shrink-0 text-brand-foreground/40" />
               <span className="text-sm font-medium text-brand-foreground">Set location on map</span>
             </button>
           )}
