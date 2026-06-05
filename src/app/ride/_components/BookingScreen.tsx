@@ -320,7 +320,7 @@ export function BookingScreen() {
     : "Now";
 
   return (
-    <div className="flex h-screen w-full flex-col overflow-hidden bg-white">
+    <div className="flex h-[100dvh] w-full flex-col overflow-hidden bg-white">
       <RideNav />
 
       <div className="flex w-full flex-1 flex-col gap-4 overflow-y-auto px-4 py-4 md:flex-row md:gap-6 md:overflow-hidden md:px-6 md:py-6">
@@ -572,7 +572,7 @@ export function BookingScreen() {
 
         {/* Quick-action cards (mobile only) — mirror the app's requester home */}
         {step === "locations" && picking === null && !scheduleOpen && (
-          <div className="order-3 grid grid-cols-2 gap-2 md:hidden">
+          <div className="order-3 grid grid-cols-2 gap-2 pb-2 md:hidden">
             <ServiceCard
               label="Send item"
               image="/cards/send-item.png"
