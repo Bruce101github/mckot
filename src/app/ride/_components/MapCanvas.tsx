@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { MapPin } from "lucide-react";
 import { useGoogleMaps } from "@/lib/maps/useGoogleMaps";
 import type { Coords } from "@/lib/api/booking";
@@ -44,6 +44,9 @@ type Props = {
   driver?: Coords | null;
   // Heading in degrees, used to point the driver marker.
   driverBearing?: number;
+  // True while a trip is live (step === "active"). Hides the ambient/decorative
+  // vehicles even before the first real driver fix arrives.
+  activeTrip?: boolean;
   // "Set location on map" mode — a fixed centre pin the rider pans under.
   // The map reports its centre (reverse-geocoded) up to the panel, which owns
   // the confirm / cancel controls.
@@ -62,12 +65,42 @@ function pinIcon(maps: typeof google.maps, color: string): google.maps.Symbol {
   };
 }
 
+// Same motorbike art the ambient fleet uses (landscape, points east → -90 to
+// face heading 0). Embedded in a rotated SVG so the marker can point along the
+// rider's heading. Used for the live driver marker on an active trip.
+const BIKE_ART = { src: "/vehicles/bike.png", w: 1118, h: 610, offset: -90 };
+
+function bikeIcon(
+  maps: typeof google.maps,
+  dataUrl: string,
+  heading: number,
+): google.maps.Icon {
+  const BOX = 56;
+  const LEN = 44;
+  const scale = LEN / Math.max(BIKE_ART.w, BIKE_ART.h);
+  const w = BIKE_ART.w * scale;
+  const h = BIKE_ART.h * scale;
+  const x = (BOX - w) / 2;
+  const y = (BOX - h) / 2;
+  const angle = ((((heading % 360) + 360) % 360) + BIKE_ART.offset).toFixed(1);
+  const svg =
+    `<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='${BOX}' height='${BOX}' viewBox='0 0 ${BOX} ${BOX}'>` +
+    `<image href='${dataUrl}' x='${x.toFixed(2)}' y='${y.toFixed(2)}' width='${w.toFixed(2)}' height='${h.toFixed(2)}' ` +
+    `transform='rotate(${angle} ${BOX / 2} ${BOX / 2})'/></svg>`;
+  return {
+    url: "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg),
+    anchor: new maps.Point(BOX / 2, BOX / 2),
+    scaledSize: new maps.Size(BOX, BOX),
+  };
+}
+
 export function MapCanvas({
   pickup,
   dropoff,
   polyline,
   driver,
   driverBearing,
+  activeTrip,
   picking,
   onPickPointChange,
 }: Props) {
@@ -82,6 +115,32 @@ export function MapCanvas({
   // Keep the latest callback without re-subscribing the idle listener.
   const pickCb = useRef(onPickPointChange);
   pickCb.current = onPickPointChange;
+
+  // Motorbike art for the live driver marker, loaded once as a data URL so it
+  // can be embedded in a rotated SVG icon. Until it resolves the driver marker
+  // falls back to a simple arrow.
+  const [bikeUrl, setBikeUrl] = useState<string | null>(null);
+  useEffect(() => {
+    let cancelled = false;
+    fetch(BIKE_ART.src)
+      .then((r) => r.blob())
+      .then(
+        (b) =>
+          new Promise<string>((res, rej) => {
+            const fr = new FileReader();
+            fr.onload = () => res(fr.result as string);
+            fr.onerror = rej;
+            fr.readAsDataURL(b);
+          }),
+      )
+      .then((url) => {
+        if (!cancelled) setBikeUrl(url);
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   // Init the map once Maps is ready.
   useEffect(() => {
@@ -201,17 +260,21 @@ export function MapCanvas({
     }
 
     const pos = { lat: driver[0], lng: driver[1] };
-    const icon: google.maps.Symbol = {
-      path: maps.SymbolPath.FORWARD_CLOSED_ARROW,
-      fillColor: "#0B3B2D",
-      fillOpacity: 1,
-      strokeColor: "#ffffff",
-      strokeWeight: 2,
-      scale: 5,
-      rotation: driverBearing ?? 0,
-    };
+    // Motorbike art at the rider's live position, rotated to the reported
+    // heading. Falls back to a simple arrow until the PNG has loaded.
+    const icon: google.maps.Icon | google.maps.Symbol = bikeUrl
+      ? bikeIcon(maps, bikeUrl, driverBearing ?? 0)
+      : {
+          path: maps.SymbolPath.FORWARD_CLOSED_ARROW,
+          fillColor: "#0B3B2D",
+          fillOpacity: 1,
+          strokeColor: "#ffffff",
+          strokeWeight: 2,
+          scale: 5,
+          rotation: driverBearing ?? 0,
+        };
     if (!driverMarker.current) {
-      driverMarker.current = new maps.Marker({ map, icon, zIndex: 999 });
+      driverMarker.current = new maps.Marker({ map, icon, zIndex: 999, optimized: false });
     } else {
       driverMarker.current.setIcon(icon);
     }
@@ -227,7 +290,7 @@ export function MapCanvas({
     } else {
       map.setCenter(pos);
     }
-  }, [state, driver, driverBearing, pickup, dropoff]);
+  }, [state, driver, driverBearing, pickup, dropoff, bikeUrl]);
 
   // "Set location on map" — while picking, report the map centre (the point
   // under the fixed pin) up to the panel, reverse-geocoded to a street address.
@@ -267,9 +330,11 @@ export function MapCanvas({
   // so they don't compete with the real driver marker. If the Directions API
   // isn't available on the key, vehicles fall back to a gentle free drift.
   useEffect(() => {
-    // Hidden during an active trip (real driver marker) and while the rider is
-    // setting a location on the map (the centre pin shouldn't fight decoration).
-    if (state.status !== "ready" || !mapRef.current || driver || picking) return;
+    // Hidden during an active trip (so the decorative fleet doesn't compete with
+    // the real rider marker — even before the first driver fix) and while the
+    // rider is setting a location on the map (the centre pin shouldn't fight
+    // decoration).
+    if (state.status !== "ready" || !mapRef.current || activeTrip || driver || picking) return;
     const maps = state.maps;
     const map = mapRef.current;
     const spherical = maps.geometry.spherical;
@@ -664,7 +729,7 @@ export function MapCanvas({
       maps.event.removeListener(idleListener);
       fleet.forEach((v) => v.marker.setMap(null));
     };
-  }, [state, driver, picking]);
+  }, [state, driver, picking, activeTrip]);
 
   return (
     <div className="absolute inset-0">

@@ -673,6 +673,7 @@ export function BookingScreen() {
             polyline={mapPolyline}
             driver={step === "active" ? driver?.coords ?? null : null}
             driverBearing={driver?.bearing}
+            activeTrip={step === "active"}
             picking={step === "locations" && picking !== null}
             onPickPointChange={setPickPoint}
           />
