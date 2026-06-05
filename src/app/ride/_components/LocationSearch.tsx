@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { Clock, Loader2, LocateFixed, Map as MapIcon, MapPin, X } from "lucide-react";
 import { searchPlaces, type Coords, type PlaceResult } from "@/lib/api/booking";
 import { addRecentPlace, getRecentPlaces } from "@/lib/recentPlaces";
@@ -11,6 +12,10 @@ type Props = {
   bias: Coords;
   selectedLabel?: string | null;
   invalid?: boolean;
+  // When set, the suggestions render into this element (mobile full-screen
+  // takeover) instead of as an inline dropdown.
+  portalTarget?: HTMLElement | null;
+  onActiveChange?: (active: boolean) => void;
   onSelect: (place: PlaceResult) => void;
   onClear?: () => void;
   onUseCurrentLocation?: () => void;
@@ -24,6 +29,8 @@ export function LocationSearch({
   bias,
   selectedLabel,
   invalid,
+  portalTarget,
+  onActiveChange,
   onSelect,
   onClear,
   onUseCurrentLocation,
@@ -49,14 +56,26 @@ export function LocationSearch({
     setOpen(false);
   };
 
-  // Close the dropdown when clicking outside.
+  // Notify the parent when this field opens/closes (drives the mobile takeover).
+  // The cleanup also fires on unmount (e.g. switching into map-pick mode), so the
+  // parent's active flag never gets stuck on.
+  useEffect(() => {
+    onActiveChange?.(open);
+    return () => onActiveChange?.(false);
+  }, [open, onActiveChange]);
+
+  // Close the dropdown when clicking outside. In takeover mode the panel lives
+  // in a portal outside boxRef, so treat clicks within it as inside too.
   useEffect(() => {
     const onDoc = (e: MouseEvent) => {
-      if (boxRef.current && !boxRef.current.contains(e.target as Node)) setOpen(false);
+      const t = e.target as Node;
+      const inside =
+        boxRef.current?.contains(t) || (portalTarget != null && portalTarget.contains(t));
+      if (!inside) setOpen(false);
     };
     document.addEventListener("mousedown", onDoc);
     return () => document.removeEventListener("mousedown", onDoc);
-  }, []);
+  }, [portalTarget]);
 
   // Debounced backend place search.
   useEffect(() => {
@@ -134,8 +153,10 @@ export function LocationSearch({
         ) : null}
       </div>
 
-      {showPanel && (
-        <div className="absolute z-20 mt-1 max-h-72 w-full overflow-auto rounded-xl border border-brand-border bg-white py-1 shadow-soft">
+      {showPanel &&
+        (() => {
+          const body = (
+            <>
           {onUseCurrentLocation && (
             <button
               type="button"
@@ -223,8 +244,19 @@ export function LocationSearch({
               ))}
             </ul>
           )}
-        </div>
-      )}
+            </>
+          );
+          return portalTarget ? (
+            createPortal(
+              <div className="w-full overflow-auto pt-1">{body}</div>,
+              portalTarget,
+            )
+          ) : (
+            <div className="absolute z-20 mt-1 max-h-72 w-full overflow-auto rounded-xl border border-brand-border bg-white py-1 shadow-soft">
+              {body}
+            </div>
+          );
+        })()}
     </div>
   );
 }

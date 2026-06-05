@@ -62,6 +62,24 @@ export function BookingScreen() {
   const [scheduleDraftTime, setScheduleDraftTime] = useState("");
   const [showErrors, setShowErrors] = useState(false);
 
+  // Mobile full-screen search takeover: when a location field is focused on a
+  // narrow screen the map/cards collapse and the suggestions fill the page
+  // (Uber-style). Desktop keeps the inline dropdown.
+  const [pickupActive, setPickupActive] = useState(false);
+  const [dropoffActive, setDropoffActive] = useState(false);
+  const searchActive =
+    step === "locations" && picking === null && (pickupActive || dropoffActive);
+  const [panelHost, setPanelHost] = useState<HTMLDivElement | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const sync = () => setIsMobile(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+  const portalTarget = isMobile && searchActive ? panelHost : null;
+
   // On mount: resume any in-flight trip, else seed pickup from geolocation.
   useEffect(() => {
     let cancelled = false;
@@ -338,8 +356,18 @@ export function BookingScreen() {
 
       <div className="flex w-full flex-1 flex-col gap-4 overflow-hidden px-4 py-4 md:flex-row md:gap-6 md:px-6 md:py-6">
         {/* Booking panel — stacked above the map on mobile, left column on desktop */}
-        <div className="order-1 w-full shrink-0 md:w-[380px] md:overflow-y-auto">
-        <div className="md:rounded-2xl md:border md:border-brand-border md:bg-white md:p-5 md:shadow-soft">
+        <div
+          className={`order-1 w-full md:w-[380px] md:overflow-y-auto ${
+            searchActive
+              ? "max-md:flex max-md:min-h-0 max-md:flex-1 max-md:flex-col"
+              : "shrink-0"
+          }`}
+        >
+        <div
+          className={`md:rounded-2xl md:border md:border-brand-border md:bg-white md:p-5 md:shadow-soft ${
+            searchActive ? "max-md:flex max-md:min-h-0 max-md:flex-1 max-md:flex-col" : ""
+          }`}
+        >
           {step !== "active" && scheduleOpen && (
             <div className="space-y-5">
               <div className="flex items-center justify-between">
@@ -491,7 +519,11 @@ export function BookingScreen() {
               )}
 
               {step === "locations" && picking === null && (
-                <div className="space-y-2">
+                <div
+                  className={`space-y-2 ${
+                    searchActive ? "max-md:flex max-md:min-h-0 max-md:flex-1 max-md:flex-col" : ""
+                  }`}
+                >
                   <div className="mb-1">
                     <button
                       type="button"
@@ -509,6 +541,8 @@ export function BookingScreen() {
                     bias={searchBias}
                     selectedLabel={pickup?.label}
                     invalid={showErrors && !pickup}
+                    portalTarget={portalTarget}
+                    onActiveChange={setPickupActive}
                     onSelect={onPickupSelect}
                     onClear={() => setPickup(null)}
                     onUseCurrentLocation={useCurrentLocation}
@@ -520,6 +554,8 @@ export function BookingScreen() {
                     bias={searchBias}
                     selectedLabel={dropoff?.label}
                     invalid={showErrors && !dropoff}
+                    portalTarget={portalTarget}
+                    onActiveChange={setDropoffActive}
                     onSelect={onDropoffSelect}
                     onClear={() => setDropoff(null)}
                     onSetOnMap={() => setPicking("dropoff")}
@@ -529,10 +565,19 @@ export function BookingScreen() {
                   <button
                     type="button"
                     onClick={onSearch}
-                    className="mt-2 w-full rounded-xl bg-brand-dark py-3 font-semibold text-white transition-colors hover:bg-brand-foreground"
+                    className={`mt-2 w-full rounded-xl bg-brand-dark py-3 font-semibold text-white transition-colors hover:bg-brand-foreground ${
+                      searchActive ? "max-md:hidden" : ""
+                    }`}
                   >
                     Search
                   </button>
+                  {/* Full-screen suggestions host (mobile takeover only) */}
+                  {searchActive && (
+                    <div
+                      ref={setPanelHost}
+                      className="max-md:min-h-0 max-md:flex-1 max-md:overflow-auto md:hidden"
+                    />
+                  )}
                 </div>
               )}
 
@@ -572,7 +617,11 @@ export function BookingScreen() {
         </div>
 
         {/* Map — contained rounded card, not a full-bleed background */}
-        <div className="relative order-2 min-h-[240px] flex-1 overflow-hidden rounded-2xl border border-brand-border shadow-soft md:min-h-0 md:flex-1">
+        <div
+          className={`relative order-2 min-h-[240px] flex-1 overflow-hidden rounded-2xl border border-brand-border shadow-soft md:min-h-0 md:flex-1 ${
+            searchActive ? "max-md:hidden" : ""
+          }`}
+        >
           <MapCanvas
             pickup={mapPickup}
             dropoff={mapDropoff}
@@ -585,7 +634,7 @@ export function BookingScreen() {
         </div>
 
         {/* Quick-action cards (mobile only) — mirror the app's requester home */}
-        {step === "locations" && picking === null && !scheduleOpen && (
+        {step === "locations" && picking === null && !scheduleOpen && !searchActive && (
           <div className="order-3 pb-1 md:hidden">
             <h2 className="mb-2 text-base font-bold text-brand-foreground">
               Move Anything, Anytime
