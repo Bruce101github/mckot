@@ -419,7 +419,11 @@ export function BookingScreen() {
 
           {step !== "active" && !scheduleOpen && (
             <>
-              <h1 className="mb-3 text-lg font-semibold text-brand-foreground">
+              <h1
+                className={`mb-3 text-lg font-semibold text-brand-foreground ${
+                  step === "locations" && picking === null ? "hidden md:block" : "block"
+                }`}
+              >
                 {step === "choosing"
                   ? "Choose your ride"
                   : picking === "pickup"
