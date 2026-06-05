@@ -572,7 +572,7 @@ export function BookingScreen() {
 
         {/* Quick-action cards (mobile only) — mirror the app's requester home */}
         {step === "locations" && picking === null && !scheduleOpen && (
-          <div className="order-3 grid grid-cols-2 gap-2 pb-2 md:hidden">
+          <div className="order-3 grid grid-cols-2 gap-2 pb-1 md:hidden">
             <ServiceCard
               label="Send item"
               image="/cards/send-item.png"
