@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Clock, ChevronDown } from "lucide-react";
+import { Clock, ChevronDown, MapPin } from "lucide-react";
 import { useAuth } from "@/lib/auth/AuthProvider";
 import {
   cancelRequest,
@@ -36,6 +36,8 @@ export function BookingScreen() {
   const [dropoff, setDropoff] = useState<Place | null>(null);
   // "Set location on map" target — which field the centre-pin picker fills.
   const [picking, setPicking] = useState<"pickup" | "dropoff" | null>(null);
+  // Live map-centre point reported while picking (reverse-geocoded address).
+  const [pickPoint, setPickPoint] = useState<{ coords: Coords; address: string | null } | null>(null);
 
   const [estimate, setEstimate] = useState<RouteEstimate | null>(null);
   const [estimating, setEstimating] = useState(false);
@@ -178,11 +180,18 @@ export function BookingScreen() {
     );
   };
 
-  const onPickConfirm = (c: Coords) => {
-    const place = { coords: c, label: "Pinned location" };
+  const onPickConfirm = () => {
+    if (!pickPoint) return;
+    const place = { coords: pickPoint.coords, label: pickPoint.address ?? "Pinned location" };
     if (picking === "pickup") setPickup(place);
     else if (picking === "dropoff") setDropoff(place);
     setPicking(null);
+    setPickPoint(null);
+  };
+
+  const onPickCancel = () => {
+    setPicking(null);
+    setPickPoint(null);
   };
 
   const onSearch = () => {
@@ -267,10 +276,60 @@ export function BookingScreen() {
           {step !== "active" && (
             <>
               <h1 className="mb-3 text-lg font-semibold text-brand-foreground">
-                {step === "choosing" ? "Choose your ride" : "Where to?"}
+                {step === "choosing"
+                  ? "Choose your ride"
+                  : picking === "pickup"
+                    ? "Choose your pickup spot"
+                    : picking === "dropoff"
+                      ? "Choose your destination"
+                      : "Where to?"}
               </h1>
 
-              {step === "locations" && (
+              {step === "locations" && picking !== null && (
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3 rounded-xl border border-brand-border bg-[#F7F7F7] px-3.5 py-3">
+                    <MapPin
+                      className="mt-0.5 h-5 w-5 shrink-0 fill-brand-dark text-white"
+                      strokeWidth={1.5}
+                    />
+                    <div className="min-w-0">
+                      {pickPoint?.address ? (
+                        <>
+                          <span className="block truncate text-sm font-semibold text-brand-foreground">
+                            {pickPoint.address.split(",")[0]}
+                          </span>
+                          {pickPoint.address.includes(",") && (
+                            <span className="block truncate text-xs text-brand-foreground/50">
+                              {pickPoint.address.split(",").slice(1).join(",").trim()}
+                            </span>
+                          )}
+                        </>
+                      ) : (
+                        <span className="block text-sm text-brand-foreground/50">
+                          Move the map to set your spot…
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={onPickConfirm}
+                    disabled={!pickPoint}
+                    className="w-full rounded-xl bg-brand-dark py-3 font-semibold text-white transition-colors hover:bg-brand-foreground disabled:cursor-not-allowed disabled:opacity-40"
+                  >
+                    {picking === "pickup" ? "Confirm pickup" : "Confirm destination"}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={onPickCancel}
+                    className="w-full text-center text-sm font-medium text-brand-foreground/60 transition-colors hover:text-brand-foreground"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              )}
+
+              {step === "locations" && picking === null && (
                 <div className="space-y-2">
                   <div className="relative mb-1">
                     <button
@@ -391,9 +450,7 @@ export function BookingScreen() {
             driver={step === "active" ? driver?.coords ?? null : null}
             driverBearing={driver?.bearing}
             picking={step === "locations" && picking !== null}
-            pickLabel={picking === "pickup" ? "Set pickup here" : "Set destination here"}
-            onPickConfirm={onPickConfirm}
-            onPickCancel={() => setPicking(null)}
+            onPickPointChange={setPickPoint}
           />
         </div>
       </div>

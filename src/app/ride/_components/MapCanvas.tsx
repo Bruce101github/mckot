@@ -45,10 +45,10 @@ type Props = {
   // Heading in degrees, used to point the driver marker.
   driverBearing?: number;
   // "Set location on map" mode — a fixed centre pin the rider pans under.
+  // The map reports its centre (reverse-geocoded) up to the panel, which owns
+  // the confirm / cancel controls.
   picking?: boolean;
-  pickLabel?: string;
-  onPickConfirm?: (c: Coords) => void;
-  onPickCancel?: () => void;
+  onPickPointChange?: (p: { coords: Coords; address: string | null }) => void;
 };
 
 function pinIcon(maps: typeof google.maps, color: string): google.maps.Symbol {
@@ -69,9 +69,7 @@ export function MapCanvas({
   driver,
   driverBearing,
   picking,
-  pickLabel,
-  onPickConfirm,
-  onPickCancel,
+  onPickPointChange,
 }: Props) {
   const state = useGoogleMaps();
   const divRef = useRef<HTMLDivElement>(null);
@@ -80,6 +78,10 @@ export function MapCanvas({
   const dropoffMarker = useRef<google.maps.Marker | null>(null);
   const driverMarker = useRef<google.maps.Marker | null>(null);
   const routeLine = useRef<google.maps.Polyline | null>(null);
+  const geocoder = useRef<google.maps.Geocoder | null>(null);
+  // Keep the latest callback without re-subscribing the idle listener.
+  const pickCb = useRef(onPickPointChange);
+  pickCb.current = onPickPointChange;
 
   // Init the map once Maps is ready.
   useEffect(() => {
@@ -226,6 +228,36 @@ export function MapCanvas({
       map.setCenter(pos);
     }
   }, [state, driver, driverBearing, pickup, dropoff]);
+
+  // "Set location on map" — while picking, report the map centre (the point
+  // under the fixed pin) up to the panel, reverse-geocoded to a street address.
+  // Re-reports on every pan (idle) so the address tracks the pin live.
+  useEffect(() => {
+    if (state.status !== "ready" || !mapRef.current || !picking) return;
+    const maps = state.maps;
+    const map = mapRef.current;
+    if (!geocoder.current) geocoder.current = new maps.Geocoder();
+    let cancelled = false;
+
+    const report = () => {
+      const c = map.getCenter();
+      if (!c) return;
+      const coords: Coords = [c.lat(), c.lng()];
+      pickCb.current?.({ coords, address: null });
+      geocoder.current!.geocode({ location: { lat: coords[0], lng: coords[1] } }, (results, status) => {
+        if (cancelled) return;
+        const address = status === "OK" && results && results[0] ? results[0].formatted_address : null;
+        pickCb.current?.({ coords, address });
+      });
+    };
+
+    const listener = map.addListener("idle", report);
+    report();
+    return () => {
+      cancelled = true;
+      maps.event.removeListener(listener);
+    };
+  }, [state, picking]);
 
   // Ambient "nearby vehicles" — purely decorative, like Uber's home map. No
   // real driver data: a steady set of cars and motorbikes follow real roads
@@ -632,42 +664,19 @@ export function MapCanvas({
     };
   }, [state, driver]);
 
-  const confirmPick = () => {
-    const c = mapRef.current?.getCenter();
-    if (c && onPickConfirm) onPickConfirm([c.lat(), c.lng()]);
-  };
-
   return (
     <div className="absolute inset-0">
       <div ref={divRef} className="h-full w-full" />
 
       {picking && (
-        <>
-          {/* Fixed centre pin — its tip marks the point that will be saved. */}
-          <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-            <MapPin
-              className="h-10 w-10 -translate-y-1/2 fill-brand-dark text-white drop-shadow-md"
-              strokeWidth={1.5}
-            />
-          </div>
-          {/* Confirm / cancel bar over the map. */}
-          <div className="absolute inset-x-0 bottom-0 flex items-center gap-3 border-t border-brand-border bg-white/95 p-3 backdrop-blur">
-            <button
-              type="button"
-              onClick={onPickCancel}
-              className="rounded-xl border border-brand-border px-4 py-2.5 text-sm font-medium text-brand-foreground transition-colors hover:bg-brand-muted/60"
-            >
-              Cancel
-            </button>
-            <button
-              type="button"
-              onClick={confirmPick}
-              className="flex-1 rounded-xl bg-brand-dark py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-foreground"
-            >
-              {pickLabel ?? "Set location here"}
-            </button>
-          </div>
-        </>
+        // Fixed centre pin — its tip marks the point that will be saved. The
+        // rider pans the map under it; the panel shows the live address.
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+          <MapPin
+            className="h-10 w-10 -translate-y-1/2 fill-brand-dark text-white drop-shadow-md"
+            strokeWidth={1.5}
+          />
+        </div>
       )}
 
       {state.status === "loading" && (
