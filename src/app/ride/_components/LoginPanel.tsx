@@ -191,9 +191,41 @@ function OauthButton({ label, provider }: { label: string; provider: "google" | 
       type="button"
       onClick={() => alert("Social sign-in is being set up. Please use your phone number for now.")}
       data-provider={provider}
-      className="flex w-full items-center justify-center gap-2 rounded-xl border border-brand-border bg-white py-3 text-sm font-medium text-brand-foreground/80 transition-colors hover:bg-brand-muted/50"
+      className="flex w-full items-center justify-center gap-2.5 rounded-xl border border-brand-border bg-white py-3 text-sm font-medium text-brand-foreground/80 transition-colors hover:bg-brand-muted/50"
     >
+      {provider === "google" ? <GoogleIcon /> : <AppleIcon />}
       {label}
     </button>
+  );
+}
+
+function GoogleIcon() {
+  return (
+    <svg className="h-5 w-5" viewBox="0 0 48 48" aria-hidden="true">
+      <path
+        fill="#FFC107"
+        d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"
+      />
+      <path
+        fill="#FF3D00"
+        d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"
+      />
+      <path
+        fill="#4CAF50"
+        d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238C29.211 35.091 26.715 36 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"
+      />
+      <path
+        fill="#1976D2"
+        d="M43.611 20.083H42V20H24v8h11.303c-.792 2.237-2.231 4.166-4.087 5.571.001-.001.002-.001.003-.002l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"
+      />
+    </svg>
+  );
+}
+
+function AppleIcon() {
+  return (
+    <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.05 12.536c-.028-2.87 2.343-4.245 2.45-4.314-1.336-1.954-3.414-2.222-4.153-2.252-1.766-.179-3.448 1.04-4.345 1.04-.895 0-2.278-1.015-3.747-.987-1.927.028-3.703 1.12-4.695 2.846-2.003 3.475-.513 8.62 1.437 11.44.953 1.38 2.089 2.929 3.58 2.873 1.435-.057 1.977-.93 3.711-.93 1.733 0 2.222.93 3.742.902 1.544-.028 2.521-1.408 3.466-2.79 1.092-1.602 1.541-3.154 1.566-3.234-.034-.016-3.005-1.156-3.035-4.59zM14.27 4.13C15.063 3.17 15.595 1.835 15.45.5c-1.144.046-2.527.762-3.347 1.72-.736.85-1.378 2.21-1.206 3.515 1.276.099 2.578-.648 3.373-1.605z" />
+    </svg>
   );
 }
