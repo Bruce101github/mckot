@@ -80,6 +80,20 @@ export function BookingScreen() {
   }, []);
   const portalTarget = isMobile && searchActive ? panelHost : null;
 
+  // While the mobile takeover is open, freeze the page behind it so iOS Safari
+  // can't rubber-band the body (which toggles the address bar and makes the
+  // fixed header appear to jump). Restored when the takeover closes.
+  useEffect(() => {
+    if (!(isMobile && searchActive)) return;
+    const { overflow, overscrollBehavior } = document.body.style;
+    document.body.style.overflow = "hidden";
+    document.body.style.overscrollBehavior = "none";
+    return () => {
+      document.body.style.overflow = overflow;
+      document.body.style.overscrollBehavior = overscrollBehavior;
+    };
+  }, [isMobile, searchActive]);
+
   // On mount: resume any in-flight trip, else seed pickup from geolocation.
   useEffect(() => {
     let cancelled = false;
@@ -596,7 +610,7 @@ export function BookingScreen() {
                   {searchActive && (
                     <div
                       ref={setPanelHost}
-                      className="max-md:min-h-0 max-md:flex-1 max-md:overflow-auto md:hidden"
+                      className="max-md:min-h-0 max-md:flex-1 max-md:overflow-auto max-md:overscroll-contain md:hidden"
                     />
                   )}
                 </div>
