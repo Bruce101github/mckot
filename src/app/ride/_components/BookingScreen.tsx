@@ -323,7 +323,7 @@ export function BookingScreen() {
     <div className="flex h-[100dvh] w-full flex-col overflow-hidden bg-white">
       <RideNav />
 
-      <div className="flex w-full flex-1 flex-col gap-4 overflow-y-auto px-4 py-4 md:flex-row md:gap-6 md:overflow-hidden md:px-6 md:py-6">
+      <div className="flex w-full flex-1 flex-col gap-4 overflow-hidden px-4 py-4 md:flex-row md:gap-6 md:px-6 md:py-6">
         {/* Booking panel — stacked above the map on mobile, left column on desktop */}
         <div className="order-1 w-full shrink-0 md:w-[380px] md:overflow-y-auto">
         <div className="md:rounded-2xl md:border md:border-brand-border md:bg-white md:p-5 md:shadow-soft">
