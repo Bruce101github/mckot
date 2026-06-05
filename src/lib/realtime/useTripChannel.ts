@@ -14,6 +14,14 @@ import type { Coords } from "@/lib/api/booking";
 const WS_URL =
   process.env.NEXT_PUBLIC_CENTRIFUGO_WS_URL ?? "wss://ws.mckot.com/connection/websocket";
 
+// Verbose lifecycle logging for the live-trip channel. Errors are always
+// logged (low volume, genuinely useful when tracking stalls); set
+// NEXT_PUBLIC_TRIP_CHANNEL_DEBUG=1 to also log connect/subscribe/publication.
+const DEBUG = process.env.NEXT_PUBLIC_TRIP_CHANNEL_DEBUG === "1";
+const log = (...args: unknown[]) => {
+  if (DEBUG) console.log("[trip-channel]", ...args);
+};
+
 export type LiveDriver = {
   coords: Coords;
   bearing: number;
@@ -92,6 +100,7 @@ export function useTripChannel(
         const d = payload.data;
         const coords = d.coordinates as [number, number] | undefined;
         if (Array.isArray(coords) && coords.length === 2) {
+          log("responder_location", coords, "bearing", d.bearing);
           setDriver({
             coords: [Number(coords[0]), Number(coords[1])],
             bearing: Number(d.bearing ?? 0),
@@ -105,10 +114,25 @@ export function useTripChannel(
       if (status) setLiveStatus(status);
     };
 
+    log("connecting", { channel, ws: WS_URL });
     sub.on("publication", onPublication);
-    sub.on("subscribed", () => setConnected(true));
-    sub.on("unsubscribed", () => setConnected(false));
-    sub.on("error", () => setConnected(false));
+    sub.on("subscribed", () => {
+      log("subscribed", channel);
+      setConnected(true);
+    });
+    sub.on("unsubscribed", (ctx) => {
+      log("unsubscribed", channel, ctx);
+      setConnected(false);
+    });
+    sub.on("error", (ctx) => {
+      console.warn("[trip-channel] subscription error", channel, ctx);
+      setConnected(false);
+    });
+    centrifuge.on("error", (ctx) => {
+      console.warn("[trip-channel] connection error", ctx);
+    });
+    centrifuge.on("connected", () => log("connected"));
+    centrifuge.on("disconnected", (ctx) => log("disconnected", ctx));
 
     sub.subscribe();
     centrifuge.connect();
