@@ -272,7 +272,7 @@ export function BookingScreen() {
       <div className="flex w-full flex-1 flex-col gap-4 overflow-y-auto px-4 py-4 md:flex-row md:gap-6 md:overflow-hidden md:px-6 md:py-6">
         {/* Booking panel — stacked above the map on mobile, left column on desktop */}
         <div className="order-1 w-full shrink-0 md:w-[380px] md:overflow-y-auto">
-        <div className="rounded-2xl border border-brand-border bg-white p-5 shadow-soft">
+        <div className="md:rounded-2xl md:border md:border-brand-border md:bg-white md:p-5 md:shadow-soft">
           {step !== "active" && (
             <>
               <h1 className="mb-3 text-lg font-semibold text-brand-foreground">
