@@ -554,7 +554,7 @@ export function BookingScreen() {
         </div>
 
         {/* Map — contained rounded card, not a full-bleed background */}
-        <div className="relative order-2 h-[240px] shrink-0 overflow-hidden rounded-2xl border border-brand-border shadow-soft md:h-auto md:min-h-0 md:flex-1">
+        <div className="relative order-2 h-[420px] shrink-0 overflow-hidden rounded-2xl border border-brand-border shadow-soft md:h-auto md:min-h-0 md:flex-1">
           <MapCanvas
             pickup={mapPickup}
             dropoff={mapDropoff}
