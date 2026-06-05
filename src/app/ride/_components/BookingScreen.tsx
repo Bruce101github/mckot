@@ -60,6 +60,7 @@ export function BookingScreen() {
   // Draft date/time edited inside the full-card schedule view (committed on "Next").
   const [scheduleDraftDate, setScheduleDraftDate] = useState("");
   const [scheduleDraftTime, setScheduleDraftTime] = useState("");
+  const [showErrors, setShowErrors] = useState(false);
 
   // On mount: resume any in-flight trip, else seed pickup from geolocation.
   useEffect(() => {
@@ -198,7 +199,12 @@ export function BookingScreen() {
   };
 
   const onSearch = () => {
-    if (pickup && dropoff) runEstimate(pickup.coords, dropoff.coords);
+    if (!pickup || !dropoff) {
+      setShowErrors(true);
+      return;
+    }
+    setShowErrors(false);
+    runEstimate(pickup.coords, dropoff.coords);
   };
 
   // Quick-action cards bring the matching search field into view and focus it.
@@ -495,6 +501,7 @@ export function BookingScreen() {
                     dotColor="#0B3B2D"
                     bias={searchBias}
                     selectedLabel={pickup?.label}
+                    invalid={showErrors && !pickup}
                     onSelect={onPickupSelect}
                     onClear={() => setPickup(null)}
                     onUseCurrentLocation={useCurrentLocation}
@@ -505,6 +512,7 @@ export function BookingScreen() {
                     dotColor="#A4D233"
                     bias={searchBias}
                     selectedLabel={dropoff?.label}
+                    invalid={showErrors && !dropoff}
                     onSelect={onDropoffSelect}
                     onClear={() => setDropoff(null)}
                     onSetOnMap={() => setPicking("dropoff")}
@@ -514,8 +522,7 @@ export function BookingScreen() {
                   <button
                     type="button"
                     onClick={onSearch}
-                    disabled={!pickup || !dropoff}
-                    className="mt-2 w-full rounded-xl bg-brand-dark py-3 font-semibold text-white transition-colors hover:bg-brand-foreground disabled:cursor-not-allowed disabled:opacity-40"
+                    className="mt-2 w-full rounded-xl bg-brand-dark py-3 font-semibold text-white transition-colors hover:bg-brand-foreground"
                   >
                     Search
                   </button>

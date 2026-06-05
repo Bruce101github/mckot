@@ -10,6 +10,7 @@ type Props = {
   dotColor: string;
   bias: Coords;
   selectedLabel?: string | null;
+  invalid?: boolean;
   onSelect: (place: PlaceResult) => void;
   onClear?: () => void;
   onUseCurrentLocation?: () => void;
@@ -22,6 +23,7 @@ export function LocationSearch({
   dotColor,
   bias,
   selectedLabel,
+  invalid,
   onSelect,
   onClear,
   onUseCurrentLocation,
@@ -88,7 +90,11 @@ export function LocationSearch({
 
   return (
     <div ref={boxRef} className="relative">
-      <div className="flex items-center gap-3 rounded-xl border border-transparent bg-[#EEEEEE] px-3.5 py-3 transition-colors focus-within:border-brand-dark focus-within:bg-white">
+      <div
+        className={`flex items-center gap-3 rounded-xl border bg-[#EEEEEE] px-3.5 py-3 transition-colors focus-within:border-brand-dark focus-within:bg-white ${
+          invalid ? "border-red-500" : "border-transparent"
+        }`}
+      >
         <span
           className="flex h-3 w-3 shrink-0 items-center justify-center rounded-full"
           style={{ backgroundColor: dotColor }}
