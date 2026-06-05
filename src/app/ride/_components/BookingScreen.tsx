@@ -358,7 +358,7 @@ export function BookingScreen() {
 
       {/* Mobile takeover header — replaces the nav while searching (Uber-style) */}
       {searchActive && (
-        <header className="relative flex shrink-0 items-center justify-center border-b border-brand-border bg-white px-4 py-3.5 md:hidden">
+        <header className="relative flex shrink-0 items-center justify-center bg-white px-4 py-3.5 md:hidden">
           <button
             type="button"
             aria-label="Back"
