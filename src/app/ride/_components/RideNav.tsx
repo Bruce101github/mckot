@@ -16,10 +16,25 @@ const TABS = [
 export function RideNav() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
   const isActive = (href: string) =>
     href === "/ride" ? pathname === "/ride" : pathname.startsWith(href);
+
+  // Show the bottom border + shadow only once the page is scrolled. The booking
+  // page scrolls an inner container (the window never moves), while wallet /
+  // activity scroll the document — a capture-phase listener catches either.
+  useEffect(() => {
+    const onScroll = (e: Event) => {
+      const t = e.target;
+      const top =
+        t instanceof HTMLElement ? t.scrollTop : window.scrollY;
+      setScrolled(top > 4);
+    };
+    window.addEventListener("scroll", onScroll, true);
+    return () => window.removeEventListener("scroll", onScroll, true);
+  }, []);
 
   // Close the mobile menu on outside click / Escape.
   useEffect(() => {
@@ -37,7 +52,12 @@ export function RideNav() {
   }, [menuOpen]);
 
   return (
-    <header className="sticky top-0 z-40 shrink-0 border-b border-brand-border bg-white/95 shadow-soft backdrop-blur-sm">
+    <header
+      className={cn(
+        "sticky top-0 z-40 shrink-0 border-b bg-white/95 backdrop-blur-sm transition-shadow",
+        scrolled ? "border-brand-border shadow-soft" : "border-transparent",
+      )}
+    >
       <div className="flex items-center justify-between px-4 py-3 md:px-6">
         <div className="flex items-center gap-3 md:gap-8">
           <Link href="/ride" aria-label="Mckot home" className="flex items-center">
