@@ -201,6 +201,13 @@ export function BookingScreen() {
     if (pickup && dropoff) runEstimate(pickup.coords, dropoff.coords);
   };
 
+  // Quick-action cards bring the matching search field into view and focus it.
+  const focusField = (placeholder: string) => {
+    const el = document.querySelector<HTMLInputElement>(`input[placeholder="${placeholder}"]`);
+    el?.scrollIntoView({ behavior: "smooth", block: "center" });
+    el?.focus();
+  };
+
   const onRequest = async () => {
     if (selectedRideId === null) return;
     setRequesting(true);
@@ -558,7 +565,49 @@ export function BookingScreen() {
             onPickPointChange={setPickPoint}
           />
         </div>
+
+        {/* Quick-action cards (mobile only) — mirror the app's requester home */}
+        {step === "locations" && picking === null && !scheduleOpen && (
+          <div className="order-3 grid grid-cols-2 gap-2 md:hidden">
+            <ServiceCard
+              label="Send item"
+              image="/cards/send-item.png"
+              onClick={() => focusField("Where to?")}
+            />
+            <ServiceCard
+              label="Pickup"
+              image="/cards/pickup.png"
+              onClick={() => focusField("Pickup location")}
+            />
+          </div>
+        )}
       </div>
     </div>
+  );
+}
+
+function ServiceCard({
+  label,
+  image,
+  onClick,
+}: {
+  label: string;
+  image: string;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="relative flex h-[100px] items-end overflow-hidden rounded-2xl border border-brand-border bg-[#F7F7F7] p-3 text-left transition-colors hover:bg-[#F0F0F0]"
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={image}
+        alt=""
+        className="pointer-events-none absolute right-2 top-1/2 h-[53px] w-auto -translate-y-1/2 object-contain"
+      />
+      <span className="relative text-sm font-bold text-brand-foreground">{label}</span>
+    </button>
   );
 }
