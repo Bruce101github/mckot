@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Loader2, LocateFixed, MapPin, X } from "lucide-react";
+import { Loader2, LocateFixed, Map as MapIcon, MapPin, X } from "lucide-react";
 import { searchPlaces, type Coords, type PlaceResult } from "@/lib/api/booking";
 
 type Props = {
@@ -12,6 +12,7 @@ type Props = {
   onSelect: (place: PlaceResult) => void;
   onClear?: () => void;
   onUseCurrentLocation?: () => void;
+  onSetOnMap?: () => void;
   autoFocus?: boolean;
 };
 
@@ -23,6 +24,7 @@ export function LocationSearch({
   onSelect,
   onClear,
   onUseCurrentLocation,
+  onSetOnMap,
   autoFocus,
 }: Props) {
   const [query, setQuery] = useState("");
@@ -62,9 +64,11 @@ export function LocationSearch({
   }, [query, bias]);
 
   const display = query !== "" ? query : (selectedLabel ?? "");
+  const hasQuickActions = onUseCurrentLocation != null || onSetOnMap != null;
   // Show the panel whenever the field is focused — like Uber, an empty click
-  // surfaces the quick actions (use current location) before any typing.
-  const showPanel = open && (onUseCurrentLocation != null || results.length > 0);
+  // surfaces the quick actions (use current location, set on map) before any
+  // typing.
+  const showPanel = open && (hasQuickActions || results.length > 0);
 
   return (
     <div ref={boxRef} className="relative">
@@ -124,7 +128,25 @@ export function LocationSearch({
             </button>
           )}
 
-          {onUseCurrentLocation && results.length > 0 && (
+          {onSetOnMap && (
+            <button
+              type="button"
+              onClick={() => {
+                onSetOnMap();
+                setQuery("");
+                setResults([]);
+                setOpen(false);
+              }}
+              className="flex w-full items-center gap-3 px-3 py-2.5 text-left hover:bg-brand-muted/50"
+            >
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-muted">
+                <MapIcon className="h-4 w-4 text-brand-dark" />
+              </span>
+              <span className="text-sm font-medium text-brand-foreground">Set location on map</span>
+            </button>
+          )}
+
+          {hasQuickActions && results.length > 0 && (
             <div className="my-1 border-t border-brand-border" />
           )}
 

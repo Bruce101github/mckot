@@ -34,6 +34,8 @@ export function BookingScreen() {
   const [step, setStep] = useState<Step>("locations");
   const [pickup, setPickup] = useState<Place | null>(null);
   const [dropoff, setDropoff] = useState<Place | null>(null);
+  // "Set location on map" target — which field the centre-pin picker fills.
+  const [picking, setPicking] = useState<"pickup" | "dropoff" | null>(null);
 
   const [estimate, setEstimate] = useState<RouteEstimate | null>(null);
   const [estimating, setEstimating] = useState(false);
@@ -176,6 +178,13 @@ export function BookingScreen() {
     );
   };
 
+  const onPickConfirm = (c: Coords) => {
+    const place = { coords: c, label: "Pinned location" };
+    if (picking === "pickup") setPickup(place);
+    else if (picking === "dropoff") setDropoff(place);
+    setPicking(null);
+  };
+
   const onSearch = () => {
     if (pickup && dropoff) runEstimate(pickup.coords, dropoff.coords);
   };
@@ -314,6 +323,7 @@ export function BookingScreen() {
                     onSelect={onPickupSelect}
                     onClear={() => setPickup(null)}
                     onUseCurrentLocation={useCurrentLocation}
+                    onSetOnMap={() => setPicking("pickup")}
                   />
                   <LocationSearch
                     placeholder="Where to?"
@@ -322,6 +332,7 @@ export function BookingScreen() {
                     selectedLabel={dropoff?.label}
                     onSelect={onDropoffSelect}
                     onClear={() => setDropoff(null)}
+                    onSetOnMap={() => setPicking("dropoff")}
                     autoFocus
                   />
                   {estimateError && <p className="text-sm text-red-600">{estimateError}</p>}
@@ -379,6 +390,10 @@ export function BookingScreen() {
             polyline={mapPolyline}
             driver={step === "active" ? driver?.coords ?? null : null}
             driverBearing={driver?.bearing}
+            picking={step === "locations" && picking !== null}
+            pickLabel={picking === "pickup" ? "Set pickup here" : "Set destination here"}
+            onPickConfirm={onPickConfirm}
+            onPickCancel={() => setPicking(null)}
           />
         </div>
       </div>

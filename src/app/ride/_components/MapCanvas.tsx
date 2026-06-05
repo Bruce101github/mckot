@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { MapPin } from "lucide-react";
 import { useGoogleMaps } from "@/lib/maps/useGoogleMaps";
 import type { Coords } from "@/lib/api/booking";
 
@@ -43,6 +44,11 @@ type Props = {
   driver?: Coords | null;
   // Heading in degrees, used to point the driver marker.
   driverBearing?: number;
+  // "Set location on map" mode — a fixed centre pin the rider pans under.
+  picking?: boolean;
+  pickLabel?: string;
+  onPickConfirm?: (c: Coords) => void;
+  onPickCancel?: () => void;
 };
 
 function pinIcon(maps: typeof google.maps, color: string): google.maps.Symbol {
@@ -56,7 +62,17 @@ function pinIcon(maps: typeof google.maps, color: string): google.maps.Symbol {
   };
 }
 
-export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: Props) {
+export function MapCanvas({
+  pickup,
+  dropoff,
+  polyline,
+  driver,
+  driverBearing,
+  picking,
+  pickLabel,
+  onPickConfirm,
+  onPickCancel,
+}: Props) {
   const state = useGoogleMaps();
   const divRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<google.maps.Map | null>(null);
@@ -616,9 +632,44 @@ export function MapCanvas({ pickup, dropoff, polyline, driver, driverBearing }: 
     };
   }, [state, driver]);
 
+  const confirmPick = () => {
+    const c = mapRef.current?.getCenter();
+    if (c && onPickConfirm) onPickConfirm([c.lat(), c.lng()]);
+  };
+
   return (
     <div className="absolute inset-0">
       <div ref={divRef} className="h-full w-full" />
+
+      {picking && (
+        <>
+          {/* Fixed centre pin — its tip marks the point that will be saved. */}
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+            <MapPin
+              className="h-10 w-10 -translate-y-1/2 fill-brand-dark text-white drop-shadow-md"
+              strokeWidth={1.5}
+            />
+          </div>
+          {/* Confirm / cancel bar over the map. */}
+          <div className="absolute inset-x-0 bottom-0 flex items-center gap-3 border-t border-brand-border bg-white/95 p-3 backdrop-blur">
+            <button
+              type="button"
+              onClick={onPickCancel}
+              className="rounded-xl border border-brand-border px-4 py-2.5 text-sm font-medium text-brand-foreground transition-colors hover:bg-brand-muted/60"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              onClick={confirmPick}
+              className="flex-1 rounded-xl bg-brand-dark py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-foreground"
+            >
+              {pickLabel ?? "Set location here"}
+            </button>
+          </div>
+        </>
+      )}
+
       {state.status === "loading" && (
         <div className="absolute inset-0 flex items-center justify-center bg-white">
           <div className="h-8 w-8 animate-spin rounded-full border-2 border-brand-border border-t-brand-dark" />
