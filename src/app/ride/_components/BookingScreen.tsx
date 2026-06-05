@@ -671,7 +671,7 @@ export function BookingScreen() {
         {/* Quick-action cards (mobile only) — mirror the app's requester home */}
         {step === "locations" && picking === null && !scheduleOpen && !searchActive && (
           <div className="order-3 pb-1 md:hidden">
-            <h2 className="mb-2 text-base font-bold text-brand-foreground">
+            <h2 className="mb-3 text-base font-bold text-brand-foreground">
               Move Anything, Anytime
             </h2>
             <div className="grid grid-cols-2 gap-2">
