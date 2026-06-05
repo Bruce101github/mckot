@@ -246,12 +246,15 @@ export function MapCanvas({
 
   // Live driver marker — updates on every location push without touching the
   // route/markers effect. Keeps the driver and the relevant endpoint in view.
+  // Until the first live fix arrives the bike is parked at the pickup end of
+  // the route, so an active trip always shows exactly one rider on the line.
   useEffect(() => {
     if (state.status !== "ready" || !mapRef.current) return;
     const maps = state.maps;
     const map = mapRef.current;
 
-    if (!driver) {
+    const at = driver ?? (activeTrip ? pickup : null);
+    if (!at) {
       if (driverMarker.current) {
         driverMarker.current.setMap(null);
         driverMarker.current = null;
@@ -259,7 +262,7 @@ export function MapCanvas({
       return;
     }
 
-    const pos = { lat: driver[0], lng: driver[1] };
+    const pos = { lat: at[0], lng: at[1] };
     // Motorbike art at the rider's live position, rotated to the reported
     // heading. Falls back to a simple arrow until the PNG has loaded.
     const icon: google.maps.Icon | google.maps.Symbol = bikeUrl
@@ -280,8 +283,9 @@ export function MapCanvas({
     }
     driverMarker.current.setPosition(pos);
 
-    // Keep the driver and the active endpoint (dropoff, else pickup) framed.
-    const target = dropoff ?? pickup;
+    // Keep the bike and the trip's far endpoint framed. Once a live fix exists
+    // we follow the driver; before that we frame the whole pickup→dropoff line.
+    const target = driver ? dropoff ?? pickup : dropoff;
     if (target) {
       const bounds = new maps.LatLngBounds();
       bounds.extend(pos);
@@ -290,7 +294,7 @@ export function MapCanvas({
     } else {
       map.setCenter(pos);
     }
-  }, [state, driver, driverBearing, pickup, dropoff, bikeUrl]);
+  }, [state, driver, driverBearing, pickup, dropoff, bikeUrl, activeTrip]);
 
   // "Set location on map" — while picking, report the map centre (the point
   // under the fixed pin) up to the panel, reverse-geocoded to a street address.
