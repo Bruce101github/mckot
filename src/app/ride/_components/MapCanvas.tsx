@@ -267,7 +267,9 @@ export function MapCanvas({
   // so they don't compete with the real driver marker. If the Directions API
   // isn't available on the key, vehicles fall back to a gentle free drift.
   useEffect(() => {
-    if (state.status !== "ready" || !mapRef.current || driver) return;
+    // Hidden during an active trip (real driver marker) and while the rider is
+    // setting a location on the map (the centre pin shouldn't fight decoration).
+    if (state.status !== "ready" || !mapRef.current || driver || picking) return;
     const maps = state.maps;
     const map = mapRef.current;
     const spherical = maps.geometry.spherical;
@@ -662,7 +664,7 @@ export function MapCanvas({
       maps.event.removeListener(idleListener);
       fleet.forEach((v) => v.marker.setMap(null));
     };
-  }, [state, driver]);
+  }, [state, driver, picking]);
 
   return (
     <div className="absolute inset-0">
