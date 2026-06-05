@@ -586,7 +586,11 @@ export function BookingScreen() {
 
         {/* Quick-action cards (mobile only) — mirror the app's requester home */}
         {step === "locations" && picking === null && !scheduleOpen && (
-          <div className="order-3 grid grid-cols-2 gap-2 pb-1 md:hidden">
+          <div className="order-3 pb-1 md:hidden">
+            <h2 className="mb-2 text-base font-bold text-brand-foreground">
+              Move Anything, Anytime
+            </h2>
+            <div className="grid grid-cols-2 gap-2">
             <ServiceCard
               label="Send item"
               image="/cards/send-item.png"
@@ -597,6 +601,7 @@ export function BookingScreen() {
               image="/cards/pickup.png"
               onClick={() => focusField("Pickup location")}
             />
+            </div>
           </div>
         )}
       </div>
