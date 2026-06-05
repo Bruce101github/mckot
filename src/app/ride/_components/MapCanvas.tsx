@@ -94,6 +94,11 @@ function bikeIcon(
   };
 }
 
+// Shortest signed angle (deg) from b to a, in (-180, 180].
+function angleDelta(a: number, b: number): number {
+  return ((a - b + 540) % 360) - 180;
+}
+
 export function MapCanvas({
   pickup,
   dropoff,
@@ -110,6 +115,11 @@ export function MapCanvas({
   const pickupMarker = useRef<google.maps.Marker | null>(null);
   const dropoffMarker = useRef<google.maps.Marker | null>(null);
   const driverMarker = useRef<google.maps.Marker | null>(null);
+  // Smoothly animate the bike between location pushes (refs survive re-renders).
+  const driverRaf = useRef<number | null>(null);
+  const driverPos = useRef<google.maps.LatLng | null>(null);
+  const driverHeading = useRef<number>(0);
+  const driverBucket = useRef<number | null>(null);
   const routeLine = useRef<google.maps.Polyline | null>(null);
   const geocoder = useRef<google.maps.Geocoder | null>(null);
   // Keep the latest callback without re-subscribing the idle listener.
@@ -244,17 +254,22 @@ export function MapCanvas({
     }
   }, [state, pickup, dropoff, polyline, driver]);
 
-  // Live driver marker — updates on every location push without touching the
-  // route/markers effect. Keeps the driver and the relevant endpoint in view.
-  // Until the first live fix arrives the bike is parked at the pickup end of
-  // the route, so an active trip always shows exactly one rider on the line.
+  // Live driver marker — animates smoothly between location pushes so the bike
+  // glides along the road rather than teleporting on each fix. Until the first
+  // live fix arrives the bike is parked at the pickup end of the route, so an
+  // active trip always shows exactly one rider on the line.
   useEffect(() => {
     if (state.status !== "ready" || !mapRef.current) return;
     const maps = state.maps;
     const map = mapRef.current;
+    const spherical = maps.geometry.spherical;
 
     const at = driver ?? (activeTrip ? pickup : null);
     if (!at) {
+      if (driverRaf.current != null) cancelAnimationFrame(driverRaf.current);
+      driverRaf.current = null;
+      driverPos.current = null;
+      driverBucket.current = null;
       if (driverMarker.current) {
         driverMarker.current.setMap(null);
         driverMarker.current = null;
@@ -262,38 +277,88 @@ export function MapCanvas({
       return;
     }
 
-    const pos = { lat: at[0], lng: at[1] };
-    // Motorbike art at the rider's live position, rotated to the reported
-    // heading. Falls back to a simple arrow until the PNG has loaded.
-    const icon: google.maps.Icon | google.maps.Symbol = bikeUrl
-      ? bikeIcon(maps, bikeUrl, driverBearing ?? 0)
-      : {
+    const target = new maps.LatLng(at[0], at[1]);
+    const targetHeading = driverBearing ?? driverHeading.current;
+
+    // Build the bike icon (PNG embedded in a rotated SVG), rebuilt only when
+    // the heading crosses a 12° bucket. Falls back to a cheap arrow Symbol
+    // until the art has loaded.
+    const applyIcon = (heading: number) => {
+      if (!driverMarker.current) return;
+      if (!bikeUrl) {
+        driverMarker.current.setIcon({
           path: maps.SymbolPath.FORWARD_CLOSED_ARROW,
           fillColor: "#0B3B2D",
           fillOpacity: 1,
           strokeColor: "#ffffff",
           strokeWeight: 2,
           scale: 5,
-          rotation: driverBearing ?? 0,
-        };
+          rotation: heading,
+        });
+        return;
+      }
+      const bucket = Math.round((((heading % 360) + 360) % 360) / 12) * 12;
+      if (bucket === driverBucket.current) return;
+      driverBucket.current = bucket;
+      driverMarker.current.setIcon(bikeIcon(maps, bikeUrl, bucket));
+    };
+
+    // First appearance: drop the marker straight at the target, no animation.
     if (!driverMarker.current) {
-      driverMarker.current = new maps.Marker({ map, icon, zIndex: 999, optimized: false });
+      driverMarker.current = new maps.Marker({ map, zIndex: 999, optimized: false });
+      driverMarker.current.setPosition(target);
+      driverPos.current = target;
+      driverHeading.current = targetHeading;
+      driverBucket.current = null;
+      applyIcon(targetHeading);
     } else {
-      driverMarker.current.setIcon(icon);
+      // Animate from where the bike currently is to the new fix.
+      const from = driverPos.current ?? target;
+      const fromHeading = driverHeading.current;
+      const dist = spherical.computeDistanceBetween(from, target);
+      if (driverRaf.current != null) cancelAnimationFrame(driverRaf.current);
+
+      if (dist < 0.5) {
+        driverMarker.current.setPosition(target);
+        driverPos.current = target;
+        driverHeading.current = targetHeading;
+        applyIcon(targetHeading);
+      } else {
+        // Glide over ~1s, but snap large GPS jumps (>3km) to avoid a long crawl.
+        const DURATION = dist > 3000 ? 0 : 1000;
+        const start = performance.now();
+        const step = (now: number) => {
+          const k = DURATION === 0 ? 1 : Math.min(1, (now - start) / DURATION);
+          const lat = from.lat() + (target.lat() - from.lat()) * k;
+          const lng = from.lng() + (target.lng() - from.lng()) * k;
+          const p = new maps.LatLng(lat, lng);
+          const h = fromHeading + angleDelta(targetHeading, fromHeading) * k;
+          driverMarker.current!.setPosition(p);
+          driverPos.current = p;
+          driverHeading.current = h;
+          applyIcon(h);
+          driverRaf.current = k < 1 ? requestAnimationFrame(step) : null;
+        };
+        driverRaf.current = requestAnimationFrame(step);
+      }
     }
-    driverMarker.current.setPosition(pos);
 
     // Keep the bike and the trip's far endpoint framed. Once a live fix exists
     // we follow the driver; before that we frame the whole pickup→dropoff line.
-    const target = driver ? dropoff ?? pickup : dropoff;
-    if (target) {
+    const frameTarget = driver ? dropoff ?? pickup : dropoff;
+    if (frameTarget) {
       const bounds = new maps.LatLngBounds();
-      bounds.extend(pos);
-      bounds.extend({ lat: target[0], lng: target[1] });
+      bounds.extend(target);
+      bounds.extend({ lat: frameTarget[0], lng: frameTarget[1] });
       map.fitBounds(bounds, { top: 60, bottom: 60, left: 60, right: 60 });
     } else {
-      map.setCenter(pos);
+      map.setCenter(target);
     }
+
+    return () => {
+      if (driverRaf.current != null) cancelAnimationFrame(driverRaf.current);
+      driverRaf.current = null;
+    };
   }, [state, driver, driverBearing, pickup, dropoff, bikeUrl, activeTrip]);
 
   // "Set location on map" — while picking, report the map centre (the point
