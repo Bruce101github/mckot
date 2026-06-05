@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Clock, ChevronDown, MapPin } from "lucide-react";
+import { ArrowLeft, Calendar, ChevronRight, Clock, ChevronDown, MapPin } from "lucide-react";
 import { useAuth } from "@/lib/auth/AuthProvider";
 import {
   cancelRequest,
@@ -57,6 +57,9 @@ export function BookingScreen() {
   // so it's a front-end control until the backend adds a scheduled-time field.
   const [scheduleAt, setScheduleAt] = useState<string | null>(null);
   const [scheduleOpen, setScheduleOpen] = useState(false);
+  // Draft date/time edited inside the full-card schedule view (committed on "Next").
+  const [scheduleDraftDate, setScheduleDraftDate] = useState("");
+  const [scheduleDraftTime, setScheduleDraftTime] = useState("");
 
   // On mount: resume any in-flight trip, else seed pickup from geolocation.
   useEffect(() => {
@@ -264,6 +267,50 @@ export function BookingScreen() {
     const d = new Date(Date.now() - new Date().getTimezoneOffset() * 60000);
     return d.toISOString().slice(0, 16);
   })();
+  const todayStr = minSchedule.slice(0, 10);
+  const nowTimeStr = minSchedule.slice(11);
+
+  // Open the full-card schedule view, seeding the draft from any prior choice.
+  const openSchedule = () => {
+    if (scheduleAt) {
+      setScheduleDraftDate(scheduleAt.slice(0, 10));
+      setScheduleDraftTime(scheduleAt.slice(11));
+    } else {
+      setScheduleDraftDate(todayStr);
+      setScheduleDraftTime("");
+    }
+    setScheduleOpen(true);
+  };
+
+  // "Next": commit the draft. Today + no time chosen == "Leave now" (null).
+  const confirmSchedule = () => {
+    const date = scheduleDraftDate || todayStr;
+    const time = scheduleDraftTime || nowTimeStr;
+    const combined = `${date}T${time}`;
+    setScheduleAt(date === todayStr && !scheduleDraftTime ? null : combined);
+    setScheduleOpen(false);
+  };
+
+  // "Clear": reset the draft back to Today / Now.
+  const clearSchedule = () => {
+    setScheduleDraftDate(todayStr);
+    setScheduleDraftTime("");
+  };
+
+  const draftDateLabel =
+    !scheduleDraftDate || scheduleDraftDate === todayStr
+      ? "Today"
+      : new Date(`${scheduleDraftDate}T00:00`).toLocaleDateString(undefined, {
+          weekday: "short",
+          month: "short",
+          day: "numeric",
+        });
+  const draftTimeLabel = scheduleDraftTime
+    ? new Date(`${todayStr}T${scheduleDraftTime}`).toLocaleTimeString(undefined, {
+        hour: "numeric",
+        minute: "2-digit",
+      })
+    : "Now";
 
   return (
     <div className="flex h-screen w-full flex-col overflow-hidden bg-white">
@@ -273,7 +320,97 @@ export function BookingScreen() {
         {/* Booking panel — stacked above the map on mobile, left column on desktop */}
         <div className="order-1 w-full shrink-0 md:w-[380px] md:overflow-y-auto">
         <div className="md:rounded-2xl md:border md:border-brand-border md:bg-white md:p-5 md:shadow-soft">
-          {step !== "active" && (
+          {step !== "active" && scheduleOpen && (
+            <div className="space-y-5">
+              <div className="flex items-center justify-between">
+                <button
+                  type="button"
+                  aria-label="Back"
+                  onClick={() => setScheduleOpen(false)}
+                  className="text-brand-foreground transition-colors hover:text-brand-foreground/70"
+                >
+                  <ArrowLeft className="h-5 w-5" />
+                </button>
+                <button
+                  type="button"
+                  onClick={clearSchedule}
+                  className="text-sm font-semibold text-brand-foreground transition-colors hover:text-brand-foreground/70"
+                >
+                  Clear
+                </button>
+              </div>
+
+              <h1 className="text-2xl font-semibold leading-tight text-brand-foreground">
+                When do you want to be picked up?
+              </h1>
+
+              <div className="space-y-3">
+                {/* Date row — native date picker overlaid transparently */}
+                <div className="relative flex items-center gap-3 rounded-xl bg-[#EEEEEE] px-4 py-3.5">
+                  <Calendar className="h-5 w-5 shrink-0 text-brand-foreground" />
+                  <span className="flex-1 text-base font-medium text-brand-foreground">
+                    {draftDateLabel}
+                  </span>
+                  <ChevronRight className="h-5 w-5 shrink-0 text-brand-foreground/50" />
+                  <input
+                    type="date"
+                    min={todayStr}
+                    value={scheduleDraftDate}
+                    onChange={(e) => setScheduleDraftDate(e.target.value)}
+                    className="absolute inset-0 h-full w-full cursor-pointer opacity-0"
+                    aria-label="Pick a date"
+                  />
+                </div>
+                {/* Time row — native time picker overlaid transparently */}
+                <div className="relative flex items-center gap-3 rounded-xl bg-[#EEEEEE] px-4 py-3.5">
+                  <Clock className="h-5 w-5 shrink-0 text-brand-foreground" />
+                  <span className="flex-1 text-base font-medium text-brand-foreground">
+                    {draftTimeLabel}
+                  </span>
+                  <ChevronRight className="h-5 w-5 shrink-0 text-brand-foreground/50" />
+                  <input
+                    type="time"
+                    value={scheduleDraftTime}
+                    onChange={(e) => setScheduleDraftTime(e.target.value)}
+                    className="absolute inset-0 h-full w-full cursor-pointer opacity-0"
+                    aria-label="Pick a time"
+                  />
+                </div>
+              </div>
+
+              <ul className="space-y-3 text-sm text-brand-foreground/70">
+                <li className="flex gap-2">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-foreground/40" />
+                  Choose your exact pickup time up to 30 days in advance.
+                </li>
+                <li className="flex gap-2">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-foreground/40" />
+                  Extra wait time included to meet your ride.
+                </li>
+                <li className="flex gap-2">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-foreground/40" />
+                  Cancel at no charge up to 60 minutes in advance.
+                </li>
+              </ul>
+
+              <a
+                href="/terms"
+                className="block text-sm font-medium text-brand-foreground underline"
+              >
+                See terms
+              </a>
+
+              <button
+                type="button"
+                onClick={confirmSchedule}
+                className="w-full rounded-xl bg-brand-dark py-3.5 font-semibold text-white transition-colors hover:bg-brand-foreground"
+              >
+                Next
+              </button>
+            </div>
+          )}
+
+          {step !== "active" && !scheduleOpen && (
             <>
               <h1 className="mb-3 text-lg font-semibold text-brand-foreground">
                 {step === "choosing"
@@ -331,48 +468,16 @@ export function BookingScreen() {
 
               {step === "locations" && picking === null && (
                 <div className="space-y-2">
-                  <div className="relative mb-1">
+                  <div className="mb-1">
                     <button
                       type="button"
-                      onClick={() => setScheduleOpen((o) => !o)}
+                      onClick={openSchedule}
                       className="flex items-center gap-2 rounded-full bg-[#EEEEEE] px-3.5 py-2 text-sm font-medium text-brand-foreground transition-colors hover:bg-[#E4E4E4]"
                     >
                       <Clock className="h-4 w-4" />
                       {scheduleLabel}
                       <ChevronDown className="h-4 w-4 text-brand-foreground/50" />
                     </button>
-                    {scheduleOpen && (
-                      <div className="absolute left-0 top-full z-30 mt-2 w-72 rounded-2xl border border-brand-border bg-white p-3 shadow-soft">
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setScheduleAt(null);
-                            setScheduleOpen(false);
-                          }}
-                          className="flex w-full items-center gap-2 rounded-xl px-2 py-2 text-left text-sm font-medium text-brand-foreground hover:bg-brand-muted/60"
-                        >
-                          <Clock className="h-4 w-4 text-brand-foreground/60" />
-                          Leave now
-                        </button>
-                        <label className="mt-1 block px-2 pt-2 text-xs font-medium text-brand-foreground/60">
-                          Schedule for later
-                          <input
-                            type="datetime-local"
-                            min={minSchedule}
-                            value={scheduleAt ?? ""}
-                            onChange={(e) => setScheduleAt(e.target.value || null)}
-                            className="mt-1 w-full rounded-xl border border-transparent bg-[#EEEEEE] px-3 py-2.5 text-base text-brand-foreground outline-none transition-colors focus:border-brand-dark focus:bg-white focus-visible:!outline-none md:text-sm"
-                          />
-                        </label>
-                        <button
-                          type="button"
-                          onClick={() => setScheduleOpen(false)}
-                          className="mt-3 w-full rounded-xl bg-brand-dark py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-foreground"
-                        >
-                          Done
-                        </button>
-                      </div>
-                    )}
                   </div>
                   <LocationSearch
                     placeholder="Pickup location"
