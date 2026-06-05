@@ -352,7 +352,28 @@ export function BookingScreen() {
 
   return (
     <div className="flex h-[100dvh] w-full flex-col overflow-hidden bg-white">
-      <RideNav />
+      <div className={searchActive ? "max-md:hidden" : ""}>
+        <RideNav />
+      </div>
+
+      {/* Mobile takeover header — replaces the nav while searching (Uber-style) */}
+      {searchActive && (
+        <header className="relative flex shrink-0 items-center justify-center border-b border-brand-border bg-white px-4 py-3.5 md:hidden">
+          <button
+            type="button"
+            aria-label="Back"
+            onClick={() => {
+              setPickupActive(false);
+              setDropoffActive(false);
+              if (document.activeElement instanceof HTMLElement) document.activeElement.blur();
+            }}
+            className="absolute left-2 flex h-9 w-9 items-center justify-center rounded-full text-brand-foreground transition hover:bg-brand-muted/60"
+          >
+            <ArrowLeft className="h-6 w-6" />
+          </button>
+          <span className="text-lg font-semibold text-brand-foreground">Plan your delivery</span>
+        </header>
+      )}
 
       <div className="flex w-full flex-1 flex-col gap-4 overflow-hidden px-4 py-4 md:flex-row md:gap-6 md:px-6 md:py-6">
         {/* Booking panel — stacked above the map on mobile, left column on desktop */}
