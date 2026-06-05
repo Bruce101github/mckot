@@ -361,7 +361,7 @@ export function BookingScreen() {
                             min={minSchedule}
                             value={scheduleAt ?? ""}
                             onChange={(e) => setScheduleAt(e.target.value || null)}
-                            className="mt-1 w-full rounded-xl border border-transparent bg-[#EEEEEE] px-3 py-2.5 text-sm text-brand-foreground outline-none transition-colors focus:border-brand-dark focus:bg-white focus-visible:!outline-none"
+                            className="mt-1 w-full rounded-xl border border-transparent bg-[#EEEEEE] px-3 py-2.5 text-base text-brand-foreground outline-none transition-colors focus:border-brand-dark focus:bg-white focus-visible:!outline-none md:text-sm"
                           />
                         </label>
                         <button

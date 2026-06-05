@@ -108,7 +108,7 @@ export function LocationSearch({
             setOpen(true);
           }}
           placeholder={placeholder}
-          className="w-full bg-transparent text-sm text-brand-foreground outline-none focus-visible:!outline-none placeholder:text-brand-foreground/40"
+          className="w-full bg-transparent text-base text-brand-foreground outline-none focus-visible:!outline-none placeholder:text-brand-foreground/40 md:text-sm"
         />
         {loading ? (
           <Loader2 className="h-4 w-4 shrink-0 animate-spin text-brand-foreground/40" />
