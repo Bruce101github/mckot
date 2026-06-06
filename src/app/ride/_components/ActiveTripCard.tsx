@@ -14,10 +14,10 @@ type Props = {
 const STATUS_COPY: Record<string, { title: string; sub: string }> = {
   requested: { title: "Finding your driver", sub: "Matching you with the nearest driver…" },
   accepted: { title: "Driver is on the way", sub: "Your driver is heading to your pickup." },
-  "in progress": { title: "On your trip", sub: "Your delivery is on the way." },
-  completed: { title: "Trip completed", sub: "Thanks for using Mckot." },
-  cancelled: { title: "Trip cancelled", sub: "This request was cancelled." },
-  scheduled: { title: "Ride scheduled", sub: "We'll dispatch a driver at your chosen time." },
+  "in progress": { title: "Delivery in progress", sub: "Your delivery is on the way." },
+  completed: { title: "Delivery completed", sub: "Thanks for using Mckot." },
+  cancelled: { title: "Delivery cancelled", sub: "This request was cancelled." },
+  scheduled: { title: "Delivery scheduled", sub: "We'll dispatch a driver at your chosen time." },
 };
 
 export function ActiveTripCard({ request, currencySymbol, onCancel, onDone, cancelling }: Props) {
@@ -80,7 +80,7 @@ export function ActiveTripCard({ request, currencySymbol, onCancel, onDone, canc
 
       <div className="mt-3 flex items-center justify-between rounded-xl bg-brand-surface px-3 py-2.5 text-sm">
         <span className="text-brand-foreground/60">
-          {request.ride_type__label ?? "Ride"} ·{" "}
+          {request.ride_type__label ?? "Delivery"} ·{" "}
           {request.payment_method === "in_app_balance" ? "Mckot balance" : "Cash"}
         </span>
         <span className="font-semibold text-brand-foreground">
@@ -96,7 +96,7 @@ export function ActiveTripCard({ request, currencySymbol, onCancel, onDone, canc
           rel="noopener noreferrer"
           className="mt-3 text-center text-sm font-medium text-brand-dark underline-offset-2 hover:underline"
         >
-          Share trip with someone
+          Share delivery with someone
         </a>
       )}
 
@@ -106,7 +106,7 @@ export function ActiveTripCard({ request, currencySymbol, onCancel, onDone, canc
           onClick={onDone}
           className="mt-4 flex h-12 items-center justify-center rounded-xl bg-brand-dark font-semibold text-white hover:bg-brand-dark/90"
         >
-          Book another ride
+          Book another delivery
         </button>
       ) : canCancel ? (
         <button
