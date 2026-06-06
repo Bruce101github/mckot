@@ -65,30 +65,30 @@ export function Header() {
           ))}
           <Link
             href="/ride"
-            className="rounded-xl border border-brand-dark px-4 py-2 text-sm font-semibold text-brand-dark transition-colors hover:bg-brand-dark hover:text-white"
+            className="rounded-xl bg-brand-accent px-4 py-2 text-sm font-semibold text-brand-dark transition-colors hover:bg-brand-accent-hover"
           >
             Book a ride
           </Link>
-          <Link
-            href={siteConfig.social.whatsapp}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-xl bg-brand-accent px-4 py-2 text-sm font-semibold text-brand-dark transition-colors hover:bg-brand-accent-hover"
-          >
-            Get started free
-          </Link>
         </nav>
 
-        <button
-          type="button"
-          className="rounded-lg p-2 text-brand-foreground md:hidden"
-          aria-expanded={open}
-          aria-controls="mobile-nav"
-          aria-label={open ? "Close menu" : "Open menu"}
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <Link
+            href="/ride"
+            className="rounded-xl bg-brand-accent px-3 py-2 text-sm font-semibold text-brand-dark transition-colors hover:bg-brand-accent-hover"
+          >
+            Book a ride
+          </Link>
+          <button
+            type="button"
+            className="rounded-lg p-2 text-brand-foreground"
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            aria-label={open ? "Close menu" : "Open menu"}
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
       </div>
 
       <div
@@ -109,13 +109,6 @@ export function Header() {
               {item.label}
             </Link>
           ))}
-          <Link
-            href="/ride"
-            className="mt-2 rounded-xl border border-brand-dark px-4 py-3 text-center font-semibold text-brand-dark"
-            onClick={() => setOpen(false)}
-          >
-            Book a ride
-          </Link>
           <Link
             href={siteConfig.social.whatsapp}
             target="_blank"
