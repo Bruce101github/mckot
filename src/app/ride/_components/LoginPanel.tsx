@@ -2,13 +2,20 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAuth } from "@/lib/auth/AuthProvider";
-import { getCountries, requestOtp, verifyOtp } from "@/lib/auth/server";
+import { getCountries, oauthLogin, requestOtp, verifyOtp, type OauthOutcome } from "@/lib/auth/server";
 import { getDeviceId, normalizePhone } from "@/lib/auth/client-utils";
+import {
+  APPLE_CLIENT_ID,
+  GOOGLE_CLIENT_ID,
+  renderGoogleButton,
+  signInWithApple,
+} from "@/lib/auth/oauth-client";
 import type { Country } from "@/lib/auth/types";
 
 type Step = "phone" | "otp";
+type OauthSession = { token: string; firstName?: string; lastName?: string };
 
 export function LoginPanel() {
   const { setUser } = useAuth();
@@ -18,6 +25,65 @@ export function LoginPanel() {
   const [otp, setOtp] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [oauthSession, setOauthSession] = useState<OauthSession | null>(null);
+  const googleHostRef = useRef<HTMLDivElement | null>(null);
+
+  function handleOauthOutcome(outcome: OauthOutcome) {
+    if (!outcome.success) {
+      setError(outcome.error);
+      return;
+    }
+    if ("needsPhone" in outcome) {
+      setError(null);
+      setPhoneInput("");
+      setOtp("");
+      setStep("phone");
+      setOauthSession({
+        token: outcome.oauthSessionToken,
+        firstName: outcome.firstName,
+        lastName: outcome.lastName,
+      });
+      return;
+    }
+    setUser(outcome.user);
+  }
+
+  // Render Google's (transparent) official button over our styled one.
+  useEffect(() => {
+    const host = googleHostRef.current;
+    if (!host || step !== "phone" || oauthSession || !GOOGLE_CLIENT_ID) return;
+    renderGoogleButton(
+      host,
+      async (idToken) => {
+        setLoading(true);
+        const outcome = await oauthLogin({ provider: "google", idToken, device: getDeviceId() });
+        setLoading(false);
+        handleOauthOutcome(outcome);
+      },
+      (message) => setError(message),
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [step, oauthSession]);
+
+  async function handleApple() {
+    setError(null);
+    setLoading(true);
+    try {
+      const { idToken, firstName, lastName } = await signInWithApple();
+      const outcome = await oauthLogin({
+        provider: "apple",
+        idToken,
+        device: getDeviceId(),
+        firstName,
+        lastName,
+      });
+      handleOauthOutcome(outcome);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Apple sign-in failed.");
+    } finally {
+      setLoading(false);
+    }
+  }
 
   useEffect(() => {
     getCountries()
@@ -65,6 +131,7 @@ export function LoginPanel() {
       otp: otp.replace(/\D/g, ""),
       countryId: country?.id ?? 1,
       device: getDeviceId(),
+      oauthSessionToken: oauthSession?.token,
     });
     setLoading(false);
     if (res.success) {
@@ -83,12 +150,20 @@ export function LoginPanel() {
 
         <div className="rounded-2xl border border-brand-border bg-white p-6 shadow-soft sm:p-8">
           <h1 className="text-xl font-semibold text-brand-foreground">
-            {step === "phone" ? "Sign in to ride" : "Enter your code"}
+            {step === "otp"
+              ? "Enter your code"
+              : oauthSession
+                ? oauthSession.firstName
+                  ? `Almost there, ${oauthSession.firstName}`
+                  : "Add your phone number"
+                : "Sign in to ride"}
           </h1>
           <p className="mt-1 text-sm text-brand-foreground/60">
-            {step === "phone"
-              ? "We'll text you a verification code."
-              : `Sent to +${normalizedPhone}`}
+            {step === "otp"
+              ? `Sent to +${normalizedPhone}`
+              : oauthSession
+                ? "One last step — we'll text a code to verify your number."
+                : "We'll text you a verification code."}
           </p>
 
           {step === "phone" ? (
@@ -159,7 +234,7 @@ export function LoginPanel() {
             </form>
           )}
 
-          {step === "phone" && (
+          {step === "phone" && !oauthSession && (GOOGLE_CLIENT_ID || APPLE_CLIENT_ID) && (
             <>
               <div className="my-6 flex items-center gap-3 text-xs text-brand-foreground/40">
                 <span className="h-px flex-1 bg-brand-border" />
@@ -167,8 +242,30 @@ export function LoginPanel() {
                 <span className="h-px flex-1 bg-brand-border" />
               </div>
               <div className="space-y-3">
-                <OauthButton label="Continue with Google" provider="google" />
-                <OauthButton label="Continue with Apple" provider="apple" />
+                {GOOGLE_CLIENT_ID && (
+                  <div className="relative">
+                    <div className="pointer-events-none flex w-full items-center justify-center gap-2.5 rounded-xl border border-brand-border bg-white py-3 text-sm font-medium text-brand-foreground/80">
+                      <GoogleIcon />
+                      Continue with Google
+                    </div>
+                    <div
+                      ref={googleHostRef}
+                      aria-hidden
+                      className="absolute inset-0 z-10 flex items-center justify-center overflow-hidden opacity-0"
+                    />
+                  </div>
+                )}
+                {APPLE_CLIENT_ID && (
+                  <button
+                    type="button"
+                    onClick={handleApple}
+                    disabled={loading}
+                    className="flex w-full items-center justify-center gap-2.5 rounded-xl border border-brand-border bg-white py-3 text-sm font-medium text-brand-foreground/80 transition-colors hover:bg-brand-muted/50 disabled:opacity-60"
+                  >
+                    <AppleIcon />
+                    Continue with Apple
+                  </button>
+                )}
               </div>
             </>
           )}
@@ -181,21 +278,6 @@ export function LoginPanel() {
         </p>
       </div>
     </div>
-  );
-}
-
-// Scaffolded — wired in Phase 1 once web OAuth client IDs are configured.
-function OauthButton({ label, provider }: { label: string; provider: "google" | "apple" }) {
-  return (
-    <button
-      type="button"
-      onClick={() => alert("Social sign-in is being set up. Please use your phone number for now.")}
-      data-provider={provider}
-      className="flex w-full items-center justify-center gap-2.5 rounded-xl border border-brand-border bg-white py-3 text-sm font-medium text-brand-foreground/80 transition-colors hover:bg-brand-muted/50"
-    >
-      {provider === "google" ? <GoogleIcon /> : <AppleIcon />}
-      {label}
-    </button>
   );
 }
 
