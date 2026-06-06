@@ -421,7 +421,7 @@ export function MapCanvas({
     // base rotation offset that aligns its "front" to heading 0 before we add
     // the travel bearing.
     const ART: Record<Kind, { src: string; w: number; h: number; offset: number }> = {
-      car: { src: "/vehicles/car.png", w: 137, h: 192, offset: 0 },
+      car: { src: "/vehicles/car.png", w: 1092, h: 1441, offset: 0 },
       bike: { src: "/vehicles/bike.png", w: 1118, h: 610, offset: -90 },
     };
     const BOX = 48; // square marker canvas (roomy enough for the rotated diagonal)
@@ -476,9 +476,8 @@ export function MapCanvas({
       return icon;
     };
 
-    // Cars are temporarily disabled (we have few on the road right now); the
-    // ambient fleet is bikes only. Restore the random mix to bring cars back.
-    const rndKind = (): Kind => "bike";
+    // Mostly bikes with a few cars mixed in, matching the real Accra fleet.
+    const rndKind = (): Kind => (Math.random() < 0.3 ? "car" : "bike");
     // metres travelled per ~16ms frame; bikes a touch quicker. Kept gentle so
     // the traffic reads as calm ambient motion, not a race.
     const speedFor = (kind: Kind) =>
@@ -760,8 +759,9 @@ export function MapCanvas({
         }
 
         // Ease the drawn bearing toward the travel bearing so turns are smooth
-        // rather than snapping at every road bend.
-        v.dispHeading += angleDiff(v.heading, v.dispHeading) * Math.min(1, 0.12 * steps);
+        // rather than snapping at every road bend. Kept low so vehicles pivot at
+        // a realistic rate instead of whipping around at corners.
+        v.dispHeading += angleDiff(v.heading, v.dispHeading) * Math.min(1, 0.045 * steps);
         v.opacity += (v.target - v.opacity) * Math.min(1, 0.14 * steps);
 
         // Fully faded out and flagged for cycling → reappear, well spaced.
