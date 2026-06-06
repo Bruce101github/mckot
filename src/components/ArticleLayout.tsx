@@ -11,6 +11,9 @@ interface ArticleLayoutProps {
   readTime: string;
   date: string;
   children: React.ReactNode;
+  // Optional override for the end-of-article CTA. When omitted, the default
+  // vendor offer box is shown (keeps existing articles unchanged).
+  footerCta?: React.ReactNode;
 }
 
 function formatDate(dateStr: string) {
@@ -23,7 +26,7 @@ function formatDate(dateStr: string) {
 
 const WA_ARTICLE_URL = `https://wa.me/233503305586?text=${encodeURIComponent("Hi Mckot, I just read your blog and I'd like to claim my 3 free deliveries")}`;
 
-export function ArticleLayout({ slug, title, excerpt, category, readTime, date, children }: ArticleLayoutProps) {
+export function ArticleLayout({ slug, title, excerpt, category, readTime, date, children, footerCta }: ArticleLayoutProps) {
   return (
     <div className="mx-auto max-w-2xl px-5 py-14 sm:px-6 md:py-20">
       <BlogScrollTracker slug={slug} />
@@ -84,25 +87,27 @@ export function ArticleLayout({ slug, title, excerpt, category, readTime, date, 
 
       <hr className="my-14 border-brand-border" />
 
-      <div className="rounded-2xl border border-brand-accent/30 bg-brand-accent/5 p-8 text-center md:p-10">
-        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand-accent">
-          Ready to start?
-        </p>
-        <p className="mt-4 text-xl font-bold text-brand-foreground md:text-2xl">
-          {siteConfig.offer.headline}
-        </p>
-        <p className="mx-auto mt-4 max-w-sm text-sm leading-relaxed text-brand-foreground/65">
-          Join as a founding Mckot vendor. We set you up over WhatsApp in one business day.
-        </p>
-        <a
-          href={WA_ARTICLE_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-7 inline-flex items-center justify-center rounded-xl bg-brand-accent px-6 py-3 text-sm font-semibold text-brand-dark transition-colors hover:bg-brand-accent-hover"
-        >
-          Claim 3 free deliveries on WhatsApp
-        </a>
-      </div>
+      {footerCta ?? (
+        <div className="rounded-2xl border border-brand-accent/30 bg-brand-accent/5 p-8 text-center md:p-10">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand-accent">
+            Ready to start?
+          </p>
+          <p className="mt-4 text-xl font-bold text-brand-foreground md:text-2xl">
+            {siteConfig.offer.headline}
+          </p>
+          <p className="mx-auto mt-4 max-w-sm text-sm leading-relaxed text-brand-foreground/65">
+            Join as a founding Mckot vendor. We set you up over WhatsApp in one business day.
+          </p>
+          <a
+            href={WA_ARTICLE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-7 inline-flex items-center justify-center rounded-xl bg-brand-accent px-6 py-3 text-sm font-semibold text-brand-dark transition-colors hover:bg-brand-accent-hover"
+          >
+            Claim 3 free deliveries on WhatsApp
+          </a>
+        </div>
+      )}
     </div>
   );
 }

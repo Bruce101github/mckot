@@ -5,10 +5,10 @@ import { MapPin } from "lucide-react";
 import { useGoogleMaps } from "@/lib/maps/useGoogleMaps";
 import type { Coords } from "@/lib/api/booking";
 
-// Accra city centre — default view before we have a pickup.
+// Accra city centre, default view before we have a pickup.
 const DEFAULT_CENTER: Coords = [5.6037, -0.187];
 
-// Light map theme — kept in sync with the Flutter app
+// Light map theme, kept in sync with the Flutter app
 // (ridehailing-mobile/assets/map_style.json) so web and mobile look identical.
 const MAP_STYLE: google.maps.MapTypeStyle[] = [
   { elementType: "geometry", stylers: [{ color: "#ffffff" }] },
@@ -47,7 +47,7 @@ type Props = {
   // True while a trip is live (step === "active"). Hides the ambient/decorative
   // vehicles even before the first real driver fix arrives.
   activeTrip?: boolean;
-  // "Set location on map" mode — a fixed centre pin the rider pans under.
+  // "Set location on map" mode, a fixed centre pin the rider pans under.
   // The map reports its centre (reverse-geocoded) up to the panel, which owns
   // the confirm / cancel controls.
   picking?: boolean;
@@ -235,7 +235,7 @@ export function MapCanvas({
       }
     }
 
-    // Fit the view to whatever we have. Skip while a driver is live — the
+    // Fit the view to whatever we have. Skip while a driver is live, the
     // driver effect owns the viewport then, so the map doesn't fight the
     // user's pan as location pushes arrive.
     if (driver) {
@@ -254,7 +254,7 @@ export function MapCanvas({
     }
   }, [state, pickup, dropoff, polyline, driver]);
 
-  // Live driver marker — animates smoothly between location pushes so the bike
+  // Live driver marker, animates smoothly between location pushes so the bike
   // glides along the road rather than teleporting on each fix. Until the first
   // live fix arrives the bike is parked at the pickup end of the route, so an
   // active trip always shows exactly one rider on the line.
@@ -361,7 +361,7 @@ export function MapCanvas({
     };
   }, [state, driver, driverBearing, pickup, dropoff, bikeUrl, activeTrip]);
 
-  // "Set location on map" — while picking, report the map centre (the point
+  // "Set location on map", while picking, report the map centre (the point
   // under the fixed pin) up to the panel, reverse-geocoded to a street address.
   // Re-reports on every pan (idle) so the address tracks the pin live.
   useEffect(() => {
@@ -391,7 +391,7 @@ export function MapCanvas({
     };
   }, [state, picking]);
 
-  // Ambient "nearby vehicles" — purely decorative, like Uber's home map. No
+  // Ambient "nearby vehicles", purely decorative, like Uber's home map. No
   // real driver data: a steady set of cars and motorbikes follow real roads
   // by travelling along Directions routes computed within the visible map.
   // Every few seconds one fades out and reappears on another road, so the mix
@@ -400,7 +400,7 @@ export function MapCanvas({
   // isn't available on the key, vehicles fall back to a gentle free drift.
   useEffect(() => {
     // Hidden during an active trip (so the decorative fleet doesn't compete with
-    // the real rider marker — even before the first driver fix) and while the
+    // the real rider marker, even before the first driver fix) and while the
     // rider is setting a location on the map (the centre pin shouldn't fight
     // decoration).
     if (state.status !== "ready" || !mapRef.current || activeTrip || driver || picking) return;
@@ -633,7 +633,7 @@ export function MapCanvas({
     };
 
     // Minimum gap between vehicles (metres) so the markers keep clear air at
-    // the current zoom — roughly three marker-widths of separation.
+    // the current zoom, roughly three marker-widths of separation.
     const minGapM = () => {
       const b = map.getBounds();
       const px = divRef.current?.clientWidth ?? 400;
@@ -805,7 +805,7 @@ export function MapCanvas({
       <div ref={divRef} className="h-full w-full" />
 
       {picking && (
-        // Fixed centre pin — its tip marks the point that will be saved. The
+        // Fixed centre pin, its tip marks the point that will be saved. The
         // rider pans the map under it; the panel shows the live address.
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
           <MapPin

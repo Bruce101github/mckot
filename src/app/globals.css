@@ -25,7 +25,7 @@ body {
   @apply outline-2 outline-offset-2 outline-brand-accent;
 }
 
-/* Dark section overrides — used in Hero, Footer, FinalCta box */
+/* Dark section overrides, used in Hero, Footer, FinalCta box */
 .dark-section {
   background-color: #0B3B2D;
   color: #F0F7EE;

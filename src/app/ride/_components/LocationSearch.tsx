@@ -102,7 +102,7 @@ export function LocationSearch({
   const hasQuickActions = onUseCurrentLocation != null || onSetOnMap != null;
   // Recent locations show before any typing (no live results, empty query).
   const showRecents = recents.length > 0 && results.length === 0 && query.trim().length < 2;
-  // Show the panel whenever the field is focused — like Uber, an empty click
+  // Show the panel whenever the field is focused, like Uber, an empty click
   // surfaces the quick actions (use current location, set on map) and recent
   // locations before any typing.
   const showPanel = open && (hasQuickActions || showRecents || results.length > 0);

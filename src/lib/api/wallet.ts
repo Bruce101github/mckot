@@ -3,7 +3,7 @@
 // Typed client for the wallet + trip-history reads the web account pages
 // render. Wallet calls hit Django POST /user/wallet (dispatched on `type`,
 // see user/wallet_views.py); trip history reuses the requester dispatcher
-// (POST /requester/, type "history" — transport/views/requester.py). Both go
+// (POST /requester/, type "history", transport/views/requester.py). Both go
 // through the /edge-api proxy which injects the bearer token server-side.
 
 import { apiPost } from "./client";

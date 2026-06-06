@@ -9,7 +9,7 @@ const DEFAULT_TRIPS_PER_DAY_PER_BIKE = 12;
 const DEFAULT_AVG_FARE = 18;
 
 /**
- * Light interactive earnings example. Numbers are illustrative —
+ * Light interactive earnings example. Numbers are illustrative,
  * the real per-trip math depends on ride type, surge, distance,
  * and the negotiated split with the partner. We label the panel
  * clearly so applicants don't take it as a contract.

@@ -5,7 +5,7 @@ const pillars = [
   {
     icon: Banknote,
     title: "Real share, every trip",
-    body: "Every completed delivery splits into the rider's share and your fleet share — both deposited automatically. No silent skim, no surprise fees.",
+    body: "Every completed delivery splits into the rider's share and your fleet share, both deposited automatically. No silent skim, no surprise fees.",
   },
   {
     icon: Eye,
@@ -20,7 +20,7 @@ const pillars = [
   {
     icon: LineChart,
     title: "Scale on your terms",
-    body: "Start with one motorcycle. Grow to a fleet. Pause vehicles, swap riders, or run multiple routes — your dashboard moves at your pace.",
+    body: "Start with one motorcycle. Grow to a fleet. Pause vehicles, swap riders, or run multiple routes, your dashboard moves at your pace.",
   },
 ];
 

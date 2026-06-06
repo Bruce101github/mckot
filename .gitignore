@@ -36,3 +36,6 @@ yarn-error.log*
 
 # claude code local config
 .claude/
+
+# local Search Console data export
+/gsc-export/

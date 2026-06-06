@@ -7,7 +7,7 @@
 
 import { apiPost } from "./client";
 
-// [lat, lng] throughout — matches the backend Location model + route serializers.
+// [lat, lng] throughout, matches the backend Location model + route serializers.
 export type Coords = [number, number];
 
 export type PlaceResult = {

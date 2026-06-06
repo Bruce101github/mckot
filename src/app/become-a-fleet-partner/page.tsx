@@ -11,7 +11,7 @@ import { FleetFAQ } from "./_components/FleetFAQ";
 export const metadata: Metadata = {
   title: "Become a Mckot Fleet Partner",
   description:
-    "Own motorcycles? Put them to work on Mckot. We dispatch the trips, vet the riders, and pay your share automatically — every week.",
+    "Own motorcycles? Put them to work on Mckot. We dispatch the trips, vet the riders, and pay your share automatically, every week.",
   alternates: { canonical: "/become-a-fleet-partner" },
   openGraph: {
     title: "Mckot Fleet · Own the wheels. We run the business.",

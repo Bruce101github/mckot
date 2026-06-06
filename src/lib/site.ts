@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: "Mckot",
-  tagline: "Logistics that scales with your business",
+  tagline: "Send anything, anywhere in Greater Accra",
   description:
-    "Same-day delivery in Accra for social commerce vendors. Mckot handles pickup, cash-on-delivery, and real-time tracking so Instagram, TikTok, and WhatsApp sellers can focus on selling.",
+    "Same-day delivery across Greater Accra for anyone who needs something moved. Mckot picks up and delivers packages, documents, and parcels for individuals, businesses, companies, restaurants, and pharmacies. Book on the site, in the app, or on WhatsApp.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://mckot.com",
   locale: "en_GH",
   phones: {
@@ -36,6 +36,8 @@ export const siteConfig = {
       process.env.NEXT_PUBLIC_APP_STORE_URL ||
       "https://apps.apple.com/app/id6742553503",
   },
+  // On-site booking flow (customers place delivery orders directly).
+  book: "/ride",
   offer: {
     headline: "3 free deliveries in your first 30 days",
     short: "3 free deliveries",
@@ -44,6 +46,11 @@ export const siteConfig = {
   vendorCount: "50",
   gaMeasurementId: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "",
 };
+
+// Build a wa.me link to the primary Mckot number with a pre-filled message.
+export function waLink(message: string): string {
+  return `https://wa.me/233503305586?text=${encodeURIComponent(message)}`;
+}
 
 export type CoverageZone = {
   id: string;

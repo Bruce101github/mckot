@@ -3,7 +3,7 @@ import { Section } from "@/components/Section";
 const faqs = [
   {
     q: "How much do I earn?",
-    a: "Your share is negotiated when you're approved — typically between 25–35% of the rider pool (the trip net after Mckot's platform commission). The exact percentage is set on your contract so there's no ambiguity.",
+    a: "Your share is negotiated when you're approved, typically between 25–35% of the rider pool (the trip net after Mckot's platform commission). The exact percentage is set on your contract so there's no ambiguity.",
   },
   {
     q: "When do I get paid?",
@@ -15,7 +15,7 @@ const faqs = [
   },
   {
     q: "Do I have to provide the bikes?",
-    a: "Yes — Mckot Fleet is for owners who already have, or plan to acquire, the vehicles. We don't lease bikes. If you're a rider looking to earn without buying a bike, sign up as a rider on the main Mckot app instead.",
+    a: "Yes, Mckot Fleet is for owners who already have, or plan to acquire, the vehicles. We don't lease bikes. If you're a rider looking to earn without buying a bike, sign up as a rider on the main Mckot app instead.",
   },
   {
     q: "What about the riders?",

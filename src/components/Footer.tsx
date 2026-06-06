@@ -5,7 +5,7 @@ import { siteConfig } from "@/lib/site";
 export function Footer() {
   return (
     <footer className="bg-brand-dark py-14">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:grid-cols-2 sm:px-6 lg:grid-cols-4">
+      <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:grid-cols-2 sm:px-6 lg:grid-cols-5">
         <div>
           <Image
             src="/logo-dark.svg"
@@ -15,35 +15,80 @@ export function Footer() {
             className="h-7 w-auto"
           />
           <p className="mt-3 max-w-xs text-sm text-brand-dark-foreground/60">
-            Last-mile delivery and commerce tooling built with vendors in Accra.
+            Same-day delivery across Greater Accra. Send anything, anywhere:
+            book on the site, in the app, or on WhatsApp.
           </p>
         </div>
         <div>
           <p className="text-sm font-semibold uppercase tracking-wider text-brand-dark-foreground/40">
-            Explore
+            Services
           </p>
           <ul className="mt-4 space-y-2 text-sm text-brand-dark-foreground/65">
             <li>
-              <Link href="/services" className="transition hover:text-brand-accent">
-                Services
+              <Link href="/services/same-day-delivery" className="transition hover:text-brand-accent">
+                Same-day delivery
+              </Link>
+            </li>
+            <li>
+              <Link href="/services/parcel-delivery" className="transition hover:text-brand-accent">
+                Parcel delivery
+              </Link>
+            </li>
+            <li>
+              <Link href="/services/document-delivery" className="transition hover:text-brand-accent">
+                Document delivery
+              </Link>
+            </li>
+            <li>
+              <Link href="/services/business-delivery" className="transition hover:text-brand-accent">
+                Business delivery
+              </Link>
+            </li>
+            <li>
+              <Link href="/services/scheduled-pickup" className="transition hover:text-brand-accent">
+                Scheduled pickup
+              </Link>
+            </li>
+            <li>
+              <Link href="/pricing" className="transition hover:text-brand-accent">
+                Pricing
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-wider text-brand-dark-foreground/40">
+            Who we move for
+          </p>
+          <ul className="mt-4 space-y-2 text-sm text-brand-dark-foreground/65">
+            <li>
+              <Link href="/for/individuals" className="transition hover:text-brand-accent">
+                Individuals
+              </Link>
+            </li>
+            <li>
+              <Link href="/for/small-business" className="transition hover:text-brand-accent">
+                Small businesses
+              </Link>
+            </li>
+            <li>
+              <Link href="/for/companies" className="transition hover:text-brand-accent">
+                Companies
+              </Link>
+            </li>
+            <li>
+              <Link href="/for/restaurants" className="transition hover:text-brand-accent">
+                Restaurants
+              </Link>
+            </li>
+            <li>
+              <Link href="/for/pharmacies" className="transition hover:text-brand-accent">
+                Pharmacies
               </Link>
             </li>
             <li>
               <Link href="/vendors" className="transition hover:text-brand-accent">
-                For Vendors
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/become-a-fleet-partner"
-                className="transition hover:text-brand-accent"
-              >
-                For Fleet Partners
-              </Link>
-            </li>
-            <li>
-              <Link href="/coverage" className="transition hover:text-brand-accent">
-                Coverage
+                Online vendors
               </Link>
             </li>
           </ul>
@@ -53,6 +98,36 @@ export function Footer() {
             Company
           </p>
           <ul className="mt-4 space-y-2 text-sm text-brand-dark-foreground/65">
+            <li>
+              <Link href="/drive" className="transition hover:text-brand-accent">
+                Drive with Mckot
+              </Link>
+            </li>
+            <li>
+              <Link href="/deliver" className="transition hover:text-brand-accent">
+                Become a Rider
+              </Link>
+            </li>
+            <li>
+              <Link href="/become-a-fleet-partner" className="transition hover:text-brand-accent">
+                For Fleet Partners
+              </Link>
+            </li>
+            <li>
+              <Link href="/coverage" className="transition hover:text-brand-accent">
+                Coverage
+              </Link>
+            </li>
+            <li>
+              <Link href="/safety" className="transition hover:text-brand-accent">
+                Safety
+              </Link>
+            </li>
+            <li>
+              <Link href="/blog" className="transition hover:text-brand-accent">
+                Blog
+              </Link>
+            </li>
             <li>
               <Link href="/about" className="transition hover:text-brand-accent">
                 About

@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 import { ProfileMenu } from "./ProfileMenu";
 
 const TABS = [
-  { href: "/ride", label: "Ride" },
+  { href: "/ride", label: "Book" },
   { href: "/ride/activity", label: "Activity" },
 ];
 
@@ -24,7 +24,7 @@ export function RideNav() {
 
   // Show the bottom border + shadow only once the page is scrolled. The booking
   // page scrolls an inner container (the window never moves), while wallet /
-  // activity scroll the document — a capture-phase listener catches either.
+  // activity scroll the document, a capture-phase listener catches either.
   useEffect(() => {
     const onScroll = (e: Event) => {
       const t = e.target;
@@ -64,7 +64,7 @@ export function RideNav() {
             <Image src="/logo-light.svg" alt="Mckot" width={110} height={31} className="h-8 w-auto" priority />
           </Link>
 
-          {/* Desktop inline nav — hidden on mobile */}
+          {/* Desktop inline nav, hidden on mobile */}
           <nav className="hidden items-center gap-6 md:flex" aria-label="Primary">
             {TABS.map((tab) => (
               <Link
@@ -84,7 +84,7 @@ export function RideNav() {
         <div className="flex items-center gap-2">
           <ProfileMenu />
 
-          {/* Mobile hamburger — opens the nav menu; hidden on desktop */}
+          {/* Mobile hamburger, opens the nav menu; hidden on desktop */}
           <div className="relative md:hidden" ref={menuRef}>
             <button
               type="button"

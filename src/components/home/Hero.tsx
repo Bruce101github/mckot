@@ -1,22 +1,15 @@
-"use client";
-
-import { useRef } from "react";
 import Image from "next/image";
-import { ArrowRight, Star } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Star, MessageCircle } from "lucide-react";
 import { FadeIn } from "@/components/FadeIn";
-import { siteConfig } from "@/lib/site";
+import { siteConfig, waLink } from "@/lib/site";
+
+const WA_HERO = waLink("Hi Mckot, I'd like to book a delivery in Accra.");
 
 export function Hero() {
-  const emailRef = useRef<HTMLInputElement>(null);
-
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    document.getElementById("signup")?.scrollIntoView({ behavior: "smooth" });
-  }
-
   return (
     <section className="relative overflow-hidden py-20 md:py-28">
-      {/* Abstract lines — top-right, very subtle */}
+      {/* Abstract lines, top-right, very subtle */}
       <Image
         src="/abstract-lines.png"
         alt=""
@@ -36,43 +29,49 @@ export function Hero() {
                 ))}
               </div>
               <span className="text-xs font-semibold text-brand-foreground/70">
-                Trusted by 40+ vendors in Accra
+                Trusted across Accra for same-day delivery
               </span>
             </div>
 
             <h1 className="mt-5 text-[2.75rem] font-extrabold leading-[1.08] tracking-tight text-brand-foreground md:text-5xl lg:text-[3.5rem]">
-              Deliver for your
+              Send anything,
               <br />
-              customers. Today.
+              anywhere in Accra. Today.
             </h1>
 
             <p className="mt-5 max-w-md text-lg leading-relaxed text-brand-foreground/65">
-              Last-mile delivery for social commerce vendors in Accra. Book from
-              the app — we handle the rest.
+              Mckot moves packages, documents, and parcels across Greater Accra
+              for people, shops, and companies. Book on the site, in the app, or
+              on WhatsApp. We handle pickup, delivery, and cash collection.
             </p>
 
-            <form onSubmit={handleSubmit} className="mt-8 flex max-w-md flex-col gap-3 sm:flex-row">
-              <input
-                ref={emailRef}
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 rounded-xl border border-brand-border bg-brand-surface px-4 py-3 text-sm text-brand-foreground outline-none placeholder:text-brand-foreground/40 transition focus:border-brand-accent focus:bg-white"
-                required
-              />
-              <button
-                type="submit"
-                className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-brand-accent px-5 py-3 text-sm font-semibold text-brand-dark transition-colors hover:bg-brand-accent-hover"
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link
+                href={siteConfig.book}
+                className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-brand-accent px-6 py-3.5 text-sm font-semibold text-brand-dark transition-colors hover:bg-brand-accent-hover"
               >
-                Start free
+                Book a delivery
                 <ArrowRight className="h-4 w-4" />
-              </button>
-            </form>
+              </Link>
+              <Link
+                href={WA_HERO}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl border border-brand-border bg-brand-surface px-6 py-3.5 text-sm font-semibold text-brand-foreground transition-colors hover:bg-brand-muted/30"
+              >
+                <MessageCircle className="h-4 w-4" />
+                WhatsApp us
+              </Link>
+            </div>
 
             <p className="mt-3 text-xs text-brand-foreground/40">
-              Free to start. No subscription. Cancel anytime.
+              No account needed to start. Pay per delivery, no subscription.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
+              <span className="text-xs font-medium text-brand-foreground/45">
+                Or get the app:
+              </span>
               <a
                 href={siteConfig.app.playStore}
                 target="_blank"
@@ -127,8 +126,8 @@ export function Hero() {
             </div>
 
             <div className="absolute -left-4 top-10 hidden rounded-xl border border-brand-border bg-white px-4 py-3 shadow-soft lg:block">
-              <p className="text-xl font-bold text-brand-accent">40+</p>
-              <p className="text-xs text-brand-foreground/55">Active vendors</p>
+              <p className="text-xl font-bold text-brand-accent">7 zones</p>
+              <p className="text-xs text-brand-foreground/55">Across Greater Accra</p>
             </div>
             <div className="absolute -right-4 bottom-28 hidden rounded-xl border border-brand-border bg-white px-4 py-3 shadow-soft lg:block">
               <p className="text-xl font-bold text-brand-accent">Same day</p>

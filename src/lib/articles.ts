@@ -81,4 +81,85 @@ export const articles: Article[] = [
     readTime: "7 min read",
     date: "2026-05-28",
   },
+  {
+    slug: "how-to-send-a-package-accra-same-day",
+    title: "How to Send a Package Across Accra the Same Day",
+    excerpt:
+      "A step-by-step guide to sending a package anywhere in Greater Accra and having it arrive the same day, with pricing, tracking, and cash-on-delivery covered.",
+    category: "How-to",
+    readTime: "6 min read",
+    date: "2026-06-02",
+  },
+  {
+    slug: "courier-services-small-business-ghana",
+    title: "Courier Services for Small Businesses in Ghana: What to Look For",
+    excerpt:
+      "The features that actually matter when a small business in Ghana picks a courier: cash-on-delivery, proof of delivery, coverage, and pricing that scales.",
+    category: "For business",
+    readTime: "7 min read",
+    date: "2026-06-03",
+  },
+  {
+    slug: "set-up-reliable-delivery-accra-business",
+    title: "How to Set Up Reliable Delivery for Your Accra Business",
+    excerpt:
+      "A practical playbook for building delivery into your Accra business: zones, scheduling, cash-on-delivery, and the systems that keep customers coming back.",
+    category: "For business",
+    readTime: "7 min read",
+    date: "2026-06-03",
+  },
+  {
+    slug: "sending-documents-across-accra-guide",
+    title: "Sending Documents Across Accra: The Complete Guide",
+    excerpt:
+      "Contracts, cheques, passports, and signed paperwork need careful, same-day handling. Here is how to send documents across Accra without the worry.",
+    category: "How-to",
+    readTime: "5 min read",
+    date: "2026-06-04",
+  },
+  {
+    slug: "mckot-vs-uber-bolt-package-delivery",
+    title: "Mckot vs Sending a Package by Uber or Bolt: When Each Makes Sense",
+    excerpt:
+      "Riders use Uber and Bolt to move packages all the time. Here is an honest look at when that works, when it does not, and where a dedicated courier wins.",
+    category: "Comparison",
+    readTime: "6 min read",
+    date: "2026-06-04",
+  },
+  {
+    slug: "restaurants-accra-supply-catering-delivery",
+    title: "How Restaurants in Accra Handle Supply and Catering Deliveries",
+    excerpt:
+      "Beyond the customer meal, restaurants run a constant flow of supply runs and catering drops. Here is how Accra kitchens keep that moving without their own fleet.",
+    category: "For business",
+    readTime: "6 min read",
+    date: "2026-06-05",
+  },
+  {
+    slug: "cheapest-reliable-delivery-accra-2026",
+    title: "The Cheapest Reliable Delivery Options in Accra (2026)",
+    excerpt:
+      "Cheap and reliable usually pull in opposite directions. Here is how to get both in Accra in 2026, and the false economies that cost you more in the end.",
+    category: "Pricing",
+    readTime: "6 min read",
+    date: "2026-06-05",
+  },
+  {
+    slug: "book-delivery-online-accra-how-mckot-works",
+    title: "Book Delivery Online in Accra: How Mckot Works",
+    excerpt:
+      "You no longer need WhatsApp to send something across Accra. Here is exactly how booking a delivery online with Mckot works, step by step.",
+    category: "Product",
+    readTime: "5 min read",
+    date: "2026-06-06",
+  },
+  {
+    slug: "delivery-apps-ghana-compared-2026",
+    title: "Delivery Apps in Ghana Compared (2026)",
+    excerpt:
+      "Ride-hailing apps, food-ordering apps, informal riders, and dedicated couriers all promise delivery. Here is how the options actually compare for sending something in Ghana.",
+    category: "Comparison",
+    readTime: "8 min read",
+    date: "2026-06-06",
+  },
 ];

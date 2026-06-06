@@ -2,7 +2,7 @@
 
 const DEVICE_KEY = "mckot_site_device";
 
-// Stable per-browser device id — backend ties tokens to (user, device).
+// Stable per-browser device id, backend ties tokens to (user, device).
 export function getDeviceId(): string {
   if (typeof window === "undefined") return "web";
   let id = window.localStorage.getItem(DEVICE_KEY);

@@ -14,8 +14,8 @@ type Props = {
 const STATUS_COPY: Record<string, { title: string; sub: string }> = {
   requested: { title: "Finding your driver", sub: "Matching you with the nearest driver…" },
   accepted: { title: "Driver is on the way", sub: "Your driver is heading to your pickup." },
-  "in progress": { title: "On your trip", sub: "Enjoy the ride — you're on your way." },
-  completed: { title: "Trip completed", sub: "Thanks for riding with Mckot." },
+  "in progress": { title: "On your trip", sub: "Your delivery is on the way." },
+  completed: { title: "Trip completed", sub: "Thanks for using Mckot." },
   cancelled: { title: "Trip cancelled", sub: "This request was cancelled." },
   scheduled: { title: "Ride scheduled", sub: "We'll dispatch a driver at your chosen time." },
 };
@@ -115,7 +115,7 @@ export function ActiveTripCard({ request, currencySymbol, onCancel, onDone, canc
           disabled={cancelling}
           className="mt-4 flex h-12 items-center justify-center rounded-xl border border-brand-border font-semibold text-brand-foreground/70 hover:bg-brand-muted/50 disabled:opacity-50"
         >
-          {cancelling ? <Loader2 className="h-5 w-5 animate-spin" /> : "Cancel ride"}
+          {cancelling ? <Loader2 className="h-5 w-5 animate-spin" /> : "Cancel delivery"}
         </button>
       ) : null}
     </div>

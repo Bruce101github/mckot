@@ -236,7 +236,7 @@ function Row({
 function humanStatus(s: string) {
   return (
     {
-      submitted: "Submitted — awaiting review",
+      submitted: "Submitted, awaiting review",
       under_review: "Under review",
       info_requested: "More info requested",
       approved: "Approved",

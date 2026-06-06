@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
  *  - keep the API host out of the browser bundle
  *  - apply a short server cache so a flash of vendors hitting the homepage
  *    doesn't hammer the backend
- *  - fail open silently — any backend error returns { success: false }
+ *  - fail open silently, any backend error returns { success: false }
  */
 export async function GET() {
   const base = process.env.VENDOR_SIGNUP_API_URL?.replace(/\/+$/, "") ||

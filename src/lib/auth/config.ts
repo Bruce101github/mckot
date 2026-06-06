@@ -2,7 +2,7 @@
 // API_PROXY_TARGET lets us point at staging; defaults to production.
 export const API_BASE = (process.env.API_PROXY_TARGET ?? "https://api.mckot.com").replace(/\/$/, "");
 
-// httpOnly session cookie — token never reaches client JS.
+// httpOnly session cookie, token never reaches client JS.
 export const SESSION_COOKIE = "mckot_site_token";
 
 // Customer site always authenticates as a requester.

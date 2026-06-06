@@ -1,6 +1,6 @@
 import type { PlaceResult } from "@/lib/api/booking";
 
-// Uber-style "recent locations" — places the rider has previously chosen,
+// Uber-style "recent locations", places the rider has previously chosen,
 // kept client-side so they surface in the search dropdown before any typing.
 const KEY = "mckot_recent_places";
 const MAX = 5;

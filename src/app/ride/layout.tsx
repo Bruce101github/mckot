@@ -5,7 +5,7 @@ import { AuthProvider } from "@/lib/auth/AuthProvider";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Book a ride",
+  title: "Book a delivery",
   robots: { index: false, follow: false },
 };
 

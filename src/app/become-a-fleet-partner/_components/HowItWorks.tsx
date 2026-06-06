@@ -4,12 +4,12 @@ const steps = [
   {
     num: "01",
     title: "Apply online",
-    body: "Tell us about you, your business, and how many vehicles you'd like to operate. Upload your Ghana Card and business documents — 10 minutes, all online.",
+    body: "Tell us about you, your business, and how many vehicles you'd like to operate. Upload your Ghana Card and business documents, 10 minutes, all online.",
   },
   {
     num: "02",
     title: "We review",
-    body: "Our partnerships team verifies your identity and documents. Within two business days, you'll hear back with an approval — or a quick note on what to fix.",
+    body: "Our partnerships team verifies your identity and documents. Within two business days, you'll hear back with an approval, or a quick note on what to fix.",
   },
   {
     num: "03",
@@ -19,7 +19,7 @@ const steps = [
   {
     num: "04",
     title: "Riders go online",
-    body: "Riders linked to your fleet start accepting trips. You see every delivery in real time — locations, earnings, ratings, fuel reports.",
+    body: "Riders linked to your fleet start accepting trips. You see every delivery in real time, locations, earnings, ratings, fuel reports.",
   },
   {
     num: "05",

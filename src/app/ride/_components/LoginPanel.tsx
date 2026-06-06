@@ -156,13 +156,13 @@ export function LoginPanel() {
                 ? oauthSession.firstName
                   ? `Almost there, ${oauthSession.firstName}`
                   : "Add your phone number"
-                : "Sign in to ride"}
+                : "Sign in to book a delivery"}
           </h1>
           <p className="mt-1 text-sm text-brand-foreground/60">
             {step === "otp"
               ? `Sent to +${normalizedPhone}`
               : oauthSession
-                ? "One last step — we'll text a code to verify your number."
+                ? "One last step, we'll text a code to verify your number."
                 : "We'll text you a verification code."}
           </p>
 

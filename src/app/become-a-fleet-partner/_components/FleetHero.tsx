@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 
 /**
- * Dark hero — sets the tone for the entire fleet page. Uses the
+ * Dark hero, sets the tone for the entire fleet page. Uses the
  * brand-dark family (matches main site Hero) but with an emphasis
  * on the *investor* framing: not "earn extra cash" but "build a
  * fleet". Numbers in the trust strip are illustrative defaults;
@@ -38,7 +38,7 @@ export function FleetHero() {
 
             <p className="mt-6 max-w-xl text-balance text-lg text-brand-dark-foreground/75 md:text-xl">
               Put your motorcycles on Mckot. We dispatch the trips, vet the riders,
-              and pay you a share of every delivery — automatically, every week.
+              and pay you a share of every delivery, automatically, every week.
             </p>
 
             <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">

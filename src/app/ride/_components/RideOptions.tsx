@@ -1,6 +1,6 @@
 "use client";
 
-import { Loader2, Users } from "lucide-react";
+import { Loader2, Package } from "lucide-react";
 import {
   priceNumber,
   type PaymentMethod,
@@ -81,20 +81,20 @@ export function RideOptions({
                 <img src={ride.image} alt="" className="h-10 w-10 rounded-lg object-contain" />
               ) : (
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-muted/60 text-brand-foreground/60">
-                  <Users className="h-5 w-5" />
+                  <Package className="h-5 w-5" />
                 </div>
               )}
               <div className="min-w-0 flex-1">
                 <div className="flex items-center gap-2">
                   <span className="font-semibold text-brand-foreground">{ride.label}</span>
-                  <span className="flex items-center gap-0.5 text-xs text-brand-foreground/50">
-                    <Users className="h-3 w-3" />
-                    {ride.persons}
+                  <span className="flex items-center gap-1 text-xs text-brand-foreground/50">
+                    <Package className="h-3 w-3" />
+                    {parcelLabel(ride.persons)}
                   </span>
                 </div>
                 <span className="text-xs text-brand-foreground/50">
                   {ride.queued && !ride.available
-                    ? "Busy — may take longer"
+                    ? "Busy, may take longer"
                     : `${ride.minutes} min away`}
                 </span>
               </div>
@@ -130,10 +130,18 @@ export function RideOptions({
         disabled={requesting || selectedRideId === null || rideTypes.length === 0}
         className="mt-3 flex h-12 items-center justify-center rounded-xl bg-brand-dark font-semibold text-white transition hover:bg-brand-dark/90 disabled:opacity-50"
       >
-        {requesting ? <Loader2 className="h-5 w-5 animate-spin" /> : "Request ride"}
+        {requesting ? <Loader2 className="h-5 w-5 animate-spin" /> : "Request delivery"}
       </button>
     </div>
   );
+}
+
+// Map a vehicle's passenger capacity to parcel-size vocabulary for the
+// delivery context (motorbike → small, car → larger loads).
+function parcelLabel(persons: number): string {
+  if (persons <= 1) return "Small parcel";
+  if (persons <= 4) return "Medium load";
+  return "Large load";
 }
 
 function PaymentChip({

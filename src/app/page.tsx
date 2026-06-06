@@ -1,5 +1,6 @@
 import { Hero } from "@/components/home/Hero";
 import { SocialProofStrip } from "@/components/home/SocialProofStrip";
+import { WhoWeMoveFor } from "@/components/home/WhoWeMoveFor";
 import { WhyMckot } from "@/components/home/WhyMckot";
 import { HowItWorksHome } from "@/components/home/HowItWorksHome";
 import { AppScreensSection } from "@/components/home/AppScreensSection";
@@ -18,6 +19,7 @@ export default function HomePage() {
     <>
       <Hero />
       <SocialProofStrip />
+      <WhoWeMoveFor />
       <WhyMckot />
       <HowItWorksHome />
       <AppScreensSection />

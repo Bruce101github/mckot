@@ -41,7 +41,7 @@ export function SystemBanner() {
     (async () => {
       try {
         const url = `${siteConfig.url.replace(/\/$/, "")}/api/internal-banner`;
-        // Use a relative API route in production to avoid CORS — see /api/internal-banner.
+        // Use a relative API route in production to avoid CORS, see /api/internal-banner.
         const res = await fetch("/api/internal-banner", {
           method: "GET",
           cache: "no-store",
@@ -61,7 +61,7 @@ export function SystemBanner() {
             setDismissed(true);
           }
         } catch {
-          // localStorage unavailable (private mode etc.) — show banner anyway.
+          // localStorage unavailable (private mode etc.), show banner anyway.
         }
       } catch {
         // Network errors are non-fatal; banner just won't appear.

@@ -5,11 +5,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
-import { siteConfig } from "@/lib/site";
+import { waLink } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 const nav = [
   { href: "/services", label: "Services" },
+  { href: "/drive", label: "Drive" },
   { href: "/vendors", label: "For Vendors" },
   { href: "/become-a-fleet-partner", label: "For Fleets" },
   { href: "/coverage", label: "Coverage" },
@@ -67,7 +68,7 @@ export function Header() {
             href="/ride"
             className="rounded-xl bg-brand-accent px-4 py-2 text-sm font-semibold text-brand-dark transition-colors hover:bg-brand-accent-hover"
           >
-            Book a ride
+            Book a delivery
           </Link>
         </nav>
 
@@ -76,7 +77,7 @@ export function Header() {
             href="/ride"
             className="rounded-xl bg-brand-accent px-3 py-2 text-sm font-semibold text-brand-dark transition-colors hover:bg-brand-accent-hover"
           >
-            Book a ride
+            Book a delivery
           </Link>
           <button
             type="button"
@@ -109,15 +110,15 @@ export function Header() {
               {item.label}
             </Link>
           ))}
-          <Link
-            href={siteConfig.social.whatsapp}
+          <a
+            href={waLink("Hi Mckot, I'd like to book a delivery in Accra.")}
             target="_blank"
             rel="noopener noreferrer"
             className="mt-2 rounded-xl bg-brand-accent px-4 py-3 text-center font-semibold text-brand-dark"
             onClick={() => setOpen(false)}
           >
-            Get 3 free deliveries
-          </Link>
+            Message us on WhatsApp
+          </a>
         </nav>
       </div>
     </header>

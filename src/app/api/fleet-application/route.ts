@@ -2,7 +2,7 @@
  * POST /api/fleet-application
  *
  * Thin proxy to Django ``/fleet/apply/``. The backend handles
- * validation, dedupe, and the application-code mint — we just
+ * validation, dedupe, and the application-code mint, we just
  * forward the JSON payload and surface the canonical response.
  *
  * Config:

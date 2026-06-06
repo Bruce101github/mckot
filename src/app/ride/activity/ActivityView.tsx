@@ -117,7 +117,7 @@ function TripRow({ row, symbol }: { row: TripHistoryRow; symbol: string }) {
 
       <div className="mt-3 flex items-center justify-between border-t border-brand-border pt-3">
         <span className="text-xs capitalize text-brand-foreground/50">
-          {(row.payment_method ?? "").replace(/_/g, " ") || "—"}
+          {(row.payment_method ?? "").replace(/_/g, " ") || "-"}
         </span>
         <span className="font-semibold text-brand-foreground">
           {symbol}

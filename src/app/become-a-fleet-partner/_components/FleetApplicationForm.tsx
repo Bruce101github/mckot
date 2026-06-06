@@ -233,7 +233,7 @@ function SuccessPanel({ result }: { result: ApplyResponse }) {
             {info.application_code}
           </p>
           <p className="mt-1 text-xs text-brand-foreground/55">
-            Save this — you&rsquo;ll need it to check status.
+            Save this, you&rsquo;ll need it to check status.
           </p>
         </div>
       )}
@@ -330,7 +330,7 @@ function StepBusiness({
     <div className="grid gap-5 md:grid-cols-2">
       <StepHeader
         title="Your business"
-        subtitle="If you operate as an individual, that's fine — just say so."
+        subtitle="If you operate as an individual, that's fine, just say so."
       />
       <Field
         label="Business name"

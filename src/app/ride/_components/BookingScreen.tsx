@@ -34,7 +34,7 @@ export function BookingScreen() {
   const [step, setStep] = useState<Step>("locations");
   const [pickup, setPickup] = useState<Place | null>(null);
   const [dropoff, setDropoff] = useState<Place | null>(null);
-  // "Set location on map" target — which field the centre-pin picker fills.
+  // "Set location on map" target, which field the centre-pin picker fills.
   const [picking, setPicking] = useState<"pickup" | "dropoff" | null>(null);
   // Live map-centre point reported while picking (reverse-geocoded address).
   const [pickPoint, setPickPoint] = useState<{ coords: Coords; address: string | null } | null>(null);
@@ -82,7 +82,7 @@ export function BookingScreen() {
 
   // The booking shell sizes itself to the dynamic viewport (h-[100dvh]) and
   // scrolls its own inner regions. Lock the document while it's mounted so iOS
-  // Safari can't scroll the body — otherwise the outer min-h-screen (100vh,
+  // Safari can't scroll the body, otherwise the outer min-h-screen (100vh,
   // taller than the visible area when the address bar shows) lets the page
   // creep up and drag the sticky nav under the status bar. Also kills body
   // rubber-banding during the takeover. Restored on unmount.
@@ -159,7 +159,7 @@ export function BookingScreen() {
     return stop;
   }, [step]);
 
-  // Live trip channel (Centrifugo) — only while a trip is active and has a
+  // Live trip channel (Centrifugo), only while a trip is active and has a
   // channel. Gives a moving driver marker and instant status transitions,
   // with the 5s poll above as a fallback / source of driver-profile details.
   const liveChannel = step === "active" ? active?.channel ?? null : null;
@@ -173,7 +173,7 @@ export function BookingScreen() {
         : prev,
     );
     // Non-terminal transitions (accepted / in progress) carry no driver
-    // profile in the event — refresh once to fill name/phone/photo now
+    // profile in the event, refresh once to fill name/phone/photo now
     // instead of waiting for the next poll tick.
     if (liveStatus !== "completed" && liveStatus !== "cancelled") {
       (async () => {
@@ -380,7 +380,7 @@ export function BookingScreen() {
         <RideNav />
       </div>
 
-      {/* Mobile takeover header — replaces the nav while searching (Uber-style) */}
+      {/* Mobile takeover header, replaces the nav while searching (Uber-style) */}
       {searchActive && (
         <header className="relative flex shrink-0 items-center justify-center bg-white px-4 py-3.5 md:hidden">
           <button
@@ -400,7 +400,7 @@ export function BookingScreen() {
       )}
 
       <div className="flex w-full flex-1 flex-col gap-4 overflow-hidden px-4 py-4 md:flex-row md:gap-6 md:px-6 md:py-6">
-        {/* Booking panel — stacked above the map on mobile, left column on desktop */}
+        {/* Booking panel, stacked above the map on mobile, left column on desktop */}
         <div
           className={`order-1 w-full md:w-[380px] md:overflow-y-auto ${
             searchActive
@@ -438,7 +438,7 @@ export function BookingScreen() {
               </h1>
 
               <div className="space-y-3">
-                {/* Date row — native date picker overlaid transparently */}
+                {/* Date row, native date picker overlaid transparently */}
                 <div className="relative flex items-center gap-3 rounded-xl bg-[#EEEEEE] px-4 py-3.5">
                   <Calendar className="h-5 w-5 shrink-0 text-brand-foreground" />
                   <span className="flex-1 text-base font-medium text-brand-foreground">
@@ -454,7 +454,7 @@ export function BookingScreen() {
                     aria-label="Pick a date"
                   />
                 </div>
-                {/* Time row — native time picker overlaid transparently */}
+                {/* Time row, native time picker overlaid transparently */}
                 <div className="relative flex items-center gap-3 rounded-xl bg-[#EEEEEE] px-4 py-3.5">
                   <Clock className="h-5 w-5 shrink-0 text-brand-foreground" />
                   <span className="flex-1 text-base font-medium text-brand-foreground">
@@ -661,7 +661,7 @@ export function BookingScreen() {
         </div>
         </div>
 
-        {/* Map — contained rounded card, not a full-bleed background */}
+        {/* Map, contained rounded card, not a full-bleed background */}
         <div
           className={`relative order-2 min-h-[240px] flex-1 overflow-hidden rounded-2xl border border-brand-border shadow-soft md:min-h-0 md:flex-1 ${
             searchActive ? "max-md:hidden" : ""
@@ -679,7 +679,7 @@ export function BookingScreen() {
           />
         </div>
 
-        {/* Quick-action cards (mobile only) — mirror the app's requester home */}
+        {/* Quick-action cards (mobile only), mirror the app's requester home */}
         {step === "locations" && picking === null && !scheduleOpen && !searchActive && (
           <div className="order-3 pb-1 md:hidden">
             <h2 className="mb-3 text-base font-bold text-brand-foreground">
