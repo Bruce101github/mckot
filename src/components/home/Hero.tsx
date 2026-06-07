@@ -8,7 +8,7 @@ const WA_HERO = waLink("Hi Mckot, I'd like to book a delivery in Accra.");
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden py-20 md:py-28">
+    <section className="relative overflow-hidden pb-20 pt-10 md:py-28">
       {/* Abstract lines, top-right, very subtle */}
       <Image
         src="/abstract-lines.png"
@@ -45,7 +45,7 @@ export function Hero() {
               on WhatsApp. We handle pickup, delivery, and cash collection.
             </p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div id="hero-cta" className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link
                 href={siteConfig.book}
                 className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-brand-accent px-6 py-3.5 text-sm font-semibold text-brand-dark transition-colors hover:bg-brand-accent-hover"
