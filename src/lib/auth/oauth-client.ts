@@ -135,9 +135,23 @@ export async function signInWithApple(): Promise<{
     usePopup: true,
   });
 
-  const resp = await AppleID.auth.signIn();
+  let resp: Awaited<ReturnType<AppleAuth["signIn"]>>;
+  try {
+    resp = await AppleID.auth.signIn();
+  } catch (err) {
+    // Apple rejects with a plain object like { error: "popup_closed_by_user" }
+    // — not an Error — so surface its real code instead of a generic message.
+    const code =
+      err && typeof err === "object" && "error" in err
+        ? String((err as { error?: unknown }).error)
+        : "";
+    if (code === "popup_closed_by_user" || code === "user_cancelled_authorize") {
+      throw new Error("Apple sign-in was cancelled.");
+    }
+    throw new Error(code ? `Apple sign-in failed (${code}).` : "Apple sign-in failed.");
+  }
   const idToken = resp?.authorization?.id_token;
-  if (!idToken) throw new Error("Apple sign-in failed.");
+  if (!idToken) throw new Error("Apple sign-in failed — no token returned.");
   const name = resp?.user?.name;
   return { idToken, firstName: name?.firstName, lastName: name?.lastName };
 }
