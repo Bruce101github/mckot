@@ -25,6 +25,12 @@ body {
   @apply outline-2 outline-offset-2 outline-brand-accent;
 }
 
+/* Form fields show focus via their own border colour, so skip the accent
+   ring on them (it reads as a redundant lime border when a field is active). */
+:where(input, textarea, select):focus-visible {
+  outline: none;
+}
+
 /* Dark section overrides, used in Hero, Footer, FinalCta box */
 .dark-section {
   background-color: #0B3B2D;

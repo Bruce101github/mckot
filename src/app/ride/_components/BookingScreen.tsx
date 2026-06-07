@@ -399,7 +399,7 @@ export function BookingScreen() {
         </header>
       )}
 
-      <div className="flex w-full flex-1 flex-col gap-4 overflow-hidden px-4 py-4 md:flex-row md:gap-6 md:px-8 md:py-8">
+      <div className="flex w-full flex-1 flex-col gap-4 overflow-hidden px-4 py-4 md:flex-row md:gap-6 md:px-16 md:py-8">
         {/* Booking panel, stacked above the map on mobile, left column on desktop */}
         <div
           className={`order-1 w-full md:w-[380px] md:overflow-y-auto ${
