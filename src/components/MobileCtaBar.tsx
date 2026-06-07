@@ -7,10 +7,10 @@ export function MobileCtaBar() {
     <div className="fixed inset-x-0 bottom-0 z-40 border-t border-brand-border bg-brand/95 p-3 backdrop-blur-md md:hidden">
       <div className="mx-auto flex max-w-lg gap-3">
         <Link
-          href="/contact#signup"
+          href="/ride"
           className="flex flex-1 items-center justify-center rounded-xl bg-brand-accent py-3 text-center text-sm font-semibold text-brand"
         >
-          Get Started
+          Book a delivery
         </Link>
         <Link
           href={siteConfig.social.whatsapp}
