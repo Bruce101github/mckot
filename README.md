@@ -45,6 +45,10 @@ Open [http://localhost:3000](http://localhost:3000).
 2. Add environment variables from `.env.example`.
 3. Deploy. `NEXT_PUBLIC_SITE_URL` should match the production domain for SEO metadata.
 
+### Performance audits
+
+- Run PageSpeed Insights / Lighthouse against **https://www.mckot.com** (the canonical URL), **not** https://mckot.com. The apex 307-redirects to `www`, which adds an ~874ms redirect penalty and depresses the lab Performance score by ~8–10 points (you measure the redirect, not the page).
+
 ## Brand notes
 
 - Colors live in `tailwind.config.ts` under `theme.extend.colors.brand`.
