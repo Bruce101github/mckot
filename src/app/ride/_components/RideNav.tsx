@@ -58,7 +58,7 @@ export function RideNav() {
         scrolled ? "border-brand-border shadow-soft" : "border-transparent",
       )}
     >
-      <div className="flex items-center justify-between px-4 py-3 md:px-8">
+      <div className="flex items-center justify-between px-4 py-3 md:px-16">
         <div className="flex items-center gap-3 md:gap-8">
           <Link href="/ride" aria-label="Mckot home" className="flex items-center">
             <Image src="/logo-light.svg" alt="Mckot" width={110} height={31} className="h-8 w-auto" priority />
