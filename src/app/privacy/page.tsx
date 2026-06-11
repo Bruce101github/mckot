@@ -106,8 +106,8 @@ export default function PrivacyPage() {
       <Section title="Background location (riders)">
         <p>
           When a rider goes online to receive and complete trips, the Mckot app collects their
-          precise location <strong>in the background</strong> — including when the app is closed or
-          not in use — so that we can dispatch nearby requests and share the rider&apos;s live
+          precise location <strong>in the background</strong>, including when the app is closed or
+          not in use, so that we can dispatch nearby requests and share the rider&apos;s live
           location with the customer during a trip. Background location collection runs only while
           the rider is online and stops when they go offline. Customers&apos; location is collected
           while they are booking or on an active trip. You can control location access at any time
@@ -118,8 +118,8 @@ export default function PrivacyPage() {
       <Section title="How we share information">
         <p>
           <strong>With other users:</strong> to complete a trip or delivery, we share the
-          information necessary between the customer and the assigned rider — for example name,
-          profile photo, approximate or precise location, and chat messages — so they can find each
+          information necessary between the customer and the assigned rider, for example name,
+          profile photo, approximate or precise location, and chat messages, so they can find each
           other and communicate.
         </p>
         <p className="mt-3">
@@ -128,22 +128,22 @@ export default function PrivacyPage() {
         </p>
         <ul className="list-disc space-y-2 pl-5">
           <li>
-            <strong>Google Firebase</strong> — push notification delivery and app analytics.
+            <strong>Google Firebase:</strong> push notification delivery and app analytics.
           </li>
           <li>
-            <strong>Pusher Beams</strong> — push notification delivery.
+            <strong>Pusher Beams:</strong> push notification delivery.
           </li>
           <li>
-            <strong>Google Maps and Mapbox</strong> — maps, geocoding, and routing.
+            <strong>Google Maps and Mapbox:</strong> maps, geocoding, and routing.
           </li>
           <li>
-            <strong>Sentry</strong> — crash reporting and diagnostics.
+            <strong>Sentry:</strong> crash reporting and diagnostics.
           </li>
           <li>
-            <strong>Paystack</strong> — card payment processing.
+            <strong>Paystack:</strong> card payment processing.
           </li>
           <li>
-            <strong>Hubtel</strong> — mobile money payments, payouts, and Ghana Card verification.
+            <strong>Hubtel:</strong> mobile money payments, payouts, and Ghana Card verification.
           </li>
           <li>
             <strong>Cloud hosting and storage providers</strong> (including Amazon Web Services)

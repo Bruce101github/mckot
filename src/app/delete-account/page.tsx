@@ -33,7 +33,7 @@ export default function DeleteAccountPage() {
       description="Request deletion of your Mckot account and the personal data associated with it."
       effectiveLabel="This page applies to the Mckot mobile app (com.mckot.app) and the Mckot account it creates."
     >
-      <Section title="Option 1 — Delete in the app (fastest)">
+      <Section title="Option 1: Delete in the app (fastest)">
         <p>
           If you can still sign in, you can delete your account directly from the app. It is the
           quickest route and confirms your identity with a one-time SMS code:
@@ -51,7 +51,7 @@ export default function DeleteAccountPage() {
         </ol>
       </Section>
 
-      <Section title="Option 2 — Request deletion without the app">
+      <Section title="Option 2: Request deletion without the app">
         <p>
           If you can no longer access the app or your phone number, you can ask us to delete your
           account for you. Email{" "}
@@ -89,8 +89,8 @@ export default function DeleteAccountPage() {
         <ul className="list-disc space-y-2 pl-5">
           <li>A trip or delivery that is currently in progress.</li>
           <li>
-            A remaining <strong>wallet balance</strong> — withdraw or spend it first, as it is not
-            refundable after deletion.
+            A remaining <strong>wallet balance</strong>, which you should withdraw or spend first,
+            as it is not refundable after deletion.
           </li>
           <li>Money owed for a cash-on-delivery order.</li>
           <li>An identity verification (KYC) check still being reviewed.</li>
@@ -123,7 +123,7 @@ export default function DeleteAccountPage() {
       <Section title="What we may keep">
         <p>
           We retain a limited set of records where the law requires it or to protect against fraud
-          and resolve disputes — for example transaction and payment records needed for accounting,
+          and resolve disputes, for example transaction and payment records needed for accounting,
           tax, and regulatory obligations. These are kept only as long as required and are not used
           to re-create your account.
         </p>
