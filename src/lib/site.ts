@@ -6,9 +6,9 @@ export const siteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://mckot.com",
   locale: "en_GH",
   phones: {
-    primary: "+233503305586",
+    primary: "+233557127475",
     secondary: "+233548173087",
-    primaryFormatted: "+233 50 330 5586",
+    primaryFormatted: "+233 55 712 7475",
     secondaryFormatted: "+233 54 817 3087",
   },
   address: {
@@ -20,7 +20,7 @@ export const siteConfig = {
   social: {
     whatsapp:
       process.env.NEXT_PUBLIC_WHATSAPP_URL ||
-      "https://wa.me/233503305586?text=Hi%20Mckot%2C%20I%27d%20like%20to%20claim%20my%203%20free%20deliveries.",
+      "https://wa.me/233557127475?text=Hi%20Mckot%2C%20I%27m%20interested%20in%20partnering%20with%20you%20for%20deliveries.",
     whatsappChannel:
       process.env.NEXT_PUBLIC_WHATSAPP_CHANNEL_URL ||
       "https://whatsapp.com/channel/0029VaXjCfzJkK7Hxqekhh26",
@@ -37,12 +37,12 @@ export const siteConfig = {
       "https://apps.apple.com/gh/app/mckot/id6767222794",
   },
   // On-site booking flow (customers place delivery orders directly).
-  book: "/ride",
-  offer: {
-    headline: "3 free deliveries in your first 30 days",
-    short: "3 free deliveries",
-    days: 30,
-  },
+book: "/ride",
+offer: {
+  headline: "Partner with Mckot for reliable deliveries",
+  short: "Become a delivery partner",
+  days: null, // no longer time-limited
+},
   vendorCount: "50",
   gaMeasurementId: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "",
 };

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Star, MessageCircle } from "lucide-react";
 import { FadeIn } from "@/components/FadeIn";
+import { StoreButtons } from "@/components/StoreButtons";
 import { siteConfig, waLink } from "@/lib/site";
 
 const WA_HERO = waLink("Hi Mckot, I'd like to book a delivery in Accra.");
@@ -68,28 +69,11 @@ export function Hero() {
               No account needed to start. Pay per delivery, no subscription.
             </p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-3">
+            <div className="mt-8 flex flex-col gap-3">
               <span className="text-xs font-medium text-brand-foreground/45">
                 Or get the app:
               </span>
-              <a
-                href={siteConfig.app.playStore}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="transition-opacity hover:opacity-75"
-                aria-label="Download on Google Play"
-              >
-                <Image src="/badge-playstore.png" alt="Get it on Google Play" width={135} height={40} className="h-9 w-auto" />
-              </a>
-              <a
-                href={siteConfig.app.appStore}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="transition-opacity hover:opacity-75"
-                aria-label="Download on the App Store"
-              >
-                <Image src="/badge-appstore.png" alt="Download on the App Store" width={120} height={40} className="h-9 w-auto" />
-              </a>
+              <StoreButtons variant="onLight" />
             </div>
           </FadeIn>
 

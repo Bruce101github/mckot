@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import { StoreButtons } from "@/components/StoreButtons";
 import { MessageCircle, ArrowRight } from "lucide-react";
 import { siteConfig, waLink } from "@/lib/site";
 
@@ -49,24 +49,7 @@ export function ThreeChannelCta({
 
       <div className="mt-6 flex flex-wrap items-center gap-3">
         <span className="text-sm text-brand-foreground/55">Or get the app:</span>
-        <a
-          href={siteConfig.app.playStore}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="transition-opacity hover:opacity-75"
-          aria-label="Get Mckot on Google Play"
-        >
-          <Image src="/badge-playstore.png" alt="Get it on Google Play" width={135} height={40} className="h-10 w-auto" />
-        </a>
-        <a
-          href={siteConfig.app.appStore}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="transition-opacity hover:opacity-75"
-          aria-label="Download Mckot on the App Store"
-        >
-          <Image src="/badge-appstore.png" alt="Download on the App Store" width={120} height={40} className="h-10 w-auto" />
-        </a>
+        <StoreButtons variant="onLight" />
       </div>
     </div>
   );

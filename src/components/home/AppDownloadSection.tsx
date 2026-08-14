@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Smartphone } from "lucide-react";
 import { Section } from "@/components/Section";
 import { FadeIn } from "@/components/FadeIn";
-import { siteConfig } from "@/lib/site";
+import { StoreButtons } from "@/components/StoreButtons";
 
 export function AppDownloadSection() {
   return (
@@ -33,47 +33,7 @@ export function AppDownloadSection() {
           </p>
         </div>
 
-        <div className="mt-12 flex flex-col items-center gap-6 sm:flex-row sm:justify-center">
-          <a
-            href={siteConfig.app.playStore}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex w-full max-w-xs items-center gap-4 rounded-2xl border border-white/10 bg-white/5 px-6 py-4 transition-all hover:border-brand-accent/40 hover:bg-white/10 sm:w-auto"
-            aria-label="Download Mckot on Google Play"
-          >
-            <Image
-              src="/badge-playstore.png"
-              alt="Google Play"
-              width={40}
-              height={40}
-              className="h-10 w-10 shrink-0 rounded-lg object-contain"
-            />
-            <div className="text-left">
-              <p className="text-xs text-brand-dark-foreground/55">Available on</p>
-              <p className="text-base font-semibold text-brand-dark-foreground">Google Play</p>
-            </div>
-          </a>
-
-          <a
-            href={siteConfig.app.appStore}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex w-full max-w-xs items-center gap-4 rounded-2xl border border-white/10 bg-white/5 px-6 py-4 transition-all hover:border-brand-accent/40 hover:bg-white/10 sm:w-auto"
-            aria-label="Download Mckot on the App Store"
-          >
-            <Image
-              src="/badge-appstore.png"
-              alt="App Store"
-              width={40}
-              height={40}
-              className="h-10 w-10 shrink-0 rounded-lg object-contain"
-            />
-            <div className="text-left">
-              <p className="text-xs text-brand-dark-foreground/55">Available on</p>
-              <p className="text-base font-semibold text-brand-dark-foreground">App Store</p>
-            </div>
-          </a>
-        </div>
+        <StoreButtons variant="onDark" className="mt-12 justify-center" />
 
         <p className="mt-8 text-center text-xs text-brand-dark-foreground/40">
           Free to download. Android and iOS. Works on all devices.
