@@ -230,7 +230,7 @@ export default function VendorsPage() {
               Partner with Mckot. No subscription, no setup fee.
             </h2>
             <p className="mt-4 max-w-xl text-brand-dark-foreground/70">
-              We're onboarding vendors across Accra right now. Join as a delivery partner and get set up over WhatsApp in under 10 minutes. No forms, no catch.
+              {"We're onboarding vendors across Accra right now. Join as a delivery partner and get set up over WhatsApp in under 10 minutes. No forms, no catch."}
             </p>
             <ul className="mt-6 space-y-3">
               {[
