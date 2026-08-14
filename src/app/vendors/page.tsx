@@ -123,14 +123,14 @@ export default function VendorsPage() {
               className="inline-flex items-center gap-2 rounded-xl bg-brand-accent px-6 py-3.5 text-sm font-semibold text-brand-dark transition-colors hover:bg-brand-accent-hover"
             >
               <MessageCircle className="h-4 w-4" aria-hidden />
-              Get 3 free deliveries on WhatsApp
+              Partner with us on WhatsApp
             </Link>
             <Button href="#how-we-work" variant="secondary">
               See how it works
             </Button>
           </div>
           <p className="mt-3 text-xs text-brand-foreground/40">
-            First 3 deliveries free in your first 30 days. No subscription.
+            No subscription. No setup fee. Just message us to get started.
           </p>
         </FadeIn>
       </Section>
@@ -227,11 +227,10 @@ export default function VendorsPage() {
               Founding vendor offer
             </p>
             <h2 className="mt-4 text-3xl font-bold text-brand-dark-foreground">
-              3 free deliveries in your first 30 days
+              Partner with Mckot. No subscription, no setup fee.
             </h2>
             <p className="mt-4 max-w-xl text-brand-dark-foreground/70">
-              We are onboarding our first 50 vendors right now. Join and get your first 3
-              deliveries on us. No catch, no code. Message us on WhatsApp to claim.
+              We're onboarding vendors across Accra right now. Join as a delivery partner and get set up over WhatsApp in under 10 minutes. No forms, no catch.
             </p>
             <ul className="mt-6 space-y-3">
               {[
@@ -253,7 +252,7 @@ export default function VendorsPage() {
                 className="inline-flex items-center gap-2 rounded-xl bg-brand-accent px-6 py-3.5 text-sm font-semibold text-brand-dark transition-colors hover:bg-brand-accent-hover"
               >
                 <MessageCircle className="h-4 w-4" aria-hidden />
-                Claim on WhatsApp
+                Partner on WhatsApp
               </Link>
               <Button href="/contact#signup" variant="secondary" className="border-white/20 bg-white/10 text-brand-dark-foreground hover:bg-white/15">
                 Fill the signup form
