@@ -236,7 +236,7 @@ export default function VendorsPage() {
               {[
                 "No subscription or monthly fee",
                 "Setup over WhatsApp in under 10 minutes",
-                "Cancel anytime after your free deliveries",
+                "Cancel anytime, no lock-in",
               ].map((item) => (
                 <li key={item} className="flex items-center gap-3 text-sm text-brand-dark-foreground/75">
                   <CheckCircle2 className="h-5 w-5 shrink-0 text-brand-accent" aria-hidden />
