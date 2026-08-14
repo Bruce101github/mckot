@@ -49,7 +49,7 @@ offer: {
 
 // Build a wa.me link to the primary Mckot number with a pre-filled message.
 export function waLink(message: string): string {
-  return `https://wa.me/233503305586?text=${encodeURIComponent(message)}`;
+  return `https://wa.me/233557127475?text=${encodeURIComponent(message)}`;
 }
 
 export type CoverageZone = {
