@@ -132,6 +132,11 @@ export default function VendorsPage() {
           <p className="mt-3 text-xs text-brand-foreground/40">
             No subscription. No setup fee. Just message us to get started.
           </p>
+          <p className="mt-2 text-sm">
+            <Link href="/vendors/rate-calculator" className="font-semibold text-brand-accent hover:underline">
+              Calculate your delivery rate &rarr;
+            </Link>
+          </p>
         </FadeIn>
       </Section>
 

@@ -1,0 +1,5370 @@
+[
+  {
+    "id": 2306415,
+    "name": "Abeka",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.59655,
+    "lng": -0.2448
+  },
+  {
+    "id": 2306358,
+    "name": "Ablemkpe",
+    "aliases": [
+      "Ablenkpe"
+    ],
+    "district": "Accra",
+    "lat": 5.60715,
+    "lng": -0.21569
+  },
+  {
+    "id": 2306275,
+    "name": "Abofu",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.6155,
+    "lng": -0.22485
+  },
+  {
+    "id": 7281067,
+    "name": "Abossey Okai",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.55986,
+    "lng": -0.23715
+  },
+  {
+    "id": 2306104,
+    "name": "Accra",
+    "aliases": [
+      "ACC",
+      "Aakra",
+      "Acra",
+      "Akara",
+      "Akkr",
+      "Akkra"
+    ],
+    "district": "Accra",
+    "lat": 5.55602,
+    "lng": -0.1969
+  },
+  {
+    "id": 8541920,
+    "name": "Accra Central",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.54416,
+    "lng": -0.20742
+  },
+  {
+    "id": 8541921,
+    "name": "Accra New Town",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.585,
+    "lng": -0.205
+  },
+  {
+    "id": 2306046,
+    "name": "Achimota",
+    "aliases": [
+      "Achimota Village"
+    ],
+    "district": "Accra",
+    "lat": 5.61667,
+    "lng": -0.23333
+  },
+  {
+    "id": 8541922,
+    "name": "Achimota Forest",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.61836,
+    "lng": -0.2152
+  },
+  {
+    "id": 2303722,
+    "name": "Adabraka",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.55985,
+    "lng": -0.2127
+  },
+  {
+    "id": 8456991,
+    "name": "Airport Hills Residential Area",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.6171,
+    "lng": -0.14148
+  },
+  {
+    "id": 8456982,
+    "name": "Airport Residential Area",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.60644,
+    "lng": -0.18367
+  },
+  {
+    "id": 2304918,
+    "name": "Akweteman",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.5218,
+    "lng": -0.26419
+  },
+  {
+    "id": 2304359,
+    "name": "Akweteyman",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.611,
+    "lng": -0.25081
+  },
+  {
+    "id": 2304908,
+    "name": "Alajo",
+    "aliases": [
+      "Aladzo"
+    ],
+    "district": "Accra",
+    "lat": 5.59561,
+    "lng": -0.21791
+  },
+  {
+    "id": 2304495,
+    "name": "Anumle",
+    "aliases": [
+      "Anunmle"
+    ],
+    "district": "Accra",
+    "lat": 5.64089,
+    "lng": -0.21749
+  },
+  {
+    "id": 8456969,
+    "name": "Apapa",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.56401,
+    "lng": -0.16695
+  },
+  {
+    "id": 8469581,
+    "name": "Apenkwa",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.60688,
+    "lng": -0.23908
+  },
+  {
+    "id": 8456977,
+    "name": "Asylum Down",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.56684,
+    "lng": -0.20723
+  },
+  {
+    "id": 8457205,
+    "name": "Awoshi",
+    "aliases": [
+      "Awoshie"
+    ],
+    "district": "Accra",
+    "lat": 5.58385,
+    "lng": -0.27787
+  },
+  {
+    "id": 8457207,
+    "name": "Awudome Estate",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.56834,
+    "lng": -0.22686
+  },
+  {
+    "id": 2303580,
+    "name": "Ayido",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.63333,
+    "lng": -0.2
+  },
+  {
+    "id": 8457202,
+    "name": "Banana Inn",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.54111,
+    "lng": -0.255
+  },
+  {
+    "id": 8457210,
+    "name": "Bubiashie",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.57861,
+    "lng": -0.24892
+  },
+  {
+    "id": 2302401,
+    "name": "Burma Camp",
+    "aliases": [
+      "Giffard Camp"
+    ],
+    "district": "Accra",
+    "lat": 5.59642,
+    "lng": -0.15496
+  },
+  {
+    "id": 8456967,
+    "name": "Cantonments",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.58123,
+    "lng": -0.17572
+  },
+  {
+    "id": 8457027,
+    "name": "Chorkor",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.52691,
+    "lng": -0.24215
+  },
+  {
+    "id": 2302148,
+    "name": "Christian Village",
+    "aliases": [
+      "Christians Village"
+    ],
+    "district": "Accra",
+    "lat": 5.63173,
+    "lng": -0.22154
+  },
+  {
+    "id": 2302149,
+    "name": "Christiansborg",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.54794,
+    "lng": -0.18649
+  },
+  {
+    "id": 11675665,
+    "name": "Chuim",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.58108,
+    "lng": -0.26532
+  },
+  {
+    "id": 11675668,
+    "name": "Damba",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.54494,
+    "lng": -0.26722
+  },
+  {
+    "id": 2300038,
+    "name": "Dansoman",
+    "aliases": [
+      "Dansoman Estate"
+    ],
+    "district": "Accra",
+    "lat": 5.55506,
+    "lng": -0.27248
+  },
+  {
+    "id": 8457011,
+    "name": "Darkuman",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.59172,
+    "lng": -0.25237
+  },
+  {
+    "id": 8456983,
+    "name": "Dzorwulu Residential Area",
+    "aliases": [
+      "Dzorwulu"
+    ],
+    "district": "Accra",
+    "lat": 5.61146,
+    "lng": -0.20498
+  },
+  {
+    "id": 8456984,
+    "name": "East Dzorwulu Residential Area",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.61429,
+    "lng": -0.19211
+  },
+  {
+    "id": 8541925,
+    "name": "East Legon Residential Area",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.63285,
+    "lng": -0.16473
+  },
+  {
+    "id": 8469579,
+    "name": "East Ridge",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.56255,
+    "lng": -0.18948
+  },
+  {
+    "id": 2300716,
+    "name": "Gbegbeyise",
+    "aliases": [
+      "Gbegbe"
+    ],
+    "district": "Accra",
+    "lat": 5.52468,
+    "lng": -0.26486
+  },
+  {
+    "id": 8457021,
+    "name": "Jamestown",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.53346,
+    "lng": -0.21357
+  },
+  {
+    "id": 11675667,
+    "name": "Jonkobri",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.5499,
+    "lng": -0.27508
+  },
+  {
+    "id": 8456978,
+    "name": "Kanda Estate",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.57888,
+    "lng": -0.18791
+  },
+  {
+    "id": 8457206,
+    "name": "Kaneshie",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.57169,
+    "lng": -0.23761
+  },
+  {
+    "id": 2299465,
+    "name": "Kokomlemle",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.5756,
+    "lng": -0.2056
+  },
+  {
+    "id": 8457026,
+    "name": "Korle Bu Hospital",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.53955,
+    "lng": -0.22602
+  },
+  {
+    "id": 8457022,
+    "name": "Korle Dudor",
+    "aliases": [
+      "Ussher Town"
+    ],
+    "district": "Accra",
+    "lat": 5.5408,
+    "lng": -0.21272
+  },
+  {
+    "id": 7281069,
+    "name": "Korle Gonno",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.5327,
+    "lng": -0.22668
+  },
+  {
+    "id": 8457025,
+    "name": "Korle Lagoon Area",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.55073,
+    "lng": -0.233
+  },
+  {
+    "id": 8456979,
+    "name": "Kotobabi",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.59,
+    "lng": -0.20659
+  },
+  {
+    "id": 2299205,
+    "name": "Kpehe",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.58561,
+    "lng": -0.2144
+  },
+  {
+    "id": 2298592,
+    "name": "Kwasiman",
+    "aliases": [
+      "Kwashieman"
+    ],
+    "district": "Accra",
+    "lat": 5.59328,
+    "lng": -0.26819
+  },
+  {
+    "id": 2298512,
+    "name": "La",
+    "aliases": [
+      "Labadi",
+      "Labardi"
+    ],
+    "district": "Accra",
+    "lat": 5.57015,
+    "lng": -0.15592
+  },
+  {
+    "id": 2303306,
+    "name": "La Bawalshie",
+    "aliases": [
+      "Bawaleshi"
+    ],
+    "district": "Accra",
+    "lat": 5.64277,
+    "lng": -0.16607
+  },
+  {
+    "id": 2302320,
+    "name": "Lapaz",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.60787,
+    "lng": -0.24846
+  },
+  {
+    "id": 8541930,
+    "name": "Lartebiokorshi",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.54293,
+    "lng": -0.23978
+  },
+  {
+    "id": 7281065,
+    "name": "Larterbiokorshie",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.55375,
+    "lng": -0.2408
+  },
+  {
+    "id": 2298423,
+    "name": "Legon",
+    "aliases": [
+      "Legion",
+      "regon"
+    ],
+    "district": "Accra",
+    "lat": 5.65,
+    "lng": -0.18333
+  },
+  {
+    "id": 2298282,
+    "name": "Mamobi",
+    "aliases": [
+      "Maamobi"
+    ],
+    "district": "Accra",
+    "lat": 5.59543,
+    "lng": -0.19529
+  },
+  {
+    "id": 7281070,
+    "name": "Mamprobi",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.53654,
+    "lng": -0.24183
+  },
+  {
+    "id": 7281066,
+    "name": "Mataheko",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.56422,
+    "lng": -0.25002
+  },
+  {
+    "id": 2297863,
+    "name": "Mepeasm",
+    "aliases": [
+      "Mpehuasem"
+    ],
+    "district": "Accra",
+    "lat": 5.6494,
+    "lng": -0.16396
+  },
+  {
+    "id": 8456976,
+    "name": "Ministries",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.5485,
+    "lng": -0.19742
+  },
+  {
+    "id": 2297864,
+    "name": "Mpehuasem",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.6,
+    "lng": -0.21667
+  },
+  {
+    "id": 2297828,
+    "name": "Mpoase",
+    "aliases": [
+      "Mampoase",
+      "Mpuase",
+      "Mpuasee"
+    ],
+    "district": "Accra",
+    "lat": 5.52592,
+    "lng": -0.27069
+  },
+  {
+    "id": 8457012,
+    "name": "New Fadema",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.5941,
+    "lng": -0.25248
+  },
+  {
+    "id": 8541929,
+    "name": "New Mamprobi",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.53518,
+    "lng": -0.25479
+  },
+  {
+    "id": 8457203,
+    "name": "New Russia",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.54502,
+    "lng": -0.25939
+  },
+  {
+    "id": 2297380,
+    "name": "Nima",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.58132,
+    "lng": -0.19816
+  },
+  {
+    "id": 8456985,
+    "name": "North Dzorwulu Residential Area",
+    "aliases": [
+      "North Dzorwulu"
+    ],
+    "district": "Accra",
+    "lat": 5.62073,
+    "lng": -0.1944
+  },
+  {
+    "id": 8457208,
+    "name": "North Industrial Area",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.58405,
+    "lng": -0.22351
+  },
+  {
+    "id": 8457209,
+    "name": "North Kaneshie",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.58657,
+    "lng": -0.23726
+  },
+  {
+    "id": 8456968,
+    "name": "North Labone Estate",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.57318,
+    "lng": -0.17767
+  },
+  {
+    "id": 2302139,
+    "name": "North Ordokor",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.58333,
+    "lng": -0.26667
+  },
+  {
+    "id": 8469578,
+    "name": "North Ridge",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.56611,
+    "lng": -0.19104
+  },
+  {
+    "id": 8456971,
+    "name": "Nyaniba Estates",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.56138,
+    "lng": -0.17767
+  },
+  {
+    "id": 11282129,
+    "name": "Odorkor",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.57903,
+    "lng": -0.26123
+  },
+  {
+    "id": 8457013,
+    "name": "Official Town",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.59187,
+    "lng": -0.26414
+  },
+  {
+    "id": 2296367,
+    "name": "Okponglo",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.64152,
+    "lng": -0.1776
+  },
+  {
+    "id": 8457029,
+    "name": "Old Damsoman",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.53231,
+    "lng": -0.24803
+  },
+  {
+    "id": 8456972,
+    "name": "Osu",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.55728,
+    "lng": -0.1864
+  },
+  {
+    "id": 8456980,
+    "name": "Pig Farm",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.6002,
+    "lng": -0.20162
+  },
+  {
+    "id": 8456973,
+    "name": "Ringway Estate",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.56611,
+    "lng": -0.18294
+  },
+  {
+    "id": 8456981,
+    "name": "Roman Bridge",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.60366,
+    "lng": -0.19518
+  },
+  {
+    "id": 8457204,
+    "name": "Sabon Zongo",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.54803,
+    "lng": -0.23838
+  },
+  {
+    "id": 11675666,
+    "name": "Sakaman",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.56699,
+    "lng": -0.27446
+  },
+  {
+    "id": 8457024,
+    "name": "Sodom and Gomorah",
+    "aliases": [
+      "Agbogbloshie",
+      "Old Fadama"
+    ],
+    "district": "Accra",
+    "lat": 5.54748,
+    "lng": -0.22363
+  },
+  {
+    "id": 8457023,
+    "name": "South Industrial Area",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.55938,
+    "lng": -0.22366
+  },
+  {
+    "id": 8456970,
+    "name": "South La Estate",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.55416,
+    "lng": -0.16343
+  },
+  {
+    "id": 2295717,
+    "name": "South Ordokor",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.56667,
+    "lng": -0.26667
+  },
+  {
+    "id": 2294667,
+    "name": "Tesano",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.60077,
+    "lng": -0.2301
+  },
+  {
+    "id": 8456966,
+    "name": "Trade Center",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.57152,
+    "lng": -0.14602
+  },
+  {
+    "id": 2295695,
+    "name": "Tsabaa",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.57239,
+    "lng": -0.27406
+  },
+  {
+    "id": 8456975,
+    "name": "Tudu",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.5508,
+    "lng": -0.20835
+  },
+  {
+    "id": 2302009,
+    "name": "Tunga",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.548,
+    "lng": -0.27122
+  },
+  {
+    "id": 8456974,
+    "name": "Victoriaborg",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.54699,
+    "lng": -0.20459
+  },
+  {
+    "id": 8541924,
+    "name": "West Legon Residential",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.65226,
+    "lng": -0.2093
+  },
+  {
+    "id": 8469580,
+    "name": "West Ridge",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.55982,
+    "lng": -0.20274
+  },
+  {
+    "id": 2294065,
+    "name": "Wiaboman",
+    "aliases": [],
+    "district": "Accra",
+    "lat": 5.52912,
+    "lng": -0.22587
+  },
+  {
+    "id": 2306002,
+    "name": "Ada Fua",
+    "aliases": [
+      "Foah"
+    ],
+    "district": "Ada East",
+    "lat": 5.78333,
+    "lng": 0.63333
+  },
+  {
+    "id": 9165827,
+    "name": "Ada Kasseh",
+    "aliases": [],
+    "district": "Ada East",
+    "lat": 5.83333,
+    "lng": 0.65
+  },
+  {
+    "id": 2305950,
+    "name": "Ada Panya",
+    "aliases": [
+      "Ada Payna",
+      "Riverside"
+    ],
+    "district": "Ada East",
+    "lat": 5.79012,
+    "lng": 0.63898
+  },
+  {
+    "id": 2305902,
+    "name": "Adewuke",
+    "aliases": [
+      "Adouke"
+    ],
+    "district": "Ada East",
+    "lat": 5.77817,
+    "lng": 0.65928
+  },
+  {
+    "id": 2305897,
+    "name": "Adiawukope",
+    "aliases": [
+      "Adiawakope",
+      "Ametepe Korpe"
+    ],
+    "district": "Ada East",
+    "lat": 5.92344,
+    "lng": 0.51534
+  },
+  {
+    "id": 2305640,
+    "name": "Afruve",
+    "aliases": [
+      "Afrive"
+    ],
+    "district": "Ada East",
+    "lat": 5.80559,
+    "lng": 0.63523
+  },
+  {
+    "id": 2305574,
+    "name": "Agbokpi",
+    "aliases": [],
+    "district": "Ada East",
+    "lat": 5.7996,
+    "lng": 0.66674
+  },
+  {
+    "id": 2305564,
+    "name": "Agbutiakope",
+    "aliases": [],
+    "district": "Ada East",
+    "lat": 5.89881,
+    "lng": 0.52747
+  },
+  {
+    "id": 2305470,
+    "name": "Ahakukope",
+    "aliases": [
+      "Abakukope"
+    ],
+    "district": "Ada East",
+    "lat": 5.93777,
+    "lng": 0.54329
+  },
+  {
+    "id": 2305449,
+    "name": "Ahiamajikope",
+    "aliases": [],
+    "district": "Ada East",
+    "lat": 5.90831,
+    "lng": 0.56193
+  },
+  {
+    "id": 2305415,
+    "name": "Aholupu",
+    "aliases": [
+      "Akolupu"
+    ],
+    "district": "Ada East",
+    "lat": 5.78241,
+    "lng": 0.68116
+  },
+  {
+    "id": 2305330,
+    "name": "Ajakpakope",
+    "aliases": [],
+    "district": "Ada East",
+    "lat": 5.79809,
+    "lng": 0.52212
+  },
+  {
+    "id": 2305156,
+    "name": "Akligbekope",
+    "aliases": [
+      "Aklibwekope",
+      "Akligbe Korpe"
+    ],
+    "district": "Ada East",
+    "lat": 5.87817,
+    "lng": 0.60511
+  },
+  {
+    "id": 2304879,
+    "name": "Alokpe",
+    "aliases": [],
+    "district": "Ada East",
+    "lat": 5.79278,
+    "lng": 0.65619
+  },
+  {
+    "id": 2304776,
+    "name": "Aminapa",
+    "aliases": [],
+    "district": "Ada East",
+    "lat": 5.80331,
+    "lng": 0.53887
+  },
+  {
+    "id": 2304766,
+    "name": "Amlakpo",
+    "aliases": [],
+    "district": "Ada East",
+    "lat": 5.8833,
+    "lng": 0.5029
+  },
+  {
+    "id": 2304647,
+    "name": "Anazome",
+    "aliases": [
+      "Anasome"
+    ],
+    "district": "Ada East",
+    "lat": 5.82274,
+    "lng": 0.65397
+  },
+  {
+    "id": 2303882,
+    "name": "Atawtawkope",
+    "aliases": [],
+    "district": "Ada East",
+    "lat": 5.86081,
+    "lng": 0.5887
+  },
+  {
+    "id": 2303731,
+    "name": "Avegoeme",
+    "aliases": [],
+    "district": "Ada East",
+    "lat": 5.86959,
+    "lng": 0.59299
+  },
+  {
+    "id": 2303562,
+    "name": "Ayonukope",
+    "aliases": [],
+    "district": "Ada East",
+    "lat": 5.82512,
+    "lng": 0.4924
+  },
+  {
+    "id": 2303418,
+    "name": "Banavekope",
+    "aliases": [
+      "Gbanave Korpe"
+    ],
+    "district": "Ada East",
+    "lat": 5.87181,
+    "lng": 0.51821
+  },
+  {
+    "id": 2303252,
+    "name": "Bedeku",
+    "aliases": [],
+    "district": "Ada East",
+    "lat": 5.8943,
+    "lng": 0.53757
+  },
+  {
+    "id": 2303041,
+    "name": "Big Ada",
+    "aliases": [
+      "Big Adda",
+      "Big-Ada"
+    ],
+    "district": "Ada East",
+    "lat": 5.82324,
+    "lng": 0.61428
+  },
+  {
+    "id": 2302358,
+    "name": "Bwetakope",
+    "aliases": [],
+    "district": "Ada East",
+    "lat": 5.88274,
+    "lng": 0.56536
+  },
+  {
+    "id": 2301877,
+    "name": "Dedekope",
+    "aliases": [
+      "Dedekorpe"
+    ],
+    "district": "Ada East",
+    "lat": 5.8641,
+    "lng": 0.59202
+  },
+  {
+    "id": 2301869,
+    "name": "Dedo",
+    "aliases": [],
+    "district": "Ada East",
+    "lat": 5.9405,
+    "lng": 0.54566
+  },
+  {
+    "id": 2301654,
+    "name": "Dogo",
+    "aliases": [],
+    "district": "Ada East",
+    "lat": 5.87498,
+    "lng": 0.56412
+  },
+  {
+    "id": 2301545,
+    "name": "Dongwam",
+    "aliases": [
+      "Dornguam"
+    ],
+    "district": "Ada East",
+    "lat": 5.8602,
+    "lng": 0.56764
+  },
+  {
+    "id": 2301192,
+    "name": "Elavanyo",
+    "aliases": [
+      "Alavanyo"
+    ],
+    "district": "Ada East",
+    "lat": 5.78241,
+    "lng": 0.56797
+  },
+  {
+    "id": 2301006,
+    "name": "Fantivikope",
+    "aliases": [
+      "Fantevi Korpe"
+    ],
+    "district": "Ada East",
+    "lat": 5.91697,
+    "lng": 0.49997
+  },
+  {
+    "id": 2300630,
+    "name": "Glume",
+    "aliases": [],
+    "district": "Ada East",
+    "lat": 5.86249,
+    "lng": 0.61992
+  },
+  {
+    "id": 2300472,
+    "name": "Halagbe",
+    "aliases": [
+      "Aragbe"
+    ],
+    "district": "Ada East",
+    "lat": 5.7948,
+    "lng": 0.59309
+  },
+  {
+    "id": 2299913,
+    "name": "Kaja",
+    "aliases": [
+      "Kadza"
+    ],
+    "district": "Ada East",
+    "lat": 5.92959,
+    "lng": 0.54468
+  },
+  {
+    "id": 2299756,
+    "name": "Kase",
+    "aliases": [
+      "Kesse"
+    ],
+    "district": "Ada East",
+    "lat": 5.89919,
+    "lng": 0.51775
+  },
+  {
+    "id": 2299668,
+    "name": "Kenaw",
+    "aliases": [
+      "Keno Dokupiti Korpe"
+    ],
+    "district": "Ada East",
+    "lat": 5.83599,
+    "lng": 0.57942
+  },
+  {
+    "id": 2299421,
+    "name": "Kolikope",
+    "aliases": [
+      "Kolekorpe"
+    ],
+    "district": "Ada East",
+    "lat": 5.8751,
+    "lng": 0.53056
+  },
+  {
+    "id": 2299335,
+    "name": "Kopehem",
+    "aliases": [
+      "Korpehem"
+    ],
+    "district": "Ada East",
+    "lat": 5.86715,
+    "lng": 0.50741
+  },
+  {
+    "id": 2299293,
+    "name": "Kotobebe",
+    "aliases": [
+      "Kotobebi"
+    ],
+    "district": "Ada East",
+    "lat": 5.82085,
+    "lng": 0.55266
+  },
+  {
+    "id": 2299176,
+    "name": "Kpetsupanya",
+    "aliases": [],
+    "district": "Ada East",
+    "lat": 5.81477,
+    "lng": 0.62551
+  },
+  {
+    "id": 2298873,
+    "name": "Kumikope",
+    "aliases": [
+      "Kumi Korpe"
+    ],
+    "district": "Ada East",
+    "lat": 5.80903,
+    "lng": 0.57608
+  },
+  {
+    "id": 2298847,
+    "name": "Kungbo",
+    "aliases": [
+      "Kunmo"
+    ],
+    "district": "Ada East",
+    "lat": 5.91109,
+    "lng": 0.50914
+  },
+  {
+    "id": 2298806,
+    "name": "Kunyenya",
+    "aliases": [],
+    "district": "Ada East",
+    "lat": 5.88165,
+    "lng": 0.59925
+  },
+  {
+    "id": 2298357,
+    "name": "Lufenya",
+    "aliases": [],
+    "district": "Ada East",
+    "lat": 5.85,
+    "lng": 0.5
+  },
+  {
+    "id": 2298358,
+    "name": "Lufenya",
+    "aliases": [],
+    "district": "Ada East",
+    "lat": 5.84396,
+    "lng": 0.50904
+  },
+  {
+    "id": 2298125,
+    "name": "Mawujingwa",
+    "aliases": [],
+    "district": "Ada East",
+    "lat": 5.82326,
+    "lng": 0.5819
+  },
+  {
+    "id": 2296993,
+    "name": "Nubwakope",
+    "aliases": [
+      "Nubuo Korpe Doosi",
+      "Nubwakofe"
+    ],
+    "district": "Ada East",
+    "lat": 5.91667,
+    "lng": 0.56667
+  },
+  {
+    "id": 2296692,
+    "name": "Obane",
+    "aliases": [
+      "Obane Old"
+    ],
+    "district": "Ada East",
+    "lat": 5.8,
+    "lng": 0.58333
+  },
+  {
+    "id": 2296693,
+    "name": "Obane",
+    "aliases": [
+      "Abane",
+      "Obane New"
+    ],
+    "district": "Ada East",
+    "lat": 5.78333,
+    "lng": 0.6
+  },
+  {
+    "id": 2296381,
+    "name": "Okansekope",
+    "aliases": [
+      "Ocansey Korpe"
+    ],
+    "district": "Ada East",
+    "lat": 5.78333,
+    "lng": 0.6
+  },
+  {
+    "id": 2295885,
+    "name": "Ponya",
+    "aliases": [],
+    "district": "Ada East",
+    "lat": 5.88513,
+    "lng": 0.53105
+  },
+  {
+    "id": 2295791,
+    "name": "Pute",
+    "aliases": [
+      "Fute",
+      "Occo"
+    ],
+    "district": "Ada East",
+    "lat": 5.78324,
+    "lng": 0.54024
+  },
+  {
+    "id": 2295027,
+    "name": "Sunkwenya",
+    "aliases": [],
+    "district": "Ada East",
+    "lat": 5.91737,
+    "lng": 0.54829
+  },
+  {
+    "id": 2294873,
+    "name": "Tamatuku",
+    "aliases": [
+      "Tamatoku"
+    ],
+    "district": "Ada East",
+    "lat": 5.91157,
+    "lng": 0.53257
+  },
+  {
+    "id": 2294862,
+    "name": "Tamino",
+    "aliases": [],
+    "district": "Ada East",
+    "lat": 5.79897,
+    "lng": 0.55587
+  },
+  {
+    "id": 2294516,
+    "name": "Togbloku",
+    "aliases": [
+      "Tobluku",
+      "Togloku"
+    ],
+    "district": "Ada East",
+    "lat": 5.83187,
+    "lng": 0.53892
+  },
+  {
+    "id": 2294511,
+    "name": "Toje",
+    "aliases": [],
+    "district": "Ada East",
+    "lat": 5.94875,
+    "lng": 0.51667
+  },
+  {
+    "id": 2294473,
+    "name": "Tomivawkope",
+    "aliases": [],
+    "district": "Ada East",
+    "lat": 5.8886,
+    "lng": 0.56704
+  },
+  {
+    "id": 2294439,
+    "name": "Totimekope",
+    "aliases": [
+      "Totimekorpe"
+    ],
+    "district": "Ada East",
+    "lat": 5.78263,
+    "lng": 0.61493
+  },
+  {
+    "id": 2294437,
+    "name": "Totope",
+    "aliases": [],
+    "district": "Ada East",
+    "lat": 5.78494,
+    "lng": 0.52655
+  },
+  {
+    "id": 2294139,
+    "name": "Wasakuse Wayo",
+    "aliases": [
+      "Wasakuse",
+      "Wasakusi"
+    ],
+    "district": "Ada East",
+    "lat": 5.84319,
+    "lng": 0.55411
+  },
+  {
+    "id": 2293905,
+    "name": "Yakakope",
+    "aliases": [
+      "Yaka Korpe"
+    ],
+    "district": "Ada East",
+    "lat": 5.83371,
+    "lng": 0.61015
+  },
+  {
+    "id": 2306157,
+    "name": "Abuanokope",
+    "aliases": [
+      "Azinakponya"
+    ],
+    "district": "Ada West",
+    "lat": 5.79264,
+    "lng": 0.42651
+  },
+  {
+    "id": 2306105,
+    "name": "Abyukope",
+    "aliases": [
+      "Abue Korpe"
+    ],
+    "district": "Ada West",
+    "lat": 5.86667,
+    "lng": 0.46667
+  },
+  {
+    "id": 2305893,
+    "name": "Adichrekope",
+    "aliases": [
+      "Adechrekope",
+      "Aditsre Korpe"
+    ],
+    "district": "Ada West",
+    "lat": 5.92926,
+    "lng": 0.49861
+  },
+  {
+    "id": 2305831,
+    "name": "Adjomanikope",
+    "aliases": [
+      "Adzomanikorpe"
+    ],
+    "district": "Ada West",
+    "lat": 5.83333,
+    "lng": 0.4
+  },
+  {
+    "id": 2305822,
+    "name": "Adokope",
+    "aliases": [
+      "Addokorpe",
+      "Adukope"
+    ],
+    "district": "Ada West",
+    "lat": 5.88892,
+    "lng": 0.49225
+  },
+  {
+    "id": 2305753,
+    "name": "Adunajikope",
+    "aliases": [],
+    "district": "Ada West",
+    "lat": 5.96667,
+    "lng": 0.46667
+  },
+  {
+    "id": 2305692,
+    "name": "Afiadenyiba",
+    "aliases": [],
+    "district": "Ada West",
+    "lat": 5.93631,
+    "lng": 0.49707
+  },
+  {
+    "id": 2305603,
+    "name": "Agbegakope",
+    "aliases": [
+      "Agbenyaga"
+    ],
+    "district": "Ada West",
+    "lat": 5.94295,
+    "lng": 0.46668
+  },
+  {
+    "id": 2305561,
+    "name": "Agedrafokope",
+    "aliases": [
+      "Agdrafokope"
+    ],
+    "district": "Ada West",
+    "lat": 5.84251,
+    "lng": 0.39475
+  },
+  {
+    "id": 2305085,
+    "name": "Akpakpavikope",
+    "aliases": [
+      "Akpakpavi Korpe"
+    ],
+    "district": "Ada West",
+    "lat": 5.97188,
+    "lng": 0.48596
+  },
+  {
+    "id": 2305079,
+    "name": "Akplabanya",
+    "aliases": [
+      "Aplabanya"
+    ],
+    "district": "Ada West",
+    "lat": 5.78697,
+    "lng": 0.35608
+  },
+  {
+    "id": 2304449,
+    "name": "Anyamam",
+    "aliases": [
+      "Anyaman"
+    ],
+    "district": "Ada West",
+    "lat": 5.79052,
+    "lng": 0.37234
+  },
+  {
+    "id": 2301653,
+    "name": "Dogobom",
+    "aliases": [
+      "Dogubom"
+    ],
+    "district": "Ada West",
+    "lat": 5.96145,
+    "lng": 0.4975
+  },
+  {
+    "id": 2301647,
+    "name": "Dokpe",
+    "aliases": [],
+    "district": "Ada West",
+    "lat": 5.98333,
+    "lng": 0.48333
+  },
+  {
+    "id": 2300895,
+    "name": "Folikope",
+    "aliases": [
+      "Foli Korpe"
+    ],
+    "district": "Ada West",
+    "lat": 5.99412,
+    "lng": 0.45018
+  },
+  {
+    "id": 2300667,
+    "name": "Gedematukope",
+    "aliases": [],
+    "district": "Ada West",
+    "lat": 5.81667,
+    "lng": 0.36667
+  },
+  {
+    "id": 2300609,
+    "name": "Goi",
+    "aliases": [],
+    "district": "Ada West",
+    "lat": 5.79161,
+    "lng": 0.41661
+  },
+  {
+    "id": 2300349,
+    "name": "Huakpo",
+    "aliases": [
+      "Hwakpo"
+    ],
+    "district": "Ada West",
+    "lat": 5.88996,
+    "lng": 0.47802
+  },
+  {
+    "id": 2299969,
+    "name": "Kablevu",
+    "aliases": [],
+    "district": "Ada West",
+    "lat": 5.79352,
+    "lng": 0.45599
+  },
+  {
+    "id": 2299657,
+    "name": "Kenya",
+    "aliases": [],
+    "district": "Ada West",
+    "lat": 5.9,
+    "lng": 0.48333
+  },
+  {
+    "id": 2299408,
+    "name": "Koloidaw",
+    "aliases": [
+      "Koluedo"
+    ],
+    "district": "Ada West",
+    "lat": 5.88216,
+    "lng": 0.42551
+  },
+  {
+    "id": 2299367,
+    "name": "Koni",
+    "aliases": [
+      "Amatekope",
+      "Sege Koni"
+    ],
+    "district": "Ada West",
+    "lat": 5.9052,
+    "lng": 0.35105
+  },
+  {
+    "id": 2299142,
+    "name": "Kposem",
+    "aliases": [],
+    "district": "Ada West",
+    "lat": 5.81667,
+    "lng": 0.4
+  },
+  {
+    "id": 2299135,
+    "name": "Kpotichekope",
+    "aliases": [
+      "Kpotitsekorpe"
+    ],
+    "district": "Ada West",
+    "lat": 5.80009,
+    "lng": 0.44646
+  },
+  {
+    "id": 2299026,
+    "name": "Kubikope",
+    "aliases": [
+      "Achubwekope",
+      "Kubi Korpe"
+    ],
+    "district": "Ada West",
+    "lat": 5.96667,
+    "lng": 0.48333
+  },
+  {
+    "id": 2298987,
+    "name": "Kujetukope",
+    "aliases": [
+      "Kudzetokorpe"
+    ],
+    "district": "Ada West",
+    "lat": 5.98333,
+    "lng": 0.5
+  },
+  {
+    "id": 2298385,
+    "name": "Lolonya",
+    "aliases": [
+      "Lolanya"
+    ],
+    "district": "Ada West",
+    "lat": 5.79161,
+    "lng": 0.43314
+  },
+  {
+    "id": 2298355,
+    "name": "Luho",
+    "aliases": [
+      "Luhuo"
+    ],
+    "district": "Ada West",
+    "lat": 5.85246,
+    "lng": 0.47993
+  },
+  {
+    "id": 2298322,
+    "name": "Magbomada",
+    "aliases": [],
+    "district": "Ada West",
+    "lat": 5.96667,
+    "lng": 0.48333
+  },
+  {
+    "id": 2298253,
+    "name": "Manchekope",
+    "aliases": [
+      "Maatsekorpe"
+    ],
+    "district": "Ada West",
+    "lat": 5.86751,
+    "lng": 0.44694
+  },
+  {
+    "id": 2298107,
+    "name": "Medaluvaw",
+    "aliases": [],
+    "district": "Ada West",
+    "lat": 5.91667,
+    "lng": 0.43333
+  },
+  {
+    "id": 2298106,
+    "name": "Medovunu",
+    "aliases": [
+      "Madovunu"
+    ],
+    "district": "Ada West",
+    "lat": 5.96976,
+    "lng": 0.42692
+  },
+  {
+    "id": 2297499,
+    "name": "Nawhalenya",
+    "aliases": [
+      "Nuahale"
+    ],
+    "district": "Ada West",
+    "lat": 5.90706,
+    "lng": 0.47906
+  },
+  {
+    "id": 2296106,
+    "name": "Panya",
+    "aliases": [],
+    "district": "Ada West",
+    "lat": 5.98333,
+    "lng": 0.46667
+  },
+  {
+    "id": 2295471,
+    "name": "Sege",
+    "aliases": [
+      "Sege Junction"
+    ],
+    "district": "Ada West",
+    "lat": 5.87703,
+    "lng": 0.35946
+  },
+  {
+    "id": 2295473,
+    "name": "Sege",
+    "aliases": [
+      "Sege Nakonkorpe"
+    ],
+    "district": "Ada West",
+    "lat": 5.83642,
+    "lng": 0.36705
+  },
+  {
+    "id": 2295474,
+    "name": "Sege",
+    "aliases": [
+      "Sege Donya"
+    ],
+    "district": "Ada West",
+    "lat": 5.81667,
+    "lng": 0.35
+  },
+  {
+    "id": 2295289,
+    "name": "Sisakope",
+    "aliases": [
+      "Sisakorpe"
+    ],
+    "district": "Ada West",
+    "lat": 5.95198,
+    "lng": 0.46642
+  },
+  {
+    "id": 2295224,
+    "name": "Songonya",
+    "aliases": [],
+    "district": "Ada West",
+    "lat": 5.83333,
+    "lng": 0.4
+  },
+  {
+    "id": 2294521,
+    "name": "Toflokpo",
+    "aliases": [
+      "Toflokpo Saloom"
+    ],
+    "district": "Ada West",
+    "lat": 5.86066,
+    "lng": 0.43138
+  },
+  {
+    "id": 2294520,
+    "name": "Togakope",
+    "aliases": [],
+    "district": "Ada West",
+    "lat": 5.94205,
+    "lng": 0.45878
+  },
+  {
+    "id": 2293968,
+    "name": "Wuonyi",
+    "aliases": [],
+    "district": "Ada West",
+    "lat": 5.93333,
+    "lng": 0.41667
+  },
+  {
+    "id": 2293572,
+    "name": "Zutakope",
+    "aliases": [
+      "Kposem",
+      "Zuta Korpe"
+    ],
+    "district": "Ada West",
+    "lat": 5.80736,
+    "lng": 0.41074
+  },
+  {
+    "id": 7648641,
+    "name": "Adenta",
+    "aliases": [],
+    "district": "Adenta",
+    "lat": 5.71417,
+    "lng": -0.15418
+  },
+  {
+    "id": 2305907,
+    "name": "Adentan",
+    "aliases": [],
+    "district": "Adenta",
+    "lat": 5.69946,
+    "lng": -0.16647
+  },
+  {
+    "id": 2304358,
+    "name": "Apenkwa",
+    "aliases": [],
+    "district": "Adenta",
+    "lat": 5.72006,
+    "lng": -0.14855
+  },
+  {
+    "id": 2304119,
+    "name": "Ashalebotwe",
+    "aliases": [
+      "Ashaladza Botchway"
+    ],
+    "district": "Adenta",
+    "lat": 5.68462,
+    "lng": -0.1341
+  },
+  {
+    "id": 11103143,
+    "name": "Ashaley Botwe",
+    "aliases": [],
+    "district": "Adenta",
+    "lat": 5.676,
+    "lng": -0.136
+  },
+  {
+    "id": 2298314,
+    "name": "Maijaw",
+    "aliases": [],
+    "district": "Adenta",
+    "lat": 5.68333,
+    "lng": -0.1
+  },
+  {
+    "id": 2298303,
+    "name": "Malijaw",
+    "aliases": [],
+    "district": "Adenta",
+    "lat": 5.78981,
+    "lng": -0.13019
+  },
+  {
+    "id": 2296416,
+    "name": "Ogbojo",
+    "aliases": [
+      "Ogbodzo"
+    ],
+    "district": "Adenta",
+    "lat": 5.66508,
+    "lng": -0.14346
+  },
+  {
+    "id": 2296240,
+    "name": "Otinshi",
+    "aliases": [],
+    "district": "Adenta",
+    "lat": 5.65,
+    "lng": -0.13333
+  },
+  {
+    "id": 2304121,
+    "name": "Ashaiman",
+    "aliases": [
+      "Asaimana",
+      "Asaimanas",
+      "Aschaiman",
+      "Ashiaman",
+      "ao ba xi",
+      "ashaman"
+    ],
+    "district": "Ashaiman",
+    "lat": 5.69951,
+    "lng": -0.03484
+  },
+  {
+    "id": 11428216,
+    "name": "Lashibi",
+    "aliases": [],
+    "district": "Ashaiman",
+    "lat": 5.68476,
+    "lng": -0.04011
+  },
+  {
+    "id": 2306361,
+    "name": "Ablajei",
+    "aliases": [],
+    "district": "Ga East",
+    "lat": 5.7,
+    "lng": -0.2
+  },
+  {
+    "id": 2306267,
+    "name": "Abokobi",
+    "aliases": [
+      "abwkwby"
+    ],
+    "district": "Ga East",
+    "lat": 5.7341,
+    "lng": -0.20625
+  },
+  {
+    "id": 2306256,
+    "name": "Aboman",
+    "aliases": [],
+    "district": "Ga East",
+    "lat": 5.71667,
+    "lng": -0.2
+  },
+  {
+    "id": 2305909,
+    "name": "Adenkrebi",
+    "aliases": [],
+    "district": "Ga East",
+    "lat": 5.77829,
+    "lng": -0.20048
+  },
+  {
+    "id": 2305577,
+    "name": "Agbogba",
+    "aliases": [
+      "Agboogba"
+    ],
+    "district": "Ga East",
+    "lat": 5.69163,
+    "lng": -0.19997
+  },
+  {
+    "id": 2305136,
+    "name": "Akokome",
+    "aliases": [],
+    "district": "Ga East",
+    "lat": 5.71667,
+    "lng": -0.2
+  },
+  {
+    "id": 2305076,
+    "name": "Akpoman",
+    "aliases": [],
+    "district": "Ga East",
+    "lat": 5.72462,
+    "lng": -0.21429
+  },
+  {
+    "id": 2304693,
+    "name": "Amrahia",
+    "aliases": [],
+    "district": "Ga East",
+    "lat": 5.76972,
+    "lng": -0.14197
+  },
+  {
+    "id": 11497784,
+    "name": "Ashongman",
+    "aliases": [],
+    "district": "Ga East",
+    "lat": 5.7105,
+    "lng": -0.23359
+  },
+  {
+    "id": 2304108,
+    "name": "Ashonman",
+    "aliases": [
+      "Ashouman"
+    ],
+    "district": "Ga East",
+    "lat": 5.70254,
+    "lng": -0.21071
+  },
+  {
+    "id": 2305349,
+    "name": "Ayimensa",
+    "aliases": [],
+    "district": "Ga East",
+    "lat": 5.78479,
+    "lng": -0.18365
+  },
+  {
+    "id": 2302873,
+    "name": "Boi",
+    "aliases": [],
+    "district": "Ga East",
+    "lat": 5.72251,
+    "lng": -0.21647
+  },
+  {
+    "id": 2301992,
+    "name": "Danfa",
+    "aliases": [
+      "Damfa"
+    ],
+    "district": "Ga East",
+    "lat": 5.78946,
+    "lng": -0.16173
+  },
+  {
+    "id": 2301639,
+    "name": "Dome",
+    "aliases": [
+      "Dam",
+      "Dom"
+    ],
+    "district": "Ga East",
+    "lat": 5.65003,
+    "lng": -0.2361
+  },
+  {
+    "id": 11154438,
+    "name": "Haatso",
+    "aliases": [],
+    "district": "Ga East",
+    "lat": 5.66937,
+    "lng": -0.20771
+  },
+  {
+    "id": 2299147,
+    "name": "Kpomkpo",
+    "aliases": [],
+    "district": "Ga East",
+    "lat": 5.75847,
+    "lng": -0.2018
+  },
+  {
+    "id": 11428094,
+    "name": "Kwabenya",
+    "aliases": [],
+    "district": "Ga East",
+    "lat": 5.69694,
+    "lng": -0.25139
+  },
+  {
+    "id": 2298742,
+    "name": "Kwabenyan",
+    "aliases": [],
+    "district": "Ga East",
+    "lat": 5.68822,
+    "lng": -0.24518
+  },
+  {
+    "id": 2298554,
+    "name": "Kweman",
+    "aliases": [
+      "Kwaman"
+    ],
+    "district": "Ga East",
+    "lat": 5.77965,
+    "lng": -0.1728
+  },
+  {
+    "id": 2298439,
+    "name": "Lateman",
+    "aliases": [],
+    "district": "Ga East",
+    "lat": 5.75,
+    "lng": -0.15
+  },
+  {
+    "id": 2298330,
+    "name": "Medina Estates",
+    "aliases": [
+      "Madina"
+    ],
+    "district": "Ga East",
+    "lat": 5.6658,
+    "lng": -0.16307
+  },
+  {
+    "id": 2297208,
+    "name": "Nkwantanang",
+    "aliases": [
+      "Gwantenang",
+      "Nkwantanan"
+    ],
+    "district": "Ga East",
+    "lat": 5.68333,
+    "lng": -0.16667
+  },
+  {
+    "id": 10281466,
+    "name": "North Legon",
+    "aliases": [],
+    "district": "Ga East",
+    "lat": 5.68235,
+    "lng": -0.19209
+  },
+  {
+    "id": 2296374,
+    "name": "Okoman",
+    "aliases": [
+      "Oko"
+    ],
+    "district": "Ga East",
+    "lat": 5.64317,
+    "lng": -0.2308
+  },
+  {
+    "id": 2296266,
+    "name": "Oshiyie",
+    "aliases": [
+      "Ashieye"
+    ],
+    "district": "Ga East",
+    "lat": 5.74552,
+    "lng": -0.15288
+  },
+  {
+    "id": 2296242,
+    "name": "Otinibi",
+    "aliases": [],
+    "district": "Ga East",
+    "lat": 5.79277,
+    "lng": -0.149
+  },
+  {
+    "id": 2296199,
+    "name": "Oyamfa",
+    "aliases": [
+      "Oyarifa",
+      "Oyauifa"
+    ],
+    "district": "Ga East",
+    "lat": 5.74443,
+    "lng": -0.1764
+  },
+  {
+    "id": 2296108,
+    "name": "Pantan",
+    "aliases": [],
+    "district": "Ga East",
+    "lat": 5.73085,
+    "lng": -0.19393
+  },
+  {
+    "id": 2296102,
+    "name": "Papao",
+    "aliases": [],
+    "district": "Ga East",
+    "lat": 5.66332,
+    "lng": -0.20533
+  },
+  {
+    "id": 8456986,
+    "name": "Parakuo Estates",
+    "aliases": [],
+    "district": "Ga East",
+    "lat": 5.63728,
+    "lng": -0.22827
+  },
+  {
+    "id": 2295443,
+    "name": "Sempene",
+    "aliases": [],
+    "district": "Ga East",
+    "lat": 5.71667,
+    "lng": -0.2
+  },
+  {
+    "id": 2295404,
+    "name": "Sesemi",
+    "aliases": [],
+    "district": "Ga East",
+    "lat": 5.74575,
+    "lng": -0.21841
+  },
+  {
+    "id": 12640508,
+    "name": "Taifa",
+    "aliases": [],
+    "district": "Ga East",
+    "lat": 5.65825,
+    "lng": -0.25223
+  },
+  {
+    "id": 2294710,
+    "name": "Teiman",
+    "aliases": [],
+    "district": "Ga East",
+    "lat": 5.75265,
+    "lng": -0.18342
+  },
+  {
+    "id": 2306385,
+    "name": "Abetinso",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.7,
+    "lng": -0.5
+  },
+  {
+    "id": 2305872,
+    "name": "Adiembra",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.67542,
+    "lng": -0.43633
+  },
+  {
+    "id": 11675603,
+    "name": "Agbon",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.63289,
+    "lng": -0.4272
+  },
+  {
+    "id": 11675610,
+    "name": "Akutuase",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.69679,
+    "lng": -0.44794
+  },
+  {
+    "id": 11675625,
+    "name": "Alafai",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.67394,
+    "lng": -0.38475
+  },
+  {
+    "id": 2304848,
+    "name": "Amanfrom",
+    "aliases": [
+      "Amanfro"
+    ],
+    "district": "Ga South",
+    "lat": 5.53532,
+    "lng": -0.39827
+  },
+  {
+    "id": 11675600,
+    "name": "Anotema",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.62077,
+    "lng": -0.4291
+  },
+  {
+    "id": 11204606,
+    "name": "Anyaa",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.60049,
+    "lng": -0.2961
+  },
+  {
+    "id": 2304326,
+    "name": "Aplaku",
+    "aliases": [
+      "Janman"
+    ],
+    "district": "Ga South",
+    "lat": 5.52796,
+    "lng": -0.32574
+  },
+  {
+    "id": 2304267,
+    "name": "Asabaham",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.61032,
+    "lng": -0.41806
+  },
+  {
+    "id": 2304213,
+    "name": "Asamoa",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.71288,
+    "lng": -0.45661
+  },
+  {
+    "id": 2304120,
+    "name": "Ashaaladza",
+    "aliases": [
+      "Ashalaja"
+    ],
+    "district": "Ga South",
+    "lat": 5.66396,
+    "lng": -0.364
+  },
+  {
+    "id": 2304118,
+    "name": "Ashaliaman",
+    "aliases": [
+      "Ashale Anan",
+      "Ashaleanan",
+      "Ashalianan"
+    ],
+    "district": "Ga South",
+    "lat": 5.7404,
+    "lng": -0.48525
+  },
+  {
+    "id": 11675612,
+    "name": "Asifura",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.70477,
+    "lng": -0.45828
+  },
+  {
+    "id": 2296210,
+    "name": "Atorman",
+    "aliases": [
+      "Owulabu"
+    ],
+    "district": "Ga South",
+    "lat": 5.64411,
+    "lng": -0.46468
+  },
+  {
+    "id": 2303268,
+    "name": "Bebianiha",
+    "aliases": [
+      "Bebianeha"
+    ],
+    "district": "Ga South",
+    "lat": 5.72696,
+    "lng": -0.46278
+  },
+  {
+    "id": 11675574,
+    "name": "Besease",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.69113,
+    "lng": -0.48197
+  },
+  {
+    "id": 2302651,
+    "name": "Bortianor",
+    "aliases": [
+      "Botiana",
+      "Botianaw"
+    ],
+    "district": "Ga South",
+    "lat": 5.50812,
+    "lng": -0.33679
+  },
+  {
+    "id": 11675609,
+    "name": "Bukor",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.68586,
+    "lng": -0.41693
+  },
+  {
+    "id": 2302432,
+    "name": "Bunmu",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.73705,
+    "lng": -0.45627
+  },
+  {
+    "id": 2302157,
+    "name": "Chokome",
+    "aliases": [
+      "Tsokome"
+    ],
+    "district": "Ga South",
+    "lat": 5.50759,
+    "lng": -0.3276
+  },
+  {
+    "id": 2301996,
+    "name": "Dantsera",
+    "aliases": [
+      "Danchira"
+    ],
+    "district": "Ga South",
+    "lat": 5.63326,
+    "lng": -0.39648
+  },
+  {
+    "id": 2301599,
+    "name": "Domeabra",
+    "aliases": [
+      "Domiabra"
+    ],
+    "district": "Ga South",
+    "lat": 5.59934,
+    "lng": -0.39002
+  },
+  {
+    "id": 2300044,
+    "name": "Dzamai",
+    "aliases": [
+      "Dzoma",
+      "Joma"
+    ],
+    "district": "Ga South",
+    "lat": 5.60331,
+    "lng": -0.35047
+  },
+  {
+    "id": 11675635,
+    "name": "Dzamai",
+    "aliases": [
+      "Dzoma"
+    ],
+    "district": "Ga South",
+    "lat": 5.60013,
+    "lng": -0.33856
+  },
+  {
+    "id": 2301029,
+    "name": "Faana",
+    "aliases": [
+      "Fadziemohe",
+      "Fajiemohe"
+    ],
+    "district": "Ga South",
+    "lat": 5.51054,
+    "lng": -0.31505
+  },
+  {
+    "id": 11675629,
+    "name": "Galuluya",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.54213,
+    "lng": -0.3987
+  },
+  {
+    "id": 2300721,
+    "name": "Gbawe",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.57692,
+    "lng": -0.31038
+  },
+  {
+    "id": 2300564,
+    "name": "Grefi",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.51956,
+    "lng": -0.27956
+  },
+  {
+    "id": 11675576,
+    "name": "Gyatoman",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.66477,
+    "lng": -0.47754
+  },
+  {
+    "id": 2300156,
+    "name": "Gyeikrodua",
+    "aliases": [
+      "Jeikrodrua",
+      "Jeikrodua"
+    ],
+    "district": "Ga South",
+    "lat": 5.64947,
+    "lng": -0.4968
+  },
+  {
+    "id": 11675608,
+    "name": "Hobor",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.6894,
+    "lng": -0.42618
+  },
+  {
+    "id": 2300362,
+    "name": "Honi",
+    "aliases": [
+      "Honi Adawroma",
+      "Huni"
+    ],
+    "district": "Ga South",
+    "lat": 5.6756,
+    "lng": -0.48682
+  },
+  {
+    "id": 2300360,
+    "name": "Honiakyem",
+    "aliases": [
+      "Honiachim",
+      "Honiatsim",
+      "Honiuchim"
+    ],
+    "district": "Ga South",
+    "lat": 5.71732,
+    "lng": -0.44714
+  },
+  {
+    "id": 2300359,
+    "name": "Honise",
+    "aliases": [
+      "Honi Seh"
+    ],
+    "district": "Ga South",
+    "lat": 5.68318,
+    "lng": -0.45857
+  },
+  {
+    "id": 11675633,
+    "name": "Jaman",
+    "aliases": [
+      "Dzauman",
+      "Janman"
+    ],
+    "district": "Ga South",
+    "lat": 5.57293,
+    "lng": -0.32287
+  },
+  {
+    "id": 11675580,
+    "name": "Katakaman",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.65027,
+    "lng": -0.4634
+  },
+  {
+    "id": 11675659,
+    "name": "Kle",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.51471,
+    "lng": -0.2985
+  },
+  {
+    "id": 2299444,
+    "name": "Kokrobite",
+    "aliases": [
+      "Kokrobitas",
+      "Krokrobeti",
+      "Krokrobite"
+    ],
+    "district": "Ga South",
+    "lat": 5.4974,
+    "lng": -0.36493
+  },
+  {
+    "id": 11675664,
+    "name": "Kokroko",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.57735,
+    "lng": -0.28371
+  },
+  {
+    "id": 2299064,
+    "name": "Kolokowhe",
+    "aliases": [
+      "Krokohwe"
+    ],
+    "district": "Ga South",
+    "lat": 5.67793,
+    "lng": -0.39075
+  },
+  {
+    "id": 11675621,
+    "name": "Konkon",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.71883,
+    "lng": -0.43503
+  },
+  {
+    "id": 2305091,
+    "name": "Koteaku",
+    "aliases": [
+      "Akotuaku"
+    ],
+    "district": "Ga South",
+    "lat": 5.70339,
+    "lng": -0.48186
+  },
+  {
+    "id": 11675453,
+    "name": "Kurabi",
+    "aliases": [
+      "Obusumasi"
+    ],
+    "district": "Ga South",
+    "lat": 5.72577,
+    "lng": -0.49763
+  },
+  {
+    "id": 2298662,
+    "name": "Kwamianum",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.66793,
+    "lng": -0.36937
+  },
+  {
+    "id": 11675457,
+    "name": "Kweku Panfo",
+    "aliases": [
+      "Oshija"
+    ],
+    "district": "Ga South",
+    "lat": 5.6989,
+    "lng": -0.46299
+  },
+  {
+    "id": 2298277,
+    "name": "Maampehia",
+    "aliases": [
+      "Mampehia"
+    ],
+    "district": "Ga South",
+    "lat": 5.72466,
+    "lng": -0.4891
+  },
+  {
+    "id": 11675654,
+    "name": "Malam Quarry",
+    "aliases": [
+      "Malam"
+    ],
+    "district": "Ga South",
+    "lat": 5.57345,
+    "lng": -0.28617
+  },
+  {
+    "id": 8198918,
+    "name": "Mallam",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.57118,
+    "lng": -0.29277
+  },
+  {
+    "id": 12640505,
+    "name": "Mandela",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.55221,
+    "lng": -0.33912
+  },
+  {
+    "id": 11675575,
+    "name": "Mayera",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.67405,
+    "lng": -0.47565
+  },
+  {
+    "id": 11675655,
+    "name": "Mendskrom",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.55864,
+    "lng": -0.30208
+  },
+  {
+    "id": 11675631,
+    "name": "New Tetegbu",
+    "aliases": [
+      "New Teteogbu"
+    ],
+    "district": "Ga South",
+    "lat": 5.5724,
+    "lng": -0.32559
+  },
+  {
+    "id": 11675579,
+    "name": "Ningoman",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.65439,
+    "lng": -0.47217
+  },
+  {
+    "id": 2297094,
+    "name": "Nsuobri",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.7362,
+    "lng": -0.50424
+  },
+  {
+    "id": 2296694,
+    "name": "Obakrowe",
+    "aliases": [
+      "Obakrowa"
+    ],
+    "district": "Ga South",
+    "lat": 5.67519,
+    "lng": -0.40019
+  },
+  {
+    "id": 11675578,
+    "name": "Obeman",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.65562,
+    "lng": -0.47942
+  },
+  {
+    "id": 2296670,
+    "name": "Oblogo",
+    "aliases": [
+      "Obologo"
+    ],
+    "district": "Ga South",
+    "lat": 5.55997,
+    "lng": -0.31222
+  },
+  {
+    "id": 11675577,
+    "name": "Obudakyire",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.66228,
+    "lng": -0.46252
+  },
+  {
+    "id": 11675611,
+    "name": "Obuom",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.72799,
+    "lng": -0.44222
+  },
+  {
+    "id": 11675613,
+    "name": "Obuom",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.73364,
+    "lng": -0.43849
+  },
+  {
+    "id": 2296551,
+    "name": "Odenke",
+    "aliases": [
+      "Odenki"
+    ],
+    "district": "Ga South",
+    "lat": 5.67356,
+    "lng": -0.47278
+  },
+  {
+    "id": 11675601,
+    "name": "Oklu",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.61763,
+    "lng": -0.40252
+  },
+  {
+    "id": 11675581,
+    "name": "Okoman",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.64683,
+    "lng": -0.4708
+  },
+  {
+    "id": 2296350,
+    "name": "Okwabinabetinso",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.7,
+    "lng": -0.51667
+  },
+  {
+    "id": 11675599,
+    "name": "Omankope",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.54117,
+    "lng": -0.40273
+  },
+  {
+    "id": 11675602,
+    "name": "Onyawonso",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.63099,
+    "lng": -0.43687
+  },
+  {
+    "id": 2296269,
+    "name": "Oshien",
+    "aliases": [
+      "Oshiyie"
+    ],
+    "district": "Ga South",
+    "lat": 5.50074,
+    "lng": -0.35266
+  },
+  {
+    "id": 11675455,
+    "name": "Otaten",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.71755,
+    "lng": -0.48411
+  },
+  {
+    "id": 2296203,
+    "name": "Owuraman",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.59271,
+    "lng": -0.28961
+  },
+  {
+    "id": 2300195,
+    "name": "Pambros Salt Ponds",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.54449,
+    "lng": -0.28377
+  },
+  {
+    "id": 11675661,
+    "name": "Sakumo",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.5719,
+    "lng": -0.28881
+  },
+  {
+    "id": 2295375,
+    "name": "Shiayena",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.51241,
+    "lng": -0.30713
+  },
+  {
+    "id": 2294737,
+    "name": "Tebu",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.63765,
+    "lng": -0.44803
+  },
+  {
+    "id": 2294690,
+    "name": "Tenbibian",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.69892,
+    "lng": -0.4651
+  },
+  {
+    "id": 2294657,
+    "name": "Tetegbu",
+    "aliases": [
+      "Tete Ogbu",
+      "Teteogbu"
+    ],
+    "district": "Ga South",
+    "lat": 5.54157,
+    "lng": -0.31211
+  },
+  {
+    "id": 2294490,
+    "name": "Tokusemitsigani",
+    "aliases": [
+      "Tokuse",
+      "Tokusee"
+    ],
+    "district": "Ga South",
+    "lat": 5.54697,
+    "lng": -0.37836
+  },
+  {
+    "id": 11675630,
+    "name": "Tuba",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.51291,
+    "lng": -0.38904
+  },
+  {
+    "id": 2294093,
+    "name": "Weija",
+    "aliases": [
+      "Weidza"
+    ],
+    "district": "Ga South",
+    "lat": 5.57184,
+    "lng": -0.33463
+  },
+  {
+    "id": 13439343,
+    "name": "Wiaboman",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.51755,
+    "lng": -0.28869
+  },
+  {
+    "id": 11675658,
+    "name": "Wiejoshi",
+    "aliases": [],
+    "district": "Ga South",
+    "lat": 5.51265,
+    "lng": -0.30908
+  },
+  {
+    "id": 11675640,
+    "name": "Abehenease",
+    "aliases": [
+      "Abehinasi"
+    ],
+    "district": "Ga West",
+    "lat": 5.69928,
+    "lng": -0.31295
+  },
+  {
+    "id": 2306196,
+    "name": "Ablekuma",
+    "aliases": [
+      "Abrekuma"
+    ],
+    "district": "Ga West",
+    "lat": 5.62784,
+    "lng": -0.31116
+  },
+  {
+    "id": 2306293,
+    "name": "Abochiman",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.7287,
+    "lng": -0.34174
+  },
+  {
+    "id": 11675618,
+    "name": "Adaman",
+    "aliases": [
+      "Ademan"
+    ],
+    "district": "Ga West",
+    "lat": 5.7126,
+    "lng": -0.36937
+  },
+  {
+    "id": 2305743,
+    "name": "Adusu",
+    "aliases": [
+      "Adusa"
+    ],
+    "district": "Ga West",
+    "lat": 5.74408,
+    "lng": -0.26748
+  },
+  {
+    "id": 2305298,
+    "name": "Adzen Kotoku",
+    "aliases": [
+      "Adzenkotoku",
+      "Ajenkotoku",
+      "Ajerkotuku"
+    ],
+    "district": "Ga West",
+    "lat": 5.73815,
+    "lng": -0.35641
+  },
+  {
+    "id": 2305688,
+    "name": "Afiaman",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.70521,
+    "lng": -0.2832
+  },
+  {
+    "id": 2305639,
+    "name": "Afuaman",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.63469,
+    "lng": -0.35533
+  },
+  {
+    "id": 11675642,
+    "name": "Agbon Number One",
+    "aliases": [
+      "Agbon",
+      "Agbon Number 1"
+    ],
+    "district": "Ga West",
+    "lat": 5.7294,
+    "lng": -0.31154
+  },
+  {
+    "id": 2305382,
+    "name": "Aidan",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.75,
+    "lng": -0.41667
+  },
+  {
+    "id": 2305098,
+    "name": "Akotoshi",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.74708,
+    "lng": -0.33981
+  },
+  {
+    "id": 2305070,
+    "name": "Akranman",
+    "aliases": [
+      "Akramaman",
+      "Akramoman"
+    ],
+    "district": "Ga West",
+    "lat": 5.69836,
+    "lng": -0.36334
+  },
+  {
+    "id": 2304927,
+    "name": "Akweiman",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.74936,
+    "lng": -0.49119
+  },
+  {
+    "id": 11675652,
+    "name": "Akyiato",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.68369,
+    "lng": -0.28685
+  },
+  {
+    "id": 8456987,
+    "name": "Algoboshie",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.63114,
+    "lng": -0.24743
+  },
+  {
+    "id": 2304863,
+    "name": "Amamole",
+    "aliases": [
+      "Amamoli",
+      "Amamorley"
+    ],
+    "district": "Ga West",
+    "lat": 5.66202,
+    "lng": -0.29852
+  },
+  {
+    "id": 2304847,
+    "name": "Amanfro",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.679,
+    "lng": -0.2979
+  },
+  {
+    "id": 2304810,
+    "name": "Amasaman",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.70711,
+    "lng": -0.30155
+  },
+  {
+    "id": 2304107,
+    "name": "Ashwenanmo",
+    "aliases": [
+      "Ashwenanyo"
+    ],
+    "district": "Ga West",
+    "lat": 5.76667,
+    "lng": -0.33333
+  },
+  {
+    "id": 2304062,
+    "name": "Asofaa",
+    "aliases": [
+      "Asofa"
+    ],
+    "district": "Ga West",
+    "lat": 5.65346,
+    "lng": -0.28727
+  },
+  {
+    "id": 2304036,
+    "name": "Asuaba",
+    "aliases": [
+      "Asuaba Number 2"
+    ],
+    "district": "Ga West",
+    "lat": 5.76667,
+    "lng": -0.43333
+  },
+  {
+    "id": 2304037,
+    "name": "Asuaba",
+    "aliases": [
+      "Asuaba Number 3"
+    ],
+    "district": "Ga West",
+    "lat": 5.75,
+    "lng": -0.43333
+  },
+  {
+    "id": 2306079,
+    "name": "Atsiaman",
+    "aliases": [
+      "Achiaman",
+      "Ashaiman"
+    ],
+    "district": "Ga West",
+    "lat": 5.69775,
+    "lng": -0.32824
+  },
+  {
+    "id": 2303665,
+    "name": "Awchioma",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.76667,
+    "lng": -0.28333
+  },
+  {
+    "id": 2303601,
+    "name": "Ayasu",
+    "aliases": [
+      "Ayaso"
+    ],
+    "district": "Ga West",
+    "lat": 5.67149,
+    "lng": -0.29047
+  },
+  {
+    "id": 2305381,
+    "name": "Ayikaidoblo",
+    "aliases": [
+      "Aikaidoboro",
+      "Ayikai Doblo"
+    ],
+    "district": "Ga West",
+    "lat": 5.67826,
+    "lng": -0.35383
+  },
+  {
+    "id": 11675615,
+    "name": "Ayitekoto",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.74171,
+    "lng": -0.39163
+  },
+  {
+    "id": 11675662,
+    "name": "Bobomase",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.7407,
+    "lng": -0.24867
+  },
+  {
+    "id": 2302894,
+    "name": "Bodomasi",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.74227,
+    "lng": -0.25547
+  },
+  {
+    "id": 2302645,
+    "name": "Botokura",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.77491,
+    "lng": -0.4229
+  },
+  {
+    "id": 2295200,
+    "name": "Chantan",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.6186,
+    "lng": -0.25253
+  },
+  {
+    "id": 2302122,
+    "name": "Chwerebuana",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.78333,
+    "lng": -0.43333
+  },
+  {
+    "id": 2301876,
+    "name": "Dedeman",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.75,
+    "lng": -0.25
+  },
+  {
+    "id": 2301677,
+    "name": "Doblogonno",
+    "aliases": [
+      "Doborogonno"
+    ],
+    "district": "Ga West",
+    "lat": 5.70406,
+    "lng": -0.35503
+  },
+  {
+    "id": 2301638,
+    "name": "Dome",
+    "aliases": [
+      "Dom"
+    ],
+    "district": "Ga West",
+    "lat": 5.72106,
+    "lng": -0.36623
+  },
+  {
+    "id": 2301620,
+    "name": "Domfase",
+    "aliases": [
+      "Domfaase"
+    ],
+    "district": "Ga West",
+    "lat": 5.7571,
+    "lng": -0.39146
+  },
+  {
+    "id": 2301340,
+    "name": "Ebron",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.76667,
+    "lng": -0.31667
+  },
+  {
+    "id": 2301015,
+    "name": "Fanchiniko",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.76667,
+    "lng": -0.38333
+  },
+  {
+    "id": 2300913,
+    "name": "Fise",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.69398,
+    "lng": -0.29729
+  },
+  {
+    "id": 2300591,
+    "name": "Gonse",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.76667,
+    "lng": -0.26667
+  },
+  {
+    "id": 2300194,
+    "name": "Janman",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.6929,
+    "lng": -0.28549
+  },
+  {
+    "id": 11675645,
+    "name": "Katakpo",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.7252,
+    "lng": -0.26615
+  },
+  {
+    "id": 11675649,
+    "name": "Kodwo Goku",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.70209,
+    "lng": -0.29646
+  },
+  {
+    "id": 2299510,
+    "name": "Kodwoashon",
+    "aliases": [
+      "Kodzo Ashon",
+      "Kojoashon"
+    ],
+    "district": "Ga West",
+    "lat": 5.71802,
+    "lng": -0.39827
+  },
+  {
+    "id": 2299501,
+    "name": "Kojokrom",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.76667,
+    "lng": -0.25
+  },
+  {
+    "id": 2299498,
+    "name": "Kojoman",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.74127,
+    "lng": -0.44319
+  },
+  {
+    "id": 2299425,
+    "name": "Koleman",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.76738,
+    "lng": -0.30944
+  },
+  {
+    "id": 11675616,
+    "name": "Koteman",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.74421,
+    "lng": -0.36986
+  },
+  {
+    "id": 11675614,
+    "name": "Kudamakope",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.73911,
+    "lng": -0.40182
+  },
+  {
+    "id": 11675619,
+    "name": "Kwasikumaman",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.71461,
+    "lng": -0.36239
+  },
+  {
+    "id": 2298281,
+    "name": "Mamomom",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.75231,
+    "lng": -0.40676
+  },
+  {
+    "id": 2298219,
+    "name": "Manhean",
+    "aliases": [
+      "Manhia"
+    ],
+    "district": "Ga West",
+    "lat": 5.64386,
+    "lng": -0.34559
+  },
+  {
+    "id": 2298313,
+    "name": "Mayera",
+    "aliases": [
+      "Maiyera"
+    ],
+    "district": "Ga West",
+    "lat": 5.72568,
+    "lng": -0.2758
+  },
+  {
+    "id": 2298015,
+    "name": "Midie",
+    "aliases": [
+      "Akutase Medie"
+    ],
+    "district": "Ga West",
+    "lat": 5.7627,
+    "lng": -0.32327
+  },
+  {
+    "id": 2297862,
+    "name": "Mpehuasem",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.78958,
+    "lng": -0.28621
+  },
+  {
+    "id": 2297569,
+    "name": "Nankanso",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.75,
+    "lng": -0.46667
+  },
+  {
+    "id": 8541923,
+    "name": "New Achimota",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.62657,
+    "lng": -0.25807
+  },
+  {
+    "id": 11675617,
+    "name": "Nii-Aboman",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.74985,
+    "lng": -0.36227
+  },
+  {
+    "id": 8457015,
+    "name": "Niiboye Town",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.60898,
+    "lng": -0.25954
+  },
+  {
+    "id": 2297286,
+    "name": "Nkuntunse",
+    "aliases": [
+      "Nkotunse",
+      "Nkotunsi"
+    ],
+    "district": "Ga West",
+    "lat": 5.74221,
+    "lng": -0.31554
+  },
+  {
+    "id": 2297149,
+    "name": "Nsakyina",
+    "aliases": [
+      "Nsakina"
+    ],
+    "district": "Ga West",
+    "lat": 5.6568,
+    "lng": -0.32391
+  },
+  {
+    "id": 11675653,
+    "name": "Nsunfa",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.61835,
+    "lng": -0.29263
+  },
+  {
+    "id": 2296683,
+    "name": "Obeyie",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.68183,
+    "lng": -0.33618
+  },
+  {
+    "id": 2296646,
+    "name": "Obokwasi",
+    "aliases": [
+      "Obokwashi"
+    ],
+    "district": "Ga West",
+    "lat": 5.73507,
+    "lng": -0.41974
+  },
+  {
+    "id": 2296607,
+    "name": "Obuasi",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.7337,
+    "lng": -0.25081
+  },
+  {
+    "id": 11675637,
+    "name": "Oduman",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.64037,
+    "lng": -0.33377
+  },
+  {
+    "id": 2296508,
+    "name": "Odumase",
+    "aliases": [
+      "Odumasi"
+    ],
+    "district": "Ga West",
+    "lat": 5.67014,
+    "lng": -0.30747
+  },
+  {
+    "id": 2296460,
+    "name": "Oduntia",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.71996,
+    "lng": -0.39206
+  },
+  {
+    "id": 2296454,
+    "name": "Ofankor",
+    "aliases": [
+      "Ofako"
+    ],
+    "district": "Ga West",
+    "lat": 5.65596,
+    "lng": -0.26921
+  },
+  {
+    "id": 2296375,
+    "name": "Oklu",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.73538,
+    "lng": -0.42945
+  },
+  {
+    "id": 2296355,
+    "name": "Okushibiade",
+    "aliases": [
+      "Okushibiadi"
+    ],
+    "district": "Ga West",
+    "lat": 5.69921,
+    "lng": -0.38599
+  },
+  {
+    "id": 11675638,
+    "name": "Olobu",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.64068,
+    "lng": -0.30973
+  },
+  {
+    "id": 2296320,
+    "name": "Onibi",
+    "aliases": [
+      "Onibie"
+    ],
+    "district": "Ga West",
+    "lat": 5.73099,
+    "lng": -0.4139
+  },
+  {
+    "id": 2296307,
+    "name": "Onyasena",
+    "aliases": [
+      "Onyansana",
+      "Onyansanaa"
+    ],
+    "district": "Ga West",
+    "lat": 5.71527,
+    "lng": -0.37932
+  },
+  {
+    "id": 2296300,
+    "name": "Opa",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.72127,
+    "lng": -0.32382
+  },
+  {
+    "id": 2296267,
+    "name": "Oshiuman",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.66027,
+    "lng": -0.31756
+  },
+  {
+    "id": 11675646,
+    "name": "Osofoman",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.72288,
+    "lng": -0.27872
+  },
+  {
+    "id": 2296230,
+    "name": "Otuaple",
+    "aliases": [
+      "Otuaplem"
+    ],
+    "district": "Ga West",
+    "lat": 5.71424,
+    "lng": -0.39037
+  },
+  {
+    "id": 2296099,
+    "name": "Papasi",
+    "aliases": [
+      "Papase"
+    ],
+    "district": "Ga West",
+    "lat": 5.75979,
+    "lng": -0.37715
+  },
+  {
+    "id": 2295925,
+    "name": "Pobi-Asaawa",
+    "aliases": [
+      "Pobiman"
+    ],
+    "district": "Ga West",
+    "lat": 5.73607,
+    "lng": -0.3154
+  },
+  {
+    "id": 2295911,
+    "name": "Pokuase",
+    "aliases": [
+      "Kokoasi",
+      "Pokoase",
+      "Pokoasi",
+      "Poukuase"
+    ],
+    "district": "Ga West",
+    "lat": 5.69076,
+    "lng": -0.28339
+  },
+  {
+    "id": 2295582,
+    "name": "Sansame",
+    "aliases": [
+      "Samsam"
+    ],
+    "district": "Ga West",
+    "lat": 5.78114,
+    "lng": -0.30197
+  },
+  {
+    "id": 8457014,
+    "name": "Santa Maria",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.60472,
+    "lng": -0.26421
+  },
+  {
+    "id": 2295552,
+    "name": "Sapeman",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.72529,
+    "lng": -0.31216
+  },
+  {
+    "id": 11675650,
+    "name": "Shikpantele",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.71939,
+    "lng": -0.30439
+  },
+  {
+    "id": 11675663,
+    "name": "Sowutuom",
+    "aliases": [
+      "Sotuom"
+    ],
+    "district": "Ga West",
+    "lat": 5.6171,
+    "lng": -0.27381
+  },
+  {
+    "id": 2294560,
+    "name": "Tipai",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.7473,
+    "lng": -0.46041
+  },
+  {
+    "id": 11675641,
+    "name": "Toman",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.71684,
+    "lng": -0.30641
+  },
+  {
+    "id": 2294029,
+    "name": "Wiriman",
+    "aliases": [],
+    "district": "Ga West",
+    "lat": 5.75,
+    "lng": -0.25
+  },
+  {
+    "id": 2293913,
+    "name": "Yaawoman",
+    "aliases": [
+      "Yahoman"
+    ],
+    "district": "Ga West",
+    "lat": 5.71157,
+    "lng": -0.38535
+  },
+  {
+    "id": 2306359,
+    "name": "Ablekuma",
+    "aliases": [],
+    "district": "Ledzekuku-Krowor",
+    "lat": 5.63333,
+    "lng": -0.1
+  },
+  {
+    "id": 2305280,
+    "name": "Ajiringano",
+    "aliases": [],
+    "district": "Ledzekuku-Krowor",
+    "lat": 5.63333,
+    "lng": -0.13333
+  },
+  {
+    "id": 2303760,
+    "name": "Augustinesborg",
+    "aliases": [],
+    "district": "Ledzekuku-Krowor",
+    "lat": 5.57692,
+    "lng": -0.10197
+  },
+  {
+    "id": 8456998,
+    "name": "Buade",
+    "aliases": [],
+    "district": "Ledzekuku-Krowor",
+    "lat": 5.62047,
+    "lng": -0.08052
+  },
+  {
+    "id": 11054695,
+    "name": "Greda Estate",
+    "aliases": [],
+    "district": "Ledzekuku-Krowor",
+    "lat": 5.6123,
+    "lng": -0.10564
+  },
+  {
+    "id": 8456999,
+    "name": "Greda Estates",
+    "aliases": [],
+    "district": "Ledzekuku-Krowor",
+    "lat": 5.61983,
+    "lng": -0.09287
+  },
+  {
+    "id": 8456993,
+    "name": "Industrial Area",
+    "aliases": [],
+    "district": "Ledzekuku-Krowor",
+    "lat": 5.63935,
+    "lng": -0.12423
+  },
+  {
+    "id": 2296969,
+    "name": "Nungua",
+    "aliases": [
+      "Nungoa",
+      "Nungwa"
+    ],
+    "district": "Ledzekuku-Krowor",
+    "lat": 5.60105,
+    "lng": -0.07713
+  },
+  {
+    "id": 11239674,
+    "name": "Okpoi Gonno",
+    "aliases": [],
+    "district": "Ledzekuku-Krowor",
+    "lat": 5.63114,
+    "lng": -0.13076
+  },
+  {
+    "id": 2294668,
+    "name": "Tesa",
+    "aliases": [],
+    "district": "Ledzekuku-Krowor",
+    "lat": 5.63038,
+    "lng": -0.13285
+  },
+  {
+    "id": 2294665,
+    "name": "Teshi Old Town",
+    "aliases": [
+      "Tassi",
+      "Teshhi",
+      "Teshie"
+    ],
+    "district": "Ledzekuku-Krowor",
+    "lat": 5.58365,
+    "lng": -0.10722
+  },
+  {
+    "id": 8456997,
+    "name": "Teshie Manheam",
+    "aliases": [],
+    "district": "Ledzekuku-Krowor",
+    "lat": 5.60609,
+    "lng": -0.10758
+  },
+  {
+    "id": 2306019,
+    "name": "Ada",
+    "aliases": [
+      "Ada Foah",
+      "Adda",
+      "Addafoa",
+      "Addah",
+      "Beachtown"
+    ],
+    "district": "Other",
+    "lat": 5.77416,
+    "lng": 0.63377
+  },
+  {
+    "id": 2304444,
+    "name": "Anyapo",
+    "aliases": [],
+    "district": "Other",
+    "lat": 5.77817,
+    "lng": 0.58627
+  },
+  {
+    "id": 2303548,
+    "name": "Azizanya",
+    "aliases": [],
+    "district": "Other",
+    "lat": 5.77009,
+    "lng": 0.6575
+  },
+  {
+    "id": 8541926,
+    "name": "Nungua Old Town",
+    "aliases": [],
+    "district": "Other",
+    "lat": 5.58758,
+    "lng": -0.07829
+  },
+  {
+    "id": 2296215,
+    "name": "Owiawosro",
+    "aliases": [],
+    "district": "Other",
+    "lat": 5.6,
+    "lng": -0.05
+  },
+  {
+    "id": 2306381,
+    "name": "Abia",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.71313,
+    "lng": 0.13049
+  },
+  {
+    "id": 2306357,
+    "name": "Ablevenia",
+    "aliases": [
+      "Abuvelnya"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 6.05232,
+    "lng": 0.32052
+  },
+  {
+    "id": 2306252,
+    "name": "Abominya",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.95784,
+    "lng": -0.01014
+  },
+  {
+    "id": 2305947,
+    "name": "Adapwi",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 6.1,
+    "lng": 0.25
+  },
+  {
+    "id": 2305761,
+    "name": "Adumanya",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.9123,
+    "lng": -0.0631
+  },
+  {
+    "id": 2305683,
+    "name": "Afienya",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.80156,
+    "lng": 0.00555
+  },
+  {
+    "id": 2305617,
+    "name": "Agawtaw",
+    "aliases": [
+      "Agorto"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 5.95011,
+    "lng": 0.23168
+  },
+  {
+    "id": 2305519,
+    "name": "Agomeda, Dangme West",
+    "aliases": [
+      "Agameda",
+      "Agomeda"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 5.97045,
+    "lng": 0.01051
+  },
+  {
+    "id": 2305355,
+    "name": "Aiyikuma",
+    "aliases": [
+      "Ayikuma"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 5.92092,
+    "lng": -0.05379
+  },
+  {
+    "id": 2305334,
+    "name": "Ajaikope",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 6.03333,
+    "lng": 0.31667
+  },
+  {
+    "id": 2305331,
+    "name": "Ajakope",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.95794,
+    "lng": 0.2619
+  },
+  {
+    "id": 2304858,
+    "name": "Amanakpo",
+    "aliases": [
+      "Amlakpo",
+      "Amwonapu"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 5.86137,
+    "lng": 0.21978
+  },
+  {
+    "id": 2304845,
+    "name": "Amanfro",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.93456,
+    "lng": -0.03559
+  },
+  {
+    "id": 2304846,
+    "name": "Amanfro",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.86012,
+    "lng": -0.03462
+  },
+  {
+    "id": 2304798,
+    "name": "Amechekope",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.95,
+    "lng": 0.25
+  },
+  {
+    "id": 2304606,
+    "name": "Anhwiam",
+    "aliases": [
+      "Ahwiam",
+      "Ankwiam"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 5.75926,
+    "lng": 0.23859
+  },
+  {
+    "id": 2304375,
+    "name": "Apasakope",
+    "aliases": [
+      "Apasa Korpe"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 6.06527,
+    "lng": 0.10027
+  },
+  {
+    "id": 2304330,
+    "name": "Apinya",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.88333,
+    "lng": -0.08333
+  },
+  {
+    "id": 2304325,
+    "name": "Aplalu",
+    "aliases": [
+      "Aplabu"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 5.89361,
+    "lng": 0.34376
+  },
+  {
+    "id": 2304266,
+    "name": "Asabe",
+    "aliases": [
+      "Asobe"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 5.90636,
+    "lng": -0.0115
+  },
+  {
+    "id": 2304109,
+    "name": "Ashimi",
+    "aliases": [
+      "Ashinu",
+      "Asime Korpe"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 6.06667,
+    "lng": 0.28333
+  },
+  {
+    "id": 2303996,
+    "name": "Asuchuali",
+    "aliases": [
+      "Asutsuare"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 6.09068,
+    "lng": 0.19667
+  },
+  {
+    "id": 2303881,
+    "name": "Atawtrobenya",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 6.09176,
+    "lng": 0.22901
+  },
+  {
+    "id": 2303739,
+    "name": "Avapo",
+    "aliases": [
+      "Avakpo"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 6.09842,
+    "lng": 0.2404
+  },
+  {
+    "id": 2303671,
+    "name": "Awatonya",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 6.09149,
+    "lng": 0.15081
+  },
+  {
+    "id": 2303568,
+    "name": "Ayitepa",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.78333,
+    "lng": 0.26667
+  },
+  {
+    "id": 2303120,
+    "name": "Beretum",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.88764,
+    "lng": -0.09142
+  },
+  {
+    "id": 2302875,
+    "name": "Bogwabo",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.83333,
+    "lng": -0.03333
+  },
+  {
+    "id": 2302523,
+    "name": "Buaku",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.81322,
+    "lng": 0.1989
+  },
+  {
+    "id": 2302156,
+    "name": "Chomina",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.93333,
+    "lng": -0.05
+  },
+  {
+    "id": 2302154,
+    "name": "Chondawnya",
+    "aliases": [
+      "Chomdonya",
+      "Tsondo Nya"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 6.03266,
+    "lng": 0.10442
+  },
+  {
+    "id": 2302145,
+    "name": "Chuana",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.85,
+    "lng": -0.03333
+  },
+  {
+    "id": 2302127,
+    "name": "Chunkpo",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 6.01667,
+    "lng": 0.33333
+  },
+  {
+    "id": 2301933,
+    "name": "Dawa",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.8637,
+    "lng": 0.29096
+  },
+  {
+    "id": 2301921,
+    "name": "Dawhe",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 6.07132,
+    "lng": 0.10902
+  },
+  {
+    "id": 2301919,
+    "name": "Dawhwenya",
+    "aliases": [
+      "Dorwenya"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 5.76505,
+    "lng": 0.055
+  },
+  {
+    "id": 2301915,
+    "name": "Dawmelan",
+    "aliases": [
+      "Dormeliam"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 6.1,
+    "lng": 0.16667
+  },
+  {
+    "id": 2301914,
+    "name": "Dawsi",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.91667,
+    "lng": 0.23333
+  },
+  {
+    "id": 2301864,
+    "name": "Dedukope",
+    "aliases": [
+      "Dedu Korpe"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 5.98767,
+    "lng": 0.31396
+  },
+  {
+    "id": 2301665,
+    "name": "Dodowa",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.88114,
+    "lng": -0.09873
+  },
+  {
+    "id": 2301512,
+    "name": "Doyum",
+    "aliases": [
+      "Doryumu"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 5.90055,
+    "lng": 0.02184
+  },
+  {
+    "id": 2301450,
+    "name": "Dufo",
+    "aliases": [
+      "Dufor"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 6.07907,
+    "lng": 0.28515
+  },
+  {
+    "id": 2300994,
+    "name": "Fawkpi",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 6,
+    "lng": 0.26667
+  },
+  {
+    "id": 2300946,
+    "name": "Fiakonya",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.86667,
+    "lng": -0.03333
+  },
+  {
+    "id": 2300687,
+    "name": "Gbogbojiri",
+    "aliases": [
+      "Gbogbodziri"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 5.93268,
+    "lng": -0.04146
+  },
+  {
+    "id": 2300648,
+    "name": "Gigiduku",
+    "aliases": [
+      "Gigedokum"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 5.95213,
+    "lng": 0.03356
+  },
+  {
+    "id": 2300456,
+    "name": "Hanya",
+    "aliases": [
+      "Ahanya"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 5.73333,
+    "lng": 0.06667
+  },
+  {
+    "id": 2300319,
+    "name": "Hwapa",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.93333,
+    "lng": 0.25
+  },
+  {
+    "id": 2300213,
+    "name": "Janbakope",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.95,
+    "lng": 0.26667
+  },
+  {
+    "id": 2300170,
+    "name": "Jawpanya",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.91667,
+    "lng": 0.03333
+  },
+  {
+    "id": 2300141,
+    "name": "Jenahaw",
+    "aliases": [
+      "Jenawhaw"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 5.78333,
+    "lng": 0.18333
+  },
+  {
+    "id": 2300034,
+    "name": "Jopo",
+    "aliases": [
+      "Dzokpo"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 6.04939,
+    "lng": 0.31714
+  },
+  {
+    "id": 2300015,
+    "name": "Jugajikope",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 6.01667,
+    "lng": 0.3
+  },
+  {
+    "id": 2299908,
+    "name": "Kajanya",
+    "aliases": [
+      "Kajonya"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 6.07771,
+    "lng": 0.13387
+  },
+  {
+    "id": 2299743,
+    "name": "Kasunya",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 6.04588,
+    "lng": 0.26279
+  },
+  {
+    "id": 2299639,
+    "name": "Keyumi",
+    "aliases": [
+      "Kewum"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 6.09734,
+    "lng": 0.22424
+  },
+  {
+    "id": 2299608,
+    "name": "Klebwenya",
+    "aliases": [
+      "Klebusey"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 6.06142,
+    "lng": 0.27944
+  },
+  {
+    "id": 2299560,
+    "name": "Kodiabe",
+    "aliases": [
+      "Kotabebi",
+      "Mahem",
+      "Se"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 5.92832,
+    "lng": 0.01813
+  },
+  {
+    "id": 2299536,
+    "name": "Kofikope",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.78333,
+    "lng": -0.03333
+  },
+  {
+    "id": 2299503,
+    "name": "Kojokope",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 6.05,
+    "lng": 0.26667
+  },
+  {
+    "id": 2299331,
+    "name": "Kopodaw",
+    "aliases": [
+      "Kopodoo"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 5.77081,
+    "lng": 0.15344
+  },
+  {
+    "id": 2299296,
+    "name": "Kotiyim",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 6,
+    "lng": 0.28333
+  },
+  {
+    "id": 2299287,
+    "name": "Kotoko",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 6.06965,
+    "lng": 0.2877
+  },
+  {
+    "id": 2299237,
+    "name": "Kpanchedaw",
+    "aliases": [
+      "Kpatsedor",
+      "Panchedaw"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 5.90235,
+    "lng": 0.23406
+  },
+  {
+    "id": 2299203,
+    "name": "Kpeigbaw",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 6.00699,
+    "lng": 0.3027
+  },
+  {
+    "id": 2299164,
+    "name": "Kpochun",
+    "aliases": [
+      "Pochun"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 5.8,
+    "lng": 0.21667
+  },
+  {
+    "id": 2299143,
+    "name": "Kponguno",
+    "aliases": [
+      "Kpongunor",
+      "Ponguno"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 5.7761,
+    "lng": 0.27747
+  },
+  {
+    "id": 2298472,
+    "name": "Lanaw",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 6.03554,
+    "lng": 0.17838
+  },
+  {
+    "id": 2298430,
+    "name": "Lawlawvaw",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.98333,
+    "lng": 0.06667
+  },
+  {
+    "id": 2298417,
+    "name": "Lekponguno",
+    "aliases": [
+      "Lekpoguno",
+      "Leponguno"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 5.78333,
+    "lng": 0.3
+  },
+  {
+    "id": 2298381,
+    "name": "Lomen",
+    "aliases": [
+      "Lomen Settlements"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 6.0877,
+    "lng": 0.17756
+  },
+  {
+    "id": 2298364,
+    "name": "Lower Town",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.70787,
+    "lng": 0.11363
+  },
+  {
+    "id": 2298360,
+    "name": "Luchubwe",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.78826,
+    "lng": 0.28475
+  },
+  {
+    "id": 2298359,
+    "name": "Luepunya",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 6.0514,
+    "lng": 0.10442
+  },
+  {
+    "id": 2298343,
+    "name": "Luom",
+    "aliases": [
+      "Luum"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 6.00034,
+    "lng": 0.03503
+  },
+  {
+    "id": 2298341,
+    "name": "Luponya",
+    "aliases": [
+      "Agbeko Korpe",
+      "Lukpenya"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 6.05185,
+    "lng": 0.29773
+  },
+  {
+    "id": 2298339,
+    "name": "Lupunya",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 6.08491,
+    "lng": 0.23631
+  },
+  {
+    "id": 2298308,
+    "name": "Makuche",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.73333,
+    "lng": 0.1
+  },
+  {
+    "id": 2298227,
+    "name": "Mangochonya",
+    "aliases": [
+      "Mangotsonya"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 5.77396,
+    "lng": 0.26105
+  },
+  {
+    "id": 2298226,
+    "name": "Mangochunia",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.83333,
+    "lng": -0.01667
+  },
+  {
+    "id": 2298220,
+    "name": "Manhaim",
+    "aliases": [
+      "Manhem"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 6.1,
+    "lng": 0.15
+  },
+  {
+    "id": 2298206,
+    "name": "Mankese",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.85,
+    "lng": -0.03333
+  },
+  {
+    "id": 2298091,
+    "name": "Memonya",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 6.03333,
+    "lng": 0.33333
+  },
+  {
+    "id": 2298008,
+    "name": "Milichakpo",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.83333,
+    "lng": 0.21667
+  },
+  {
+    "id": 2297992,
+    "name": "Minya",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.8162,
+    "lng": 0.31461
+  },
+  {
+    "id": 2297990,
+    "name": "Miocho",
+    "aliases": [
+      "Miotso"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 5.75248,
+    "lng": 0.08206
+  },
+  {
+    "id": 2297968,
+    "name": "Moboli",
+    "aliases": [
+      "Mobole"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 5.82069,
+    "lng": -0.01544
+  },
+  {
+    "id": 2297816,
+    "name": "Muete",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 6.02824,
+    "lng": 0.07775
+  },
+  {
+    "id": 2297435,
+    "name": "New Nigo",
+    "aliases": [
+      "New Ningo",
+      "New Nugo",
+      "New Nungo"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 5.73737,
+    "lng": 0.16056
+  },
+  {
+    "id": 2297390,
+    "name": "Niechokunia",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.85,
+    "lng": -0.01667
+  },
+  {
+    "id": 2297173,
+    "name": "Nopendaw",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.76667,
+    "lng": 0.01667
+  },
+  {
+    "id": 2296972,
+    "name": "Numuchu",
+    "aliases": [
+      "Numutsu"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 6.06667,
+    "lng": 0.28333
+  },
+  {
+    "id": 2296971,
+    "name": "Numwepu",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.76667,
+    "lng": 0.25
+  },
+  {
+    "id": 2296783,
+    "name": "Nyapienya",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 6.01897,
+    "lng": 0.26419
+  },
+  {
+    "id": 2296760,
+    "name": "Nyem",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.95,
+    "lng": -0.03333
+  },
+  {
+    "id": 2296742,
+    "name": "Nyigbenya",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.83573,
+    "lng": 0.21833
+  },
+  {
+    "id": 2296685,
+    "name": "Obetenya",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 6.1,
+    "lng": 0.15
+  },
+  {
+    "id": 2296584,
+    "name": "Ochebleku",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.81667,
+    "lng": -0.05
+  },
+  {
+    "id": 2296499,
+    "name": "Odumasi",
+    "aliases": [
+      "Odumase"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 5.89746,
+    "lng": -0.07948
+  },
+  {
+    "id": 2296464,
+    "name": "Odumsi",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.84621,
+    "lng": -0.04187
+  },
+  {
+    "id": 2296394,
+    "name": "Ohieduku",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 6.06667,
+    "lng": 0.13333
+  },
+  {
+    "id": 2296338,
+    "name": "Old Nigo",
+    "aliases": [
+      "Great Ningo",
+      "Old Ningo",
+      "Old Nugo",
+      "Old Nungo",
+      "Staryj Nigo"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 5.74612,
+    "lng": 0.18565
+  },
+  {
+    "id": 2296331,
+    "name": "Omainkope",
+    "aliases": [
+      "Omankope"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 5.78857,
+    "lng": 0.30865
+  },
+  {
+    "id": 2296262,
+    "name": "Osiokpo",
+    "aliases": [
+      "Osiedu"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 5.73333,
+    "lng": 0.06667
+  },
+  {
+    "id": 2296252,
+    "name": "Osudoku",
+    "aliases": [
+      "Osuwem"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 6.027,
+    "lng": 0.17964
+  },
+  {
+    "id": 2296035,
+    "name": "Pehuasi",
+    "aliases": [
+      "Pebuasi"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 6.1,
+    "lng": 0.21667
+  },
+  {
+    "id": 2296019,
+    "name": "Pena",
+    "aliases": [
+      "Pena Korpe"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 6.05,
+    "lng": 0.3
+  },
+  {
+    "id": 2295921,
+    "name": "Pochuenu",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 6.05,
+    "lng": 0.28333
+  },
+  {
+    "id": 2295858,
+    "name": "Prampram",
+    "aliases": [
+      "Prampram kuro mu nsem",
+      "brambram",
+      "pu la mu pu lan",
+      "puramupuramu"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 5.71515,
+    "lng": 0.10494
+  },
+  {
+    "id": 2295728,
+    "name": "Sagreme",
+    "aliases": [
+      "Sagremi"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 5.85064,
+    "lng": 0.22034
+  },
+  {
+    "id": 2295472,
+    "name": "Sege",
+    "aliases": [
+      "Sege Ahlihakpo Sisi"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 5.85,
+    "lng": 0.35
+  },
+  {
+    "id": 2295254,
+    "name": "Sohapa",
+    "aliases": [
+      "Suapa"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 5.91893,
+    "lng": 0.23385
+  },
+  {
+    "id": 2295232,
+    "name": "Some",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.87369,
+    "lng": 0.22223
+  },
+  {
+    "id": 2295230,
+    "name": "Somewayo",
+    "aliases": [
+      "Some Wayu"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 5.88333,
+    "lng": 0.21667
+  },
+  {
+    "id": 2295077,
+    "name": "Sugbaniate",
+    "aliases": [
+      "Sugbanyate"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 5.81667,
+    "lng": -0.01667
+  },
+  {
+    "id": 2294905,
+    "name": "Takpe",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 6.09385,
+    "lng": 0.22203
+  },
+  {
+    "id": 2294759,
+    "name": "Tawdum",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 6.02446,
+    "lng": 0.19784
+  },
+  {
+    "id": 2294721,
+    "name": "Techuchi",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 6.05,
+    "lng": 0.3
+  },
+  {
+    "id": 2294705,
+    "name": "Tekpanya",
+    "aliases": [
+      "Tepany",
+      "Tepanya"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 5.77499,
+    "lng": 0.16131
+  },
+  {
+    "id": 2294646,
+    "name": "Tetewayo",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.72719,
+    "lng": 0.14737
+  },
+  {
+    "id": 2294644,
+    "name": "Teti",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 6.05,
+    "lng": 0.3
+  },
+  {
+    "id": 2294419,
+    "name": "Trakunkope",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.95,
+    "lng": 0.26667
+  },
+  {
+    "id": 2294414,
+    "name": "Trayunya",
+    "aliases": [
+      "Treeyonya"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 6.01748,
+    "lng": 0.00952
+  },
+  {
+    "id": 2294288,
+    "name": "Upper Town",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.71667,
+    "lng": 0.1
+  },
+  {
+    "id": 2294239,
+    "name": "Volivo",
+    "aliases": [
+      "Volivo Gbesedom"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 6.09824,
+    "lng": 0.2522
+  },
+  {
+    "id": 2294047,
+    "name": "Widokom",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.88228,
+    "lng": -0.08684
+  },
+  {
+    "id": 2294014,
+    "name": "Wokumagbe",
+    "aliases": [
+      "Wekumagbe"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 5.78526,
+    "lng": 0.32649
+  },
+  {
+    "id": 2293744,
+    "name": "Yopwe",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 6.07455,
+    "lng": 0.20747
+  },
+  {
+    "id": 2293725,
+    "name": "Yukunya",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 6.06338,
+    "lng": 0.18108
+  },
+  {
+    "id": 2293686,
+    "name": "Zanidaw",
+    "aliases": [
+      "Zanidor"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 6.02509,
+    "lng": 0.10127
+  },
+  {
+    "id": 2293655,
+    "name": "Ziapon",
+    "aliases": [],
+    "district": "Shai Osudoku District",
+    "lat": 5.88333,
+    "lng": -0.06667
+  },
+  {
+    "id": 2293631,
+    "name": "Zipanya",
+    "aliases": [
+      "Zianya"
+    ],
+    "district": "Shai Osudoku District",
+    "lat": 6.01667,
+    "lng": 0.28333
+  },
+  {
+    "id": 2305974,
+    "name": "Adamrobe",
+    "aliases": [],
+    "district": "Tema Metropolitan District",
+    "lat": 5.82948,
+    "lng": -0.14358
+  },
+  {
+    "id": 8456996,
+    "name": "Addogonno",
+    "aliases": [],
+    "district": "Tema Metropolitan District",
+    "lat": 5.61667,
+    "lng": -0.06968
+  },
+  {
+    "id": 2305687,
+    "name": "Afianya",
+    "aliases": [],
+    "district": "Tema Metropolitan District",
+    "lat": 5.78333,
+    "lng": -0.08333
+  },
+  {
+    "id": 2305587,
+    "name": "Agblesia",
+    "aliases": [],
+    "district": "Tema Metropolitan District",
+    "lat": 5.61667,
+    "lng": -0.05
+  },
+  {
+    "id": 2304946,
+    "name": "Akwani",
+    "aliases": [],
+    "district": "Tema Metropolitan District",
+    "lat": 5.83333,
+    "lng": -0.13333
+  },
+  {
+    "id": 2304319,
+    "name": "Apolonia",
+    "aliases": [],
+    "district": "Tema Metropolitan District",
+    "lat": 5.79557,
+    "lng": -0.06972
+  },
+  {
+    "id": 2304055,
+    "name": "Asokrochona",
+    "aliases": [],
+    "district": "Tema Metropolitan District",
+    "lat": 5.61526,
+    "lng": -0.03837
+  },
+  {
+    "id": 2303630,
+    "name": "Awuku",
+    "aliases": [],
+    "district": "Tema Metropolitan District",
+    "lat": 5.73333,
+    "lng": -0.03333
+  },
+  {
+    "id": 2303305,
+    "name": "Bawalishi",
+    "aliases": [
+      "Kpone Bawalishi"
+    ],
+    "district": "Tema Metropolitan District",
+    "lat": 5.85493,
+    "lng": -0.10796
+  },
+  {
+    "id": 11397282,
+    "name": "Community 9",
+    "aliases": [],
+    "district": "Tema Metropolitan District",
+    "lat": 5.67748,
+    "lng": -0.01848
+  },
+  {
+    "id": 2299736,
+    "name": "Katamanso",
+    "aliases": [],
+    "district": "Tema Metropolitan District",
+    "lat": 5.74785,
+    "lng": -0.08102
+  },
+  {
+    "id": 2299145,
+    "name": "Kpone",
+    "aliases": [
+      "Poni"
+    ],
+    "district": "Tema Metropolitan District",
+    "lat": 5.68821,
+    "lng": 0.05622
+  },
+  {
+    "id": 2299141,
+    "name": "Kposi",
+    "aliases": [],
+    "district": "Tema Metropolitan District",
+    "lat": 5.83906,
+    "lng": -0.08188
+  },
+  {
+    "id": 2299036,
+    "name": "Kubekro",
+    "aliases": [],
+    "district": "Tema Metropolitan District",
+    "lat": 5.75995,
+    "lng": -0.07863
+  },
+  {
+    "id": 2298566,
+    "name": "Kwedonu",
+    "aliases": [],
+    "district": "Tema Metropolitan District",
+    "lat": 5.65,
+    "lng": -0.08333
+  },
+  {
+    "id": 2298252,
+    "name": "Manchiman",
+    "aliases": [],
+    "district": "Tema Metropolitan District",
+    "lat": 5.75,
+    "lng": -0.06667
+  },
+  {
+    "id": 2297974,
+    "name": "Mlichakpo",
+    "aliases": [
+      "Milichakpo"
+    ],
+    "district": "Tema Metropolitan District",
+    "lat": 5.71667,
+    "lng": 0.01667
+  },
+  {
+    "id": 2296684,
+    "name": "Obeye",
+    "aliases": [],
+    "district": "Tema Metropolitan District",
+    "lat": 5.75,
+    "lng": -0.03333
+  },
+  {
+    "id": 2296354,
+    "name": "Okusubiri",
+    "aliases": [],
+    "district": "Tema Metropolitan District",
+    "lat": 5.78333,
+    "lng": -0.05
+  },
+  {
+    "id": 2296196,
+    "name": "Oyibi",
+    "aliases": [],
+    "district": "Tema Metropolitan District",
+    "lat": 5.81551,
+    "lng": -0.11757
+  },
+  {
+    "id": 2295741,
+    "name": "Saduasi",
+    "aliases": [],
+    "district": "Tema Metropolitan District",
+    "lat": 5.83333,
+    "lng": -0.13333
+  },
+  {
+    "id": 2295692,
+    "name": "Sakumona",
+    "aliases": [
+      "Sakumono Estates"
+    ],
+    "district": "Tema Metropolitan District",
+    "lat": 5.62135,
+    "lng": -0.05193
+  },
+  {
+    "id": 2295574,
+    "name": "Santeo",
+    "aliases": [],
+    "district": "Tema Metropolitan District",
+    "lat": 5.70533,
+    "lng": -0.06471
+  },
+  {
+    "id": 2295534,
+    "name": "Sasabi",
+    "aliases": [
+      "Sasaabi"
+    ],
+    "district": "Tema Metropolitan District",
+    "lat": 5.82268,
+    "lng": -0.10934
+  },
+  {
+    "id": 2295322,
+    "name": "Silehu",
+    "aliases": [
+      "Serehu"
+    ],
+    "district": "Tema Metropolitan District",
+    "lat": 5.73333,
+    "lng": 0
+  },
+  {
+    "id": 8456995,
+    "name": "Spintex Road",
+    "aliases": [],
+    "district": "Tema Metropolitan District",
+    "lat": 5.63759,
+    "lng": -0.10396
+  },
+  {
+    "id": 2294700,
+    "name": "Tema",
+    "aliases": [
+      "Tehma",
+      "Temma",
+      "Toma",
+      "te ma",
+      "the ma",
+      "tma"
+    ],
+    "district": "Tema Metropolitan District",
+    "lat": 5.6698,
+    "lng": -0.01657
+  },
+  {
+    "id": 11497783,
+    "name": "Tema Community 12",
+    "aliases": [],
+    "district": "Tema Metropolitan District",
+    "lat": 5.67463,
+    "lng": -0.03412
+  },
+  {
+    "id": 11282216,
+    "name": "Tema Community 2",
+    "aliases": [],
+    "district": "Tema Metropolitan District",
+    "lat": 5.63469,
+    "lng": -0.01354
+  },
+  {
+    "id": 11205638,
+    "name": "Tema Community 3",
+    "aliases": [],
+    "district": "Tema Metropolitan District",
+    "lat": 5.62441,
+    "lng": -0.03614
+  },
+  {
+    "id": 11205208,
+    "name": "Tema Community Four",
+    "aliases": [],
+    "district": "Tema Metropolitan District",
+    "lat": 5.65542,
+    "lng": -0.01657
+  },
+  {
+    "id": 11468161,
+    "name": "Tema Community Seven",
+    "aliases": [],
+    "district": "Tema Metropolitan District",
+    "lat": 5.6625,
+    "lng": -0.01056
+  },
+  {
+    "id": 11205476,
+    "name": "Tema New Town",
+    "aliases": [],
+    "district": "Tema Metropolitan District",
+    "lat": 5.65396,
+    "lng": 0.0264
+  },
+  {
+    "id": 2293660,
+    "name": "Zenu",
+    "aliases": [],
+    "district": "Tema Metropolitan District",
+    "lat": 5.72006,
+    "lng": -0.05316
+  }
+]
