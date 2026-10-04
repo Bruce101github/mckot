@@ -10,7 +10,7 @@ const DEFAULT_CENTER: Coords = [5.6037, -0.187];
 
 // Light map theme, kept in sync with the Flutter app
 // (ridehailing-mobile/assets/map_style.json) so web and mobile look identical.
-const MAP_STYLE: google.maps.MapTypeStyle[] = [
+export const MAP_STYLE: google.maps.MapTypeStyle[] = [
   { elementType: "geometry", stylers: [{ color: "#ffffff" }] },
   { elementType: "labels.icon", stylers: [{ visibility: "off" }] },
   { elementType: "labels.text.fill", stylers: [{ color: "#9a9a9a" }] },
